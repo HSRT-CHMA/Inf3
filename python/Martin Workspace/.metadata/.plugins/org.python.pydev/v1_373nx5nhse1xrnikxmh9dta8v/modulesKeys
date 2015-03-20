@@ -550,7 +550,7 @@ idlelib.configHandler|C:\Python34\Lib\idlelib\configHandler.py
 idlelib.configHelpSourceEdit|C:\Python34\Lib\idlelib\configHelpSourceEdit.py
 idlelib.configSectionNameDialog|C:\Python34\Lib\idlelib\configSectionNameDialog.py
 idlelib.dynOptionMenuWidget|C:\Python34\Lib\idlelib\dynOptionMenuWidget.py
-idlelib.idle|C:\Python34\Lib\idlelib\idle.py
+idlelib.idle|C:\Python34\Lib\idlelib\idle.pyw
 idlelib.idle_test.__init__|C:\Python34\Lib\idlelib\idle_test\__init__.py
 idlelib.idle_test.htest|C:\Python34\Lib\idlelib\idle_test\htest.py
 idlelib.idle_test.mock_idle|C:\Python34\Lib\idlelib\idle_test\mock_idle.py
