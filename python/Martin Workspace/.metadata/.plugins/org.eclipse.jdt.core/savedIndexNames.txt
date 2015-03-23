@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+C:\Users\Georgia\Desktop\Studium\SS_15\Info 3 Praktikum\inf3\python\Martin Workspace\.metadata\.plugins\org.eclipse.jdt.core
