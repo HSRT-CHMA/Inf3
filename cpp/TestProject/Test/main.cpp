@@ -81,6 +81,7 @@ int main(){
 	cout << endl;
 	cout << endl;
 
+	cout << "Hallo das ist ein Test von Christoph :-)";
 
 	return 0;
 }
