@@ -81,7 +81,7 @@ int main(){
 	cout << endl;
 	cout << endl;
 
-	cout << "Hallo das ist ein Test von Christoph :-)";
+	cout << "Hallo ich habe Christophs änderungen gelöscht.";
 
 	return 0;
 }
