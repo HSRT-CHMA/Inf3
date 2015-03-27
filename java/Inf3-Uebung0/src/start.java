@@ -16,7 +16,7 @@ public class start {
 		String input = null;
 		
 		/**
-		 * User Output to system console
+		 * User Output to system console output
 		 */
 		System.out.println("Bitte geben Sie nun die Zahlen ein: ");
 		
