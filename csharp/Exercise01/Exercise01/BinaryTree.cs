@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Exercise01{
     /*
-     * Initial Start Program
+     * Class for Binary Tree with Integer Values
      */
-    class Program{
-        static void Main(string[] args){
-        }
+    class BinaryTree{
+        
     }
 }

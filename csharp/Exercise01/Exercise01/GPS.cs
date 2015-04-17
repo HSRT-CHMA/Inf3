@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Exercise01{
     /*
-     * Initial Start Program
+     * Class for General Problem Solver
      */
-    class Program{
-        static void Main(string[] args){
-        }
+    class GPS{
     }
 }
