@@ -1,15 +1,20 @@
 -- VERSION_4
 -- START DISKCACHE
 D:\workspace-inf3\inf3\python\.metadata\.plugins\org.eclipse.core.resources\.projects\Exercise1\com.python.pydev.analysis\v2_indexcache
-Exercise1.Exercise1|1427968941938|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Exercise1.py
+Exercise1.Exercise1|1427983447036|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Exercise1.py
 Exercise1.__init__|1427968900168|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\__init__.py
 -- END DISKCACHE
 -- START DICTIONARY
-0
+2
+1=Exercise1.Exercise1
+2=Excersice1
 -- END DICTIONARY
 -- START TREE 1
-0
+1
+exc|1|Excersice1!9@
 -- END TREE
 -- START TREE 2
-0
+2
+get|5|get_sum!2&10@get_sorted_List!2&10@get_average!2&10@get_palindrome!2&10@get_reverse_List!2&10@
+mod|2|modify2!2&10@modify!2&10@
 -- END TREE
