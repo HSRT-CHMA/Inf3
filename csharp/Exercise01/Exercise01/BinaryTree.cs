@@ -11,7 +11,7 @@ namespace Exercise01{
     class BinaryTree{
         private Node root = null;
         public void insert(int insert){
-            if (Node = null){
+            if (root == null){
                root = new Node(insert);
             }
         }
