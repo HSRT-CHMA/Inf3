@@ -23,15 +23,15 @@ namespace Exercise01{
         /*
          * Setter for Node Class 
          */
-        private setValue(int value){
+        private void setValue(int value){
             this.value = value;
         }
 
-        private setLeft(Node left){
+        private void setLeft(Node left){
             this.left = left;
         }
 
-        private setRight(Node right){
+        private void setRight(Node right){
             this.right = right;
         }
     }
