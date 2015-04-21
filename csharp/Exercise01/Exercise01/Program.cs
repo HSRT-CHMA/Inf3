@@ -10,6 +10,11 @@ namespace Exercise01{
      */
     class Program{
         static void Main(string[] args){
+            //Creating Binary Object with Values: 
+            BinaryTree tree = new BinaryTree();
+            
+            //Creating GPS Object with Values: 
+            GPS pSolver = new GPS();
         }
     }
 }
