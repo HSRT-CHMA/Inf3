@@ -18,50 +18,61 @@ namespace Exercise01{
         private Node left, right;
 
         /*
-         * Constructor for Node
+         * Constructor for Node with int and Node values
          */
         public Node(int value, Node parent){
             this.value = value;
-            setLeft(left);
-            setRight(right);
-            setParent(parent);
+            SetLeft(left);
+            SetRight(right);
+            SetParent(parent);
         }
+
+        /*
+         * Constructor for Node with int value
+         */
+        public Node(int value)
+        {
+            this.value = value;
+            SetLeft(left);
+            SetRight(right);
+        }
+
 
         /*
          * Setter for Node Class 
          */
-        public void setValue(int value){
+        public void SetValue(int value){
             this.value = value;
         }
 
-        public void setLeft(Node left){
+        public void SetLeft(Node left){
             this.left = left;
         }
 
-        public void setRight(Node right){
+        public void SetRight(Node right){
             this.right = right;
         }
 
-        public void setParent(Node parent){ 
+        public void SetParent(Node parent){ 
             this.parent = parent;
         }
 
         /*
          * Getter for Node
          */
-        public Node getLeft(){
+        public Node GetLeft(){
             return left;
         }
 
-        public Node getRight(){
+        public Node GetRight(){
             return right;
         }
 
-        public int getValue(){
+        public int GetValue(){
             return value;
         }
         
-        public Node getParent(){
+        public Node GetParent(){
             return parent;
         }
     }
