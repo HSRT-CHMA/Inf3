@@ -10,13 +10,40 @@ namespace Exercise01{
      */
     class BinaryTree{
         private Node root = null;
-        public void insert(int insert){
-            if (root == null){
-               root = new Node(insert);
+
+        /*
+         * Default Constructor for BinaryTree
+         */
+        public BinaryTree(int value){
+            root = new Node(value, null);
+        }
+        public void insert(int value){
+            /*
+             * Check if root null
+             */
+            if(root == null){
+                root = new Node(value, null);
             }
+
+            /*
+             * Check if Value is smaller
+             */
+            else if (root.getValue() < value){
+             
+            }
+            /*
+             * Check Left Tree Side
+             */
+
+            
+            /*
+             * Check Right Tree Side
+             */
+            
+
         }
         public void delete(int value){
-
+            
         }
     }
 }
