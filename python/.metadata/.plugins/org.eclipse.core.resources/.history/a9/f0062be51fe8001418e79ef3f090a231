@@ -1,0 +1,36 @@
+'''
+Created on 17.04.2015
+
+@author: Marco
+'''
+    
+    def __init__:
+        Nodes left
+        Nodes right
+        Integer content
+        self.setContent(content);
+
+    def Nodes getLeft():
+        return left
+    def setLeft(Nodes left): 
+        if left != null:
+        self.links = left;
+    def Nodes getRight():
+        return right
+    def setRight(Nodes right):
+        if right != null:
+        self.rechts = rechts;
+        }
+    }
+    public int getInhalt() {
+        return inhalt;
+    }
+    public void setInhalt(Integer inhalt) {
+        this.inhalt = inhalt;
+    }
+
+    @Override
+    public String toString(){
+        return "Inhalt des Knoten : " + getInhalt();
+    }
+}
