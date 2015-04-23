@@ -57,6 +57,7 @@ namespace Exercise01{
             public void SetValue(int value)
             {
                 this.value = value;
+                Contract.Ensures(value == this.GetValue());
             }
 
             public void SetLeft(Node left)
@@ -68,12 +69,15 @@ namespace Exercise01{
 
             public void SetRight(Node right)
             {
+                Contract.Requires(right.GetValue() >= this.GetValue());
                 this.right = right;
+                Contract.Ensures(this.GetRight().Equals(right));
             }
 
             public void SetParent(Node parent)
             {
                 this.parent = parent;
+                Contract.Ensures(this.GetParent().Equals(parent));
             }
 
             /*
@@ -87,16 +91,19 @@ namespace Exercise01{
 
             public Node GetRight()
             {
+                Contract.Ensures(right.Equals(this.GetRight()));
                 return right;
             }
 
             public int GetValue()
             {
+                Contract.Ensures(value == this.GetValue());
                 return value;
             }
 
             public Node GetParent()
             {
+                Contract.Ensures(parent.Equals(this.GetParent()));
                 return parent;
             }
         }

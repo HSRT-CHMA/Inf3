@@ -16,11 +16,13 @@ namespace Exercise01{
 
             /*
              * Design by Contract Definition
+             * Invariants 
+             * --> 
              */
             [ContractInvariantMethod]
             protected void ObjectInvariant()
             {
-                
+
             }
 
             /*
@@ -56,6 +58,7 @@ namespace Exercise01{
              */
             public Node GetRoot()
             {
+                Contract.Ensures(GetRoot().Equals(this.root));
                 return root;
             }
 
