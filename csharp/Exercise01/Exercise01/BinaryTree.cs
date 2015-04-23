@@ -70,7 +70,7 @@ namespace Exercise01{
              */
             public void Insert(int value)
             {
-                if (root == null)
+                if (GetRoot() == null)
                 {
                     root = new Node(value);
                 }
@@ -78,19 +78,23 @@ namespace Exercise01{
                 {
                     this.InsertValue(root, value);
                 }
+                Contract.Ensures(GetRoot().Equals(root));
             }
 
             /*
-             * Method to insert Values 
+             * Method to add Values 
              * -> Smaller than root on the left child 
              * -> Bigger than root or equal on the rigth child
+             * Methode uses Recursion to insert a Node in the suited place in the tree
+             * --> Ensures that the new value exists in the tree after method
              */
             private void InsertValue(Node new_n, int new_value)
             {
                 if (new_n == null)
                 {
                     new_n = new Node(new_value);
-                } if (root == null)
+                } 
+                if (root == null)
                 {
                     root = new_n;
                 }
@@ -121,12 +125,14 @@ namespace Exercise01{
                     }
 
                 }
+                Contract.Ensures(HasValue(new_value));
             }
 
             /*
              *  Georgia : My try on has-Method
              *  If HasValue2 returns null --> nothing found or no tree --> false
              *  If HasValue2 returns an Node --> Value found in tree --> true
+             *  It is ensured that just one of these two possibilities gets returned
              */
             public Boolean HasValue(int value)
             {
@@ -140,6 +146,7 @@ namespace Exercise01{
                 {
                     result = false;
                 }
+                Contract.Ensures(result.Equals(true) || result.Equals(false));
                 return result;
             }
 
@@ -148,6 +155,7 @@ namespace Exercise01{
              *  the node with the matching value
              *  No recoginition of duplicate values 
              *  -> first come, first serve
+             *  Ensures that return-Node has the given value as its value
              */
             private Node WhereIsValue(Node n, int value)
             {
@@ -183,6 +191,7 @@ namespace Exercise01{
                     }
                 }
 
+                Contract.Ensures(result.GetValue() == value);
                 return result;
             }
 
@@ -198,6 +207,7 @@ namespace Exercise01{
             /*
              * If Tree is empty, nothing can be deleted
              * Method receive root-Node , new value, the parent node and flag if node is left
+             * It is ensured that ALL nodes with given value are deleted !
              * 
              */
             private Boolean DeleteValue(Node new_n, int new_value, Node parent, Boolean is_left)
@@ -284,6 +294,7 @@ namespace Exercise01{
                         return DeleteValue(new_n.GetRight(), new_value, parent, false);
                     }
                 }
+                Contract.Ensures(!(HasValue(new_value)));
                 return false;
             }
 
