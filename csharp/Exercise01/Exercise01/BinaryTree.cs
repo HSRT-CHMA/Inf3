@@ -9,98 +9,77 @@ namespace Exercise01{
      * Class for Binary Tree with Integer Values
      */
     class BinaryTree{
+
+        /*
+         * Initial Root Node for Default Constructor
+         * -> Initialized with null
+         */
         private Node root = null;
 
         /*
          * Constructor for BinaryTree with int values
+         * Console Output that the BinaryTree is created with the given value
          */
         public BinaryTree(int value){
-            //root = new Node(value, null);
             root = new Node(value);
-        }
-        public void insert(int value){
-            /*
-             * Check if root null
-             */
-            if(root == null){
-                root = new Node(value, null);
-            }
-
-            /*
-             * Check if Value is smaller
-             */
-            else if (root.GetValue() < value){
-             
-            }
-            /*
-             * Check Left Tree Side
-             */
-
-            
-            /*
-             * Check Right Tree Side
-             */
-            
-
+            Console.WriteLine("New BinaryTree is initialized with Value: " + value);
         }
 
+        /*
+         * Setter of BinaryTree
+         * Modifing the Root is NOT allowed. Otherwise the Tree is not valid
+         * @Param: User wants to modify the root with a new root which is prohibited
+         */
+        public void SetRoot(Node root){
+            Console.WriteLine("Modifing the root after initializiation of the BinaryTree is not allowd.");
+            Console.WriteLine("Please Create a new BinaryTree");
+        }
+
+        /*
+         * Getter of BinaryTree
+         * @Param Value: Root Node is the return Value of the Getter
+         */
+        public Node GetRoot(){
+            return root;
+        }
 
         /*
          * Method creates a tree with given value as root, or
          * adds new given int-value to existing tree by calling InsertValue-Metod
+         * @Param int value: Value which will be added to the BinaryTree
+         * Duplicate Values are also added on the Right Side of the Tree
          */
-        public void Insert(int value)
-        {
-            Console.WriteLine("New Tree with root-value " + value);
-
-            if (root == null)
-            {
-                root = new Node(value, null);
+        public void Insert(int value){
+            if (root == null){
+                root = new Node(value);
             }
-            else
-            {
+            else{
                 this.InsertValue(root, value);
             }
         }
 
         /*
-         * Method to insert values, smaller than root on the left child, bigger than root or equal on the rigth child
+         * Method to insert Values 
+         * -> Smaller than root on the left child 
+         * -> Bigger than root or equal on the rigth child
          */
-        private void InsertValue(Node new_n, int new_value)
-        {
-            if (new_n == null)
-            {
-                new_n = new Node(new_value, null);
-            }
-
-            if (root == null)
-            {
+        private void InsertValue(Node new_n, int new_value){
+            if (new_n == null){
+                new_n = new Node(new_value);
+            }if (root == null){
                 root = new_n;
-            }
-            else
-            {
-                if ((new_value.CompareTo(new_n.GetValue())) < 0)
-                {
-                    if (new_n.GetLeft() != null)
-                    {
+            }else{
+                if ((new_value.CompareTo(new_n.GetValue())) < 0){
+                    if (new_n.GetLeft() != null){
                         InsertValue(new_n.GetLeft(), new_value);
-                    }
-                    else
-                    {
+                    }else{
                         new_n.SetLeft(new Node(new_value));
                         Console.WriteLine("Left :  " + new_value);
                     }
-
-                }
-
-                if (new_value.CompareTo(new_n.GetValue()) >= 0)
-                {
-                    if (new_n.GetRight() != null)
-                    {
+                }if (new_value.CompareTo(new_n.GetValue()) >= 0){
+                    if (new_n.GetRight() != null){
                         InsertValue(new_n.GetRight(), new_value);
-                    }
-                    else
-                    {
+                    }else{
                         new_n.SetRight(new Node(new_value));
                         Console.WriteLine("Right : " + new_value);
                     }
@@ -108,116 +87,49 @@ namespace Exercise01{
 
             }
         }
-
-        /*
-         *  Methods checks if value exists in the tree
-         */ 
-
-        public Boolean Has(int new_value)
-        {
-            return HasValue(root, new_value);
-        }
-
-        /*
-        *  UNFINISHED !
-         * Methods checks if value exists in the tree
-         * No Rekursion yet, only Queries  
-         *  
-        */ 
-        private Boolean HasValue(Node new_n, int new_value)
-        {
-            Boolean has = false;
-            if (new_n == null)
-            {
-                Console.WriteLine("Binary Tree is not filled yet");
-            }
-
-            if (new_value.CompareTo(new_n.GetValue()) == 0)
-            {
-                has = true;
-            }
-
-
-            if (new_value.CompareTo(new_n.GetValue()) < 0)
-            {
-                if (new_n.GetLeft() != null)
-                {
-                    has = true;
-                }
-
-            }
-
-            if (new_value.CompareTo(new_n.GetValue()) >= 0)
-            {
-                if (new_n.GetRight() != null)
-                {
-                    has = true;
-                }
-            }
-
-            return has;
-        }
+        
         /*
          *  Georgia : My try on has-Method
          *  If HasValue2 returns null --> nothing found or no tree --> false
          *  If HasValue2 returns an Node --> Value found in tree --> true
          */
-
-        public Boolean Has2(int value)
-        {
+        public Boolean HasValue(int value){
             Boolean result;
 
-            if (HasValue2(root, value) != null)
-            {
+            if (WhereIsValue(root, value) != null){
                 result = true;
-            }
-            else
-            {
+            }else{
                 result = false;
             }
-
             return result;
         }
         
-        
         /*
-         *  Georgia : My try on has-Method
+         *  Method searches the given value and returns
+         *  the node with the matching value
+         *  No recoginition of duplicate values 
+         *  -> first come, first serve
          */ 
-        private Node HasValue2(Node n, int value)
-        {
+        private Node WhereIsValue(Node n, int value){
             Node result = null;
 
-            if (n == null)
-            {
+            if (n == null){
                 result = null;
-            }
-
-            if(value.CompareTo(n.GetValue()) == 0) //Found it
-            {
+            }if(value.CompareTo(n.GetValue()) == 0){
                 return n;
-            }
-            
-            if(value.CompareTo(n.GetValue()) < 0)
-            {
-                if (n.GetLeft() == null)
-                {
+            }if(value.CompareTo(n.GetValue()) < 0){
+                if (n.GetLeft() == null){
                     result = null;
-                }
-                else
-                {
-                    result = HasValue2(n.GetLeft(), value); 
+                }else{
+                    result = WhereIsValue(n.GetLeft(), value); 
                 }
             }
 
-            if (value.CompareTo(n.GetValue()) > 0)
-            {
-                if (n.GetRight() == null)
-                {
+            if (value.CompareTo(n.GetValue()) > 0){
+                if (n.GetRight() == null){
                     result = null;
-                }
-                else
-                {
-                    result = HasValue2(n.GetRight(), value);
+                }else{
+                    result = WhereIsValue(n.GetRight(), value);
                 }
             }
 
@@ -228,8 +140,7 @@ namespace Exercise01{
         /*
          * Method redirects to DeleteValue()
          */ 
-        public Boolean Delete(int new_value)
-        {
+        public Boolean Delete(int new_value){
             return DeleteValue(root, new_value, null, false);
         }
 
@@ -238,130 +149,96 @@ namespace Exercise01{
          * Method receive root-Node , new value, the parent node and flag if node is left
          * 
          */ 
-        private Boolean DeleteValue(Node new_n, int new_value, Node parent, Boolean is_left)
-        {
-            if (new_n == null)
-            {
+        private Boolean DeleteValue(Node new_n, int new_value, Node parent, Boolean is_left){
+            if (new_n == null){
                 return false;
-            }
-
-            if (new_value.CompareTo(new_n.GetValue()) == 0)
-            {
-                if ((new_n.GetLeft() == null) && (new_n.GetRight() == null))
-                {
-                    if (parent == null)
-                    {
+            }if (new_value.CompareTo(new_n.GetValue()) == 0){
+                if ((new_n.GetLeft() == null) && (new_n.GetRight() == null)){
+                    if (parent == null){
                         root = null;
-                    }
-                    else
-                    {
+                    }else{
                         FindParent(parent, is_left, null);
                     }
                     return true;
-
                 }
 
-                if ((new_n.GetLeft() != null) && (new_n.GetRight() == null))
-                {
-                    if (parent == null)
-                    {
-                        root = null; // Sicher ? Warum nicht : new_n.GetLeft() ?
-
-                    }
-                    else
-                    {
+                if ((new_n.GetLeft() != null) && (new_n.GetRight() == null)){
+                    if (parent == null){
+                        root = null; // Sicher ? Warum nicht : new_n.GetLeft() 
+                    }else{
                         FindParent(parent, is_left, new_n.GetLeft());
                     }
-
                     return true;
                 }
 
-
-                if ((new_n.GetLeft() == null) && (new_n.GetRight() != null))
-                {
-                    if (parent == null)
-                    {
+                if ((new_n.GetLeft() == null) && (new_n.GetRight() != null)){
+                    if (parent == null){
                         root = new_n.GetRight();
-
                     }
-                    else
-                    {
+                    else{
                         FindParent(parent, is_left, new_n.GetRight());
                     }
-
                     return true;
                 }
 
                 Node n = GetSmallest(new_n.GetRight());
                 Delete(n.GetValue());
-                if (parent == null)
-                {
+                if (parent == null){
                     n.SetLeft(root.GetLeft());
                     n.SetRight(root.GetRight());
                     root = n;
                 }
-                else
-                {
+                else{
                     n.SetLeft(new_n.GetLeft());
                     n.SetRight(new_n.GetRight());
                     FindParent(parent, is_left, n);
                 }
 
             }
-
-            //Found nothing : continue search on left side
-            if (new_value.CompareTo(new_n.GetValue()) < 0)
-            {
+            
+            /*
+             * Found nothing : continue search on left side
+             */
+            if (new_value.CompareTo(new_n.GetValue()) < 0){
                 if(parent.GetLeft() == null)
                 {
                     return DeleteValue(new_n.GetLeft(), new_value, parent, true);
                 }
             }
 
-            //Found nothing : continue search on right side
-            if(new_value.CompareTo(new_n.GetValue()) > 0)
-            {
-                if(parent.GetRight() == null)
-                {
+            /*
+             * Found nothing : continue search on right side
+             */
+            if(new_value.CompareTo(new_n.GetValue()) > 0){
+                if(parent.GetRight() == null){
                     return DeleteValue(new_n.GetRight(), new_value, parent, false);
                 }
             }
-
             return false;
-
         }
-
+       
         /*
          * Method returns the smallest value existing in the current tree
          * Warning if there exists no tree 
          */ 
-        public int GetSmallest()
-        {
+        public int GetSmallest(){
             Node node = GetSmallest(root);
             int value = 0;
 
-            if (node != null)
-            {
+            if (node != null){
                 value = node.GetValue();
-            }
-            else
-            {
+            }else{
                 Console.WriteLine("Class BinaryTree, Method GetSmallest, no Tree exists");
             }
-
             return value;
-
         }
 
         /*
          * Method returns the Node which is the last on the left side, so the one with the smallest value (if added correctly)
          */ 
-        public Node GetSmallest(Node start)
-        {
-            if(start != null)
-            {
-                while(start.GetLeft() != null)
-                {
+        public Node GetSmallest(Node start){
+            if(start != null){
+                while(start.GetLeft() != null){
                     start = start.GetLeft();
                 }
             }
@@ -372,33 +249,26 @@ namespace Exercise01{
          * Method returns the biggest value existing in the current tree
          * Warning if there exists no tree 
          */ 
-        public int GetBiggest()
-        {
+        public int GetBiggest(){
+            
             Node node = GetBiggest(root);
             int value = 0;
 
-            if (node != null)
-            {
+            if (node != null){
                 value = node.GetValue();
-            }
-            else
-            {
+            }else{
                 Console.WriteLine("Class BinaryTree, Method GetBiggest, no Tree exists ");
             }
             return value;
         }
 
-
          /*
          * Method returns the Node which is the last on the rigth side, so the one with the biggest value (if added correctly)
          */ 
 
-        public Node GetBiggest(Node start)
-        {
-            if(start != null)
-            {
-                while(start.GetRight() != null)
-                {
+        public Node GetBiggest(Node start){
+            if(start != null){
+                while(start.GetRight() != null){
                     start = start.GetRight();
                 }
             }
@@ -409,16 +279,14 @@ namespace Exercise01{
          * Method for Testig : Redirects to In-Order (L, W, R) - Method
          */
 
-        public String InOrderOutput()
-        {
+        public String InOrderOutput(){
             return InOrder(root);
         }
 
         /*
          * Method for Testig : Returns the values of tree in In-Order (L, W, R)
          */
-        public String InOrder(Node node)
-        {
+        public String InOrder(Node node){
             String value = "";
 
             if(node == null){
@@ -426,8 +294,7 @@ namespace Exercise01{
             }
 
             //L
-            if(node.GetLeft() != null)
-            {
+            if(node.GetLeft() != null){
                 value += InOrder(node.GetLeft());
                 value += " | ";
             }
@@ -437,8 +304,7 @@ namespace Exercise01{
             value += " | ";
 
             //
-            if (node.GetRight() != null)
-            {
+            if (node.GetRight() != null){
                 value += InOrder(node.GetRight());
                 value += " | ";
             }
@@ -450,14 +316,11 @@ namespace Exercise01{
         /*
          *  Method to set a Node "under" a given parent-node , either left or rigth 
          */ 
-        private void FindParent(Node parent, Boolean left, Node new_n)
-        {
-            if (left)
-            {
+        private void FindParent(Node parent, Boolean left, Node new_n){
+            if (left){
                 parent.SetLeft(new_n);
             }
-            else
-            {
+            else{
                 parent.SetRight(new_n);
             }
         }

@@ -18,25 +18,15 @@ namespace Exercise01{
         private Node left, right;
 
         /*
-         * Constructor for Node with int and Node values
-         */
-        public Node(int value, Node parent){
-            this.value = value;
-            SetLeft(left);
-            SetRight(right);
-            SetParent(parent);
-        }
-
-        /*
          * Constructor for Node with int value
          */
-        public Node(int value)
-        {
+        public Node(int value) {
             this.value = value;
             SetLeft(left);
             SetRight(right);
-        }
 
+            Console.WriteLine("New Node with Value: " + value);
+        }
 
         /*
          * Setter for Node Class 

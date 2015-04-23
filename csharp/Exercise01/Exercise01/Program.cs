@@ -17,9 +17,9 @@ namespace Exercise01{
             tree.Insert(5);
             tree.Insert(-2);
             tree.Insert(33);
-            Console.WriteLine("   " + tree.Has2(3));
-            Console.WriteLine("   " + tree.Has2(5));
-            Console.WriteLine("   " + tree.Has2(199));
+            Console.WriteLine("   " + tree.HasValue(3));
+            Console.WriteLine("   " + tree.HasValue(5));
+            Console.WriteLine("   " + tree.HasValue(199));
             Console.ReadLine();
             
             //Creating GPS Object with Values: 
