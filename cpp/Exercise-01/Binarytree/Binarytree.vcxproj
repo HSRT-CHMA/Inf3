@@ -11,7 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="binaryTree.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A06BFCF9-15B0-4320-9143-6B79F63B7B86}</ProjectGuid>
