@@ -19,13 +19,14 @@ feature {NONE} -- Initialization
 		do
 			--| Add your code here
 			print ("Hello Eiffel World!%NHappy Birthday Georgi!!!!!!!!! %N")
-			create n.make
+			create n.make(number)
 			print ("%N")
-			create b.make
+			create b.make(number)
 		end
 
 feature --Access
 	n : NODE
 	b : BINARYTREE
+	number : INTEGER = 677
 
 end

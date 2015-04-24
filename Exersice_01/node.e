@@ -15,7 +15,7 @@ feature {NONE} -- Initialization
 	make(node_value : INTEGER)
 			-- Initialization for `Current'.
 		do
-			print ("New Node")
+			print ("New Node with value : " + node_value.out)
 			set_value(node_value)
 		end
 
