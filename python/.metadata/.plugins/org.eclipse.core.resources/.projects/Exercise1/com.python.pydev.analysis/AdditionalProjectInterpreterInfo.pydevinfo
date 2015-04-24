@@ -2,32 +2,46 @@
 -- START DISKCACHE
 D:\workspace-inf3\inf3\python\.metadata\.plugins\org.eclipse.core.resources\.projects\Exercise1\com.python.pydev.analysis\v2_indexcache
 Exercise1.Exercise1|1427983447036|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Exercise1.py
-Exercise1.Main|1429267983987|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Main.py
+Exercise1.Main|1429821319771|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Main.py
 Exercise1.__init__|1427968900168|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\__init__.py
-Exercise1.Nodes|1429707397799|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Nodes.py
-Exercise1.Binarytree|1429707383581|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Binarytree.py
+Exercise1.Nodes|1429818923514|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Nodes.py
+Exercise1.Binarytree|1429820347693|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Binarytree.py
 -- END DISKCACHE
 -- START DICTIONARY
-4
-3=Exercise1.Exercise1
-1=Exercise1.Nodes
-4=Excersice1
-2=Exercise1.Binarytree
+9
+2=Exercise1.Exercise1
+3=Exercise1.Main
+7=Nodes.getContent
+4=Exercise1.Nodes
+6=Binarytree
+8=Excersice1
+1=Exercise1.Binarytree
+5=Nodes
+9=Nodes.setLeft
 -- END DICTIONARY
 -- START TREE 1
-9
-__i|2|__init__!10@__init__!18@
-add|1|add!18@
-exc|1|Excersice1!25@
-hig|1|hight!19@
-int|1|int!10@
-nod|1|Nodes!10@
-roo|1|root!19@
-set|3|setLeft!10@setContent!10@setRight!10@
-str|1|String!10@
+4
+bin|1|Binarytree!9@
+exc|1|Excersice1!17@
+myt|1|mytree!27@
+nod|1|Nodes!33@
 -- END TREE
 -- START TREE 2
-2
-get|5|get_sum!4&26@get_sorted_List!4&26@get_average!4&26@get_palindrome!4&26@get_reverse_List!4&26@
-mod|2|modify2!4&26@modify!4&26@
+16
+__i|2|__init__!5&34@__init__!6&10@
+add|2|add!6&10@addRec!6&10@
+con|2|content!5&35@content!7&35@
+get|9|get_sum!8&18@getHight!6&10@getSmallest!6&10@get_sorted_List!8&18@get_average!8&18@get_palindrome!8&18@getContent!5&34@get_reverse_List!8&18@getHightRec!6&10@
+ino|2|inOrderOutput!6&10@inOrder!6&10@
+int|1|int!5&34@
+lef|2|left!5&35@left!9&35@
+mod|2|modify2!8&18@modify!8&18@
+nod|2|Nodes!6&10@Nodes!5&34@
+pos|2|postOrderOutput!6&10@postOrder!6&10@
+pre|2|preOrder!6&10@preOrderOutput!6&10@
+rig|1|right!5&35@
+roo|1|root!6&11@
+sel|1|self!5&35@
+set|3|setLeft!5&34@setContent!5&34@setRight!5&34@
+str|2|String!5&34@String!6&10@
 -- END TREE

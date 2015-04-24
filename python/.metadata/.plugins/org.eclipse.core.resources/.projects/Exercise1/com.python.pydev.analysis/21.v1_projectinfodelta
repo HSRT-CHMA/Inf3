@@ -1,0 +1,17 @@
+INSTUPExercise1.Nodes
+D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Nodes.py
+INFOS:&&1|1|2|0&&3|3|2|1&&3|4|2|1&&3|5|2|1&&2|6|2|1&&2|7|2|1&&2|8|2|1&&3|3|2|9&&2|7|2|1&&2|10|2|1&&3|11|2|1&&2|7|2|1&&2|12|2|1&&3|11|2|1&&2|13|2|1&&3|5|2|14&&2|7|2|1
+=7
+setContent=12
+setLeft=8
+Exercise1.Nodes=2
+getContent=13
+right=4
+Nodes=1
+content=5
+Nodes.setLeft=9
+Nodes.getContent=14
+left=3
+setRight=10
+self=11
+__init__=6

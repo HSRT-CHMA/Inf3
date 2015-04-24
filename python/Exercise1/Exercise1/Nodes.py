@@ -3,24 +3,29 @@ Created on 17.04.2015
 
 @author: Marco
 '''    
-def __init__:
-    Nodes left
-    Nodes right
-    Integer content
-    self.setContent(content);
-def Nodes getLeft():
-    return left
-def setLeft(Nodes left): 
-    if left != null:
-    self.links = left;
-def Nodes getRight():
+class Nodes:
+    
+    left=0
+    right=0
+    content=0
+    
+    def __init__(self):
+        self.setContent(content)
+    def 'Nodes'getLeft():
+        return left
+    def setLeft(Nodes left): 
+        if left != None:
+            self.left = left
+    def 'Nodes' getRight():
     return right
-def setRight(Nodes right):
-    if right != null:
+    def setRight(Nodes right):
+    if right != None:
     self.right = right
-def int getContent():
+    def 'int' getContent():
     return content
-def setContent(Integer content):
+    def setContent(Integer content):
     self.content = content
-def String toString():
+    def getContent(self):
+        self.content= content
+    def 'String' toString():
     return "Content of Node : " + getContent()
