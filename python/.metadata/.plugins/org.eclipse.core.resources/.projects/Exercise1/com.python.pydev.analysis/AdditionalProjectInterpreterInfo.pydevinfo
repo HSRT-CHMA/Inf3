@@ -4,8 +4,8 @@ D:\workspace-inf3\inf3\python\.metadata\.plugins\org.eclipse.core.resources\.pro
 Exercise1.Exercise1|1427983447036|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Exercise1.py
 Exercise1.Main|1429821319771|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Main.py
 Exercise1.__init__|1427968900168|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\__init__.py
-Exercise1.Nodes|1429818923514|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Nodes.py
-Exercise1.Binarytree|1429820347693|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Binarytree.py
+Exercise1.Nodes|1429861011914|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Nodes.py
+Exercise1.Binarytree|1429861123734|D:\workspace-inf3\inf3\python\Exercise1\Exercise1\Binarytree.py
 -- END DISKCACHE
 -- START DICTIONARY
 9
@@ -28,20 +28,20 @@ nod|1|Nodes!33@
 -- END TREE
 -- START TREE 2
 16
+|1|!5&34@
 __i|2|__init__!5&34@__init__!6&10@
 add|2|add!6&10@addRec!6&10@
 con|2|content!5&35@content!7&35@
 get|9|get_sum!8&18@getHight!6&10@getSmallest!6&10@get_sorted_List!8&18@get_average!8&18@get_palindrome!8&18@getContent!5&34@get_reverse_List!8&18@getHightRec!6&10@
 ino|2|inOrderOutput!6&10@inOrder!6&10@
-int|1|int!5&34@
 lef|2|left!5&35@left!9&35@
 mod|2|modify2!8&18@modify!8&18@
-nod|2|Nodes!6&10@Nodes!5&34@
+nod|1|Nodes!6&10@
 pos|2|postOrderOutput!6&10@postOrder!6&10@
 pre|2|preOrder!6&10@preOrderOutput!6&10@
 rig|1|right!5&35@
 roo|1|root!6&11@
 sel|1|self!5&35@
 set|3|setLeft!5&34@setContent!5&34@setRight!5&34@
-str|2|String!5&34@String!6&10@
+str|1|String!6&10@
 -- END TREE
