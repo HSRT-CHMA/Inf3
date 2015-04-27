@@ -2,102 +2,121 @@
 Created on 17.04.2015
 
 @author: Marco
+
+Class for BinaryTree with Integers
 '''
-from Exercise1 import Nodes
-class Binarytree:    
-    def __init__(self):
-        
-    root = Nodes(Integers i)
-    def add(i):
-    if root is None:
-        root = new Nodes(Integer i)
-    else: 
-        self.addRec(root, i)   
-    def addRec(Nodes k, i):
-    if k is None:
-        k = new Nodes(i) 
-    if root is None:
-        root = k
-    else: 
-        if i.compareTo(k.getContent()) < 0: #Content from i is smaller then k
-            if k.getLeft() != None:
-                addRec(k.getLeft(),Integer i)
-            else:
-                k.setLeft(new Nodes(i))
-            if i.compareTo(k.getContent()) > 0: #Content from i is bigger then k
-                if k.getRight() != None:
-                    addRec(k.getRight(),Integer i)
-            else:
-                k.setRight(new Nodes(i))
-    def getHight():
-    return getHightRec(0, root)
-    def getHightRec(actHight, Nodes k):
-    if k != None:
-        return Math.max(getHightRec(actHight + 1, k.getLeft()), getHightRec(actHight + 1, k.getRight()))
-    return actHight
-    def getSmallest():
-    Nodes k = getSmallest(root)
-    if k == None:
-        return 0
-    else:
-        return k.getContent()
-    def Nodes getSmallest(Nodes start):
-    if start != None:
-        while start.getLeft() != None:
-            start = start.getLeft()
-            return start
-        def Nodes getNodes(content):
-            return getNodesRec(root, content)
-        def Nodes getNodesRec(Nodes k, content):
-    if k == None: 
-        return None
-    if content.compareTo(k.getContent()) == 0: 
-        return k
-    if content.compareTo(k.getContent()) < 0:
-        if k.getLeft() == None:
-            return None
-        return getNodesRec(k.getRight(), content)
-    if content.compareTo(k.getContent()) > 0:
-        if k.getRight() == None:
-            return None
-        return getNodesRec(k.getRight(), content)
-    return None
-    def preOrderOutput():
-        return preOrder(root)
-    def preOrder(Nodes root):  #Deepness trough Recursion
-        s = ""
-        if root == None:
-            return "empty"
-        s += root.getContent() + " "       #Ro
-        if root.getLeft() != None:      #L
-            s += preOrder(root.getLeft()) + " "
-        if root.getRight() != None:     #R
-            s += preOrder(root.getRight())
-    return s
-    def inOrderOutput():
-        return inOrder(root)
-    def inOrder(Nodes root):
-        s = ""
-        if root == None:
-            return "empty"
-        if root.getLeft() != None:       #L
-            s += inOrder(root.getLeft()) + " " 
-        s += root.getContent() + " "   #Ro
-        if root.getRight() != None:       #R
-            s += inOrder(root.getRight()) + " "
-    return s
-    def postOrderOutput()
-        return postOrder(root)
-    def postOrder(Nodes root)
-        s = ""
-        if root == None:
-            return "empty"
-        if root.getLeft() != None:        #L
-            s += postOrder(root.getLeft()) + " " 
-        if root.getRight() != None:   #R
-            s += postOrder(root.getRight()) + " "
-        s += root.getContent() + " "      #Ro
-    return s
+class BinaryTree(Nodes):               # Inerhit Nodes
     
-    def String toString():
+    root = Nodes(None)                 # Initial Root Node for Initializiation
+
+    def __init__(self):                # Constructor of BinaryTree
+        self.left=Nodes(None)
+        self.right=Nodes(None)
+        self.root= self
+    
+    def insert(i):                     # Function to Insert a Value in the BinaryTree 
+        if root is None:               # Calls Recursion in insertRec
+            root = i
+        else: 
+            self.insertRec(root, i)   
+    
+    def insertRec(k, i):               # Recursion to Insert a Value in the BinaryTree
+        if k is None:
+            k = i 
+        if root is None:
+            root = k
+        else: 
+            if i<(k.getContent()):      # Content from i is smaller then k
+                if k.getLeft() != None:
+                    addRec(k.getLeft(), i)
+            else:
+                k.setLeft(i)
+            if i>=(k.getContent()):     # Content from i is bigger then k
+                if k.getRight() != None:
+                    addRec(k.getRight(),i)
+            else:
+                k.setRight(i)
+    
+    def getHight():                     # Function to get Highest Value in Tree
+        return getHightRec(0, root)     # calls Recursion in getHightRec
+    
+    def getHightRec(actHight, k):       # Recursion to get Highest Value with max function
+        if k != None:
+            return max(getHightRec(actHight + 1, k.getLeft()), getHightRec(actHight + 1, k.getRight()))
+        return actHight
+    
+    def getSmallest():                  # Function to get Smallest Value in Tree
+        k = getSmallest(root)           
+        if k == None:
+            return 0
+        else:
+            return k.getContent()
+    
+    def getSmallest(start):             # Function to get smallest Value after 
+        if start != None:               # start Value
+            while start.getLeft() != None:
+                start = start.getLeft()
+            return start
+        
+    def getNodes(content):                  # Function to get Nodes with Value content
+        return getNodesRec(root, content)   # calls Recursion in getNodesRec
+        
+    def getNodesRec(k, content):            # Recursion to get Nodes with Value content
+        if k == None: 
+            return None
+        if content.compareTo(k.getContent()) == 0: 
+            return k
+        if content.compareTo(k.getContent()) < 0:
+            if k.getLeft() == None:
+                return None
+        return getNodesRec(k.getRight(), content)
+        if content.compareTo(k.getContent()) > 0:
+            if k.getRight() == None:
+                return None
+        return getNodesRec(k.getRight(), content)
+        return None
+    
+    def preOrderOutput():                   # Calls Recursion for preOrderOutput
+        return preOrder(root)
+    
+    def preOrder(root):                     # Deepness trough Recursion preOrder
+        s = ""
+        if root == None:
+            return "empty"
+        s += root.getContent() + " "        # Root Value
+        if root.getLeft() != None:          # Left Nodes
+            s += preOrder(root.getLeft()) + " "
+        if root.getRight() != None:         # Right Nodes
+            s += preOrder(root.getRight())
+        return s
+    
+    def inOrderOutput():                    # Calls Recursion for inOrderOutput
+        return inOrder(root)
+    
+    def inOrder(root):                      # Recursion inOrder
+        s = ""
+        if root == None:
+            return "empty"
+        if root.getLeft() != None:          # Left Nodes
+            s += inOrder(root.getLeft()) + " " 
+        s += root.getContent() + " "        # Root Value
+        if root.getRight() != None:         # Right Nodes
+            s += inOrder(root.getRight()) + " "
+        return s
+    
+    def postOrderOutput():                  # Calls Recursion for postOrderOutput
+        return postOrder(root)
+    
+    def postOrder(root):                    # Recursion postOrder
+        s = ""
+        if root == None:
+            return "empty"
+        if root.getLeft() != None:          # Left Nodes
+            s += postOrder(root.getLeft()) + " " 
+        if root.getRight() != None:         # Right Nodes
+            s += postOrder(root.getRight()) + " "
+        s += root.getContent() + " "        # Root Value
+        return s
+    
+    def toString():                         # toString Function
         return "Content of Node : " + root.getContent()

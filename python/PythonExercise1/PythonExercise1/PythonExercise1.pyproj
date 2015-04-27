@@ -5,8 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c4b84c6a-a2fd-4fc8-b772-d68894736746</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>Main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,11 +22,32 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Binarytree.py" />
-    <Compile Include="Exercise1.py" />
-    <Compile Include="Main.py" />
+    <Compile Include="BinaryTree.py" />
+    <Compile Include="DivisibleProblem.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GPS.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MaxProblem.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MaxSolution.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Nodes.py" />
-    <Compile Include="__init__.py" />
+    <Compile Include="Main.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Solution.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SumProblem.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SumSolution.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
