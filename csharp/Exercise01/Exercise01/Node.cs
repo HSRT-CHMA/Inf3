@@ -42,13 +42,19 @@ namespace Exercise01{
             /*
              * Constructor for Node with int value
              */
-            public Node(int value)
+            public Node(int value, Node parent)
             {
                 this.value = value;
-                SetLeft(left);
-                SetRight(right);
+                this.parent = parent;
 
-                Console.WriteLine("New Node with Value: " + value);
+                if(parent == null)
+                {
+                    Console.WriteLine("New Tree with Root " + value + " was created.");
+                }
+                else
+                {
+                    Console.WriteLine("New Node with Value: " + value);
+                }
             }
 
             /*

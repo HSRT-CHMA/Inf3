@@ -30,7 +30,7 @@ namespace Exercise01
                 Console.ReadLine();
 
                 //Creating GPS Object with Values: 
-                GPS pSolver = new GPS();
+                GPS pSolver = new GPS(tree);
             }
         }
     }

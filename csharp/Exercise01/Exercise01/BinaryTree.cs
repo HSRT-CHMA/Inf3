@@ -37,8 +37,7 @@ namespace Exercise01{
              */
             public BinaryTree(int value)
             {
-                root = new Node(value);
-                Console.WriteLine("New BinaryTree is initialized with Value: " + value);
+                root = new Node(value, null);
             }
 
             /*
@@ -48,8 +47,9 @@ namespace Exercise01{
              */
             public void SetRoot(Node root)
             {
-                Console.WriteLine("Modifing the root after initializiation of the BinaryTree is not allowd.");
-                Console.WriteLine("Please Create a new BinaryTree");
+                Console.WriteLine("Modifing the root after initializiation of the BinaryTree is not allowed.");
+                Console.WriteLine("Please Create a new BinaryTree.");
+                Console.WriteLine("Nothing has been modified!");
             }
 
             /*
@@ -68,18 +68,7 @@ namespace Exercise01{
              * @Param int value: Value which will be added to the BinaryTree
              * Duplicate Values are also added on the Right Side of the Tree
              */
-            public void Insert(int value)
-            {
-                if (GetRoot() == null)
-                {
-                    root = new Node(value);
-                }
-                else
-                {
-                    this.InsertValue(root, value);
-                }
-                Contract.Ensures(GetRoot().Equals(root));
-            }
+ 
 
             /*
              * Method to add Values 
@@ -88,44 +77,10 @@ namespace Exercise01{
              * Methode uses Recursion to insert a Node in the suited place in the tree
              * --> Ensures that the new value exists in the tree after method
              */
-            private void InsertValue(Node new_n, int new_value)
+            private void Insert(Node node, int value)
             {
-                if (new_n == null)
-                {
-                    new_n = new Node(new_value);
-                } 
-                if (root == null)
-                {
-                    root = new_n;
-                }
-                else
-                {
-                    if ((new_value.CompareTo(new_n.GetValue())) < 0)
-                    {
-                        if (new_n.GetLeft() != null)
-                        {
-                            InsertValue(new_n.GetLeft(), new_value);
-                        }
-                        else
-                        {
-                            new_n.SetLeft(new Node(new_value));
-                            Console.WriteLine("Left :  " + new_value);
-                        }
-                    } if (new_value.CompareTo(new_n.GetValue()) >= 0)
-                    {
-                        if (new_n.GetRight() != null)
-                        {
-                            InsertValue(new_n.GetRight(), new_value);
-                        }
-                        else
-                        {
-                            new_n.SetRight(new Node(new_value));
-                            Console.WriteLine("Right : " + new_value);
-                        }
-                    }
-
-                }
-                Contract.Ensures(HasValue(new_value));
+     
+                Contract.Ensures(HasValue(value));
             }
 
             /*
@@ -157,37 +112,37 @@ namespace Exercise01{
              *  -> first come, first serve
              *  Ensures that return-Node has the given value as its value
              */
-            private Node WhereIsValue(Node n, int value)
+            private Node WhereIsValue(Node node, int value)
             {
                 Node result = null;
 
-                if (n == null)
+                if (node == null)
                 {
                     result = null;
-                } if (value.CompareTo(n.GetValue()) == 0)
+                } if (value.CompareTo(node.GetValue()) == 0)
                 {
-                    return n;
-                } if (value.CompareTo(n.GetValue()) < 0)
+                    return node;
+                } if (value.CompareTo(node.GetValue()) < 0)
                 {
-                    if (n.GetLeft() == null)
+                    if (node.GetLeft() == null)
                     {
                         result = null;
                     }
                     else
                     {
-                        result = WhereIsValue(n.GetLeft(), value);
+                        result = WhereIsValue(node.GetLeft(), value);
                     }
                 }
 
-                if (value.CompareTo(n.GetValue()) > 0)
+                if (value.CompareTo(node.GetValue()) > 0)
                 {
-                    if (n.GetRight() == null)
+                    if (node.GetRight() == null)
                     {
                         result = null;
                     }
                     else
                     {
-                        result = WhereIsValue(n.GetRight(), value);
+                        result = WhereIsValue(node.GetRight(), value);
                     }
                 }
 
@@ -201,7 +156,7 @@ namespace Exercise01{
              */
             public Boolean Delete(int new_value)
             {
-                return DeleteValue(root, new_value, null, false);
+                return true;   
             }
 
             /*
@@ -210,113 +165,7 @@ namespace Exercise01{
              * It is ensured that ALL nodes with given value are deleted !
              * 
              */
-            private Boolean DeleteValue(Node new_n, int new_value, Node parent, Boolean is_left)
-            {
-                if (new_n == null)
-                {
-                    return false;
-                } if (new_value.CompareTo(new_n.GetValue()) == 0)
-                {
-                    if ((new_n.GetLeft() == null) && (new_n.GetRight() == null))
-                    {
-                        if (parent == null)
-                        {
-                            root = null;
-                        }
-                        else
-                        {
-                            FindParent(parent, is_left, null);
-                        }
-                        return true;
-                    }
 
-                    if ((new_n.GetLeft() != null) && (new_n.GetRight() == null))
-                    {
-                        if (parent == null)
-                        {
-                            root = null; // Sicher ? Warum nicht : new_n.GetLeft() 
-                        }
-                        else
-                        {
-                            FindParent(parent, is_left, new_n.GetLeft());
-                        }
-                        return true;
-                    }
-
-                    if ((new_n.GetLeft() == null) && (new_n.GetRight() != null))
-                    {
-                        if (parent == null)
-                        {
-                            root = new_n.GetRight();
-                        }
-                        else
-                        {
-                            FindParent(parent, is_left, new_n.GetRight());
-                        }
-                        return true;
-                    }
-
-                    Node n = GetSmallest(new_n.GetRight());
-                    Delete(n.GetValue());
-                    if (parent == null)
-                    {
-                        n.SetLeft(root.GetLeft());
-                        n.SetRight(root.GetRight());
-                        root = n;
-                    }
-                    else
-                    {
-                        n.SetLeft(new_n.GetLeft());
-                        n.SetRight(new_n.GetRight());
-                        FindParent(parent, is_left, n);
-                    }
-
-                }
-
-                /*
-                 * Found nothing : continue search on left side
-                 */
-                if (new_value.CompareTo(new_n.GetValue()) < 0)
-                {
-                    if (parent.GetLeft() == null)
-                    {
-                        return DeleteValue(new_n.GetLeft(), new_value, parent, true);
-                    }
-                }
-
-                /*
-                 * Found nothing : continue search on right side
-                 */
-                if (new_value.CompareTo(new_n.GetValue()) > 0)
-                {
-                    if (parent.GetRight() == null)
-                    {
-                        return DeleteValue(new_n.GetRight(), new_value, parent, false);
-                    }
-                }
-                Contract.Ensures(!(HasValue(new_value)));
-                return false;
-            }
-
-            /*
-             * Method returns the smallest value existing in the current tree
-             * Warning if there exists no tree 
-             */
-            public int GetSmallest()
-            {
-                Node node = GetSmallest(root);
-                int value = 0;
-
-                if (node != null)
-                {
-                    value = node.GetValue();
-                }
-                else
-                {
-                    Console.WriteLine("Class BinaryTree, Method GetSmallest, no Tree exists");
-                }
-                return value;
-            }
 
             /*
              * Method returns the Node which is the last on the left side, so the one with the smallest value (if added correctly)
@@ -334,27 +183,6 @@ namespace Exercise01{
             }
 
             /*
-             * Method returns the biggest value existing in the current tree
-             * Warning if there exists no tree 
-             */
-            public int GetBiggest()
-            {
-
-                Node node = GetBiggest(root);
-                int value = 0;
-
-                if (node != null)
-                {
-                    value = node.GetValue();
-                }
-                else
-                {
-                    Console.WriteLine("Class BinaryTree, Method GetBiggest, no Tree exists ");
-                }
-                return value;
-            }
-
-            /*
             * Method returns the Node which is the last on the rigth side, so the one with the biggest value (if added correctly)
             */
 
@@ -368,15 +196,6 @@ namespace Exercise01{
                     }
                 }
                 return start;
-            }
-
-            /*
-             * Method for Testig : Redirects to In-Order (L, W, R) - Method
-             */
-
-            public String InOrderOutput()
-            {
-                return InOrder(root);
             }
 
             /*
