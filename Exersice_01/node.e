@@ -10,28 +10,28 @@ class
 create
 	make
 
-feature {NONE} -- Initialization
+feature {BINARYTREE} -- Initialization
 
-	make(node_value : INTEGER)
+	make(node_value : INTEGER ; node_parent : NODE)
 			-- Initialization for `Current'.
 		do
 			print ("New Node with value : " + node_value.out)
 			set_value(node_value)
+			set_parent(node_parent)
 		end
 
 feature --Variables
 
 	value : INTEGER
-	--Value of the given node
-	left : NODE
-	-- The left child of a node
-	right : NODE
-	--The right child of a node
-	parent : NODE
-	--The parent-node of the node
-	number_of_children : INTEGER
+	--Value of the given node; is initialised with default value
+	left : detachable NODE
+	-- The left child of a node; can be Void when left child does not exist
+	right : detachable NODE
+	--The right child of a node; can be Void when right child does not exist
+	parent : detachable NODE
+	--The parent-node of the node; can be Void when only root exist
 
-feature --Getter/Setter value
+feature{BINARYTREE} --Getter/Setter value
 	get_value : INTEGER
 	do
 		Result := value
@@ -42,7 +42,7 @@ feature --Getter/Setter value
 		value := node_value
 	end
 
-feature --Getter/Setter left	
+feature{BINARYTREE} --Getter/Setter left	
 	get_left : NODE
 	do
 		Result := left
@@ -53,7 +53,7 @@ feature --Getter/Setter left
 		left := node_left
 	end
 
-feature --Getter/Setter rigth	
+feature{BINARYTREE} --Getter/Setter rigth	
 	get_right : NODE
 	do
 		Result := right
@@ -64,7 +64,7 @@ feature --Getter/Setter rigth
 		right := node_right
 	end
 
-feature --Getter/Setter parent
+feature{BINARYTREE} --Getter/Setter parent
 	get_parent : NODE
 	do
 		Result := parent
