@@ -30,6 +30,7 @@ feature {NONE} -- Initialization
 			print(tree2.has(99))
 			print("%N Test")
 			tree1.delete(99)
+			print("Last Test")
 
 		end
 
