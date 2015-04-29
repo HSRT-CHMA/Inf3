@@ -21,6 +21,9 @@ feature {NONE} -- Initialization
 			print ("Hello, this is a programm to create binary trees !%N")
 			create tree1.make(99)
 			create tree2.make(122)
+			tree1.insert(98)
+			tree1.insert(101)
+			tree1.insert (33)
 		end
 
 feature --Access
