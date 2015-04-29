@@ -26,6 +26,9 @@ feature --Access
 	-- Gets created by a new tree
 	root : detachable NODE
 	-- Becomes the root of the new tree
+	b : BOOLEAN
+	--Value is used in has()-Function
+	--s : STRING
 
 feature --Getter root
 	get_root : detachable NODE
@@ -35,20 +38,25 @@ feature --Getter root
 
 
 
-feature{NONE} -- Insert-Method
+feature{NONE} -- Insert-Method (duplicates possible)
 
 	insertRec(new_value : INTEGER; used_node : NODE)
+
 		do
 			if new_value >= used_node.get_value then
-				--Rechts
+				--Right
 				if attached used_node.get_right as checked_right then
+					-- Line does the follwing : if used_node.get_right is "attached" (equals to "/= Void")
+					-- then a new object with name after "as", here "checked_rigth", is created and can be used because it is proven
+					--that it isn't Void
 					insertRec(new_value, checked_right)
-				else -- used_node = Void
+				else
+					-- else if (used_node.get_right = Void)
 					create first_node.make(new_value, used_node)
 					used_node.set_right(first_node)
 				end
 			else
-				--Links
+				--Left
 				if attached used_node.get_left as checked_left then
 					insertRec(new_value, checked_left)
 				else
@@ -66,6 +74,32 @@ feature -- Insert-Methode Sub
 				insertRec(new_value , checked_root)
 			end
 			print("Value " + new_value.out + " is added to binary tree")
+		end
+
+feature -- Has-Methode
+
+	has(new_value : INTEGER)
+		do
+			if attached Current.get_root as check_root then
+			has_rec(new_value, check_root)
+		end
+
+		end
+
+
+feature{BINARYTREE} -- Has_method Sub
+
+	has_rec(new_value : INTEGER ; n : NODE) : BOOLEAN
+		do
+			if new_value.is_equal (n.get_value) then
+				Result := true
+			end
+
+			if new_value.is_less(n.get_value) then
+				if attached n.get_left as checked_left then --x /= Void
+					has_rec(new_value, checked_left)
+				end
+			end
 		end
 
 end

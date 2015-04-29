@@ -23,11 +23,14 @@ feature {NONE} -- Initialization
 			create tree2.make(122)
 			tree1.insert(98)
 			tree1.insert(101)
-			tree1.insert (33)
+			tree1.insert(33)
+			print(tree1.has(686))
+
 		end
 
 feature --Access
 
 	tree1 : BINARYTREE
 	tree2 : BINARYTREE
+	bo : BOOLEAN
 end
