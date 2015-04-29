@@ -10,16 +10,23 @@ class
 create
 	make
 
-feature {BINARYTREE} -- Initialization
+feature {BINARYTREE} -- Initialization / Constructor NODE
 
 	make(node_value : INTEGER ; node_parent : NODE)
-			-- Initialization for `Current'.
 		do
-			print ("New Node with value : " + node_value.out)
+			print ("New Node with value : " + node_value.out + " and parent-Object")
 			set_value(node_value)
 			set_parent(node_parent)
 		end
 
+feature{NONE} -- Second Version of Constructor NODE
+
+		make_int(node_value : INTEGER)
+			do
+				print ("New Node with value : " + node_value.out)
+				set_value(node_value)
+			end
+ 
 feature --Variables
 
 	value : INTEGER
