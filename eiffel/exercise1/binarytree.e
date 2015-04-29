@@ -73,21 +73,11 @@ feature -- Insert-Methode Sub
 			if attached Current.get_root as checked_root then
 				insertRec(new_value , checked_root)
 			end
-			print("Value " + new_value.out + " is added to binary tree")
-		end
-
-feature -- Has-Methode
-
-	has(new_value : INTEGER)
-		do
-			if attached Current.get_root as check_root then
-			has_rec(new_value, check_root)
-		end
-
+			print("%N Value " + new_value.out + " is added to binary tree")
 		end
 
 
-feature{BINARYTREE} -- Has_method Sub
+feature{NONE} -- Has_method Sub (can only be used by this Class)
 
 	has_rec(new_value : INTEGER ; n : NODE) : BOOLEAN
 		do
@@ -96,10 +86,30 @@ feature{BINARYTREE} -- Has_method Sub
 			end
 
 			if new_value.is_less(n.get_value) then
-				if attached n.get_left as checked_left then --x /= Void
-					has_rec(new_value, checked_left)
+				if attached n.get_left as checked_left then -- x /= Void -> checked_left
+					Result := has_rec(new_value, checked_left)
+				end
+			end
+
+			if new_value.is_greater_equal (n.get_value) then
+				if attached n.get_right as checked_right then
+					Result := has_rec(new_value, checked_right)
 				end
 			end
 		end
+
+
+feature -- "Public" Has-Methode
+
+	has(new_value : INTEGER) : BOOLEAN
+		do
+			if attached Current.get_root as check_root then
+				Result := has_rec(new_value, check_root)
+			end
+			print("has-Method terminated")
+		end
+
+
+
 
 end

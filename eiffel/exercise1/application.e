@@ -24,7 +24,8 @@ feature {NONE} -- Initialization
 			tree1.insert(98)
 			tree1.insert(101)
 			tree1.insert(33)
-			print(tree1.has(686))
+			print(tree1.has(68))
+			print(tree2.has(6))
 
 		end
 
