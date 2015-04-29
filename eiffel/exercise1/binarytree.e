@@ -106,10 +106,25 @@ feature -- "Public" Has-Methode
 			if attached Current.get_root as check_root then
 				Result := has_rec(new_value, check_root)
 			end
-			print("has-Method terminated")
 		end
 
 
+feature{BINARYTREE} -- Delete-Method Sub
+
+	deleteRec(new_value : INTEGER)
+		do
+
+		end
+feature --"Public" Delete-Method
+
+	delete(new_value : INTEGER)
+		do
+			if has(new_value) then
+				print("Value can be deleted")
+			else
+				print("Value can not be deleted")
+			end
+		end
 
 
 end

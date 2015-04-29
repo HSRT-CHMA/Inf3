@@ -26,6 +26,10 @@ feature {NONE} -- Initialization
 			tree1.insert(33)
 			print(tree1.has(68))
 			print(tree2.has(6))
+			print(tree1.has(48))
+			print(tree2.has(99))
+			print("%N Test")
+			tree1.delete(99)
 
 		end
 
@@ -33,5 +37,4 @@ feature --Access
 
 	tree1 : BINARYTREE
 	tree2 : BINARYTREE
-	bo : BOOLEAN
 end
