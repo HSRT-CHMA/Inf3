@@ -63,12 +63,14 @@ namespace Exercise01{
             }
 
             /*
-             * Method creates a tree with given value as root, or
-             * adds new given int-value to existing tree by calling InsertValue-Metod
+             * Method for User Insert
+             * Public Visible to insert new Values in the BinaryTree
              * @Param int value: Value which will be added to the BinaryTree
-             * Duplicate Values are also added on the Right Side of the Tree
              */
- 
+            public void Insert(int value)
+            {
+                Insert(root, value);
+            }
 
             /*
              * Method to add Values 
@@ -77,10 +79,57 @@ namespace Exercise01{
              * Methode uses Recursion to insert a Node in the suited place in the tree
              * --> Ensures that the new value exists in the tree after method
              */
-            private void Insert(Node node, int value)
+            private void Insert(Node parent, int value)
             {
-     
-                Contract.Ensures(HasValue(value));
+                /*
+                 * Check if root is valid -> not null
+                 */
+                if(root != null){
+                    /*
+                     *  Check if value of parent is smaller than the given value
+                     */
+                    if(value < parent.GetValue()){
+                        /*
+                         * Check if there is another Node on the left side
+                         * Recursive call of Insert with Left Node unitl there
+                         * is no Node Object
+                         */
+                        if(parent.GetLeft() != null){
+                            Insert(parent.GetLeft(), value);
+                        }
+                        /*
+                         * If not -> new Node will be created
+                         */
+                        else
+                        {
+                            parent.SetLeft(new Node(value, parent));
+                        }
+                    }
+                    /*
+                     * Same thing for the other side (Right Side)
+                     * of the BinaryTree
+                     */
+                    else
+                    {
+                        /*
+                         * Check if there is another Node on the right side
+                         * Recursive call of Insert with Right Node until there
+                         * is no Node Object
+                         */
+                        if (parent.GetRight() != null)
+                        {
+                            Insert(parent.GetRight(), value);
+                        }
+                        /*
+                         * If not -> new Node will be created
+                         */
+                        else
+                        {
+                            parent.SetRight(new Node(value, parent));
+                        }
+                    }
+                    Contract.Ensures(HasValue(value));
+                }
             }
 
             /*

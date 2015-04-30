@@ -35,9 +35,10 @@ namespace Exercise01{
             /*
              * Private Variables for Node Class
              */
-            private Node parent;
+            private Node parent=null;
+            private Node left=null;
+            private Node right=null;
             private int value;
-            private Node left, right;
 
             /*
              * Constructor for Node with int value
