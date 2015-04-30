@@ -23,12 +23,13 @@ feature {NONE} -- Initialization
 feature --Access
 
 	first_node : detachable NODE
-	-- Gets created by a new tree
+	-- Gets created by a new tree, used in insert()- Method
 	root : detachable NODE
 	-- Becomes the root of the new tree
 	b : BOOLEAN
 	--Value is used in has()-Function
-	--s : STRING
+	res_node : detachable NODE
+	-- Result-Node to be used in has()-Method
 
 feature --Getter root
 	get_root : detachable NODE
@@ -77,57 +78,59 @@ feature -- Insert-Methode Sub
 		end
 
 
-feature{NONE} -- Has_method Sub (can only be used by this Class)
-
-	has_rec(new_value : INTEGER ; n : NODE)
-		do
-			if new_value.is_equal (n.get_value) then
-				set_b(true)
-			end
-
-			if new_value.is_less(n.get_value) then
-				if attached n.get_left as checked_left then -- x /= Void -> checked_left
-					has_rec(new_value, checked_left)
-				end
-			end
-
-			if new_value.is_greater_equal (n.get_value) then
-				if attached n.get_right as checked_right then
-					has_rec(new_value, checked_right)
-				end
-			end
-		end
-
-
-feature -- "Public" Has-Methode
-
-	has(new_value : INTEGER) : BOOLEAN
-		do
-			if attached Current.get_root as check_root then
-				--Result := has_rec(new_value, check_root)
-				has_rec(new_value, check_root)
-				Result := get_b
-			end
-		end
-
-
 feature{BINARYTREE} -- Delete-Method Sub
 
 	deleteRec(new_value : INTEGER)
 		do
-
+			print("Delete- Function")
 		end
 
 feature --"Public" Delete-Method
 
 	delete(new_value : INTEGER)
 		do
-			if has(new_value) then
-				print("Value can be deleted")
+			--if has(new_value) then
+				--print("Value can be deleted")
+			--else
+				--print("Value can not be deleted")
+			--end
+		end
+
+feature -- "public" has()
+
+	has(new_value : INTEGER): BOOLEAN
+	do
+		if attached Current.get_root as check_root then
+			has_rec(new_value, check_root)
+		end
+		Result := get_b
+	end
+
+feature{NONE} -- "private" has()
+
+	has_rec(new_value : INTEGER ; used_node : NODE)
+	do
+		if new_value = used_node.get_value then
+			set_b(true)
+		end
+
+		if new_value < used_node.get_value then
+			if attached used_node.get_left as check_left then
+				has_rec(new_value, check_left)
+			else -- x = Void -> No more Nodes -> Value does not exist
+				set_b(false)
+			end
+		else
+			if attached used_node.get_right as check_right then
+				has_rec(new_value, check_right)
 			else
-				print("Value can not be deleted")
+				set_b(false)
 			end
 		end
+	end
+
+
+
 
 feature{APPLICATION} --Getter/Setter boolean
 
