@@ -24,13 +24,17 @@ feature {NONE} -- Initialization
 			tree1.insert(98)
 			tree1.insert(101)
 			tree1.insert(33)
+			print("%N")
 			print(tree1.has(68))
-			print(tree2.has(6))
+			print("%N")
+			print (tree2.has(6))
+			print("%N")
 			print(tree1.has(48))
+			print("%N")
 			print(tree2.has(99))
-			print("%N Test")
+			print("%N Test %N")
 			tree1.delete(99)
-			print("Last Test")
+			print("%NLast Test")
 
 		end
 

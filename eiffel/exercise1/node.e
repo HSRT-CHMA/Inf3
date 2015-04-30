@@ -37,8 +37,6 @@ feature{BINARYTREE} --Getter/Setter value
 	end
 
 	set_value(node_value : INTEGER)
-	--require -- Example for Precondition
-		--correct_value : node_value < 100
 	do
 		value := node_value
 	end
@@ -51,11 +49,13 @@ feature{BINARYTREE} --Getter/Setter left
 
 	set_left(node_left : detachable NODE)
 	do
-		if node_left /= Void then
-			left := node_left
-		else
-			left := Void
-		end
+		--if node_left /= Void then
+			--left := node_left
+		--else
+			--left := Void
+		--end
+		left := node_left
+
 	end
 
 feature{BINARYTREE} --Getter/Setter rigth	

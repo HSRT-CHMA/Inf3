@@ -57,10 +57,10 @@ feature{NONE} -- Insert-Method (duplicates possible)
 				end
 			else
 				--Left
-				if attached used_node.get_left as checked_left then
+				if attached used_node.get_left as checked_left then -- x /= Void
 					insertRec(new_value, checked_left)
 				else
-					create first_node.make(new_value, used_node)
+					create first_node.make(new_value, used_node) -- x = Void
 					used_node.set_left(first_node)
 				end
 			end
@@ -79,21 +79,21 @@ feature -- Insert-Methode Sub
 
 feature{NONE} -- Has_method Sub (can only be used by this Class)
 
-	has_rec(new_value : INTEGER ; n : NODE) : BOOLEAN
+	has_rec(new_value : INTEGER ; n : NODE)
 		do
 			if new_value.is_equal (n.get_value) then
-				Result := true
+				set_b(true)
 			end
 
 			if new_value.is_less(n.get_value) then
 				if attached n.get_left as checked_left then -- x /= Void -> checked_left
-					Result := has_rec(new_value, checked_left)
+					has_rec(new_value, checked_left)
 				end
 			end
 
 			if new_value.is_greater_equal (n.get_value) then
 				if attached n.get_right as checked_right then
-					Result := has_rec(new_value, checked_right)
+					has_rec(new_value, checked_right)
 				end
 			end
 		end
@@ -104,7 +104,9 @@ feature -- "Public" Has-Methode
 	has(new_value : INTEGER) : BOOLEAN
 		do
 			if attached Current.get_root as check_root then
-				Result := has_rec(new_value, check_root)
+				--Result := has_rec(new_value, check_root)
+				has_rec(new_value, check_root)
+				Result := get_b
 			end
 		end
 
@@ -115,6 +117,7 @@ feature{BINARYTREE} -- Delete-Method Sub
 		do
 
 		end
+
 feature --"Public" Delete-Method
 
 	delete(new_value : INTEGER)
@@ -126,5 +129,16 @@ feature --"Public" Delete-Method
 			end
 		end
 
+feature{APPLICATION} --Getter/Setter boolean
+
+	get_b : BOOLEAN
+		do
+			Result := b
+		end
+
+	set_b(new_b : BOOLEAN)
+		do
+			b := new_b
+		end
 
 end
