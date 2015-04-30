@@ -103,28 +103,43 @@ feature -- "public" has()
 		if attached Current.get_root as check_root then
 			has_rec(new_value, check_root)
 		end
-		Result := get_b
+
+		if get_res_node /= Void then
+			--set_b(true)
+			--b := true
+			Result := true
+		else -- x = Void
+			--set_b(false)
+			--b := false
+			Result := false
+		end
+		--Result := get_b
+		--Result := b
 	end
 
 feature{NONE} -- "private" has()
 
-	has_rec(new_value : INTEGER ; used_node : NODE)
+	has_rec(new_value : INTEGER ; used_node : NODE) : detachable NODE
 	do
 		if new_value = used_node.get_value then
-			set_b(true)
+			--set_b(true)
+			--set_res_node(used_node) --Found
+			Result := used_node
 		end
 
 		if new_value < used_node.get_value then
 			if attached used_node.get_left as check_left then
-				has_rec(new_value, check_left)
+				Result := has_rec(new_value, check_left)
 			else -- x = Void -> No more Nodes -> Value does not exist
-				set_b(false)
+				--set_b(false)
+				set_res_node(Void)
 			end
 		else
 			if attached used_node.get_right as check_right then
-				has_rec(new_value, check_right)
+				Result := has_rec(new_value, check_right)
 			else
-				set_b(false)
+				--set_b(false)
+				set_res_node(Void)
 			end
 		end
 	end
@@ -132,7 +147,7 @@ feature{NONE} -- "private" has()
 
 
 
-feature{APPLICATION} --Getter/Setter boolean
+feature --Getter/Setter boolean
 
 	get_b : BOOLEAN
 		do
@@ -142,6 +157,19 @@ feature{APPLICATION} --Getter/Setter boolean
 	set_b(new_b : BOOLEAN)
 		do
 			b := new_b
+		end
+
+
+feature --Getter/Setter res_node
+
+	get_res_node : detachable NODE
+		do
+			Result := res_node
+		end
+
+	set_res_node(new_res_node : detachable NODE)
+		do
+			res_node := new_res_node
 		end
 
 end
