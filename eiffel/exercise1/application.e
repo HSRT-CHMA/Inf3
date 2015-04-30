@@ -23,7 +23,6 @@ feature {NONE} -- Initialization
 			create tree2.make(122)
 			tree1.insert(98)
 			tree1.insert(101)
-			tree1.insert(33)
 			print("%N")
 			print(tree1.has(68))
 			print("%N")
