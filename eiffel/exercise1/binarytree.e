@@ -29,6 +29,10 @@ feature --Access
 	--Value is used in has()-Function
 	res_node : detachable NODE
 	-- Result-Node to be used in has()-Method
+	delete_node : detachable NODE
+	-- Node to be used in delete() and delete_rec
+	tmp_node : detachable NODE
+	--Node to be used in delete_rec()
 
 feature --Getter root
 	get_root : detachable NODE
@@ -77,22 +81,87 @@ feature -- Insert-Methode Sub
 		end
 
 
-feature{BINARYTREE} -- Delete-Method Sub
+feature{NONE} -- Delete-Method Sub
 
-	deleteRec(new_value : INTEGER)
+	deleteRec(new_value : INTEGER; used_node : NODE)
+		require
+			correct_node : new_value = used_node.get_value
 		do
-			print("Delete- Function")
+			-- Leaf
+			if used_node.get_left = Void and used_node.get_right = Void then
+				print("Leaf")
+				if attached used_node.get_parent as checked_parent then -- x /= Void
+					checked_parent.set_right(Void)
+				else
+					root := Void
+				end
+			end
+
+			--Right child
+			if used_node.get_left = Void and used_node.get_right /= Void then
+				print("One rigth child")
+				if attached used_node.get_parent as checked_parent then -- x /= Void
+					checked_parent.set_right(used_node.get_right)
+				else
+					root := used_node.get_right
+				end
+			end
+
+			--Left child
+			if used_node.get_left /= Void and used_node.get_right = Void then
+				print("One left child")
+				if attached used_node.get_parent as checked_parent then -- x /= Void
+					checked_parent.set_right(used_node.get_left)
+				else
+					root := used_node.get_left
+				end
+			end
+
+			--Right and left child
+			if used_node.get_left /= Void and used_node.get_right /= Void then
+				print("Two children")
+				tmp_node := get_smallest(used_node.get_right)
+
+			end
+		--ensure
+			--value_is_deleted : has(new_value) = false
 		end
+
+feature -- A helping method for deleteRec
+
+	get_smallest(start : NODE) : NODE
+		Local
+			node : NODE
+		do
+			from
+				node := start
+			until
+				node.get_left = Void
+			loop
+				if attached node.get_left as ok_left then
+					node := ok_left
+				end
+			end
+			Result := node
+		end
+
 
 feature --"Public" Delete-Method
 
 	delete(new_value : INTEGER)
 		do
-			--if has(new_value) then
-				--print("Value can be deleted")
-			--else
-				--print("Value can not be deleted")
-			--end
+			if attached Current.get_root as check_root then
+				delete_node := has_rec(new_value, check_root)
+			end
+
+			if attached delete_node as check_delete_node then
+			-- has_rec returnt a Node
+				print("Value can be deleted")
+				deleteRec(new_value, check_delete_node)
+			else
+			-- has_rec returnt Void
+				print("Value does not exist in the given tree")
+			end
 		end
 
 feature -- "public" has()

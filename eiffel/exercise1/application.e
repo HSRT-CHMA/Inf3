@@ -40,10 +40,10 @@ feature {NONE} -- Initialization
 			print("%N")
 			print(tree1.has(5)) --should be True
 			print("%N")
-			print("   " + tree1.has(101).out) --should be True
+			print(tree1.has(101).out) --should be True
 
 			--Tests on tree2
-			print("%N")
+			print("%N%N")
 			print(tree2.has(80)) --should be False
 			print("%N")
 			print(tree2.has(14)) --should be False
@@ -52,10 +52,13 @@ feature {NONE} -- Initialization
 			print("%N")
 			print(tree2.has(15)) --should be True
 
-
-
-			print("%N Test Delete %N")
-			tree1.delete(99)
+            -- Tests on delete()
+			print("%N")
+			tree1.delete(99) -- should be true
+			print("%N")
+			tree2.delete(8) --should be true
+			print("%N")
+			tree2.delete(18) --should be false
 
 		end
 
