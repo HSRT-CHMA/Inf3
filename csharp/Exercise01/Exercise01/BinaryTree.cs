@@ -142,10 +142,19 @@ namespace Exercise01{
             {
                 Boolean result;
 
+                /*
+                 * Check if return Parameter is not null and
+                 * so there is the Value in the BinaryTree
+                 */
                 if (WhereIsValue(root, value) != null)
                 {
                     result = true;
                 }
+                
+                /*
+                 * Else when the value doesn't exist in
+                 * the BinaryTree
+                 */
                 else
                 {
                     result = false;
@@ -165,13 +174,26 @@ namespace Exercise01{
             {
                 Node result = null;
 
+                /*
+                 * Check if Node is not null
+                 */
                 if (node == null)
                 {
                     result = null;
-                } if (value.CompareTo(node.GetValue()) == 0)
+                } 
+                
+                /*
+                 * Check if Value of Node and given value is the same
+                 */
+                if (value.CompareTo(node.GetValue()) == 0)
                 {
-                    return node;
-                } if (value.CompareTo(node.GetValue()) < 0)
+                    result = node;
+                } 
+                
+                /*
+                 * Check if Value of Node and given value is smaller
+                 */
+                if (value.CompareTo(node.GetValue()) < 0)
                 {
                     if (node.GetLeft() == null)
                     {
@@ -183,6 +205,9 @@ namespace Exercise01{
                     }
                 }
 
+                /*
+                 * Check if Value of Node and given value is bigger
+                 */
                 if (value.CompareTo(node.GetValue()) > 0)
                 {
                     if (node.GetRight() == null)
@@ -203,48 +228,108 @@ namespace Exercise01{
             /*
              * Method redirects to DeleteValue()
              */
-            public Boolean Delete(int new_value)
+            public Boolean Delete(int value)
             {
-                return true;   
+                /*
+                 * Node deleteValue has the Node object with the 
+                 * value which will be deleted from the BinaryTree
+                 */
+                Node deleteValue = WhereIsValue(root, value);
+                Boolean delete = false;
+
+                /*
+                 * Check if the value is in the BinaryTree
+                 */
+                if(deleteValue != null){
+                    
+                    /*
+                     * Check if there is a Right Node and no Left Node
+                     */
+                    if(deleteValue.GetRight() != null && deleteValue.GetLeft() == null){
+                        deleteValue.GetRight().SetParent(deleteValue.GetParent());
+                    }
+
+                    /*
+                     * Check if there is a Left Node and no Right Node
+                     */
+                    if(deleteValue.GetRight() == null && deleteValue.GetLeft() != null){
+                        deleteValue.GetLeft().SetParent(deleteValue.GetParent());
+                    }
+
+                    /*
+                     * Check if there are a Left and a Right Node
+                     * Left Node gets Parent from the delete Node
+                     * Parent of Right Node is set to Left Node
+                     */
+                    if(deleteValue.GetRight() != null && deleteValue.GetLeft() != null){
+                        deleteValue.GetLeft().SetParent(deleteValue.GetParent());
+                        deleteValue.GetRight().SetParent(deleteValue.GetLeft());
+                    }
+                        
+                    /*
+                     * Removing Reference of the Object -> Delete
+                     * Set the Boolean true -> return parameter
+                     */
+                   deleteValue = null;
+                   delete = true;
+                }
+                return delete;   
             }
 
             /*
-             * If Tree is empty, nothing can be deleted
-             * Method receive root-Node , new value, the parent node and flag if node is left
-             * It is ensured that ALL nodes with given value are deleted !
-             * 
+             * Method returns the Node which is the last on the left side, 
+             * so the one with the smallest value (if added correctly)
              */
-
-
-            /*
-             * Method returns the Node which is the last on the left side, so the one with the smallest value (if added correctly)
-             */
-            public Node GetSmallest(Node start)
+            private Node GetSmallest(Node smallestValue)
             {
-                if (start != null)
+                if (smallestValue != null)
                 {
-                    while (start.GetLeft() != null)
+                    /*
+                     * Runs for the whole left Tree Side not null
+                     */
+                    while (smallestValue.GetLeft() != null)
                     {
-                        start = start.GetLeft();
+                        smallestValue = smallestValue.GetLeft();
                     }
                 }
-                return start;
+                return smallestValue;
             }
 
             /*
-            * Method returns the Node which is the last on the rigth side, so the one with the biggest value (if added correctly)
+             * GetSmallest Method for Puplic User Access 
+             * Root from BinaryTree is given to the Method 
+             */
+            public Node GetSmallest()
+            {
+                return GetSmallest(root);
+            }
+            /*
+            * Method returns the Node which is the last on the rigth side, 
+            * so the one with the biggest value (if added correctly)
             */
 
-            public Node GetBiggest(Node start)
+            private Node GetBiggest(Node biggestValue)
             {
-                if (start != null)
+                if (biggestValue != null)
                 {
-                    while (start.GetRight() != null)
+                    /*
+                     * Runs for the whole right Tree Side not null
+                     */
+                    while (biggestValue.GetRight() != null)
                     {
-                        start = start.GetRight();
+                        biggestValue = biggestValue.GetRight();
                     }
                 }
-                return start;
+                return biggestValue;
+            }
+
+            /*
+             * GetBiggest Method for Public User Access
+             * Root from BinaryTree is given to the Method 
+             */
+            public Node GetBiggest()
+            {
+                return GetBiggest(root);
             }
 
             /*
@@ -279,23 +364,6 @@ namespace Exercise01{
 
                 return value;
             }
-
-
-            /*
-             *  Method to set a Node "under" a given parent-node , either left or rigth 
-             */
-            private void FindParent(Node parent, Boolean left, Node new_n)
-            {
-                if (left)
-                {
-                    parent.SetLeft(new_n);
-                }
-                else
-                {
-                    parent.SetRight(new_n);
-                }
-            }
-
         }
     }
 }
