@@ -59,6 +59,9 @@ feature {NONE} -- Initialization
 			tree2.delete(8) --should be true
 			print("%N")
 			tree2.delete(18) --should be false
+			print("%N")
+			tree2.delete(1) --should be false
+
 
 		end
 

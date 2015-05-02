@@ -86,44 +86,59 @@ feature{NONE} -- Delete-Method Sub
 	deleteRec(new_value : INTEGER; used_node : NODE)
 		require
 			correct_node : new_value = used_node.get_value
+			valid_node : used_node /= Void
 		do
-			-- Leaf
-			if used_node.get_left = Void and used_node.get_right = Void then
-				print("Leaf")
-				if attached used_node.get_parent as checked_parent then -- x /= Void
-					checked_parent.set_right(Void)
-				else
-					root := Void
+			if attached Current.get_root as valid_root then
+
+				-- Leaf
+				if used_node.get_left = Void and used_node.get_right = Void then
+					print("Leaf")
+					if attached used_node.get_parent as checked_parent then -- x /= Void
+						checked_parent.set_right(Void)
+					else
+						root := Void
+					end
+				end
+
+				--Right child
+				if used_node.get_left = Void and used_node.get_right /= Void then
+					print("One rigth child")
+					if attached used_node.get_parent as checked_parent then -- x /= Void
+						checked_parent.set_right(used_node.get_right)
+					else
+						root := used_node.get_right
+					end
+				end
+
+				--Left child
+				if used_node.get_left /= Void and used_node.get_right = Void then
+					print("One left child")
+					if attached used_node.get_parent as checked_parent then -- x /= Void
+						checked_parent.set_right(used_node.get_left)
+					else
+						root := used_node.get_left
+					end
+				end
+
+				--Right and left child
+				if attached used_node.get_left as check_left and attached used_node.get_right as check_right then
+					print("Two children")
+					tmp_node := get_smallest(check_right)
+					if attached tmp_node as check_tmp_node then
+						delete(check_tmp_node.get_value)
+						if attached used_node.get_parent as checked_parent then -- x /= Void
+							check_tmp_node.set_left (check_left)
+							check_tmp_node.set_right (check_right)
+							checked_parent.set_right (check_tmp_node)
+						else
+							check_tmp_node.set_left (valid_root.get_left)
+							check_tmp_node.set_right (valid_root.get_right)
+							root := check_tmp_node
+						end
+					end
 				end
 			end
-
-			--Right child
-			if used_node.get_left = Void and used_node.get_right /= Void then
-				print("One rigth child")
-				if attached used_node.get_parent as checked_parent then -- x /= Void
-					checked_parent.set_right(used_node.get_right)
-				else
-					root := used_node.get_right
-				end
-			end
-
-			--Left child
-			if used_node.get_left /= Void and used_node.get_right = Void then
-				print("One left child")
-				if attached used_node.get_parent as checked_parent then -- x /= Void
-					checked_parent.set_right(used_node.get_left)
-				else
-					root := used_node.get_left
-				end
-			end
-
-			--Right and left child
-			if used_node.get_left /= Void and used_node.get_right /= Void then
-				print("Two children")
-				tmp_node := get_smallest(used_node.get_right)
-
-			end
-		--ensure
+			--ensure
 			--value_is_deleted : has(new_value) = false
 		end
 
