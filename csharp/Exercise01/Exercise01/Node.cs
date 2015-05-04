@@ -60,6 +60,7 @@ namespace Exercise01{
 
             /*
              * Setter for Node Class 
+             * Setter for the Value of the Node
              */
             public void SetValue(int value)
             {
@@ -67,6 +68,10 @@ namespace Exercise01{
                 Contract.Ensures(value == this.GetValue());
             }
 
+            /*
+             * Set Left Node from the actual Node
+             * Default intialization is set with null
+             */
             public void SetLeft(Node left)
             {
                 Contract.Requires(left.GetValue() < this.GetValue());
@@ -74,6 +79,10 @@ namespace Exercise01{
                 Contract.Ensures(this.GetLeft().Equals(left));
             }
 
+            /*
+             * Set Right Node from the actual Node
+             * Default intialization is set with null
+             */
             public void SetRight(Node right)
             {
                 Contract.Requires(right.GetValue() >= this.GetValue());
@@ -81,6 +90,10 @@ namespace Exercise01{
                 Contract.Ensures(this.GetRight().Equals(right));
             }
 
+            /*
+             * Set the Parent Node where the Node is born from
+             * Is set at the Constructor of Node to the "root"
+             */
             public void SetParent(Node parent)
             {
                 this.parent = parent;
@@ -89,6 +102,7 @@ namespace Exercise01{
 
             /*
              * Getter for Node
+             * Getter for Left Node
              */
             public Node GetLeft()
             {
@@ -96,18 +110,27 @@ namespace Exercise01{
                 return left;
             }
 
+            /*
+             * Getter for the Right Node
+             */
             public Node GetRight()
             {
                 Contract.Ensures(right.Equals(this.GetRight()));
                 return right;
             }
 
+            /*
+             * Getter for the Value of the Node
+             */
             public int GetValue()
             {
                 Contract.Ensures(value == this.GetValue());
                 return value;
             }
 
+            /*
+             * Getter for the Parent of the Node
+             */
             public Node GetParent()
             {
                 Contract.Ensures(parent.Equals(this.GetParent()));
