@@ -29,7 +29,7 @@ feature {NONE} -- Initialization
 			tree1.insert(95)
 			-- Insert tree2
 			tree2.insert (15)
-			tree2.insert (8)
+			--tree2.insert (8)
 			tree2.insert (9)
 			tree2.insert (7)
 			-- Tests on tree1
@@ -53,14 +53,19 @@ feature {NONE} -- Initialization
 			print(tree2.has(15)) --should be True
 
             -- Tests on delete()
+			tree2.delete(1) --should be false
 			print("%N")
 			tree1.delete(99) -- should be true
 			print("%N")
+			print("Is 99 in tree ? " + tree1.has (99).out) -- shoulb be false
+			print("%N")
 			tree2.delete(8) --should be true
 			print("%N")
-			tree2.delete(18) --should be false
+			print("Is 8 in tree ? " + tree2.has (8).out) --should be false
 			print("%N")
 			tree2.delete(1) --should be false
+
+			--tree1.advance
 
 
 		end
