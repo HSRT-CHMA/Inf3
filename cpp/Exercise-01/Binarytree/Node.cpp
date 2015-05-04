@@ -1,22 +1,16 @@
 #include <iostream>
+#include "Node.h"
 
 using namespace std;
 
 class Node{
-private:
 	Node* left;
 	Node* right;
 	Node* parent;
 	int value;
 
-	/*
-	
-	Constructor for Node with int and Node values
-	
-	*/
-public:
 	/* Constructor for Node with int and Node values */
-	Node(int value, Node* parent){
+	Node::Node(int value, Node* parent){
 		this->value = value;
 		setLeft(left);
 		setRight(right);
@@ -24,43 +18,43 @@ public:
 	}
 
 	/* Constructor for Node with int value */
-	Node(int value){
+	Node::Node(int value){
 		this->value = value;
 		setLeft(left);
 		setRight(right);
 	}
 
 	/* Setter for Node Class*/
-	void setValue(int value){
+	void Node::setValue(int value){
 		this->value = value;
 	}
 
-	void setLeft(Node* left){
+	void Node::setLeft(Node* left){
 		this->left = left;
 	}
 
-	void setRight(Node* right){
+	void Node::setRight(Node* right){
 		this->right = right;
 	}
 
-	void setParent(Node* parent){
+	void Node::setParent(Node* parent){
 		this->parent = parent;
 	}
 
 	/* Getter for Node*/
-	Node* getLeft(){
+	Node* Node::getLeft(){
 		return left;
 	}
 
-	Node* getRight(){
+	Node* Node::getRight(){
 		return right;
 	}
 
-	int getValue(){
+	int Node::getValue(){
 		return value;
 	}
 
-	Node* getParent(){
+	Node* Node::getParent(){
 		return parent;
 	}
 };
