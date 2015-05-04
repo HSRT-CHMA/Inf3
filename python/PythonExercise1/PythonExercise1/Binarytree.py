@@ -5,59 +5,95 @@ Created on 17.04.2015
 
 Class for BinaryTree with Integers
 '''
-class BinaryTree(Nodes):               # Inerhit Nodes
+from Nodes import Nodes
+class BinaryTree():                     # Class BinaryTree
     
-    root = Nodes(None)                 # Initial Root Node for Initializiation
+    _root = Nodes(None,None)            # Initial Root Node for Initializiation
 
-    def __init__(self):                # Constructor of BinaryTree
-        self.left=Nodes(None)
-        self.right=Nodes(None)
-        self.root= self
+    def __init__(self,value):           # Constructor of BinaryTree
+        self.root= Nodes(value,None)
     
-    def insert(i):                     # Function to Insert a Value in the BinaryTree 
-        if root is None:               # Calls Recursion in insertRec
-            root = i
-        else: 
-            self.insertRec(root, i)   
+    def setRoot(root):                  # Setter Root
+        print("Can't change root after Initializiation")
+
+    def getRoot():                      # Getter Root
+        return root
+
+    def insert(value):                  # Function to Insert a Value in the BinaryTree 
+        insert(root,value)  
     
-    def insertRec(k, i):               # Recursion to Insert a Value in the BinaryTree
-        if k is None:
-            k = i 
-        if root is None:
-            root = k
-        else: 
-            if i<(k.getContent()):      # Content from i is smaller then k
-                if k.getLeft() != None:
-                    addRec(k.getLeft(), i)
+    def insert(parent, value):          # Insert a Value in the BinaryTree
+        if root is not None:
+            if value < parent.getValue():
+                if parent.getLeft() is not None:    
+                    insert(parent.getLeft(),value)
+                else:
+                    parent.setLeft(Nodes(value,parent))
             else:
-                k.setLeft(i)
-            if i>=(k.getContent()):     # Content from i is bigger then k
-                if k.getRight() != None:
-                    addRec(k.getRight(),i)
-            else:
-                k.setRight(i)
-    
-    def getHight():                     # Function to get Highest Value in Tree
-        return getHightRec(0, root)     # calls Recursion in getHightRec
-    
-    def getHightRec(actHight, k):       # Recursion to get Highest Value with max function
-        if k != None:
-            return max(getHightRec(actHight + 1, k.getLeft()), getHightRec(actHight + 1, k.getRight()))
-        return actHight
-    
-    def getSmallest():                  # Function to get Smallest Value in Tree
-        k = getSmallest(root)           
-        if k == None:
-            return 0
+                if parent.getRight() is not None:
+                    insert(parent.getRight(),value)
+                else:
+                    parent.setRight(Nodes(value,parent))
+
+    def hasValue(value):                # Value in Tree ?
+        result = False
+        if whereIsValue(root,value) is not None:
+            result = True
         else:
-            return k.getContent()
+            result = False
+        return result
+
+    def whereIsValue(node,value):       # Is Value in Tree ?
+        nodeX = None
+        if node is None:
+            nodeX = None
+        if value.compareTo(node.getValue()) == 0:
+            nodeX = node
+        if value.compareTo(node.getValue()) < 0:
+            if node.getLeft() is None:
+                nodeX = None
+            else:
+                nodeX = whereIsValue(node.getLeft(),value)
+        if value.compareTo(node.getValue()) > 0:
+            if node.getRight() is None:
+                nodeX = None
+            else:
+                nodeX = whereIsValue(node.getRight(),value)
+        return nodeX
+
+    def delete(value):                  # delete a value in Tree reacomplish parents
+        deleteNode = whereIsValue(root,value)
+        delete = False
+        if deleteNode is not None:
+            if deleteNode.getRight() is not None & deleteNode.getLeft() is None:
+                deleteNode.getRight().setParent(deleteNode.getParent())
+            if deleteNode.getRight() is None & deleteNode.getLeft() is not None:
+                deleteNode.getLeft().setParent(deleteNode.getParent())
+            if deleteNode.getRight() is not None & deleteNode.getLeft() is not None:
+                deleteNode.getLeft().setParent(deleteNode.getParent())                  
+                deleteNode.getRight().setParent(deleteNode.getLeft())
+            deleteNode = None
+            delete = True
+        return delete
     
-    def getSmallest(start):             # Function to get smallest Value after 
-        if start != None:               # start Value
-            while start.getLeft() != None:
-                start = start.getLeft()
-            return start
+    def getSmallest(value):             # Function to get Smallest Value in Tree         
+        if value is not None:
+            while value.getLeft() is not None:
+                value = value.getLeft()
+        return value
+    
+    def getSmallest():                  # Function to get smallest Value  
+        return getSmallest(root)
         
+    def getBiggest(value):              # Function to get Biggest Value
+        if value is not None:
+            while value.getRight() is not None:
+                value = value.getRight()
+        return value
+
+    def getBiggest():                   # Function to get Biggest Value
+        return getBiggest(root) 
+
     def getNodes(content):                  # Function to get Nodes with Value content
         return getNodesRec(root, content)   # calls Recursion in getNodesRec
         
@@ -120,3 +156,13 @@ class BinaryTree(Nodes):               # Inerhit Nodes
     
     def toString():                         # toString Function
         return "Content of Node : " + root.getContent()
+
+    def compareTo(self, that):
+        return ((self > that) - (self < that))
+
+'''
+    def __lt__ (self, other):
+        if self.a == other.a:
+            return self.b < other.b
+        return self.a < other.b
+'''

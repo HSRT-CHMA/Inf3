@@ -5,29 +5,44 @@ Created on 17.04.2015
 
 Class for Nodes
 '''    
-class Nodes():
-    
-    left=0                              # Class Variables
-    right=0
-    content=0
-    
-    def __init__(self):                 # Constructor Nodes
-        self.setContent(content)
+class Nodes(object):
+    '''
+    Class Variables
+    ''' 
+    _parent=None
+    _left=None                              
+    _right=None
+    _content=0
+
+    '''
+    Constructor Nodes
+    '''
+    def __init__(self,content,parent):             
+        self._content = setContent(content)
+        self._parent = setParent(parent)
+        if parent is None:
+            print("New Tree with Root " + content + "was created.")
+        else:
+            print("New Node with Value: " + content)
     
     def getLeft():                      # Getter Left Node
         return left
     
     def setLeft(left):                  # Setter Left Node
-        if left != None:
-            self.left = left
+        self.left = left
     
     def getRight():                     # Getter Right Node
         return right
     
     def setRight(right):                # Setter Right Node
-        if right != None:
-            self.right = right
+        self.right = right
     
+    def setParent(parent):              # Setter Parent
+        self.parent= parent
+
+    def getParent(parent):              # Getter Parent
+        return parent
+
     def getContent():                   # Getter Content Node
         return content
     
@@ -36,6 +51,3 @@ class Nodes():
     
     def getContent(content):            # Getter Content Node at content Value
         self.content = content
-    
-    def toString():                     # toString Function
-        return "Content of Node : " + getContent()
