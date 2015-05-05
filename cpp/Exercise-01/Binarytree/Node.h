@@ -4,6 +4,12 @@
 
 class Node{
 
+private:
+	Node* left;
+	Node* right;
+	Node* parent;
+	int value;
+
 public:
 	Node(int value, Node* parent);
 	Node(int value);

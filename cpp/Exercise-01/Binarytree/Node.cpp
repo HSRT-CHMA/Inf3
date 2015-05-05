@@ -3,11 +3,6 @@
 
 using namespace std;
 
-class Node{
-	Node* left;
-	Node* right;
-	Node* parent;
-	int value;
 
 	/* Constructor for Node with int and Node values */
 	Node::Node(int value, Node* parent){
@@ -57,4 +52,3 @@ class Node{
 	Node* Node::getParent(){
 		return parent;
 	}
-};

@@ -1,4 +1,5 @@
 #include "Tree.h"
+#include "Node.h"
 #include <string>
 #include <math.h>					//Include for max function
 #include <algorithm>
@@ -6,11 +7,10 @@
 #include <assert.h>					//Include for asserts
 
 using namespace std;
-
+	
 class Tree{
-
 private:
-	Node* root = NULL;
+	Node* root;
 
 	/*
 	Constructor of BinaryTree
@@ -90,7 +90,7 @@ private:
 	}
 
 	/*
-	Prints out the values of the BinaryTree in the following order: 
+	Prints out the values of the BinaryTree in the following order:
 	Goes from left to root to right
 	*/
 	void Tree::inOrderOutPut(Node* k){
@@ -131,7 +131,7 @@ private:
 	*/
 	void Tree::insertValue(Node* k, int value){
 		assert(value <= 0 || value >= 0);
-		
+
 		if (k == NULL){
 			k = new Node(value);
 			if (root == NULL){
@@ -172,7 +172,7 @@ private:
 	if value to delete equals value from parent(root)
 	If Parent(root) has no children Is Node
 	If Parent(root) doesnt exist, Parent(root) is NULL Deletes root
-	Calls Method hangingUnderParent to put Node on the left or right side of the Parent,v 
+	Calls Method hangingUnderParent to put Node on the left or right side of the Parent,v
 	but in this case parent doesnt have childen
 	If Parent has child only on the right side, Root gets the value of right Node
 	Calls hangingUnderParent and deletes right side because it is NULL
@@ -180,7 +180,6 @@ private:
 	Calls hangingUnderParent and deletes left side because it is NULL
 	If Parent has two childen it gets the smallest form the right child
 	Deletes the TreeNode
-	If parent doesnt exist
 	*/
 	bool Tree::deleteValueRecursion(Node* k, int value, Node* parent, bool leftFromParent){
 		assert(value <= 0 || value >= 0);
@@ -244,7 +243,7 @@ private:
 			return deleteValueRecursion(k->getLeft(), value, k, true);
 		}
 		/*If value is on the right side*/
-		if ((value >(k->getValue()))){
+		if ((value > (k->getValue()))){
 			if (k->getRight() == NULL){
 				return false;
 			}
@@ -254,15 +253,17 @@ private:
 		return false;
 	}
 
+	/*
+	Deletes Left side by setting Left to NULL
+	Deletes Left side by setting Right to NULL
+	*/
 	void Tree::underParent(Node* parent, bool left, Node* k)
 	{
 		assert(left == true || left == false);
 		if (left){
-			/*Deletes Left side by setting Left to NULL*/
 			parent->setLeft(k);
 		}
 		else{
-			/*Deletes Left side by setting Right to NULL*/
 			parent->setRight(k);
 		}
 	}
@@ -298,7 +299,7 @@ private:
 			return n;
 		}
 
-		if (n->getValue() <	 value){
+		if (n->getValue() < value){
 			if (n->getLeft() == NULL){
 				result = NULL;
 			}
@@ -316,10 +317,4 @@ private:
 			}
 		}
 	}
-
 };
-
-int main(){
-	Tree t();
-
-}
