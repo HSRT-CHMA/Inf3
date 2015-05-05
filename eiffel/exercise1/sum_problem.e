@@ -9,7 +9,9 @@ class
 
 inherit
 	MAIN_PROBLEM
-		redefine solve end
+		redefine
+			solve , get_start_value
+		end
 
 create
 	make
@@ -17,27 +19,28 @@ create
 feature {GPS} -- Initialization
 
 	make(used_tree : BINARYTREE)
-			-- Initialization for `Current'.
 		do
 			print("New SUM_Problem")
+			create sum_s.make
+			set_start_value(used_tree)
+			solve
 		end
 
 
 feature -- Access
 
 	sum_s : detachable SUM_SOLUTION
+	-- The Sum_Problem knows a Sum_Solution-Object, which recives the solution_value
+	start_value : BINARYTREE
+	-- The Tree on which the operations are performed
 
 feature -- Public sum-Method to find the sum of a given tree
 
 	solve
 	do
-		--if attached current.get_root as check_root then
-			--Result := solve_sum(check_root)
-			--Result := sum(check_root)
-		--end
-
-		if attached used_tree.get_root as checked_root then
-			sum_s.set_solution_value(max(checked_root))
+		if attached start_value.get_root as checked_root then
+			--sum_s.set_solution_value(max(checked_root))
+			get_solution.set_solution_values(sum(checked_root))
 		end
 	end
 
@@ -48,8 +51,15 @@ feature{NONE} -- Sum of the tree
 		if used_node = Void then
 			Result := 0
 		else
-			Result := used_node.get_value + sum_rec(used_node.get_left) + sum_rec(used_node.get_right)
+			Result := used_node.get_value + sum(used_node.get_left) + sum(used_node.get_right)
 		end
+	end
+
+feature{NONE} -- Setter for start_value
+
+	set_start_value(given_tree : BINARYTREE)
+	do
+		start_value := given_tree
 	end
 
 end

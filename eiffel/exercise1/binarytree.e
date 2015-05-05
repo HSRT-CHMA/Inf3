@@ -225,31 +225,6 @@ feature{NONE} -- "private" has(), indicated by Exportation to class NONE
 		end
 	end
 
-feature -- Find the max value in a given tree
 
-	solve_sum(used_node : NODE) : INTEGER
-	-- aufruf in SumProblem mit solve_sum(given_tree.get_root)
-	do
-		sum_value := sum_value + used_node.get_value
-		print("W " + sum_value.out)
-
-		if attached used_node.get_left as checked_left then -- x/= Void --> weiterer Knoten --> interessant
-			sum_value := sum_value + checked_left.get_value
-			print("L " + sum_value.out)
-			sum_value := sum_value + solve_sum(checked_left)
-			print("L nach Rekursion " + sum_value.out)
-			--sum := solve_sum(checked_left)
-		end
-
-		if attached used_node.get_right as checked_right then
-			sum_value := sum_value + checked_right.get_value
-			print("R " + sum_value.out)
-			--checked_right.get_value
-			--solve_sum(checked_right)
-			sum_value := sum_value + solve_sum(checked_right)
-			print("R nach Rekursion " + sum_value.out)
-		end
-
-	end
 
 end --End of class

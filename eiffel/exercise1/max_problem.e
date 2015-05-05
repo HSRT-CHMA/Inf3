@@ -19,8 +19,10 @@ feature {GPS} -- Initialization
 	make(used_tree : BINARYTREE)
 			-- Initialization for `Current'.
 		do
-			print("New MAX-Problem")
+			print("New MAX_Problem")
 			create max_s.make
+			set_start_value(used_tree)
+
 		end
 
 feature --Access
