@@ -33,6 +33,7 @@ feature --Access
 	-- Node to be used in delete() and delete_rec
 	tmp_node : detachable NODE
 	--Node to be used in delete_rec()
+	sum_value : INTEGER
 
 feature --Getter root
 	get_root : detachable NODE
@@ -223,5 +224,82 @@ feature{NONE} -- "private" has(), indicated by Exportation to class NONE
 			end
 		end
 	end
+
+feature -- Find the max value in a given tree
+
+	solve_sum(used_node : NODE) : INTEGER
+	-- aufruf in SumProblem mit solve_sum(given_tree.get_root)
+	do
+		sum_value := sum_value + used_node.get_value
+		print("W " + sum_value.out)
+
+		if attached used_node.get_left as checked_left then -- x/= Void --> weiterer Knoten --> interessant
+			sum_value := sum_value + checked_left.get_value
+			print("L " + sum_value.out)
+			sum_value := sum_value + solve_sum(checked_left)
+			print("L nach Rekursion " + sum_value.out)
+			--sum := solve_sum(checked_left)
+		end
+
+		if attached used_node.get_right as checked_right then
+			sum_value := sum_value + checked_right.get_value
+			print("R " + sum_value.out)
+			--checked_right.get_value
+			--solve_sum(checked_right)
+			sum_value := sum_value + solve_sum(checked_right)
+			print("R nach Rekursion " + sum_value.out)
+		end
+
+	end
+
+feature
+
+	sum : INTEGER
+	do
+		if attached current.get_root as check_root then
+			--Result := solve_sum(check_root)
+			Result := sum_rec(check_root)
+		end
+	end
+
+feature -- Sum of the tree
+
+	sum_rec(used_node : detachable NODE) : INTEGER
+	do
+		if used_node = Void then
+			Result := 0
+		else
+			Result := used_node.get_value + sum_rec(used_node.get_left) + sum_rec(used_node.get_right)
+		end
+	end
+
+feature -- Public max
+
+	max : INTEGER
+	do
+		if attached Current.get_root as checked_root then
+			Result := solve_max(checked_root)
+		end
+	end
+
+
+feature -- Max value of the tree
+
+	solve_max(start : NODE) : INTEGER
+	Local
+		used_node : NODE
+	do
+		from
+			used_node := start
+		until
+			used_node.get_left = Void
+		loop
+			if attached used_node.get_right as checked_right then
+				used_node := checked_right
+			end
+		end
+		Result := used_node.get_value
+	end
+
 
 end --End of class
