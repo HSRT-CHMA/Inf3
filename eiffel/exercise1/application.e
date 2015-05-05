@@ -108,14 +108,14 @@ feature -- Methode for testing the max and sum -Methods
 
 	test_max_sum
 	do
-		print("%NTest on sum %N")
-		print(tree1.sum.out)
-		print("%NTest 2 on sum %N")
-		print(tree2.sum.out)
-		print("%N Test on max %N")
-		print(tree1.max.out)
-		print("%NTest 2 on max %N")
-		print(tree2.max.out)
+		--print("%NTest on sum %N")
+		--print(tree1.sum.out)
+		--print("%NTest 2 on sum %N")
+		--print(tree2.sum.out)
+		--print("%N Test on max %N")
+		--print(tree1.max.out)
+		--print("%NTest 2 on max %N")
+		--print(tree2.max.out)
 	end
 
 end
