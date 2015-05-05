@@ -9,7 +9,7 @@ class
 
 inherit
 	SOLUTION
-		--redefine end
+		--redefine solution_value end
 
 create
 	make

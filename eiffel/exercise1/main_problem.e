@@ -11,7 +11,7 @@ deferred class
 feature -- Problem has the "abstract" / deferred solve-Method ; every child should redefine this method
 
 	solve
-	do --deferred
+	deferred
 	end
 
 end

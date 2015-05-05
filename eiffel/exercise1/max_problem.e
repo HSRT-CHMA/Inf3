@@ -31,7 +31,6 @@ feature -- Access
 	-- The Sum_Problem knows a Sum_Solution-Object, which recives the solution_value
 	start_value : BINARYTREE
 	-- The Tree on which the operations are performed
-	solution_value : INTEGER
 
 feature -- Getter for Solution
 
@@ -60,11 +59,10 @@ feature -- Class redefines inherited method solve
 	solve
 	do
 		if attached start_value.get_root as checked_root then
-			--max_s.set_solution_value(max(checked_root)) -- ergebniss von max() in Solution speichern
-			-- Bisher nur so : ÄNDERN !!
-			solution_value := max(checked_root)
+			if attached get_solution as checked_solution then
+				checked_solution.set_solution_value (max(checked_root))
+			end
 		end
-
 	end
 
 
@@ -85,6 +83,5 @@ feature{NONE} -- Method to find Max value of the tree, can only be used be this 
 		end
 		Result := used_node.get_value
 	end
-
 
 end

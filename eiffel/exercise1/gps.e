@@ -32,7 +32,7 @@ feature -- Getter for the max_value of the Max_Solution-Object, which inherits S
 	get_max : INTEGER
 	do
 		if attached max_prob.get_solution as checked_solution then
-			--Result := checked_solution
+			Result := checked_solution.get_solution_value
 		end
 
 	end
