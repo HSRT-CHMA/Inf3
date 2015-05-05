@@ -19,7 +19,7 @@ feature {NONE} -- Initialization
 		do
 			print ("Hello, this is a programm to create binary trees !%N")
 			test_insert
-			--test_has
+			test_has
 			--test_delete
 			test_gps
 
@@ -32,15 +32,20 @@ feature --Access
 	tree2 : BINARYTREE
 	-- binary tree for testing
 	gps1 : GPS
-	-- general problem solver for testing
+	-- general problem solver for testing of tree1
+	gps2 : GPS
+	-- general problem solver for testing of tree2
 
 feature -- Method for testing the GPS and its sub-classes
 
 	test_gps
 	do
 		create gps1.make(tree1)
-		print("%N%N MAX : " + gps1.get_max.out)
-		print("%N%N SUM : " + gps1.get_sum.out)
+		print("%N%N tree1 MAX : " + gps1.get_max.out)
+		print("%N%N tree1 SUM : " + gps1.get_sum.out)
+		create gps2.make(tree2)
+		print("%N%N tree2 MAX : " + gps2.get_max.out)
+		print("%N%N tree2 SUM : " + gps2.get_sum.out)
 
 	end
 
@@ -61,7 +66,7 @@ feature -- Method creates 2 trees for testing and fills them with values
 		tree2.insert (15)
 		tree2.insert (80)
 		tree2.insert (-74)
-		tree2.insert (7)
+		tree2.insert (400)
 	end
 
 feature -- Method for testing the has-Method
@@ -77,14 +82,13 @@ feature -- Method for testing the has-Method
 		print(tree1.has(5)) --should be True
 		print("%N")
 		print(tree1.has(101).out) --should be True
-
 		--Tests on tree2
 		print("%N%N")
-		print(tree2.has(80)) --should be False
+		print(tree2.has(80)) --should be True
 		print("%N")
 		print(tree2.has(14)) --should be False
 		print("%N")
-		print(tree2.has(9)) --should be True
+		print(tree2.has(9)) --should be False
 		print("%N")
 		print(tree2.has(15)) --should be True
 	end

@@ -224,6 +224,4 @@ feature{NONE} -- "private" has(), indicated by Exportation to class NONE
 		end
 	end
 
-
-
 end --End of class

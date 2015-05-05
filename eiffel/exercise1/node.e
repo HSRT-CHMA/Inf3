@@ -15,7 +15,6 @@ feature {BINARYTREE} -- Initialization
 	make(node_value : INTEGER ; node_parent : detachable NODE)
 			-- Initialization for `Current'.
 		do
-			--print("%N New Node " + node_value.out)
 			set_value(node_value)
 			set_parent(node_parent)
 		end
