@@ -20,7 +20,6 @@ feature {GPS} -- Initialization
 
 	make(used_tree : BINARYTREE)
 		do
-			print("New SUM_Problem")
 			create sum_s.make
 			set_start_value(used_tree)
 			solve
@@ -33,15 +32,12 @@ feature -- Access
 	-- The Sum_Problem knows a Sum_Solution-Object, which recives the solution_value
 	start_value : BINARYTREE
 	-- The Tree on which the operations are performed
-	solution_value : INTEGER
 
 feature -- Getter for Solution
 
 	get_solution : detachable SUM_SOLUTION
 	do
-		if attached sum_s as checked_sum_s then
-			Result := checked_sum_s
-		end
+			Result := sum_s
 	end
 
 feature -- public Getter for start_value
@@ -63,10 +59,9 @@ feature -- Public sum-Method to find the sum of a given tree
 	solve
 	do
 		if attached start_value.get_root as checked_root then
-			--sum_s.set_solution_value(max(checked_root))
-			--get_solution.set_solution_values(sum(checked_root))
-			solution_value := sum(checked_root)
-			print("Sum-Problem : " + solution_value.out)
+			if attached get_solution as checked_solution then
+				checked_solution.set_solution_value (sum(checked_root))
+			end
 		end
 	end
 

@@ -78,7 +78,6 @@ feature -- Insert-Methode Sub
 			if attached Current.get_root as checked_root then
 				insertRec(new_value , checked_root)
 			end
-			print("%N Value " + new_value.out + " is added to binary tree")
 		end
 
 

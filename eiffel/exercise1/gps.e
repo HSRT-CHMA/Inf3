@@ -31,8 +31,8 @@ feature -- Getter for the max_value of the Max_Solution-Object, which inherits S
 
 	get_max : INTEGER
 	do
-		if attached max_prob as check_max then
-			--Result := check_max.get_solution.get_max_value
+		if attached max_prob.get_solution as checked_solution then
+			--Result := checked_solution
 		end
 
 	end
@@ -41,8 +41,8 @@ feature -- Getter for the sum_value of the Sum_Solution-Object, which inherits S
 
 	get_sum : INTEGER
 	do
-		if attached sum_prob as check_sum then
-			--Result := check_sum.get_solution.get_sum_value
+		if attached sum_prob.get_solution as checked_solution then
+			Result := checked_solution.get_solution_value
 		end
 	end
 

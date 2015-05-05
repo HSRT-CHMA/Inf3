@@ -19,7 +19,6 @@ feature {GPS} -- Initialization
 	make(used_tree : BINARYTREE)
 			-- Initialization for `Current'.
 		do
-			print("New MAX_Problem")
 			create max_s.make
 			set_start_value(used_tree)
 			solve
@@ -38,9 +37,7 @@ feature -- Getter for Solution
 
 	get_solution : detachable MAX_SOLUTION
 	do
-		if attached max_s as checked_max_s then
-			Result := checked_max_s
-		end
+		Result := max_s
 	end
 
 feature -- public Getter for start_value
@@ -66,7 +63,6 @@ feature -- Class redefines inherited method solve
 			--max_s.set_solution_value(max(checked_root)) -- ergebniss von max() in Solution speichern
 			-- Bisher nur so : ÄNDERN !!
 			solution_value := max(checked_root)
-			print("Max-Problem : "  + solution_value.out)
 		end
 
 	end

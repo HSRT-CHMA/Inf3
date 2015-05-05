@@ -21,8 +21,8 @@ feature {NONE} -- Initialization
 			test_insert
 			--test_has
 			--test_delete
-			--test_max_sum
 			test_gps
+
 		end
 
 feature --Access
@@ -39,7 +39,9 @@ feature -- Method for testing the GPS and its sub-classes
 	test_gps
 	do
 		create gps1.make(tree1)
-		
+		print("%N%N MAX : " + gps1.get_max.out)
+		print("%N%N SUM : " + gps1.get_sum.out)
+
 	end
 
 
@@ -103,20 +105,6 @@ feature -- Methode for testing the delete-Method
 		print("Is 8 in tree ? " + tree2.has (8).out) --should be false
 		print("%N")
 		tree2.delete(1) --should be false
-	end
-
-feature -- Methode for testing the max and sum -Methods
-
-	test_max_sum
-	do
-		--print("%NTest on sum %N")
-		--print(tree1.sum.out)
-		--print("%NTest 2 on sum %N")
-		--print(tree2.sum.out)
-		--print("%N Test on max %N")
-		--print(tree1.max.out)
-		--print("%NTest 2 on max %N")
-		--print(tree2.max.out)
 	end
 
 end

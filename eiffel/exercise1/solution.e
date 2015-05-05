@@ -7,16 +7,15 @@ note
 deferred class
 	SOLUTION
 
-feature --Access
+--feature -- Setter for the solution_value,
 
-	solution_value : INTEGER
-	--The value of the Solution that can be read be GPS
+	--set_solution_value(new_value : INTEGER)
+	--do --deferred
+		--solution_value := new_value
+	--end
 
-feature -- Setter for the solution_value	
+--feature -- the value that contains the solution of the given object
 
-	set_solution_value(new_value : INTEGER)
-	do
-		solution_value := new_value
-	end
+	--solution_value : INTEGER
 
 end

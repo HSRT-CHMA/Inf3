@@ -4,9 +4,9 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 
-deferred
-	class
+deferred class
 	MAIN_PROBLEM
+	-- The class is "abstract" and should offer methods for child-problem-classes
 
 feature -- Problem has the "abstract" / deferred solve-Method ; every child should redefine this method
 
