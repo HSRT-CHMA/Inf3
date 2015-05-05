@@ -10,12 +10,15 @@ class
 create
 	make
 
-feature {NONE} -- Initialization
+feature{NONE} -- Initialization
 
 	make(used_tree : BINARYTREE)
 			-- Initialization for `Current'.
 		do
-			print("%NNew GPS !")
+			if attached used_tree.get_root as checked_root then
+				print("%NNew GPS !")
+			end
+
 		end
 
 end
