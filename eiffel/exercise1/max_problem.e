@@ -22,6 +22,7 @@ feature {GPS} -- Initialization
 			print("New MAX_Problem")
 			create max_s.make
 			set_start_value(used_tree)
+			solve
 
 		end
 
@@ -49,7 +50,7 @@ feature{NONE} -- Method to find Max value of the tree, can only be used be this 
 		from
 			used_node := start
 		until
-			used_node.get_left = Void
+			used_node.get_right = Void
 		loop
 			if attached used_node.get_right as checked_right then
 				used_node := checked_right

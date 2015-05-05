@@ -22,16 +22,19 @@ feature{NONE} -- Initialization
 
 feature --Access
 
-	max_prob : MAX_PROBLEM
+	max_prob : detachable MAX_PROBLEM
 	-- GPS creates a MAX_PROBLEM Object with given tree
-	sum_prob : SUM_PROBLEM
+	sum_prob : detachable SUM_PROBLEM
 	-- GPS creates a SUM_PROBLEM Object with given tree
 
 feature -- Getter for the max_value of the Max_Solution-Object, which inherits SOLUTION,thereby redefines the get_solution-Method
 
 	get_max : INTEGER
 	do
-		--Result := max_prob.get_solution.get_max_value
+		if attached max_prob as check_max then
+			Result := check_max.get_solution.get_max_value
+		end
+
 	end
 
 feature -- Getter for the sum_value of the Sum_Solution-Object, which inherits SOLUTION,thereby redefines the get_solution-Method

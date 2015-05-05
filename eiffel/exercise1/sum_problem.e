@@ -10,7 +10,7 @@ class
 inherit
 	MAIN_PROBLEM
 		redefine
-			solve , get_start_value
+			solve , start_value
 		end
 
 create

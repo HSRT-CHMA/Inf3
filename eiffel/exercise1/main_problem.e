@@ -10,21 +10,22 @@ deferred class
 feature -- Getter for Solution
 
 	get_solution : detachable SOLUTION
-	deferred
-		--Result := present_solution
+	do -- deferred
+		Result := present_solution
 	end
 
 feature -- Getter for start_value
 
 	get_start_value : INTEGER
-	deferred
+	do -- deferred
+		Result := start_value
 	end
 
 feature -- Access
 
-	--deferred present_solution : detachable SOLUTION
+	present_solution : detachable SOLUTION
 	-- The Solution-Object that the given Problem creates
-	--deferred start_value : BINARYTREE
+	start_value : BINARYTREE
 	-- The tree on which the operations are performed
 
 
