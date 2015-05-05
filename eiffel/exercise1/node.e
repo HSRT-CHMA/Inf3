@@ -30,23 +30,25 @@ feature --Variables
 	parent : detachable NODE
 	--The parent-node of the node; can be Void when only root exist
 
-feature{BINARYTREE} --Getter/Setter value
+feature --public Getter for value of the node
 	get_value : INTEGER
 	do
 		Result := value
 	end
 
+feature{BINARYTREE} -- Setter for value of the node
 	set_value(node_value : INTEGER)
 	do
 		value := node_value
 	end
 
-feature{BINARYTREE} --Getter/Setter left	
+feature --public Getter left	
 	get_left : detachable NODE
 	do
 		Result := left
 	end
 
+feature{BINARYTREE} -- private Setter left
 	set_left(node_left : detachable NODE)
 	do
 		--if node_left /= Void then
@@ -58,12 +60,13 @@ feature{BINARYTREE} --Getter/Setter left
 
 	end
 
-feature{BINARYTREE} --Getter/Setter rigth	
+feature --public Getter right	
 	get_right : detachable NODE
 	do
 		Result := right
 	end
 
+feature{BINARYTREE} --private Setter right
 	set_right(node_right : detachable NODE)
 	do
 		if node_right /= Void then
@@ -74,11 +77,13 @@ feature{BINARYTREE} --Getter/Setter rigth
 
 	end
 
-feature{BINARYTREE} --Getter/Setter parent
+feature --public Getter parent
 	get_parent : detachable NODE
 	do
 		Result := parent
 	end
+
+feature{BINARYTREE} --private Setter parent
 
 	set_parent(node_parent : detachable NODE)
 	do

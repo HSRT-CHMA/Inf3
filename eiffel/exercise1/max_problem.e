@@ -26,16 +26,47 @@ feature {GPS} -- Initialization
 
 		end
 
-feature --Access
+feature -- Access
 
 	max_s : detachable MAX_SOLUTION
+	-- The Sum_Problem knows a Sum_Solution-Object, which recives the solution_value
+	start_value : BINARYTREE
+	-- The Tree on which the operations are performed
+	solution_value : INTEGER
+
+feature -- Getter for Solution
+
+	get_solution : detachable MAX_SOLUTION
+	do
+		if attached max_s as checked_max_s then
+			Result := checked_max_s
+		end
+	end
+
+feature -- public Getter for start_value
+
+	get_start_value : BINARYTREE
+	do
+		Result := start_value
+	end
+
+feature{NONE} --private Setter for start_value
+
+	set_start_value(used_tree : BINARYTREE)
+	do
+		start_value := used_tree
+	end
+
 
 feature -- Class redefines inherited method solve
 
 	solve
 	do
-		if attached used_tree.get_root as checked_root then
-			max_s.set_solution_value(max(checked_root))
+		if attached start_value.get_root as checked_root then
+			--max_s.set_solution_value(max(checked_root)) -- ergebniss von max() in Solution speichern
+			-- Bisher nur so : ÄNDERN !!
+			solution_value := max(checked_root)
+			print("Max-Problem : "  + solution_value.out)
 		end
 
 	end
@@ -58,5 +89,6 @@ feature{NONE} -- Method to find Max value of the tree, can only be used be this 
 		end
 		Result := used_node.get_value
 	end
+
 
 end

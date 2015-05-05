@@ -19,9 +19,9 @@ feature {NONE} -- Initialization
 		do
 			print ("Hello, this is a programm to create binary trees !%N")
 			test_insert
-			test_has
+			--test_has
 			--test_delete
-			test_max_sum
+			--test_max_sum
 			test_gps
 		end
 
@@ -39,6 +39,7 @@ feature -- Method for testing the GPS and its sub-classes
 	test_gps
 	do
 		create gps1.make(tree1)
+		
 	end
 
 
