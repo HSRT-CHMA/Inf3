@@ -1,10 +1,8 @@
-#include <iostream>
-#include "Tree.h"
-#include "Node.h"
 
-using namespace std;
+#include "Print.h"
 
-int main(void){
-	Tree t();
-	
+int main() {
+	Print tree;
+	tree.start();
+	return 0;
 }

@@ -1,27 +1,29 @@
-
 #ifndef NODE_H
 #define NODE_H
 
-class Node{
-
+class Node {
 private:
-	Node* left;
 	Node* right;
+	Node* left;
 	Node* parent;
-	int value;
+	int data;
 
 public:
-	Node(int value, Node* parent);
-	Node(int value);
-	void setValue(int value);
-	void setLeft(Node* left);
+	//empty node
+	Node();
+	//node with data
+	Node(int data);
 	void setRight(Node* right);
+	void setLeft(Node* left);
 	void setParent(Node* parent);
-
-	Node* getLeft();
+	void setData(int data);
 	Node* getRight();
-	int getValue();
+	Node* getLeft();
 	Node* getParent();
-};
+	int getData();
+	bool search(int data);
+}; // end Node class
+
+
 
 #endif

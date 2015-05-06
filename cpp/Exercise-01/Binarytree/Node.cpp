@@ -1,54 +1,44 @@
 #include <iostream>
 #include "Node.h"
 
-using namespace std;
 
+Node::Node(){
+}
+//node with data
+Node::Node(int data){
+	this->parent = nullptr;
+	this->right = nullptr;
+	this->left = nullptr;
+	this->setData(data);
+}
 
-	/* Constructor for Node with int and Node values */
-	Node::Node(int value, Node* parent){
-		this->value = value;
-		setLeft(left);
-		setRight(right);
-		setParent(parent);
-	}
+void Node::setRight(Node* right){
+	this->right = right;
+}
+void Node::setLeft(Node* left){
+	this->left = left;
+}
 
-	/* Constructor for Node with int value */
-	Node::Node(int value){
-		this->value = value;
-		setLeft(left);
-		setRight(right);
-	}
+void Node::setParent(Node* parent){
+	this->parent = parent;
+}
 
-	/* Setter for Node Class*/
-	void Node::setValue(int value){
-		this->value = value;
-	}
+void Node::setData(int data){
+	this->data = data;
+}
 
-	void Node::setLeft(Node* left){
-		this->left = left;
-	}
+Node* Node::getRight(){
+	return right;
+}
 
-	void Node::setRight(Node* right){
-		this->right = right;
-	}
+Node* Node::getLeft(){
+	return left;
+}
 
-	void Node::setParent(Node* parent){
-		this->parent = parent;
-	}
+Node* Node::getParent(){
+	return parent;
+}
 
-	/* Getter for Node*/
-	Node* Node::getLeft(){
-		return left;
-	}
-
-	Node* Node::getRight(){
-		return right;
-	}
-
-	int Node::getValue(){
-		return value;
-	}
-
-	Node* Node::getParent(){
-		return parent;
-	}
+int Node::getData(){
+	return data;
+}

@@ -1,27 +1,28 @@
 #ifndef TREE_H
 #define TREE_H
 
-class Tree{
+#include "Node.h"
 
+class Tree {
 private:
-	
-	void insertValue(Node, int);
-	Node* hasValueRecursion(Node, int);
-	bool deleteValueRecursion(Node, int, Node, bool);
-	void underParent(Node, bool, Node);
-	string inOrder(Node);
+	Node* root;
+	void insertNodeRecursion(int data, Node* NewNode);
+	bool removeRecursion(Node* node, int data, Node* parent, bool leftFromParent);
+	void underParent(Node* parent, bool left, Node* node);
 
 public:
-	Node* root();
-	Tree(int);
-	void insert(int);
-	bool has(int);
-	bool deleteValue(int);
-	int getSmallest();
-	Node* getSmallest(Node* start);
-	int getBiggest();
-	Node* getBiggest(Node* start);
-	void inOrderOutPut(Node*);
-};
+	Tree();
+	Node* getRoot();
+	int getSmallestData();
+	Node* getSmallestNode(Node* start);
+	int getHighestValue();
+	Node* getHighestNode(Node* start);
+	void setRoot(Node* root);
+	void insert(int data);
+	bool remove(int data);
+	bool search(int data);
+	void inOrder(Node* node);
+
+}; // end Binary.H
 
 #endif
