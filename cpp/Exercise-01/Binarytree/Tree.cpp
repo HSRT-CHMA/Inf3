@@ -1,13 +1,17 @@
+#include <stdio.h>
+#include <assert.h>
 #include "Tree.h"
 #include <iostream>
 
+
 using namespace std;
 	
-Tree::Tree(void){
+Tree::Tree(){
 	root = NULL;
 }
 
-Node* Tree::getRoot(void){
+Node* Tree::getRoot(){
+	assert(root != NULL);
 	return root;
 }
 
@@ -59,7 +63,7 @@ Node* Tree::getHighestNode(Node*start){
 	}
 }
 
-void Tree::insert(int data) {
+void Tree::insert(int data){
 	//if empty assign to node
 	if (root == NULL) {
 		root = new Node(data);
@@ -70,7 +74,7 @@ void Tree::insert(int data) {
 	}
 }
 
-void Tree::insertNodeRecursion(int data, Node* NewNode) {
+void Tree::insertNodeRecursion(int data, Node* NewNode){
 	if (data < NewNode->getData()) {
 		if (NewNode->getLeft() != 0) {
 			//if left not empty keep looking
@@ -100,71 +104,71 @@ bool Tree::remove(int data){
 }
 
 bool Tree::removeRecursion(Node* node, int data, Node*parent, bool leftFromParent){
-	if (node == NULL){
+		if (node == NULL){
+			return false;
+		}
+		if ((data == node->getData())){
+			if ((node->getLeft() == NULL) && (node->getRight() == NULL)){
+				if (parent == NULL){
+					root = NULL;
+				}
+				else{
+					underParent(parent, leftFromParent, NULL);
+					//printf("%i", node->getData());
+				}
+			}
+			if ((node->getLeft() == NULL) && (node->getRight() != NULL)){
+				if (root == NULL){
+					root = node->getRight();
+				}
+				else{
+					underParent(parent, leftFromParent, node->getRight());
+					parent->setParent(node);
+					//printf("%i", node->getData());
+				}
+			}
+			if ((node->getLeft() != NULL) && (node->getRight() == NULL)){
+				if (root == NULL){
+					root = node->getLeft();
+				}
+				else{
+					underParent(parent, leftFromParent, node->getLeft());
+					parent->setParent(node);
+				}
+			}
+			if ((node->getLeft() != NULL) && (node->getRight() != NULL)){
+				Node*newNode = getHighestNode(node->getLeft());
+				remove(newNode->getData());
+				if (parent == NULL){
+					newNode->setLeft(root->getLeft());
+					newNode->setRight(root->getRight());
+					root = newNode;
+				}
+				else{
+					newNode->setLeft(node->getLeft());
+					newNode->setRight(node->getRight());
+					underParent(parent, leftFromParent, newNode);
+					parent->setParent(newNode);
+				}
+			}
+			removeRecursion(root, data, NULL, false);
+			return true;
+		}
+		if ((data < node->getData())){
+			if (node->getLeft() == NULL){
+				return false;
+			}
+			return removeRecursion(node->getLeft(), data, node, true);
+		}
+		if (data > node->getData()){
+			if (node->getRight() == NULL){
+				return false;
+			}
+			else{
+				return removeRecursion(node->getRight(), data, node, false);
+			}
+		}
 		return false;
-	}
-	if ((data == node->getData())){
-		if ((node->getLeft() == NULL) && (node->getRight() == NULL)){
-			if (parent == NULL){
-				root = NULL;
-			}
-			else{
-				underParent(parent, leftFromParent, NULL);
-				//printf("%i", node->getData());
-			}
-		}
-		if ((node->getLeft() == NULL) && (node->getRight() != NULL)){
-			if (root == NULL){
-				root = node->getRight();
-			}
-			else{
-				underParent(parent, leftFromParent, node->getRight());
-				parent->setParent(node);
-				//printf("%i", node->getData());
-			}
-		}
-		if ((node->getLeft() != NULL) && (node->getRight() == NULL)){
-			if (root == NULL){
-				root = node->getLeft();
-			}
-			else{
-				underParent(parent, leftFromParent, node->getLeft());
-				parent->setParent(node);
-			}
-		}
-		if ((node->getLeft() != NULL) && (node->getRight() != NULL)){
-			Node*newNode = getHighestNode(node->getLeft());
-			remove(newNode->getData());
-			if (parent == NULL){
-				newNode->setLeft(root->getLeft());
-				newNode->setRight(root->getRight());
-				root = newNode;
-			}
-			else{
-				newNode->setLeft(node->getLeft());
-				newNode->setRight(node->getRight());
-				underParent(parent, leftFromParent, newNode);
-				parent->setParent(newNode);
-			}
-		}
-		removeRecursion(root, data, NULL, false);
-		return true;
-	}
-	if ((data < node->getData())){
-		if (node->getLeft() == NULL){
-			return false;
-		}
-		return removeRecursion(node->getLeft(), data, node, true);
-	}
-	if (data > node->getData()){
-		if (node->getRight() == NULL){
-			return false;
-		}
-		else{
-			return removeRecursion(node->getRight(), data, node, false);
-		}
-	}
-	return false;
 }
 
 void Tree::underParent(Node* parent, bool left, Node* node){

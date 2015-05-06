@@ -1,0 +1,103 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\exercise1\com.python.pydev.analysis\v2_indexcache
+PythonExercise1.Nodes|1430855273000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\Nodes.py
+PythonExercise1.Main|1430855267000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\Main.py
+PythonExercise1.MaxSolution|1430855271000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\MaxSolution.py
+PythonExercise1.SumProblem|1430855276000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\SumProblem.py
+PythonExercise1.MaxProblem|1430855268000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\MaxProblem.py
+PythonExercise1.__init__|1430758022000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\__init__.py
+PythonExercise1.SumSolution|1430855278000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\SumSolution.py
+PythonExercise1.GPS|1430855265000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\GPS.py
+PythonExercise1.DivisibleProblem|1430855264000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\DivisibleProblem.py
+PythonExercise1.BinaryTree|1430855262000|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\exercise1\PythonExercise1\BinaryTree.py
+-- END DISKCACHE
+-- START DICTIONARY
+41
+32=SumSolution.sumSolution
+41=SumSolution
+4=PythonExercise1.MaxProblem
+29=BinaryTree.__root
+2=PythonExercise1.DivisibleProblem
+14=BinaryTree.inOrder
+34=MaxProblem.isDirectlySolvable
+17=SumProblem.part
+35=DivisibleProblem.solve
+33=Nodes.value
+7=PythonExercise1.Nodes
+6=PythonExercise1.Main
+30=MaxProblem.__init__
+23=MaxProblem.tree
+27=BinaryTree.__delOneChild
+3=PythonExercise1.GPS
+15=BinaryTree.__init__
+40=MaxSolution
+8=PythonExercise1.SumSolution
+10=BinaryTree
+25=Nodes.parent
+1=PythonExercise1.BinaryTree
+37=SumProblem.isDirectlySolvable
+28=BinaryTree.__delNoChild
+12=MaxProblem
+21=SumProblem.tree
+5=PythonExercise1.MaxSolution
+9=PythonExercise1.SumProblem
+26=Nodes.right
+36=DivisibleProblem
+24=BinaryTree.__outString
+16=BinaryTree.insert
+20=MaxSolution.maxSolution
+11=SumProblem
+39=Nodes.__init__
+38=GPS
+22=MaxProblem.part
+13=Nodes
+31=SumProblem.__init__
+18=DivisibleProblem.directlySolvable
+19=Nodes.left
+-- END DICTIONARY
+-- START TREE 1
+7
+bin|1|BinaryTree!9@
+div|1|DivisibleProblem!17@
+gps|1|GPS!25@
+max|2|MaxProblem!33@MaxSolution!41@
+myt|1|myTree!51@
+nod|1|Nodes!57@
+sum|2|SumSolution!65@SumProblem!73@
+-- END TREE
+-- START TREE 2
+32
+__d|5|__deleteRec!10&10@__delTwoChild!10&10@__delOneChild!10&10@__delNoChild!10&10@__delNode!10&10@
+__g|1|__getSmallest!10&10@
+__i|6|__init__!11&74@__init__!10&10@__insertRec!10&10@__inOrderRec!10&10@__init__!12&34@__init__!13&58@
+__o|3|__outString!14&11@__outString!15&11@__outString!10&10@
+__r|3|__root!10&10@__root!16&11@__root!15&11@
+_di|2|_directSolvable!17&75@_directlySolvable!18&19@
+_le|1|_left!19&59@
+_ma|1|_maxSolution!20&43@
+_no|3|_node!21&75@_node!22&35@_node!23&35@
+_ou|1|_outString!24&11@
+_pa|1|_parent!25&59@
+_ri|1|_right!26&59@
+_ro|3|_root!27&11@_root!28&11@_root!29&11@
+_so|2|_solution!30&35@_solution!31&75@
+_su|2|_sumSolution!32&67@_sum!21&75@
+_tr|2|_tree!21&75@_tree!23&35@
+_va|1|_value!33&59@
+del|1|delete!10&10@
+dir|4|directlySolvable!34&35@directlySolvable!35&19@directlySolvable!36&18@directlySolvable!37&75@
+get|4|getSolution!11&74@getRootNode!10&10@getSolution!12&34@getSolution!38&26@
+has|1|has!10&10@
+ino|1|inOrder!10&10@
+ins|1|insert!10&10@
+isd|3|isDirectlySolvable!36&18@isDirectlySolvable!11&74@isDirectlySolvable!12&34@
+lef|2|left!39&59@left!13&58@
+max|1|maxSolution!40&42@
+par|5|part!12&34@part!11&74@parent!39&59@part!36&18@parent!13&58@
+rig|2|right!13&58@right!39&59@
+sol|1|solve!36&18@
+sum|2|sumRec!11&74@sumSolution!41&66@
+tre|2|tree!12&34@tree!11&74@
+val|2|value!13&58@value!39&59@
+-- END TREE
