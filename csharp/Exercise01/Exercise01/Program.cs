@@ -61,7 +61,7 @@ namespace Exercise01
                 /*
                  * Creating test for the General Problem Solver
                  */
-                GPS pSolver = new GPS(tree);
+                //GPS pSolver = new GPS(tree);
             }
         }
     }

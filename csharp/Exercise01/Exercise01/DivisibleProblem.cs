@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Exercise01
 {
-    class DivisibleProblem : GPS {
+    class DivisibleProblem {
         public Boolean isDirectlySolvable(){
             return false;
         }
 
-        public void part()
+       public void part()
         {
 
         }
