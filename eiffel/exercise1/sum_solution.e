@@ -27,7 +27,7 @@ feature -- Acces
 	solution_value : INTEGER
 	-- contains the value of the solution
 
-feature{GPS} -- Getter for solution_value (public but not sure about that)
+feature{GPS} -- Getter for solution_value
 
 	get_solution_value : INTEGER
 	do

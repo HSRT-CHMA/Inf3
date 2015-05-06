@@ -10,46 +10,47 @@ class
 create
 	make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialization / Constructor ; gets the value that serves as root-value
 
 	make(tree_value : INTEGER)
-			-- Initialization for `Current'.
 		do
-			print("%N New Tree !!")
+			print("%N A new BinaryTree has been created")
 			create root.make(tree_value, Void)
 		end
 
 feature --Access
 
-	first_node : detachable NODE
-	-- Gets created by a new tree, used in insert()- Method
 	root : detachable NODE
 	-- Becomes the root of the new tree
+	first_node : detachable NODE
+	-- Gets created by a new tree, used in insert()- Method
 	found : BOOLEAN
-	--Value is used in has()-Function
+	--Value is used in has()-Function to illustrate outcome
 	res_node : detachable NODE
 	-- Result-Node to be used in has()-Method
 	delete_node : detachable NODE
 	-- Node to be used in delete() and delete_rec
 	tmp_node : detachable NODE
 	--Node to be used in delete_rec()
-	sum_value : INTEGER
 
-feature --Getter root
+feature --public Getter for root
 	get_root : detachable NODE
 	do
-		Result := root --Result is built-in and used instead of "return"
+		Result := root
+		--Result is built-in and used instead of "return"
+		ensure
+			correct_result :
 	end
 
 
 
-feature{NONE} -- Insert-Method (duplicates possible)
+feature{NONE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
 
 	insertRec(new_value : INTEGER; used_node : NODE)
 
 		do
 			if new_value >= used_node.get_value then
-				--Right
+				--Add node on the Right Side
 				if attached used_node.get_right as checked_right then
 					-- Line does the follwing : if used_node.get_right is "attached" (equals to "/= Void")
 					-- then a new object with name after "as", here "checked_rigth", is created and can be used because it is proven
@@ -61,17 +62,18 @@ feature{NONE} -- Insert-Method (duplicates possible)
 					used_node.set_right(first_node)
 				end
 			else
-				--Left
-				if attached used_node.get_left as checked_left then -- x /= Void
+				--Add node on the Left side
+				if attached used_node.get_left as checked_left then -- to be used like (x /= Void)
 					insertRec(new_value, checked_left)
 				else
-					create first_node.make(new_value, used_node) -- x = Void
+					create first_node.make(new_value, used_node) -- to be used like (x = Void)
 					used_node.set_left(first_node)
 				end
 			end
 		end
 
-feature -- Insert-Methode Sub
+
+feature -- public Insert-Methode
 
 	insert(new_value : INTEGER)
 		do
@@ -223,5 +225,10 @@ feature{NONE} -- "private" has(), indicated by Exportation to class NONE
 			end
 		end
 	end
+
+
+
+invariant
+	is_node_valid : current.get_root.get_left /= current.get_root.get_right
 
 end --End of class

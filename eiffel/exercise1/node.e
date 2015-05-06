@@ -6,11 +6,12 @@ note
 
 class
 	NODE
+	-- This class organises the Node-Objects of a binary tree
 
 create
 	make
 
-feature {BINARYTREE} -- Initialization
+feature {BINARYTREE} -- Initialization/ Constructor ; sets the given node-value and the given parent-node
 
 	make(node_value : INTEGER ; node_parent : detachable NODE)
 			-- Initialization for `Current'.
@@ -18,7 +19,8 @@ feature {BINARYTREE} -- Initialization
 			set_value(node_value)
 			set_parent(node_parent)
 		end
-feature --Variables
+
+feature --Access
 
 	value : INTEGER
 	--Value of the given node; is initialised with default value
@@ -29,68 +31,73 @@ feature --Variables
 	parent : detachable NODE
 	--The parent-node of the node; can be Void when only root exist
 
-feature --public Getter for value of the node
+feature -- public Getter for value of the node
 	get_value : INTEGER
 	do
 		Result := value
+		ensure
+			correct_value : Result = value
 	end
 
-feature{BINARYTREE} -- Setter for value of the node
+feature{BINARYTREE} -- Setter for value of the node; only visible to its tree
 	set_value(node_value : INTEGER)
 	do
 		value := node_value
+		ensure
+			correct_value : value = node_value
 	end
 
-feature --public Getter left	
+feature --public Getter for left-node	
 	get_left : detachable NODE
 	do
 		Result := left
+		ensure
+			correct_result : Result = left
 	end
 
-feature{BINARYTREE} -- private Setter left
+feature{BINARYTREE} -- Setter for the left-node, only visible to its tree
 	set_left(node_left : detachable NODE)
 	do
-		--if node_left /= Void then
-			--left := node_left
-		--else
-			--left := Void
-		--end
 		left := node_left
-
+		ensure
+			correct_value : left = node_left
 	end
 
-feature --public Getter right	
+feature --public Getter for the right-node	
 	get_right : detachable NODE
 	do
 		Result := right
+		ensure
+			correct_result : Result = right
 	end
 
-feature{BINARYTREE} --private Setter right
+feature{BINARYTREE} --Setter for right-node
 	set_right(node_right : detachable NODE)
 	do
-		if node_right /= Void then
-			right := node_right
-		else
-			right := Void
-		end
-
+		right := node_right
+		ensure
+			correct_value : right = node_right
 	end
 
-feature --public Getter parent
+feature --public Getter for parent-node
 	get_parent : detachable NODE
 	do
 		Result := parent
+		ensure
+			correct_result : Result = parent
 	end
 
-feature{BINARYTREE} --private Setter parent
+feature{BINARYTREE} --Setter for parent-node ; only visible to its tree
 
 	set_parent(node_parent : detachable NODE)
 	do
-		if node_parent /= Void then -- equal to attached node_parent
-			parent := node_parent
-		else
-			parent := Void
-		end
+		parent := node_parent
+		ensure
+			correct_value : parent = node_parent
 	end
+
+invariant
+	valid_value : value.abs >= 0
+	-- if the absolut value is greater or equal than zero; the value is valid
 
 end
