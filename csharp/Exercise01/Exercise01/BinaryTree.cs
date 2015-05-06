@@ -37,7 +37,9 @@ namespace Exercise01{
              */
             public BinaryTree(int value)
             {
+                Contract.Assert(value > 0);
                 root = new Node(value, null);
+                Contract.Assert(root.GetValue() > 0);
             }
 
             /*
@@ -179,7 +181,7 @@ namespace Exercise01{
                  */
                 if (node == null)
                 {
-                    result = null;
+                    Console.WriteLine("Value doesn't exist");
                 } 
                 
                 /*
@@ -195,11 +197,7 @@ namespace Exercise01{
                  */
                 if (value.CompareTo(node.GetValue()) < 0)
                 {
-                    if (node.GetLeft() == null)
-                    {
-                        result = null;
-                    }
-                    else
+                    if (node.GetLeft() != null)
                     {
                         result = WhereIsValue(node.GetLeft(), value);
                     }
@@ -210,23 +208,30 @@ namespace Exercise01{
                  */
                 if (value.CompareTo(node.GetValue()) > 0)
                 {
-                    if (node.GetRight() == null)
-                    {
-                        result = null;
-                    }
-                    else
+                    if (node.GetRight() != null)
                     {
                         result = WhereIsValue(node.GetRight(), value);
                     }
                 }
 
-                Contract.Ensures(result.GetValue() == value);
+                /*
+                 * CHMA:
+                 * Can not be right ... or?
+                 */
+                //Contract.Ensures(result.GetValue() == value);
                 return result;
             }
 
 
             /*
-             * Method redirects to DeleteValue()
+             * Method deletes Value -> Reference to Null
+             * Of the matching Node from the BinaryTree
+             * This Method Uses the WhereIsValue Method to 
+             * identify the right Node. If this is null nothing
+             * will be done by this method
+             * @param value: Value which should be deleted
+             * @param return boolean:   false if nothing was removed
+             *                          true if the reference was removed
              */
             public Boolean Delete(int value)
             {
@@ -241,11 +246,12 @@ namespace Exercise01{
                  * Check if the value is in the BinaryTree
                  */
                 if(deleteValue != null){
-                    
+
                     /*
                      * Check if there is a Right Node and no Left Node
                      */
                     if(deleteValue.GetRight() != null && deleteValue.GetLeft() == null){
+                        Console.WriteLine("Fixing Reference of Parent from the Right Node");
                         deleteValue.GetRight().SetParent(deleteValue.GetParent());
                     }
 
@@ -253,6 +259,7 @@ namespace Exercise01{
                      * Check if there is a Left Node and no Right Node
                      */
                     if(deleteValue.GetRight() == null && deleteValue.GetLeft() != null){
+                        Console.WriteLine("Fixing Reference of Parent from the Left Node");
                         deleteValue.GetLeft().SetParent(deleteValue.GetParent());
                     }
 
@@ -262,6 +269,7 @@ namespace Exercise01{
                      * Parent of Right Node is set to Left Node
                      */
                     if(deleteValue.GetRight() != null && deleteValue.GetLeft() != null){
+                        Console.WriteLine("Fixing Reference of Parent from the Left and Right Node");
                         deleteValue.GetLeft().SetParent(deleteValue.GetParent());
                         deleteValue.GetRight().SetParent(deleteValue.GetLeft());
                     }
@@ -270,6 +278,7 @@ namespace Exercise01{
                      * Removing Reference of the Object -> Delete
                      * Set the Boolean true -> return parameter
                      */
+                   Console.WriteLine("Deleting Value: " + value);
                    deleteValue = null;
                    delete = true;
                 }
@@ -277,20 +286,25 @@ namespace Exercise01{
             }
 
             /*
-             * Delete All Method is running for the whole time that Delete Method is true
+             * Delete All Method is running for the whole time 
+             * that Delete Method is true. So you can define by 
+             * yourself if you want to delete the first node object 
+             * of the duplicate or every matching node with the same
+             * value (duplicate)
              */
             public void DeleteAll(int value)
             {
                 int i=1;
                 while(Delete(value)){
-                    Console.WriteLine(i+ ". Value =" +value+ "was deleted.");
+                    Console.WriteLine(i+ ". Duplicate Value =" +value+ "of the BinaryTree with the root" +root.GetValue()+ "was deleted.");
                 }
             }
 
 
             /*
              * Method returns the Node which is the last on the left side, 
-             * so the one with the smallest value (if added correctly)
+             * so the one with the smallest value (if added correctly).
+             * For the unsorted BinaryTree there is now method implemented yet.
              */
             private Node GetSmallest(Node smallestValue)
             {
@@ -315,11 +329,12 @@ namespace Exercise01{
             {
                 return GetSmallest(root);
             }
+
             /*
             * Method returns the Node which is the last on the rigth side, 
-            * so the one with the biggest value (if added correctly)
+            * so the one with the biggest value (if added correctly).
+             * For the unsorted BinaryTree there is now method implemented yet.
             */
-
             private Node GetBiggest(Node biggestValue)
             {
                 if (biggestValue != null)
