@@ -277,6 +277,18 @@ namespace Exercise01{
             }
 
             /*
+             * Delete All Method is running for the whole time that Delete Method is true
+             */
+            public void DeleteAll(int value)
+            {
+                int i=1;
+                while(Delete(value)){
+                    Console.WriteLine(i+ ". Value =" +value+ "was deleted.");
+                }
+            }
+
+
+            /*
              * Method returns the Node which is the last on the left side, 
              * so the one with the smallest value (if added correctly)
              */

@@ -44,10 +44,14 @@
     <Compile Include="BinaryTree.cs" />
     <Compile Include="DivisibleProblem.cs" />
     <Compile Include="GPS.cs" />
+    <Compile Include="MaxProblem.cs" />
+    <Compile Include="MaxSolution.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solution.cs" />
+    <Compile Include="SumProblem.cs" />
+    <Compile Include="SumSolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace Exercise01
 {
-    class DivisibleProblem {
+    class DivisibleProblem : GPS {
         public Boolean isDirectlySolvable(){
             return false;
+        }
+
+        public void part()
+        {
+
+        }
+
+        public void solve()
+        {
+
         }
     }
 }

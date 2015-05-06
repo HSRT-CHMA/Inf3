@@ -41,7 +41,7 @@ namespace Exercise01
                  * Test of Delete Method for the Value 5
                  * Has Method should now be false
                  */
-                Console.WriteLine("   " + tree.Delete(5));
+                tree.DeleteAll(5);
                 Console.WriteLine("   " + tree.HasValue(5));
 
                 /*
