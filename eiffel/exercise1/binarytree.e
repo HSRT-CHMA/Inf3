@@ -75,6 +75,8 @@ feature{BINARYTREE} -- private Insert-Method (duplicates possible) which add the
 					used_node.set_left(first_node)
 				end
 			end
+			ensure
+				current.has (new_value)
 		end
 
 
@@ -183,12 +185,16 @@ feature --"Public" Delete-Method, redirects to deleteRec and prints result of it
 			else
 				print("You try to delete the root of this tree, this is not allowed")
 			end
+			--ensure
+				--root_not_deleted : has_rec(root_value, root)
 
 		end
 
 feature -- public Method to check if a value is in a tree; returns true if value is found
 
 	has(new_value : INTEGER): BOOLEAN
+	require
+		valid_value : new_value.abs >= 0
 	Local
 		found : BOOLEAN
 	do
@@ -209,6 +215,9 @@ feature -- public Method to check if a value is in a tree; returns true if value
 feature{BINARYTREE} -- "private" has(), indicated by Exportation to class NONE
 
 	has_rec(new_value : INTEGER ; used_node : NODE) : detachable NODE
+	require
+		valid_value : new_value.abs >= 0
+		valid_node : used_node /= Void
 	do
 		if new_value = used_node.get_value then --Value has been found, return Node
 			Result := used_node

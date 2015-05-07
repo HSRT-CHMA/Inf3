@@ -64,6 +64,8 @@ feature{NONE} --private Setter for start_value
 feature -- Class redefines inherited method solve, reedirects to max-method
 
 	solve
+	require else
+		valid_start_value : start_value /= Void
 	do
 		if attached start_value.get_root as checked_root then
 			if attached get_solution as checked_solution then
@@ -95,5 +97,9 @@ feature{NONE} -- Method to find Max value of the tree with a while-loop-construc
 			valid_result : Result.abs >= 0
 			max_is_in_tree : start_value.has (Result)
 	end
+
+invariant
+	valid_start_value : start_value /= Void
+	-- valid_max : max(start_value.root).abs >= 0
 
 end

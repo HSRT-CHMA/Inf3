@@ -13,7 +13,7 @@ inherit
 create
 	make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialization; containts different testing units
 
 	make
 			-- make-routine of class APPLICATION, serves as "main"
@@ -69,8 +69,8 @@ feature -- Method creates 2 trees for testing and fills them with values
 		-- Insert tree2
 		tree2.insert (15)
 		tree2.insert (12)
-		tree2.insert (-74)
-		tree2.insert (390)
+		tree2.insert (74)
+		tree2.insert (93)
 		tree2.insert (8)
 		ensure
 			valid_tree : tree1 /= Void
@@ -92,7 +92,7 @@ feature -- Method for testing the has-Method
 		print(tree1.has(101).out) --should be True
 		--Tests on tree2
 		print("%N%N")
-		print(tree2.has(80)) --should be True
+		print(tree2.has(93)) --should be True
 		print("%N")
 		print(tree2.has(14)) --should be False
 		print("%N")
@@ -117,8 +117,6 @@ feature -- Methode for testing the delete-Method, prints results on the console
  		tree2.delete (1) --Not possible because it does not exist
  		print("%N")
  		tree1.delete (99) -- Not possible because root node
-
-
 	end
 
 invariant
