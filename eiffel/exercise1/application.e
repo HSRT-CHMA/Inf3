@@ -21,7 +21,7 @@ feature {NONE} -- Initialization
 			print ("Hello, this is a programm to create binary trees !%N")
 			test_insert
 			test_has
-			--test_delete
+			test_delete
 			test_gps
 		end
 
@@ -40,6 +40,7 @@ feature -- Method for testing the GPS and its sub-classes, prints max - and sum 
 
 	test_gps
 	do
+		print("%N%N--test_gps--%N%N")
 		create gps1.make(tree1)
 		print("%N%N tree1 MAX : " + gps1.get_max.out)
 		print("%N%N tree1 SUM : " + gps1.get_sum.out)
@@ -56,19 +57,21 @@ feature -- Method creates 2 trees for testing and fills them with values
 
 	test_insert
 	do
+		print("%N%N--test_insert--%N%N")
 		create tree1.make(99)
 		create tree2.make(10)
         -- Insert tree1
 		tree1.insert(90)
 		tree1.insert(101)
-		tree1.insert(101)
+		tree1.insert(140)
 		tree1.insert(5)
 		tree1.insert(95)
 		-- Insert tree2
 		tree2.insert (15)
-		tree2.insert (80)
+		tree2.insert (12)
 		tree2.insert (-74)
 		tree2.insert (390)
+		tree2.insert (8)
 		ensure
 			valid_tree : tree1 /= Void
 			valid_tree : tree2 /= Void
@@ -78,8 +81,8 @@ feature -- Method for testing the has-Method
 
 	test_has
 	do
+		print("%N%N--test_has--%N%N")
 		-- Tests on tree1
-		print("%N")
 		print(tree1.has(4)) --should be False
 		print("%N")
 		print(tree1.has(1000)) --should be False
@@ -102,18 +105,20 @@ feature -- Methode for testing the delete-Method, prints results on the console
 
 	test_delete
  	do
-        -- Tests on delete()
-		tree2.delete(1) --should be false
-		print("%N")
-		tree1.delete(99) -- should be true
-		print("%N")
-		print("Is 99 in tree ? " + tree1.has (99).out) -- shoulb be false
-		print("%N")
-		tree2.delete(8) --should be true
-		print("%N")
-		print("Is 8 in tree ? " + tree2.has (8).out) --should be false
-		print("%N")
-		tree2.delete(1) --should be false
+ 		print("%N%N--test_delete--%N%N")
+ 		tree2.delete (15) -- Possible
+ 		print("%N")
+ 		tree1.delete (95) -- Possible
+ 		print("%N")
+ 		tree1.delete (140) -- Possible
+ 		print("%N")
+ 		tree1.delete (188989) --Not possible because it does not exist
+ 		print("%N")
+ 		tree2.delete (1) --Not possible because it does not exist
+ 		print("%N")
+ 		tree1.delete (99) -- Not possible because root node
+
+
 	end
 
 invariant

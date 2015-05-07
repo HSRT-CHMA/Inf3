@@ -26,14 +26,10 @@ feature --Access
 	-- A not void version of root
 	first_node : detachable NODE
 	-- Gets created by a new tree, used in insert()- Method
-	found : BOOLEAN
-	--Value is used in has()-Function to illustrate outcome
 	res_node : detachable NODE
 	-- Result-Node to be used in has()-Method
 	delete_node : detachable NODE
-	-- Node to be used in delete() and delete_rec
-	tmp_node : detachable NODE
-	--Node to be used in delete_rec()
+	-- Node to be used in delete()
 
 
 feature --public Getter for root
@@ -95,107 +91,106 @@ feature -- public Insert-Methode; redirects to insert_rec
 		end
 
 
-feature{BINARYTREE} -- Delete-Method Sub
+feature{BINARYTREE} -- Delete-Method to delete Nodes with given value in tree
 
 	deleteRec(new_value : INTEGER; used_node : NODE)
 		require
 			correct_node : new_value = used_node.get_value
 			valid_node : used_node /= Void
+		Local
+			smallNode : detachable NODE
+			tmpNode : detachable NODE
 		do
 			if attached Current.get_root as valid_root then
-
 				-- Leaf
 				if used_node.get_left = Void and used_node.get_right = Void then
-					print("Leaf")
+					print("%NNode is a Leaf%N")
 					if attached used_node.get_parent as checked_parent then -- x /= Void
 						checked_parent.set_right(Void)
-					else
-						root := Void
 					end
-				end
 
 				--Right child
-				if used_node.get_left = Void and used_node.get_right /= Void then
-					print("One rigth child")
+				elseif used_node.get_left = Void and used_node.get_right /= Void then
+					print("%NNode has one rigth child%N")
 					if attached used_node.get_parent as checked_parent then -- x /= Void
 						checked_parent.set_right(used_node.get_right)
 					else
 						root := used_node.get_right
 					end
-				end
 
 				--Left child
-				if used_node.get_left /= Void and used_node.get_right = Void then
-					print("One left child")
+				elseif used_node.get_left /= Void and used_node.get_right = Void then
+					print("%NNode has one left child%N")
 					if attached used_node.get_parent as checked_parent then -- x /= Void
 						checked_parent.set_right(used_node.get_left)
 					else
 						root := used_node.get_left
 					end
-				end
-
 				--Right and left child
-				if attached used_node.get_left as check_left and attached used_node.get_right as check_right then
-					print("Two children")
-					tmp_node := get_smallest(check_right)
-					if attached tmp_node as check_tmp_node then
-						delete(check_tmp_node.get_value)
-						if attached used_node.get_parent as checked_parent then -- x /= Void
-							check_tmp_node.set_left (check_left)
-							check_tmp_node.set_right (check_right)
-							checked_parent.set_right (check_tmp_node)
-						else
-							check_tmp_node.set_left (valid_root.get_left)
-							check_tmp_node.set_right (valid_root.get_right)
-							root := check_tmp_node
+				elseif attached used_node.get_left as check_left and attached used_node.get_right as check_right then
+					print("%NNode has two children%N")
+					-- Search for smallest sucessor
+                	if(check_right.get_value < check_left.get_value) then
+                		smallNode := used_node.get_left
+                	elseif(check_right.get_value > check_left.get_value)then
+                		smallNode := used_node.get_right
+                	else
+                		smallNode := used_node
+                	end
+
+                	if (tmpNode = used_node) then --Put value in place of Node to be deleted --> "removed"
+                		if attached used_node.get_right as ok_right2 then
+								used_node.set_value(ok_right2.get_value)
+						end
+						-- Set the following tree under the new node in place
+                    	tmpNode := used_node.get_right
+
+                 		if attached used_node.get_left as ok_left2 then
+							used_node.set_right(ok_left2.get_right)
+						end
+
+                  	else
+                  		if attached used_node.get_left as ok_left3 then
+							used_node.set_value(ok_left3.get_value)
 						end
 					end
 				end
 			end
-			--ensure
-			--value_is_deleted : has(new_value) = false
-		end
-
-feature{BINARYTREE} -- A helping method for deleteRec
-
-	get_smallest(start : NODE) : NODE
-		Local
-			node : NODE
-		do
-			from
-				node := start
-			until
-				node.get_left = Void
-			loop
-				if attached node.get_left as ok_left then
-					node := ok_left
-				end
-			end
-			Result := node
 		end
 
 
-feature --"Public" Delete-Method
+feature --"Public" Delete-Method, redirects to deleteRec and prints result of it on the console
 
 	delete(new_value : INTEGER)
+		Local
+			root_value : INTEGER
 		do
 			if attached Current.get_root as check_root then
 				delete_node := has_rec(new_value, check_root)
+				root_value := check_root.get_value
 			end
 
-			if attached delete_node as check_delete_node then
+			if not root_value.is_equal (new_value) then
+				if attached delete_node as check_delete_node then
 			-- has_rec returnt a Node
-				print("Value can be deleted")
+				--print("Value can be deleted")
 				deleteRec(new_value, check_delete_node)
-			else
+				print("Value has been deleted")
+				else
 			-- has_rec returnt Void
 				print("Value does not exist in the given tree")
+				end
+			else
+				print("You try to delete the root of this tree, this is not allowed")
 			end
+
 		end
 
 feature -- public Method to check if a value is in a tree; returns true if value is found
 
 	has(new_value : INTEGER): BOOLEAN
+	Local
+		found : BOOLEAN
 	do
 		if attached Current.get_root as check_root then
 			res_node := has_rec(new_value, check_root)
