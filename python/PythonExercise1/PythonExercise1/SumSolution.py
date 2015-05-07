@@ -5,6 +5,26 @@ Created on 17.04.2015
 
 Class for SumSolutions for GPS
 '''
-class SumSolution(SumProblem,Solution): # Have to inherit SumProblem and realize Interface(or whatever) Solution
+class SumSolution:
+    '''
+    Return sum = Summary.
+    ''' 
+    @property
+    def sumSolution(self):
+        # Pre & Post Condition
+        assert type(self._sumSolution) == int
+        return self._sumSolution
+
+    '''
+    Parms: sumSolution: Set the sum
+    '''
+    @sumSolution.setter
+    def sumSolution(self,sumSolution):
+        # Pre Condition
+        assert type(sumSolution) == int
+        if type(sumSolution) == int:
+            self._sumSolution = sumSolution
+        # Post Condition
+        assert type(self._sumSolution) == int
 
 

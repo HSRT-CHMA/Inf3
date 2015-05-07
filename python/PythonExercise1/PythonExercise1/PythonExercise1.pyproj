@@ -39,9 +39,6 @@
     <Compile Include="Main.py">
       <Publish>True</Publish>
     </Compile>
-    <Compile Include="Solution.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SumProblem.py">
       <SubType>Code</SubType>
     </Compile>

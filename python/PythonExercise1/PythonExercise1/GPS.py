@@ -5,10 +5,12 @@ Created on 17.04.2015
 
 Class for General Problem Solver
 '''
-class GPS(object):
+from abc import abstractmethod, ABCMeta
+class GPS(metaclass=ABCMeta):
 
-    def __init__(self):                 # Constructor General Problem Solver
-        self
-
-    def getSolution():                  # returns Solution of Problem
-        return Solution 
+    '''
+    Abstract method return Solution
+    '''
+    @abstractmethod
+    def getSolution(self):
+        pass
