@@ -7,15 +7,10 @@ note
 deferred class
 	SOLUTION
 
---feature -- Setter for the solution_value,
+feature -- Solution has the "abstract" / deferred set_solution_value - method ; every child should redefine this method
 
-	--set_solution_value(new_value : INTEGER)
-	--do --deferred
-		--solution_value := new_value
-	--end
-
---feature -- the value that contains the solution of the given object
-
-	--solution_value : INTEGER
+	set_solution_value(solution_value : INTEGER)
+	deferred
+	end
 
 end

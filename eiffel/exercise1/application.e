@@ -66,7 +66,7 @@ feature -- Method creates 2 trees for testing and fills them with values
 		tree2.insert (15)
 		tree2.insert (80)
 		tree2.insert (-74)
-		tree2.insert (400)
+		tree2.insert (390)
 	end
 
 feature -- Method for testing the has-Method

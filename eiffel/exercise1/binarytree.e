@@ -21,7 +21,9 @@ feature {NONE} -- Initialization / Constructor ; gets the value that serves as r
 feature --Access
 
 	root : detachable NODE
-	-- Becomes the root of the new tree
+	-- Becomes the root of the new tree; can be void
+	--not_void_root : NODE
+	-- A not void version of root
 	first_node : detachable NODE
 	-- Gets created by a new tree, used in insert()- Method
 	found : BOOLEAN
@@ -39,12 +41,18 @@ feature --public Getter for root
 		Result := root
 		--Result is built-in and used instead of "return"
 		ensure
-			correct_result :
+			correct_result : Result = root
 	end
 
+	--get_not_void_root : NODE
+	--do
+		--if attached root as checked_root then
+			--Result := checked_root
+		--end
+	--end
 
 
-feature{NONE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
+feature{BINARYTREE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
 
 	insertRec(new_value : INTEGER; used_node : NODE)
 
@@ -73,17 +81,20 @@ feature{NONE} -- private Insert-Method (duplicates possible) which add the used_
 		end
 
 
-feature -- public Insert-Methode
+feature -- public Insert-Methode; redirects to insert_rec
 
 	insert(new_value : INTEGER)
 		do
 			if attached Current.get_root as checked_root then
 				insertRec(new_value , checked_root)
 			end
+			print("%N The value " + new_value.out + " has been added to tree")
+			ensure
+				current.has (new_value)
 		end
 
 
-feature{NONE} -- Delete-Method Sub
+feature{BINARYTREE} -- Delete-Method Sub
 
 	deleteRec(new_value : INTEGER; used_node : NODE)
 		require
@@ -144,7 +155,7 @@ feature{NONE} -- Delete-Method Sub
 			--value_is_deleted : has(new_value) = false
 		end
 
-feature -- A helping method for deleteRec
+feature{BINARYTREE} -- A helping method for deleteRec
 
 	get_smallest(start : NODE) : NODE
 		Local
@@ -181,7 +192,7 @@ feature --"Public" Delete-Method
 			end
 		end
 
-feature -- "public" has()
+feature -- public Method to check if a value is in a tree; returns true if value is found
 
 	has(new_value : INTEGER): BOOLEAN
 	do
@@ -199,7 +210,7 @@ feature -- "public" has()
 		Result := found
 	end
 
-feature{NONE} -- "private" has(), indicated by Exportation to class NONE
+feature{BINARYTREE} -- "private" has(), indicated by Exportation to class NONE
 
 	has_rec(new_value : INTEGER ; used_node : NODE) : detachable NODE
 	do
@@ -229,6 +240,8 @@ feature{NONE} -- "private" has(), indicated by Exportation to class NONE
 
 
 invariant
-	is_node_valid : current.get_root.get_left /= current.get_root.get_right
+	--is_node_valid : current.get_root.get_left.get_value < current.get_root.get_right.get_value
+	--
+
 
 end --End of class

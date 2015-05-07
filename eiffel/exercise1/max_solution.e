@@ -9,7 +9,7 @@ class
 
 inherit
 	SOLUTION
-		--redefine solution_value end
+		redefine set_solution_value end
 
 
 create
@@ -20,7 +20,7 @@ feature {NONE} -- Initialization
 	make
 			-- Initialization for `Current'.
 		do
-
+			--print("A SOLUTION-Object has been created")
 		end
 
 feature --Access
