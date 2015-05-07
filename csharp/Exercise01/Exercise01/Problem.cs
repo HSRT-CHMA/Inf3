@@ -8,6 +8,11 @@ namespace Exercise01
 {
     abstract class Problem<Solution>
     {
-        public abstract Solution solution();
+        /*
+         * Abstract Method from the abstract
+         * Class Problem with the Return
+         * Parameter Solution
+         */
+        public abstract Solution GetSolution();
     }
 }

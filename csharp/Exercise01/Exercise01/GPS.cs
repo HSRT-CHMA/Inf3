@@ -20,19 +20,29 @@ namespace Exercise01{
          * Default Constructor of General Problem Solver
          */
         public GPS(BinaryTree tree){
+            
+            /*
+             * Initialization of Variables
+             * tree - BinaryTree Object
+             * max - MaxProblem Object
+             * sum - SumProblem Object
+             */
             this.tree = tree;
-        }
+            MaxProblem max = new MaxProblem();
+            SumProblem sum = new SumProblem();
+            
+            max.SetBinaryTree(tree);
+            max.ComputeSolution();
+            Console.WriteLine("MaxSolution:" + max.GetSolution().GetMax());
 
-        public Solution getSolution(){
-            return null;
-        }
+            sum.SetBinaryTree(tree);
+            sum.ComputeSolution();
+            Console.WriteLine("SumSolution:" + sum.GetSolution().GetSum());
 
-        public void part(){
-
-        }
-
-        public void solve(){
-
+            /*
+             * That the console output is visible
+             */
+            Console.ReadKey();
         }
     }
 }

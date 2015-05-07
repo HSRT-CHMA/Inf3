@@ -18,7 +18,7 @@ namespace Exercise01
             static void Main(string[] args)
             {
                 /*
-                 * Create BinaryTree with Root 4
+                 * Create BinaryTree with Root 4 - Exercise 1
                  * and the Values: 3,5,-2,33
                  */
                 BinaryTree tree = new BinaryTree(4);
@@ -68,16 +68,16 @@ namespace Exercise01
                  * The Max Method - without GPS
                  */
                 Console.WriteLine("Max of all Nodes: " +tree.GPSMax(tree.GetRoot()));
-                
+
+                /*
+                 * Creating test for the General Problem Solver - Exercise 2
+                 */
+                GPS pSolver = new GPS(tree);
+
                 /*
                  * That the console output is visible
                  */
                 Console.ReadLine();
-
-                /*
-                 * Creating test for the General Problem Solver
-                 */
-                //GPS pSolver = new GPS(tree);
             }
         }
     }
