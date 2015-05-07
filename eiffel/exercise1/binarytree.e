@@ -35,6 +35,7 @@ feature --Access
 	tmp_node : detachable NODE
 	--Node to be used in delete_rec()
 
+
 feature --public Getter for root
 	get_root : detachable NODE
 	do
@@ -241,7 +242,8 @@ feature{BINARYTREE} -- "private" has(), indicated by Exportation to class NONE
 
 invariant
 	--is_node_valid : current.get_root.get_left.get_value < current.get_root.get_right.get_value
-	--
-
+	--is_node_valid : current.get_root.get_value <= current.get_root.get_right.get_value
+    --is_node_valid : current.get_root.get_left.get_value /= current.get_root.get_right.get_value
+    --valid_root : current.root.get_value.abs >= 0
 
 end --End of class

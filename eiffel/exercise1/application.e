@@ -5,6 +5,7 @@ note
 
 class
 	APPLICATION
+	--root-class of the project
 
 inherit
 	ARGUMENTS
@@ -22,7 +23,6 @@ feature {NONE} -- Initialization
 			test_has
 			--test_delete
 			test_gps
-
 		end
 
 feature --Access
@@ -36,7 +36,7 @@ feature --Access
 	gps2 : GPS
 	-- general problem solver for testing of tree2
 
-feature -- Method for testing the GPS and its sub-classes
+feature -- Method for testing the GPS and its sub-classes, prints max - and sum - value on the console
 
 	test_gps
 	do
@@ -46,7 +46,9 @@ feature -- Method for testing the GPS and its sub-classes
 		create gps2.make(tree2)
 		print("%N%N tree2 MAX : " + gps2.get_max.out)
 		print("%N%N tree2 SUM : " + gps2.get_sum.out)
-
+		ensure
+			valid_gps : gps1 /= Void
+			valid_gps : gps2 /= Void
 	end
 
 
@@ -67,6 +69,9 @@ feature -- Method creates 2 trees for testing and fills them with values
 		tree2.insert (80)
 		tree2.insert (-74)
 		tree2.insert (390)
+		ensure
+			valid_tree : tree1 /= Void
+			valid_tree : tree2 /= Void
 	end
 
 feature -- Method for testing the has-Method
@@ -93,7 +98,7 @@ feature -- Method for testing the has-Method
 		print(tree2.has(15)) --should be True
 	end
 
-feature -- Methode for testing the delete-Method
+feature -- Methode for testing the delete-Method, prints results on the console
 
 	test_delete
  	do
@@ -110,5 +115,11 @@ feature -- Methode for testing the delete-Method
 		print("%N")
 		tree2.delete(1) --should be false
 	end
+
+invariant
+	valid_gps : gps1 /= Void
+	valid_gps : gps2 /= Void
+	valid_tree : tree1 /= Void
+	valid_tree : tree2 /= Void
 
 end

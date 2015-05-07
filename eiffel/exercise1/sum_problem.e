@@ -9,9 +9,8 @@ class
 
 inherit
 	MAIN_PROBLEM
-		redefine
-			solve
-		end
+		redefine solve end
+		--- redefine clause lists features that are redefine/"overwritten" in this class
 
 create
 	make

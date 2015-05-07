@@ -14,6 +14,7 @@ feature -- Problem has the "abstract" / deferred solve-Method ; every child shou
 	deferred
 	end
 
-	
+invariant
+	-- ?
 
 end

@@ -10,11 +10,12 @@ class
 inherit
 	MAIN_PROBLEM
 		redefine solve end
+		--- redefine clause lists features that are redefine/"overwritten" in this class
 
 create
 	make
 
-feature {GPS} -- Initialization
+feature {GPS} -- Initialization; creates a corresponding SOLUTION-Object, receives tree and sets this as start value, operates the solve - Method
 
 	make(used_tree : BINARYTREE)
 			-- Initialization for `Current'.
@@ -32,11 +33,13 @@ feature -- Access
 	start_value : BINARYTREE
 	-- The Tree on which the operations are performed
 
-feature -- Getter for Solution
+feature -- Getter for Solution-Object of this class
 
 	get_solution : detachable MAX_SOLUTION
 	do
 		Result := max_s
+		ensure
+			valid_result : Result = max_s
 	end
 
 feature -- public Getter for start_value
@@ -44,6 +47,8 @@ feature -- public Getter for start_value
 	get_start_value : BINARYTREE
 	do
 		Result := start_value
+		ensure
+			valid_result : Result = start_value
 	end
 
 feature{NONE} --private Setter for start_value
@@ -51,10 +56,12 @@ feature{NONE} --private Setter for start_value
 	set_start_value(used_tree : BINARYTREE)
 	do
 		start_value := used_tree
+		ensure
+			valid_start_value : start_value = used_tree
 	end
 
 
-feature -- Class redefines inherited method solve
+feature -- Class redefines inherited method solve, reedirects to max-method
 
 	solve
 	do
@@ -66,9 +73,11 @@ feature -- Class redefines inherited method solve
 	end
 
 
-feature{NONE} -- Method to find Max value of the tree, can only be used be this class
+feature{NONE} -- Method to find Max value of the tree with a while-loop-construcktion , "private"
 
 	max(start : NODE) : INTEGER
+	require
+		valid_start : start /= Void
 	Local
 		used_node : NODE
 	do
@@ -82,6 +91,9 @@ feature{NONE} -- Method to find Max value of the tree, can only be used be this 
 			end
 		end
 		Result := used_node.get_value
+		ensure
+			valid_result : Result.abs >= 0
+			max_is_in_tree : start_value.has (Result)
 	end
 
 end
