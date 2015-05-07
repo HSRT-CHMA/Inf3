@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Exercise01.System.Diagnostics.Contracts;
 
 namespace Exercise01
 {
@@ -11,9 +12,7 @@ namespace Exercise01
      * Method for MaxSolution must be defined in the implmentation
      * Method for SumSolution must be defined in the implmentation
      */
-    interface Solution{
-       //public void MaxSolution();
+    abstract class Solution{
 
-       //public void SumSolution();
     }
 }

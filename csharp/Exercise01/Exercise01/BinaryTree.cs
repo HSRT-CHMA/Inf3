@@ -22,7 +22,8 @@ namespace Exercise01{
             [ContractInvariantMethod]
             protected void ObjectInvariant()
             {
-
+                Contract.Invariant(root.GetValue() != null);
+                Contract.Invariant(root.GetParent() == null);
             }
 
             /*
@@ -37,9 +38,8 @@ namespace Exercise01{
              */
             public BinaryTree(int value)
             {
-                Contract.Assert(value > 0);
                 root = new Node(value, null);
-                Contract.Assert(root.GetValue() > 0);
+                Contract.Assert(root.GetValue() == value);
             }
 
             /*
