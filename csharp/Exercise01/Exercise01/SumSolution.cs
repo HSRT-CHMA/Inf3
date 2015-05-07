@@ -8,6 +8,5 @@ namespace Exercise01
 {
     class SumSolution : Solution
     {
-        
     }
 }

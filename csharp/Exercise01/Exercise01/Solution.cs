@@ -12,8 +12,8 @@ namespace Exercise01
      * Method for SumSolution must be defined in the implmentation
      */
     interface Solution{
-        public void MaxSolution();
+       //public void MaxSolution();
 
-        public void SumSolution();
+       //public void SumSolution();
     }
 }

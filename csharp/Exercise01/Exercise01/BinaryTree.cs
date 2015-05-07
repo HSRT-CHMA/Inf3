@@ -253,6 +253,7 @@ namespace Exercise01{
                     if(deleteValue.GetRight() != null && deleteValue.GetLeft() == null){
                         Console.WriteLine("Fixing Reference of Parent from the Right Node");
                         deleteValue.GetRight().SetParent(deleteValue.GetParent());
+                        deleteValue.GetParent().SetRight(deleteValue.GetRight());
                     }
 
                     /*
@@ -261,6 +262,7 @@ namespace Exercise01{
                     if(deleteValue.GetRight() == null && deleteValue.GetLeft() != null){
                         Console.WriteLine("Fixing Reference of Parent from the Left Node");
                         deleteValue.GetLeft().SetParent(deleteValue.GetParent());
+                        deleteValue.GetParent().SetLeft(deleteValue.GetLeft());
                     }
 
                     /*
@@ -270,8 +272,9 @@ namespace Exercise01{
                      */
                     if(deleteValue.GetRight() != null && deleteValue.GetLeft() != null){
                         Console.WriteLine("Fixing Reference of Parent from the Left and Right Node");
-                        deleteValue.GetLeft().SetParent(deleteValue.GetParent());
-                        deleteValue.GetRight().SetParent(deleteValue.GetLeft());
+                        deleteValue.GetRight().SetParent(deleteValue.GetParent());
+                        deleteValue.GetParent().SetRight(deleteValue.GetRight());
+                        deleteValue.GetLeft().SetParent(deleteValue.GetRight());
                     }
                         
                     /*
@@ -294,9 +297,8 @@ namespace Exercise01{
              */
             public void DeleteAll(int value)
             {
-                int i=1;
                 while(Delete(value)){
-                    Console.WriteLine(i+ ". Duplicate Value =" +value+ "of the BinaryTree with the root" +root.GetValue()+ "was deleted.");
+                    Console.WriteLine("Value = " +value+ " of the BinaryTree with the root " +root.GetValue()+ " was deleted.");
                 }
             }
 
@@ -371,25 +373,69 @@ namespace Exercise01{
                     Console.WriteLine("This binary tree is empty");
                 }
 
-                //L
+                /*
+                 * Running through the tree from the left side
+                 */
                 if (node.GetLeft() != null)
                 {
                     value += InOrder(node.GetLeft());
                     value += " | ";
                 }
 
-                //W
+                /*
+                 * Showing the root after the left side is completed
+                 */
                 value += node.GetValue();
                 value += " | ";
 
-                //
+                /*
+                 * Running through the tree from the right side
+                 */
                 if (node.GetRight() != null)
                 {
                     value += InOrder(node.GetRight());
                     value += " | ";
                 }
 
+                /*
+                 * Return of the whole String with
+                 * the Output from the different Nodes
+                 */
                 return value;
+            }
+
+            /*
+             * Test Implementation of the
+             * General Problem Solver
+             * Sum Problem
+             */
+            public int GPSSum(Node node)
+            {
+                /*
+                 * Check if Node is null and end of recursion
+                 */
+                if(node == null){
+                    return 0;
+                }
+                return node.GetValue() + GPSSum(node.GetLeft()) + GPSSum(node.GetRight());
+            }
+
+            /*
+             * Test Implementation of the
+             * General Problem Solver
+             * Max Problem
+             */
+            public int GPSMax(Node node)
+            {
+                int max = node.GetValue();
+
+                if(node.GetLeft() != null){
+                    max = Math.Max(max, GPSMax(node.GetLeft()));
+                }
+                if(node.GetRight() != null){
+                    max = Math.Max(max, GPSMax(node.GetRight()));
+                }
+                return max;
             }
         }
     }
