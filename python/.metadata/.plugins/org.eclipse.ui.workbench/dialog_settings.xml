@@ -22,4 +22,8 @@
 			<item value="org.python.pydev.PythonCategory"/>
 		</list>
 	</section>
+	<section name="ImportExportAction">
+	</section>
+	<section name="FileSystemImportWizard">
+	</section>
 </section>

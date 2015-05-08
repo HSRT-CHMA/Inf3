@@ -1,0 +1,105 @@
+-- VERSION_4
+-- START DISKCACHE
+D:\workspace-inf3\inf3\python\.metadata\.plugins\org.eclipse.core.resources\.projects\PythonExercise1\com.python.pydev.analysis\v2_indexcache
+PythonExercise1.__init__|1431073083603|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\__init__.py
+PythonExercise1.MaxSolution|1431036213265|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\MaxSolution.py
+PythonExercise1.Nodes|1431036213266|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\Nodes.py
+PythonExercise1.SumSolution|1431036213267|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\SumSolution.py
+PythonExercise1.MaxProblem|1431036213265|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\MaxProblem.py
+PythonExercise1.Main|1431073232360|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\Main.py
+PythonExercise1.Binarytree|1431036213262|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\Binarytree.py
+PythonExercise1.SumProblem|1431036213266|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\SumProblem.py
+PythonExercise1.DivisibleProblem|1431036213264|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\DivisibleProblem.py
+PythonExercise1.GPS|1431036213264|D:\workspace-inf3\inf3\python\PythonExercise1\PythonExercise1\GPS.py
+-- END DISKCACHE
+-- START DICTIONARY
+41
+26=Nodes.right
+8=PythonExercise1.SumProblem
+10=BinaryTree
+17=DivisibleProblem.directSolvable
+19=Nodes.left
+38=GPS
+16=BinaryTree.insert
+25=Nodes.parent
+30=MaxProblem.__init__
+31=SumProblem.__init__
+37=SumProblem.isDirectSolvable
+11=SumProblem
+29=BinaryTree.__delOneChild
+24=BinaryTree.__outString
+7=PythonExercise1.Nodes
+35=MaxProblem.isDirectSolvable
+9=PythonExercise1.SumSolution
+15=BinaryTree.inOrder
+36=DivisibleProblem
+3=PythonExercise1.GPS
+23=SumProblem.tree
+21=MaxProblem.tree
+28=BinaryTree.__delNoChild
+33=Nodes.value
+40=MaxSolution
+4=PythonExercise1.MaxProblem
+41=SumSolution
+1=PythonExercise1.Binarytree
+2=PythonExercise1.DivisibleProblem
+14=BinaryTree.__init__
+13=MaxProblem
+18=SumProblem.part
+22=MaxProblem.part
+12=Nodes
+27=BinaryTree.__root
+34=DivisibleProblem.solve
+5=PythonExercise1.MaxSolution
+39=Nodes.__init__
+20=MaxSolution.maxSolution
+32=SumSolution.sumSolution
+6=PythonExercise1.Main
+-- END DICTIONARY
+-- START TREE 1
+9
+bin|1|BinaryTree!9@
+div|1|DivisibleProblem!17@
+gps|1|GPS!25@
+max|2|MaxProblem!33@MaxSolution!41@
+mp|1|mp!51@
+myt|2|myTree!51@myTree2!51@
+nod|1|Nodes!57@
+sp|1|sp!51@
+sum|2|SumProblem!65@SumSolution!73@
+-- END TREE
+-- START TREE 2
+32
+__d|5|__delTwoChild!10&10@__delNode!10&10@__delNoChild!10&10@__deleteRec!10&10@__delOneChild!10&10@
+__g|1|__getSmallest!10&10@
+__i|6|__insertRec!10&10@__inOrderRec!10&10@__init__!10&10@__init__!11&66@__init__!12&58@__init__!13&34@
+__o|3|__outString!10&10@__outString!14&11@__outString!15&11@
+__r|3|__root!10&10@__root!14&11@__root!16&11@
+_di|2|_directSolvable!17&19@_directSolvable!18&67@
+_le|1|_left!19&59@
+_ma|1|_maxSolution!20&43@
+_no|3|_node!21&35@_node!22&35@_node!23&67@
+_ou|1|_outString!24&11@
+_pa|1|_parent!25&59@
+_ri|1|_right!26&59@
+_ro|3|_root!27&11@_root!28&11@_root!29&11@
+_so|2|_solution!30&35@_solution!31&67@
+_su|2|_sum!23&67@_sumSolution!32&75@
+_tr|2|_tree!23&67@_tree!21&35@
+_va|1|_value!33&59@
+del|1|delete!10&10@
+dir|4|directSolvable!34&19@directSolvable!35&35@directSolvable!36&18@directSolvable!37&67@
+get|4|getRootNode!10&10@getSolution!38&26@getSolution!11&66@getSolution!13&34@
+has|1|has!10&10@
+ino|1|inOrder!10&10@
+ins|1|insert!10&10@
+isd|3|isDirectSolvable!36&18@isDirectSolvable!13&34@isDirectSolvable!11&66@
+lef|2|left!12&58@left!39&59@
+max|1|maxSolution!40&42@
+par|5|parent!12&58@part!11&66@part!36&18@part!13&34@parent!39&59@
+rig|2|right!39&59@right!12&58@
+sol|1|solve!36&18@
+sum|2|sumSolution!41&74@sumRec!11&66@
+tre|2|tree!11&66@tree!13&34@
+val|2|value!39&59@value!12&58@
+-- END TREE
