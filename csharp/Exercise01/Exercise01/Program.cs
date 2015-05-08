@@ -39,6 +39,12 @@ namespace Exercise01
                 Console.WriteLine("Is Value 199 in the Tree: " + tree.HasValue(199));
                 
                 /*
+                 * BinaryTree Output
+                 */
+                Console.WriteLine("Output of the BinaryTree");
+                Console.WriteLine(tree.InOrder(tree.GetRoot()));
+
+                /*
                  * Test of Delete Method for the Value 5
                  * Has Method should now be false
                  */
