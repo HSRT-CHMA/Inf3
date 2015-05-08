@@ -73,6 +73,9 @@ namespace Exercise01
                  * Creating test for the General Problem Solver - Exercise 2
                  */
                 GPS pSolver = new GPS(tree);
+                Console.WriteLine("Max Value of BinaryTree: " +pSolver.GetMax());
+                Console.WriteLine("Sum Value of BinaryTree: " +pSolver.GetSum());
+
 
                 /*
                  * That the console output is visible

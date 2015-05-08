@@ -22,7 +22,7 @@ namespace Exercise01{
             [ContractInvariantMethod]
             protected void ObjectInvariant()
             {
-                Contract.Invariant(root.GetValue() != null);
+                //Contract.Invariant(root.GetValue() != null);
                 Contract.Invariant(root.GetParent() == null);
             }
 

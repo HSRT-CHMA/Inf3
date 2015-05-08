@@ -12,23 +12,22 @@ namespace Exercise01
         /*
          * Variable for Maximum Value
          */
-        protected int max;
-
+        protected int solutionValue;
         /*
          * Getter for Variable Max
          */
         public int GetMax()
         {
-            return max;
+            return solutionValue;
         }
 
         /*
          * Setter for Variable Max
          * Return Value is Max
          */
-        protected internal void SetMax(int max)
+        public void SetSolutionValue(int solutionValue)
         {
-            this.max = max;
+            this.solutionValue = solutionValue;
         }
     }
 }

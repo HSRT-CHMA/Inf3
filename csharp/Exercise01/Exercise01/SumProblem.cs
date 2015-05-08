@@ -7,39 +7,30 @@ using System.Threading.Tasks;
 
 namespace Exercise01
 {
-    class SumProblem : DivisibleProblem<SumSolution>
+    class SumProblem
     {
         /*
          * Variable SumSolution Object for the 
          * Solution Value
          */
-        protected SumSolution solution;
-
+        protected SumSolution solution = null;
+        protected Node root = null;
+        
         /*
          * Default Constructor creates a new Solution
          */
-        public SumProblem()
+        public SumProblem(Node root)
         {
+            this.root = root;
             solution = new SumSolution();
-        }
-
-        public override void CheckSolvable(Node node)
-        {
-            int sum = 0;
-
-            if (node.GetRight() == null && node.GetLeft() == null)
-            {
-                directlySolvable = true;
-                sum = node.GetValue();
-                solution.SetSum(node.GetValue());
-            }
+            GetSolution().SetSolutionValue(Sum(root));
         }
 
         /*
          * Getter for Solution
          * Returns a SumSolution Object
          */
-        public override SumSolution GetSolution()
+        public SumSolution GetSolution()
         {
             return solution;
         }
@@ -47,7 +38,7 @@ namespace Exercise01
         /*
          * Sum Method - Recursiv Call
          */
-        protected override int Sum(Node node)
+        protected int Sum(Node node)
         {
             /*
              * Check if Node is null and end of recursion

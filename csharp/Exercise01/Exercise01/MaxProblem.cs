@@ -8,39 +8,30 @@ using System.Threading.Tasks;
 
 namespace Exercise01
 {
-    class MaxProblem : DivisibleProblem<MaxSolution>
+    class MaxProblem
     {
         /*
          * Variable MaxSolution Object
          */
-        protected MaxSolution solution;
+        protected MaxSolution solution = null;
+        protected Node root = null;
 
         /*
          * Default Constructor creates a new Problem Object
          */
-        public MaxProblem()
+        public MaxProblem(Node root)
         {
+            this.root = root;
             solution = new MaxSolution();
+            GetSolution().SetSolutionValue(Max(root));
 
         }
+
         /*
-         * Overwritten Method
+         * Max Method which detects the biggest Value
+         * of the BinaryTree
          */
-        public override void checkSolvable(Node node)
-        {
-            int max = 0;
-
-            if (node.GetRight() == null && node.GetLeft() == null)
-            {
-                /*
-                 * If there are no nodes, Root will be the Maximum Value
-                 */
-                directlySolvable = true;
-                max = node.GetValue();
-                solution.SetMax(max);
-            }
-        }
-        protected override int Max(Node node)
+        protected int Max(Node node)
         {
             int max = node.GetValue();
 
@@ -55,7 +46,11 @@ namespace Exercise01
             return max;
         }
 
-        public override MaxSolution GetSolution()
+        /*
+         * Getter for Solution
+         * Returns a MaxSolution Object
+         */
+        public MaxSolution GetSolution()
         {
             return solution;
         }

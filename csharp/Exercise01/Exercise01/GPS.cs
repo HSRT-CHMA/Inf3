@@ -15,6 +15,8 @@ namespace Exercise01{
          * should be executed
          */
         BinaryTree tree = null;
+        MaxProblem max = null;
+        SumProblem sum = null;
 
         /*
          * Default Constructor of General Problem Solver
@@ -28,21 +30,26 @@ namespace Exercise01{
              * sum - SumProblem Object
              */
             this.tree = tree;
-            MaxProblem max = new MaxProblem();
-            SumProblem sum = new SumProblem();
-            
-            max.SetBinaryTree(tree);
-            max.ComputeSolution();
-            Console.WriteLine("MaxSolution:" + max.GetSolution().GetMax());
+            this.max = new MaxProblem(tree.GetRoot());
+            this.sum = new SumProblem(tree.GetRoot());
+        }
 
-            sum.SetBinaryTree(tree);
-            sum.ComputeSolution();
-            Console.WriteLine("SumSolution:" + sum.GetSolution().GetSum());
+        /*
+         * Getter for Max Value
+         * from GetSolution
+         */
+        public int GetMax()
+        {
+            return max.GetSolution().GetMax();
+        }
 
-            /*
-             * That the console output is visible
-             */
-            Console.ReadKey();
+        /*
+         * Getter for Sum Value
+         * from GetSolution
+         */
+        public int GetSum()
+        {
+            return sum.GetSolution().GetSumValue();
         }
     }
 }

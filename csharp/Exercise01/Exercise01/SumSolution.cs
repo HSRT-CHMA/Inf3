@@ -17,7 +17,7 @@ namespace Exercise01
         /*
          * Getter for Sum Value
          */
-        public int GetSum()
+        public int GetSumValue()
         {
             return sum;
         }
@@ -26,9 +26,9 @@ namespace Exercise01
          * Setter for Sum Value
          * Return Value is Sum
          */
-        protected internal void SetSum(int sum)
+        public void SetSolutionValue(int solutionValue)
         {
-            this.sum = sum;
+            sum = solutionValue;
         }
     }
 }
