@@ -6,6 +6,7 @@ note
 
 class
 	BINARYTREE
+	-- This class organises the binary tree and provides important methods
 
 create
 	make
@@ -16,6 +17,7 @@ feature {NONE} -- Initialization / Constructor ; gets the value that serves as r
 		do
 			print("%N A new BinaryTree has been created")
 			create root.make(tree_value, Void)
+			act_root_value := tree_value
 		end
 
 feature --Access
@@ -30,6 +32,7 @@ feature --Access
 	-- Result-Node to be used in has()-Method
 	delete_node : detachable NODE
 	-- Node to be used in delete()
+	act_root_value : INTEGER
 
 
 feature --public Getter for root
@@ -254,9 +257,6 @@ feature{BINARYTREE} -- "private" has(), indicated by Exportation to class NONE, 
 
 
 invariant
-	--is_node_valid : current.get_root.get_left.get_value < current.get_root.get_right.get_value
-	--is_node_valid : current.get_root.get_value <= current.get_root.get_right.get_value
-    --is_node_valid : current.get_root.get_left.get_value /= current.get_root.get_right.get_value
-    --valid_root : current.root.get_value.abs >= 0
+	valid_root_value : act_root_value.abs >= 0
 
 end --End of class
