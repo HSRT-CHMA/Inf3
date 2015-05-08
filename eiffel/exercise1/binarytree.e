@@ -50,6 +50,7 @@ feature --public Getter for root
 
 
 feature{BINARYTREE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
+					-- Nodes are added as following : left child is smaller than its root, root ist smaller or equal than its right child
 
 	insertRec(new_value : INTEGER; used_node : NODE)
 
@@ -59,7 +60,7 @@ feature{BINARYTREE} -- private Insert-Method (duplicates possible) which add the
 				if attached used_node.get_right as checked_right then
 					-- Line does the follwing : if used_node.get_right is "attached" (equals to "/= Void")
 					-- then a new object with name after "as", here "checked_rigth", is created and can be used because it is proven
-					--that it isn't Void
+					-- that it isn't Void
 					insertRec(new_value, checked_right)
 				else
 					-- else if (used_node.get_right = Void)
@@ -76,7 +77,7 @@ feature{BINARYTREE} -- private Insert-Method (duplicates possible) which add the
 				end
 			end
 			ensure
-				current.has (new_value)
+				value_is_in_tree : current.has (new_value)
 		end
 
 
@@ -93,7 +94,7 @@ feature -- public Insert-Methode; redirects to insert_rec, and prints a message 
 		end
 
 
-feature{BINARYTREE} -- Delete-Method to delete Nodes with given value in tree;
+feature{BINARYTREE} -- Delete-Method to delete one Node with given value in tree;
 					-- Method uses local variables
 					--smallNode is used to save the node with smallest value in tree
 					--tmpNode is used to save a Node's information while deleting
@@ -164,7 +165,8 @@ feature{BINARYTREE} -- Delete-Method to delete Nodes with given value in tree;
 		end
 
 
-feature --"Public" Delete-Method, redirects to deleteRec and prints result of it on the console
+feature --"Public" Delete-Method, redirects to deleteRec and prints result of it on the console; prohibites to delete the root
+		-- Method uses a local variable : root_value containts the int-value of the tree-root
 
 	delete(new_value : INTEGER)
 		Local
@@ -213,9 +215,13 @@ feature -- public Method to check if a value is in a tree; returns true if value
 			found := true
 		end
 		Result := found
+		ensure
+			valid_result : Result = true or Result = false
 	end
 
-feature{BINARYTREE} -- "private" has(), indicated by Exportation to class NONE
+feature{BINARYTREE} -- "private" has(), indicated by Exportation to class NONE, searches for the given Node in a tree
+					-- if Node has been found, result is the found Node with the given value
+					-- if a Node with given value can not be found , result is Void
 
 	has_rec(new_value : INTEGER ; used_node : NODE) : detachable NODE
 	require
