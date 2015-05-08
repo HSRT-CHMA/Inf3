@@ -11,15 +11,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DivisibleProblem.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MaxProblem.cpp" />
+    <ClCompile Include="MaxSolution.cpp" />
     <ClCompile Include="Node.cpp" />
-    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="Problem.cpp" />
+    <ClCompile Include="Solution.cpp" />
+    <ClCompile Include="SumProblem.cpp" />
+    <ClCompile Include="SumSolution.cpp" />
     <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DivisibleProblem.h" />
+    <ClInclude Include="MaxProblem.h" />
+    <ClInclude Include="MaxSolution.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Problem.h" />
+    <ClInclude Include="Solution.h" />
+    <ClInclude Include="SumProblem.h" />
+    <ClInclude Include="SumSolution.h" />
     <ClInclude Include="Tree.h" />
-    <ClInclude Include="Print.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A06BFCF9-15B0-4320-9143-6B79F63B7B86}</ProjectGuid>

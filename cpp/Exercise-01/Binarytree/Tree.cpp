@@ -5,21 +5,31 @@
 
 
 using namespace std;
-	
+
+/*Default Constructor*/
 Tree::Tree(){
 	root = NULL;
 }
 
+//das hinzugefügt
+Tree::Tree(int value){
+	root = new Node(value);
+}
+
+/*returns the Root*/
 Node* Tree::getRoot(){
-	assert(root != NULL);
+	//assert(root != NULL || root == NULL);
 	return root;
 }
 
+/*methode to set a Root*/
 void Tree::setRoot(Node* root){
+	//assert(root != NULL || root == NULL);
 	this->root = root;
 }
 
-int Tree::getSmallestData(){
+/*return the smallest value of the tree*/
+int Tree::getSmallest(){
 	Node*node = getSmallestNode(root);
 	if (root != NULL){
 		return root->getData();
@@ -29,7 +39,13 @@ int Tree::getSmallestData(){
 	}
 }
 
-Node* Tree::getSmallestNode(Node*start){
+/*
+the smallest Node is the lowest node on the left side of the Tree
+this method running as long the lowest node on the left side is not Null
+than return the node
+*/
+Node* Tree::getSmallestNode(Node* start){
+	//assert(start != NULL);
 	if (start != NULL){
 		while (start->getLeft() != NULL){
 			start = start->getLeft();
@@ -37,12 +53,14 @@ Node* Tree::getSmallestNode(Node*start){
 		return start;
 	}
 	else{
+		//assert(start == NULL);
 		throw new exception("Root is missing");
 	}
 }
 
-int Tree::getHighestValue(){
-	Node*start = getHighestNode(root);
+/*return the biggest value of the tree*/
+int Tree::getBiggest(){
+	Node*start = getBiggestNode(root);
 	if (root != NULL){
 		return start->getData();
 	}
@@ -51,7 +69,13 @@ int Tree::getHighestValue(){
 	}
 }
 
-Node* Tree::getHighestNode(Node*start){
+/*
+the biggest Node is the lowest node on the right side of the Tree
+this method running as long the lowest node on the right side is not Null
+than return the node
+*/
+Node* Tree::getBiggestNode(Node* start){
+	//assert(start != NULL);
 	if (start != NULL){
 		while (start->getRight() != NULL){
 			start = start->getRight();
@@ -59,85 +83,102 @@ Node* Tree::getHighestNode(Node*start){
 		return start;
 	}
 	else{
+		//assert(start == NULL);
 		throw new exception("Root is missing");
 	}
 }
 
+/*
+if the tree is empty, creat a new Node with the value
+else we call the method insertNodeRecursion()
+*/
 void Tree::insert(int data){
+	//assert(data <= 0 || data >= 0);
 	//if empty assign to node
 	if (root == NULL) {
 		root = new Node(data);
 	}
 	//if more than one node
 	else {
+		//assert(data <= 0 || data >= 0);
 		insertNodeRecursion(data, root);
 	}
 }
 
-void Tree::insertNodeRecursion(int data, Node* NewNode){
-	if (data < NewNode->getData()) {
-		if (NewNode->getLeft() != 0) {
-			//if left not empty keep looking
-			insertNodeRecursion(data, NewNode->getLeft());
+/*creates new nodes left an right*/
+void Tree::insertNodeRecursion(int data, Node* node){
+	//assert(data <= 0 || data >= 0);
+	if (data < node->getData()) {
+		if (node->getLeft() != 0) {
+			/*if left not empty keep looking*/
+			insertNodeRecursion(data, node->getLeft());
 		}
-		//create left node
+		/*create left node*/
 		else {
 			Node* left = new Node(data);
-			NewNode->setLeft(left);
+			node->setLeft(left);
 		}
 	}
 	else {
-		if (NewNode->getRight() != 0) {
-			//if right not empty keep looking
-			insertNodeRecursion(data, NewNode->getRight());
+		if (node->getRight() != 0) {
+			/*if right not empty keep looking*/
+			insertNodeRecursion(data, node->getRight());
 		}
-		//create left node
+		/*create left node*/
 		else {
 			Node* right = new Node(data);
-			NewNode->setRight(right);
+			node->setRight(right);
 		}
 	}
 }
 
+/*calls the method removeRecursion*/
 bool Tree::remove(int data){
 	return removeRecursion(root, data, NULL, false);
 }
 
-bool Tree::removeRecursion(Node* node, int data, Node*parent, bool leftFromParent){
+
+bool Tree::removeRecursion(Node* node, int data, Node* parent, bool leftFromParent){
+	//assert(data <= 0 || data >= 0);
+	//assert(node != NULL);
 		if (node == NULL){
 			return false;
 		}
 		if ((data == node->getData())){
+			//assert(node->getLeft() == NULL || node->getRight() == NULL);
 			if ((node->getLeft() == NULL) && (node->getRight() == NULL)){
 				if (parent == NULL){
 					root = NULL;
 				}
 				else{
+					//assert(node->getLeft() != NULL || node->getRight() != NULL);
 					underParent(parent, leftFromParent, NULL);
-					//printf("%i", node->getData());
 				}
 			}
+			//assert(node->getLeft() == NULL && node->getRight() != NULL);
 			if ((node->getLeft() == NULL) && (node->getRight() != NULL)){
 				if (root == NULL){
 					root = node->getRight();
 				}
 				else{
+					//assert(node->getRight() != NULL);
 					underParent(parent, leftFromParent, node->getRight());
 					parent->setParent(node);
-					//printf("%i", node->getData());
 				}
 			}
+			//assert(node->getLeft() != NULL && node->getRight() == NULL);
 			if ((node->getLeft() != NULL) && (node->getRight() == NULL)){
 				if (root == NULL){
 					root = node->getLeft();
 				}
 				else{
+					//assert(node->getLeft() != NULL);
 					underParent(parent, leftFromParent, node->getLeft());
 					parent->setParent(node);
 				}
 			}
 			if ((node->getLeft() != NULL) && (node->getRight() != NULL)){
-				Node*newNode = getHighestNode(node->getLeft());
+				Node*newNode = getBiggestNode(node->getLeft());
 				remove(newNode->getData());
 				if (parent == NULL){
 					newNode->setLeft(root->getLeft());
@@ -172,6 +213,8 @@ bool Tree::removeRecursion(Node* node, int data, Node*parent, bool leftFromParen
 }
 
 void Tree::underParent(Node* parent, bool left, Node* node){
+	//assert(left == true || left == false);
+	//assert(node != NULL);
 	if (left){
 		parent->setLeft(node);
 	}
@@ -181,15 +224,18 @@ void Tree::underParent(Node* parent, bool left, Node* node){
 }
 
 bool Tree::search(int data){
+	//assert(data == NULL);
 	if (root == NULL){
 		return false;
 	}
 	else{
+		//assert(data != NULL);
 		return root->search(data);
 	}
 }
 
 bool Node::search(int data){
+	//assert(data <= 0 || data >= 0);
 	if (data == this->data){
 		printf("true");
 		return true;
@@ -217,6 +263,7 @@ bool Node::search(int data){
 }
 
 void Tree::inOrder(Node* node) {
+	//assert(node != NULL);
 	if (node) {
 		//go left
 		inOrder(node->getLeft());
