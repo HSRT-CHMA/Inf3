@@ -80,7 +80,7 @@ feature{BINARYTREE} -- private Insert-Method (duplicates possible) which add the
 		end
 
 
-feature -- public Insert-Methode; redirects to insert_rec
+feature -- public Insert-Methode; redirects to insert_rec, and prints a message on the console
 
 	insert(new_value : INTEGER)
 		do
@@ -89,11 +89,14 @@ feature -- public Insert-Methode; redirects to insert_rec
 			end
 			print("%N The value " + new_value.out + " has been added to tree")
 			ensure
-				current.has (new_value)
+				tree_has_value : current.has (new_value)
 		end
 
 
-feature{BINARYTREE} -- Delete-Method to delete Nodes with given value in tree
+feature{BINARYTREE} -- Delete-Method to delete Nodes with given value in tree;
+					-- Method uses local variables
+					--smallNode is used to save the node with smallest value in tree
+					--tmpNode is used to save a Node's information while deleting
 
 	deleteRec(new_value : INTEGER; used_node : NODE)
 		require
