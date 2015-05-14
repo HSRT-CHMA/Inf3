@@ -10,6 +10,7 @@ class BinaryTree:
     '''
     Constructor BinaryTree
     Parms: root: root Node of Tree
+           outString : used for inOrder output
     '''
     def __init__(self,value = None):
         # Pre Condition
