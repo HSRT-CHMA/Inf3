@@ -45,7 +45,7 @@ feature -- Method for testing the GPS and its sub-classes, prints max - and sum 
 		print("%N%N tree1 MAX : " + gps1.get_max.out)
 		print("%N%N tree1 SUM : " + gps1.get_sum.out)
 		create gps2.make(tree2)
-		print("%N%N tree2 MAX : " + gps2.get_max.out)
+		print("%N%N tree2 MAX : " + gps2.get_max.out) -- out makes int a String
 		print("%N%N tree2 SUM : " + gps2.get_sum.out)
 		ensure
 			valid_gps : gps1 /= Void
