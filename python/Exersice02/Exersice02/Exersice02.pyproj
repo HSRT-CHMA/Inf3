@@ -13,7 +13,7 @@
     <Name>Exersice02</Name>
     <RootNamespace>Exersice02</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>1*2*100 2*2 3*2 4*2 a*2</CommandLineArguments>
+    <CommandLineArguments>105+90+78+89+29*6 700+(700+700*7)</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

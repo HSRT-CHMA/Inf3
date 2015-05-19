@@ -60,8 +60,11 @@ class Parser(object):
             # The first, left part of the Equation 
             right = equation_elements[1]
             # The second, right part of the Equation
+            result = ""
+            # To be used to show the outcome of the parseExpression-Method
             result_left = self.parseExpression(left)
             result_right = self.parseExpression(right)
+
 
             if result_left != None and result_right != None : # Both parts of the Equation are valid
                 if int(result_left) == int(result_right) : # Both parts of the equation are of the same value
@@ -72,12 +75,14 @@ class Parser(object):
                 result_eq = None
                 
 
-        else : # A single Expression ; returns 
+        else : # A single Expression ; returns None if invalid Expression or value of the Expression
             result = self.parseExpression(line_input)
             if result != None :
                 # Why here ERROR ?
-
-                result_eq += int(result)
+                result_int = 0
+                result_int = result_int + int(result)
+                print("Line 84  int_result : " + str(result_int))
+                result_eq = str(result_int)
                 print("Its a int-Value !")
             else :
                 result_eq = None
@@ -99,17 +104,24 @@ class Parser(object):
         numeric_result = 0
         # Int-value to show the result of the addition of all Terms in the given Expression
         # It is 0 because that is the neutral element in Addition
+        
+        print("This is the input for parseExpression : " + line_input)
+        tmp_input = line_input.replace("(", "")
+        no_brackets_input = tmp_input.replace(")", "")
+        #no_brackets_input = line_input
 
-        if '+' in line_input : # Expression contains of multiple Terms
-            all_term = line_input.split('+') 
+        if '+' in no_brackets_input : # Expression contains of multiple Terms
+            all_term = no_brackets_input.split('+') 
+            print("Multiple Terms")
             #Split the string at the + - Operator
             for i in range(0, len(all_term)) :
                 print("Its not a single Term !!")
                 if self.parseTerm(all_term[i]) != None :
-                # if the seperated Term is valid; True and Treu = True 
+                #Note : if the seperated Term is valid; True and Treu = True 
                     bol = bol and True
-                    # int(a) returns the corresponding int-value of string a
-                    numeric_result = numeric_result + int(self.parseFactor(all_term[i]))
+                    #int(a) returns the corresponding int-value of string a
+                    numeric_result = numeric_result + int(self.parseTerm(all_term[i])) 
+                    #--> Caution : Does not work if still brackets in string
                 else :
                     # if the seperated Term is not valid ; True and False = False and stays False !
                     bol = bol and False
@@ -121,7 +133,7 @@ class Parser(object):
                 result_string = None
 
         else :
-            print("Its a single Term :")
+            print("Single Term :")
             result_string = self.parseTerm(line_input)
             # If Term is invalid ; result_string becomes None; 
             # else it becomes the value of the single Factor; or combined value of all Factors
