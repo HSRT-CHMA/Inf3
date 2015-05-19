@@ -8,16 +8,17 @@
 #include <iostream>
 
 /*DivisibleProblem inherits from Problem*/
-class DivisibleProblem : public Problem{
+template<Solution>
+class DivisibleProblem : public Problem<Solution>{
 
 protected:
-	bool isDirectlySolvalbe = false;
+	bool isDirectlySolvalbe;
 	Tree* tree = nullptr;
 
 public:
 	/*abtract*/
-	virtual void checkSolvability(Node* node); 
-	virtual void getHighestAndSum(Node* node);
+	virtual void checkSolvability(Node* node) = 0; 
+	virtual void getHighestAndSum(Node* node) = 0;
 	virtual void calculateSolution();
 
 	/*set a new Tree*/

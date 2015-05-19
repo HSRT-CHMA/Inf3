@@ -7,6 +7,7 @@
 
 using namespace std;
 
+template<MaxSolution>
 int main() {
 /*	Tree tree;
 
@@ -36,9 +37,9 @@ int main() {
 	cout << endl;
 
 	tree.search(100);*/
-
-	MaxProblem max;
-	max.setTree(10);
+	
+	MaxProblem max = new MaxProblem();;
+	max->setTree(10);
 	max.getTree()->insert(12);
 	max.calculateSolution();
 	cout << "MaxSolution:" << max.getSolution()->getMaximum() << endl;

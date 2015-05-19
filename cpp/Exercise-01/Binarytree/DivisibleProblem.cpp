@@ -2,13 +2,17 @@
 
 
 /**/
+template<Solution>
 void DivisibleProblem::calculateSolution(){
-	checkSolvability(tree->getRoot());
-	if (isDirectlySolvalbe){
-		printf("directlySolvable is true!");
-	}
-	else{
-		getHighestAndSum(tree->getRoot());
+	while (true){
+		checkSolvability(tree->getRoot());
+		checkSolvability(tree->getRoot());
+		if (isDirectlySolvalbe){
+			printf("directlySolvable is true!");
+		}
+		else{
+			getHighestAndSum(tree->getRoot());
+		}
 	}
 }
 

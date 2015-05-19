@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_JAPLsc73EeSYyqm90Pi3zg" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_JAPLss73EeSYyqm90Pi3zg" bindingContexts="_JAPLtM73EeSYyqm90Pi3zg">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;SumSolution.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\SumSolution.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/SumSolution.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;SumProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\SumProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/SumProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Nodes.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\Nodes.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/Nodes.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;MaxSolution.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\MaxSolution.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/MaxSolution.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;MaxProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\MaxProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/MaxProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Main.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\Main.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/Main.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;GPS.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\GPS.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/GPS.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;DivisibleProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\DivisibleProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/DivisibleProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;__init__.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\__init__.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/__init__.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;BinaryTree.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\BinaryTree.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/BinaryTree.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Main.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exercise1\Exercise1\Main.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/Exercise1/Exercise1/Main.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;__init__.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exercise1\Exercise1\__init__.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/Exercise1/Exercise1/__init__.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Nodes.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exercise1\Exercise1\Nodes.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/Exercise1/Exercise1/Nodes.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Exercise1.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exercise1\Exercise1\Exercise1.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/Exercise1/Exercise1/Exercise1.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Binarytree.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exercise1\Exercise1\Binarytree.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/Exercise1/Exercise1/Binarytree.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;SumProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\PythonExercise1\PythonExercise1\SumProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/PythonExercise1/PythonExercise1/SumProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;SumSolution.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\PythonExercise1\PythonExercise1\SumSolution.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/PythonExercise1/PythonExercise1/SumSolution.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;MaxSolution.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\PythonExercise1\PythonExercise1\MaxSolution.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/PythonExercise1/PythonExercise1/MaxSolution.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;DivisibleProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\PythonExercise1\PythonExercise1\DivisibleProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/PythonExercise1/PythonExercise1/DivisibleProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;MaxProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\PythonExercise1\PythonExercise1\MaxProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/PythonExercise1/PythonExercise1/MaxProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;GPS.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\PythonExercise1\PythonExercise1\GPS.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Documents/GitHub/Inf3/python/PythonExercise1/PythonExercise1/GPS.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;SumSolution.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\SumSolution.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/SumSolution.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;SumProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\SumProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/SumProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Nodes.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\Nodes.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/Nodes.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;MaxSolution.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\MaxSolution.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/MaxSolution.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;MaxProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\MaxProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/MaxProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;Main.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\Main.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/Main.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;GPS.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\GPS.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/GPS.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;DivisibleProblem.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\DivisibleProblem.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/DivisibleProblem.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;__init__.py&quot; tooltip=&quot;C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\__init__.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/__init__.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_JAPLss73EeSYyqm90Pi3zg" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_JYD10c73EeSYyqm90Pi3zg" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
@@ -247,9 +247,10 @@
           <tags>persp.showIn:org.eclipse.ui.views.ResourceNavigator</tags>
           <tags>persp.showIn:org.python.pydev.navigator.view</tags>
           <tags>persp.showIn:org.eclipse.ui.views.ContentOutline</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_Aiy5gvQ_EeSS0pyCVMfOoA" selectedElement="_Aiy5hfQ_EeSS0pyCVMfOoA" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_Aiy5gvQ_EeSS0pyCVMfOoA" selectedElement="_Aiy5g_Q_EeSS0pyCVMfOoA" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_Aiy5g_Q_EeSS0pyCVMfOoA" elementId="topLeft" containerData="2600" selectedElement="_Aiy5hPQ_EeSS0pyCVMfOoA">
               <tags>newtablook</tags>
+              <tags>active</tags>
               <children xsi:type="advanced:Placeholder" xmi:id="_Aiy5hPQ_EeSS0pyCVMfOoA" elementId="org.python.pydev.navigator.view" ref="_Aiy5gPQ_EeSS0pyCVMfOoA"/>
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_Aiy5hfQ_EeSS0pyCVMfOoA" containerData="7400" selectedElement="_Aiy5hvQ_EeSS0pyCVMfOoA">
@@ -284,67 +285,10 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_Ji9eQM73EeSYyqm90Pi3zg" elementId="org.eclipse.ui.editorss" selectedElement="_Ji-FUM73EeSYyqm90Pi3zg">
-      <children xsi:type="basic:PartStack" xmi:id="_Ji-FUM73EeSYyqm90Pi3zg" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_7xWHQPQ_EeScdZWM2wlD9A">
+      <children xsi:type="basic:PartStack" xmi:id="_Ji-FUM73EeSYyqm90Pi3zg" elementId="org.eclipse.e4.primaryDataStack">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_zdGZIPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="BinaryTree" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\BinaryTree.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/BinaryTree.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;11588&quot; selectionTopPixel=&quot;2340&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_3rFcgPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="DivisibleProblem" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\DivisibleProblem.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/DivisibleProblem.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_6H9uoPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="GPS" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\GPS.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/GPS.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;259&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_6kergPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Main" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\Main.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/Main.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;510&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_7BYC4PQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="MaxProblem" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\MaxProblem.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/MaxProblem.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;484&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_7aK9YPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="MaxSolution" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\MaxSolution.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/MaxSolution.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;367&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_7xWHQPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Nodes" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\Nodes.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/Nodes.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1091&quot; selectionTopPixel=&quot;135&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="__1UTAPQ_EeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SumProblem" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\SumProblem.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/SumProblem.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;367&quot; selectionTopPixel=&quot;450&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_BA2SAPRAEeScdZWM2wlD9A" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SumSolution" iconURI="platform:/plugin/org.python.pydev/icons/python_file.gif" tooltip="C:\Users\Martin Watolla\Dropbox\Inf3 Praktikum\Aufgabe-01-Code\Python\PythonExercise1\SumSolution.py" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Martin%20Watolla/Dropbox/Inf3%20Praktikum/Aufgabe-01-Code/Python/PythonExercise1/SumSolution.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;655&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.python.pydev.editor.PythonEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_JjKSkM73EeSYyqm90Pi3zg" elementId="org.eclipse.ui.navigator.ProjectExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Project Explorer" iconURI="platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.gif" tooltip="Workspace" closeable="true">
@@ -486,9 +430,11 @@
       <tags>categoryTag:Java</tags>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_Aiy5gPQ_EeSS0pyCVMfOoA" elementId="org.python.pydev.navigator.view" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="PyDev Package Explorer" iconURI="platform:/plugin/org.python.pydev/icons/pydev_package_explorer.gif" tooltip="Workspace" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;>&#xD;&#xA;&lt;expanded IMemento.internal.id=&quot;C:/Users/Martin Watolla/Documents/GitHub/Inf3/python/Martin Workspace/exercise1&quot;/>&#xD;&#xA;&lt;selected IMemento.internal.id=&quot;C:/Users/Martin Watolla/Documents/GitHub/Inf3/python/Martin Workspace/exercise1&quot;/>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;>&#xD;&#xA;&lt;selected IMemento.internal.id=&quot;C:/Users/Martin Watolla/Documents/GitHub/Inf3/python/Martin Workspace/exercise1&quot;/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:PyDev</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_Ajdn4PQ_EeSS0pyCVMfOoA" elementId="org.python.pydev.navigator.view">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -502,18 +448,18 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JbIX8M73EeSYyqm90Pi3zg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANUPQ_EeScdZWM2wlD9A" elementId="new.group"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANUfQ_EeScdZWM2wlD9A" elementId="newWizardDropDown"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANUvQ_EeScdZWM2wlD9A" elementId="new.ext" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANU_Q_EeScdZWM2wlD9A" elementId="save.group" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANVPQ_EeScdZWM2wlD9A" elementId="save"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANVfQ_EeScdZWM2wlD9A" elementId="saveAll"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANVvQ_EeScdZWM2wlD9A" elementId="save.ext" visible="false"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_V0ANV_Q_EeScdZWM2wlD9A" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.gif" tooltip="Print" command="_JBuZc873EeSYyqm90Pi3zg"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANWPQ_EeScdZWM2wlD9A" elementId="print.ext" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANWfQ_EeScdZWM2wlD9A" elementId="build.group"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANWvQ_EeScdZWM2wlD9A" elementId="build.ext" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANW_Q_EeScdZWM2wlD9A" elementId="additions"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rUPdeEeSb2860xcSKUg" elementId="new.group"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rUfdeEeSb2860xcSKUg" elementId="newWizardDropDown"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rUvdeEeSb2860xcSKUg" elementId="new.ext" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rU_deEeSb2860xcSKUg" elementId="save.group" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rVPdeEeSb2860xcSKUg" elementId="save"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rVfdeEeSb2860xcSKUg" elementId="saveAll"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KE0rVvdeEeSb2860xcSKUg" elementId="save.ext" visible="false"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_KE1SYPdeEeSb2860xcSKUg" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.gif" tooltip="Print" enabled="false" command="_JBuZc873EeSYyqm90Pi3zg"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFBfoPdeEeSb2860xcSKUg" elementId="print.ext" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFBfofdeEeSb2860xcSKUg" elementId="build.group"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFBfovdeEeSb2860xcSKUg" elementId="build.ext" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFBfo_deEeSb2860xcSKUg" elementId="additions"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JbI_AM73EeSYyqm90Pi3zg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -521,8 +467,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_And-IPQ_EeSS0pyCVMfOoA" elementId="com.python.pydev.navigate.actionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG0PQ_EeScdZWM2wlD9A" elementId="pyNavigateGroup"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG0fQ_EeScdZWM2wlD9A" elementId="com.python.pydev.analysis.actions.pyGlobalsBrowserWorkbench"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyMPdeEeSb2860xcSKUg" elementId="pyNavigateGroup"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyMfdeEeSb2860xcSKUg" elementId="com.python.pydev.analysis.actions.pyGlobalsBrowserWorkbench"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XWqvYPQ-EeSQO4jG79wyPA" elementId="org.eclipse.debug.ui.breakpointActionSet" visible="false">
         <tags>Draggable</tags>
@@ -531,15 +477,15 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JtPboM73EeSYyqm90Pi3zg" elementId="org.eclipse.debug.ui.launchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG0vQ_EeScdZWM2wlD9A" elementId="debug"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG0_Q_EeScdZWM2wlD9A" elementId="org.eclipse.debug.internal.ui.actions.DebugDropDownAction"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG1PQ_EeScdZWM2wlD9A" elementId="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG1fQ_EeScdZWM2wlD9A" elementId="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyMvdeEeSb2860xcSKUg" elementId="debug"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyM_deEeSb2860xcSKUg" elementId="org.eclipse.debug.internal.ui.actions.DebugDropDownAction"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyNPdeEeSb2860xcSKUg" elementId="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyNfdeEeSb2860xcSKUg" elementId="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XWqvYfQ-EeSQO4jG79wyPA" elementId="org.eclipse.emf.facet.common.editor.actionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG1vQ_EeScdZWM2wlD9A" elementId="Normal"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG1_Q_EeScdZWM2wlD9A" elementId="org.eclipse.emf.facet.util.emf.actions.OpenModelFromEmfRegistry"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyNvdeEeSb2860xcSKUg" elementId="Normal"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyN_deEeSb2860xcSKUg" elementId="org.eclipse.emf.facet.util.emf.actions.OpenModelFromEmfRegistry"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_8DAF8M8GEeSYyqm90Pi3zg" elementId="org.eclipse.jdt.ui.JavaElementCreationActionSet" visible="false">
         <tags>Draggable</tags>
@@ -556,9 +502,9 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JtGRsM73EeSYyqm90Pi3zg" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG2PQ_EeScdZWM2wlD9A" elementId="Search"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG2fQ_EeScdZWM2wlD9A" elementId="org.eclipse.mylyn.tasks.ui.openTask"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG2vQ_EeScdZWM2wlD9A" elementId="org.eclipse.search.OpenSearchDialogPage"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyOPdeEeSb2860xcSKUg" elementId="Search"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyOfdeEeSb2860xcSKUg" elementId="org.eclipse.mylyn.tasks.ui.openTask"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKcyOvdeEeSb2860xcSKUg" elementId="org.eclipse.search.OpenSearchDialogPage"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Js6rgM73EeSYyqm90Pi3zg" elementId="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" visible="false">
         <tags>Draggable</tags>
@@ -576,15 +522,15 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JbJmEM73EeSYyqm90Pi3zg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0ANXPQ_EeScdZWM2wlD9A" elementId="history.group"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0GT8PQ_EeScdZWM2wlD9A" elementId="group.application" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0GT8fQ_EeScdZWM2wlD9A" elementId="backardHistory"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0GT8vQ_EeScdZWM2wlD9A" elementId="forwardHistory"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0GT8_Q_EeScdZWM2wlD9A" elementId="pin.group"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_V0GT9PQ_EeScdZWM2wlD9A" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.gif" tooltip="Pin Editor" enabled="false" command="_JBtLjs73EeSYyqm90Pi3zg"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG2_Q_EeScdZWM2wlD9A" elementId="org.eclipse.ui.edit.text.gotoNextAnnotation"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG3PQ_EeScdZWM2wlD9A" elementId="org.eclipse.ui.edit.text.gotoPreviousAnnotation"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V2rG3fQ_EeScdZWM2wlD9A" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFBfpPdeEeSb2860xcSKUg" elementId="history.group"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFBfpfdeEeSb2860xcSKUg" elementId="group.application" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFCGsPdeEeSb2860xcSKUg" elementId="backardHistory"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFCGsfdeEeSb2860xcSKUg" elementId="forwardHistory"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFCGsvdeEeSb2860xcSKUg" elementId="pin.group"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_KFCGs_deEeSb2860xcSKUg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.gif" tooltip="Pin Editor" enabled="false" command="_JBtLjs73EeSYyqm90Pi3zg"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKdZQPdeEeSb2860xcSKUg" elementId="org.eclipse.ui.edit.text.gotoNextAnnotation"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKdZQfdeEeSb2860xcSKUg" elementId="org.eclipse.ui.edit.text.gotoPreviousAnnotation"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KKdZQvdeEeSb2860xcSKUg" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JbJmEc73EeSYyqm90Pi3zg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -596,8 +542,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JbKNIM73EeSYyqm90Pi3zg" elementId="org.eclipse.ui.workbench.help" visible="false">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0GT9fQ_EeScdZWM2wlD9A" elementId="group.help"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_V0GT9vQ_EeScdZWM2wlD9A" elementId="group.application" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFCtwPdeEeSb2860xcSKUg" elementId="group.help"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_KFCtwfdeEeSb2860xcSKUg" elementId="group.application" visible="false"/>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_JghOQM73EeSYyqm90Pi3zg" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>stretch</tags>

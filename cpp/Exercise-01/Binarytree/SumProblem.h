@@ -5,7 +5,8 @@
 #include "SumSolution.h"
 
 /*SumProblem inherits from DivisbleProblem*/
-class SumProblem : public DivisibleProblem{
+template<SumSolution>
+class SumProblem : public DivisibleProblem<SumSolution>{
 
 protected:
 	SumSolution* solution;

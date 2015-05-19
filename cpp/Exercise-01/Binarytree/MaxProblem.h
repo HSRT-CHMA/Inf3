@@ -5,7 +5,8 @@
 #include "MaxSolution.h"
 
 /*MaxProblem inherits from DivisibleProblem*/
-class MaxProblem : public DivisibleProblem{
+template<MaxSolution>
+class MaxProblem : public DivisibleProblem<MaxSolution>{
 
 protected:
 	MaxSolution* solution;
@@ -15,7 +16,6 @@ public:
 	void checkSolvability(Node* node);
 	MaxSolution* getSolution();
 	void getHighestAndSum(Node* node);
-	~MaxProblem();
 };
 
 #endif

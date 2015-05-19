@@ -2,7 +2,8 @@
 #define PROBLEM_H
 #include "Solution.h"
 
-class Problem{
+template<Solution>
+class Problem<Solution>{
 public:
 	/*abstract*/
 	virtual Solution & getSolution() const = 0;
