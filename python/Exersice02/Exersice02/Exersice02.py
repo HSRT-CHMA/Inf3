@@ -15,9 +15,5 @@ if __name__ == '__main__':
         print("ERROR : No command line arguments have been selected")
 
     my_parser = Parser.Parser()
-    
     for i in range(1, len(sys.argv)):
-        #if my_parser.parseConstant(sys.argv[i]) != None :
-            #print("Main : ") 
-            #print(my_parser.parseConstant(sys.argv[i]).getValue())
-        print(my_parser.parseConstant(sys.argv[i]))
+        print(my_parser.parse(sys.argv[i]))
