@@ -13,7 +13,7 @@
     <Name>Exersice02</Name>
     <RootNamespace>Exersice02</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>105+90+78+89+29*6 700+(700+700*7)</CommandLineArguments>
+    <CommandLineArguments>a 7+10+2*1 1*3+3+7 6+</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -25,14 +25,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Constant.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Exersice02.py" />
-    <Compile Include="Expression.py">
+    <Compile Include="Parser.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Parser.py">
+    <Compile Include="P_Parser.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
