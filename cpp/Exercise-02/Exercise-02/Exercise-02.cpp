@@ -1,6 +1,7 @@
 // Exercise-02.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
 
 #include "stdafx.h"
+#include "parser.h"
 #include <iostream>
 #include <cassert>
 
@@ -13,7 +14,9 @@ using namespace std;
 */
 int _tmain(int argc, _TCHAR* argv[])
 {
+	Parser* p = new Parser();
 	cout << "Exercise 02";
+
 	return 0;
 }
 
