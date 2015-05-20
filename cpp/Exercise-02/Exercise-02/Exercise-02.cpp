@@ -1,7 +1,8 @@
-// Exercise-02.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
-
+// Exercise-02.cpp : Defines Start Point for the Application
+/*Includes of Exercise 2 - Main Method*/
 #include "stdafx.h"
 
+/*Default Namespace of Parser*/
 using namespace std;
 
 /*

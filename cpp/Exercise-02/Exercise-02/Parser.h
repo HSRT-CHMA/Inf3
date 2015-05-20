@@ -12,6 +12,12 @@ private:
 	regex numbers;
 	regex numbersWZ;
 
+	/*Methods for Shape of EBNF*/
+	bool checkBracketCount(string input);
+	bool checkBracketOrder(string input);
+	bool checkEmptyBrackets(string input);
+	bool checkNumbers(string input);
+
 	/*Method for Equation*/
 	string parseEquation(string input);
 	
