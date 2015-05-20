@@ -7,6 +7,11 @@ class Parser
 {
 	/*Private Methods of Parser*/
 private:
+	/*Regular Expression Definition*/
+	regex onlyZero;
+	regex numbers;
+	regex numbersWZ;
+
 	/*Method for Equation*/
 	string parseEquation(string input);
 	
@@ -27,7 +32,12 @@ private:
 	
 	/*Method for isDigitWithoutZero*/
 	bool isDigitWithoutZero(string input);
-	
+
+	/*Method for Zero Value*/
+	bool isZero(string input);
+
+	/*Method for not allowed Character*/
+	bool invalidCharacters(string input);
 
 	/*Public Methods of Parser*/
 public:
