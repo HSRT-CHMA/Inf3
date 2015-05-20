@@ -17,6 +17,8 @@ private:
 	bool checkBracketOrder(string input);
 	bool checkEmptyBrackets(string input);
 	bool checkNumbers(string input);
+	bool checkOperator(string input);
+
 
 	/*Method for Equation*/
 	string parseEquation(string input);

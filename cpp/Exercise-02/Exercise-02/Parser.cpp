@@ -191,6 +191,12 @@ bool Parser::checkNumbers(string input)
 
 }
 
+bool Parser::checkOperator(string input)
+{
+
+}
+
+
 string Parser::parseEquation(string input)
 {
 	return NULL;
@@ -198,7 +204,30 @@ string Parser::parseEquation(string input)
 
 string Parser::parseExpression(string input)
 {
-	return NULL;
+	char singleChar;
+	bool checkPlus = false;
+	bool checkBracketLeft = false;
+	bool checkBracketRight = false;
+	string result = "";
+	string left = "";
+	string right = "";
+
+	for (int i = 0; i < input.length; i++){
+		singleChar = input[i];
+		if (singleChar != '('){
+			checkBracketLeft = true;
+		}
+		if (singleChar != ')'){
+			checkBracketRight = true;
+		}
+		if (singleChar == '+'){
+			checkPlus = true;
+		}
+	}
+
+	if (checkPlus && checkBracketLeft && checkBracketRight){
+
+	}
 }
 
 /*
@@ -230,10 +259,25 @@ string Parser::parse(string input)
 
 	/*Start Complete Check if the Input Value is valid*/
 	if (!invalidCharacters(input)){
-		//TODO
+		if (checkBracketCount){
+			if (checkEmptyBrackets){
+				if (checkNumbers){
+
+				}
+				else{
+					cout << "Sorry the numbers of the term are not valid.";
+				}
+			}
+			else{
+				cout << "Sorry there is no content between the brackets.";
+			}
+		}
+		else{
+			cout << "Sorry the brackets are not valid in this term.";
+		}
 	}
 	else{
-		cout << "Sorry there are invalid Characters in your Input String";
+		cout << "Sorry there are invalid Characters in your Input String.";
 	}
 
 	//TODO
