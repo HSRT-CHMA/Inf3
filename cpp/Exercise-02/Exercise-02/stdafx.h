@@ -1,15 +1,15 @@
-// stdafx.h : Includedatei für Standardsystem-Includedateien
-// oder häufig verwendete projektspezifische Includedateien,
-// die nur in unregelmäßigen Abständen geändert werden.
-//
-
+/*
+	Default Include File of Visual Studio
+*/
 #pragma once
 
 #include "targetver.h"
-
+/*Includes for Input Output*/
+#include <iostream>
 #include <stdio.h>
 #include <tchar.h>
-
-
-
-// TODO: Hier auf zusätzliche Header, die das Programm erfordert, verweisen.
+/*Include for Design by Contract*/
+#include <cassert>
+/*Include for String Valuetype*/
+#include <string>
+#include "Parser.h"

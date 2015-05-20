@@ -1,10 +1,5 @@
-#pragma once
 
-/*Includes of Parser Class*/
-#include <iostream>
-#include <string>
-#include "stdafx.h"
-
+/*Default Namespace of Parser*/
 using namespace std;
 
 /*Header File of Parser*/
@@ -12,7 +7,6 @@ class Parser
 {
 	/*Private Methods of Parser*/
 private:
-	
 	/*Method for Equation*/
 	string parseEquation(string input);
 	
@@ -34,9 +28,9 @@ private:
 	/*Method for isDigitWithoutZero*/
 	bool isDigitWithoutZero(string input);
 	
+
 	/*Public Methods of Parser*/
 public:
-	
 	/*Default Constructor Prototype*/
 	Parser();
 	

@@ -1,9 +1,6 @@
 // Exercise-02.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
 
 #include "stdafx.h"
-#include "parser.h"
-#include <iostream>
-#include <cassert>
 
 using namespace std;
 
@@ -12,11 +9,29 @@ using namespace std;
 	Creating Parser for E1
 	Creating Interaction for E2
 */
-int _tmain(int argc, _TCHAR* argv[])
+int _tmain(int argc, string *argv[])
 {
+	/*Creating new Parser Object*/
 	Parser* p = new Parser();
+
+	/*Output for User Interface*/
 	cout << "Exercise 02";
 
+	/*Check if Parameters are given from the console*/
+	if (argv[0] != NULL){
+		/*Check if String consists keyword file*/
+		if (argv[0]->find("file")){
+
+		}
+		/*If not parse will be called*/
+		else {
+			p->parse(*argv[1]);
+		}
+	}
+	/*
+		End of programm
+		Return Value for OS - not defined
+	*/
 	return 0;
 }
 
