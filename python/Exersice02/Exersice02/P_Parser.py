@@ -8,7 +8,13 @@ class P_Parser(object):
         assert type(line_input) == str 
         bol = True 
         # To be used to check if input is valid
+        
         if line_input.startswith('+') or line_input.endswith('+') or line_input.startswith('*') or line_input.endswith('*') or line_input.startswith('=') or line_input.endswith('=') : 
+            # input must not start or end with an operator
+            bol = False
+
+        if '-' in line_input or ':' in line_input :
+            # input must not contains other operators than '='; '+' ; '*'
             bol = False
 
         return bol
@@ -26,9 +32,9 @@ class P_Parser(object):
         if self.check_input(line_input) :
             final_output = self.parseEquation(line_input) # Check the given input
             if final_output == None :
-                res = "The current Equation is NOT VALID "
+                res = "The Equation is NOT VALID "
             else :
-                res = "The current Equation is VALID "
+                res = "The Equation is VALID "
                 if final_output.isdecimal :
                     res = "The current Expression has the value of " + str(final_output)
                 elif 'true' in final_output.lower :
@@ -38,7 +44,7 @@ class P_Parser(object):
         else :
             res = "ERROR"
 
-        return res
+        return final_output #res
 
     
     

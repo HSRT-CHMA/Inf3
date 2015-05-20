@@ -32,7 +32,6 @@ class Parser(object):
         final_output = ""
         res = ""
 
-
         if self.check_input(line_input) :
             final_output = self.parseEquation(line_input) # Check the given input
             if final_output == None :
@@ -48,7 +47,7 @@ class Parser(object):
         else :
             res = "ERROR"
 
-        return res
+        return final_output #res
    
     ''' Method checks if the given string is a valid Equation (An Expression ; optional followed by "=" , and one more Expression )
         Method returns None if Equation is in any form invalid, or True/False or int-Value of Expression '''
