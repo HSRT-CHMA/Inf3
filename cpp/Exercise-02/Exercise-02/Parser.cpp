@@ -15,14 +15,14 @@ regex numbersWZ;
 */
 Parser::Parser()
 {
-	cout << "Definition of Regular Expression";
-	cout << "Set only Zero to 0";
+	cout << "\nDefinition of Regular Expression";
+	cout << "\nSet only Zero to 0";
 	onlyZero = "[0]";
-	cout << "Set numbers to 0-9";
+	cout << "\nSet numbers to 0-9";
 	numbers = "[0-9]";
-	cout << "Set numbers without Zero to 1-9";
+	cout << "\nSet numbers without Zero to 1-9";
 	numbersWZ = "[1-9]";
-	cout << "New Parser was created!";
+	cout << "\nNew Parser was created!";
 }
 
 /*
@@ -229,7 +229,10 @@ bool Parser::checkOperator(string input)
 	return value;
 }
 
-
+/*
+	Method for parsing Equation
+	
+*/
 string Parser::parseEquation(string input)
 {
 	int valueLeft = 0;
@@ -251,7 +254,9 @@ string Parser::parseEquation(string input)
 	return value;
 }
 
-
+/*
+	Method for parsing Expression
+*/
 string Parser::parseExpression(string input)
 {
 	bool checkPlus = false;
@@ -316,19 +321,19 @@ string Parser::parse(string input)
 					}
 				}
 				else{
-					cout << "Sorry the numbers of the term are not valid.";
+					cout << "\nSorry the numbers of the term are not valid.";
 				}
 			}
 			else{
-				cout << "Sorry there is no content between the brackets.";
+				cout << "\nSorry there is no content between the brackets.";
 			}
 		}
 		else{
-			cout << "Sorry the brackets are not valid in this term.";
+			cout << "\nSorry the brackets are not valid in this term.";
 		}
 	}
 	else{
-		cout << "Sorry there are invalid Characters in your Input String.";
+		cout << "\nSorry there are invalid Characters in your Input String.";
 	}
 
 	//TODO

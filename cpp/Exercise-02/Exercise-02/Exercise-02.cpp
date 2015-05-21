@@ -16,8 +16,11 @@ int _tmain(int argc, _TCHAR *argv[])
 	Parser* p = new Parser();
 
 	/*Output for User Interface*/
-	cout << "Exercise 02";
-	cout << "Expression: 5+5" + p->parse("5+5");
-
+	cout << "\nExercise 02";
+	cout << "\nExpression: 5+5" + p->parse("5+5");
+	cout << "\nExpression: 5+5" + p->parse("(5+5");
+	cout << "\nExpression: 5+5" + p->parse("5+5)");
+	
+	system("pause");
 	return 0;
 }
