@@ -96,7 +96,7 @@ namespace Exercise02{
             if (eqString.Contains("+") && !eqString.Contains("(") && !eqString.Contains(")")){
                 // SubString Left
                 left = eqString.Substring(0, eqString.IndexOf("+"));
-                tmpAdd += Convert.ToInt32(ParseExpression(left));
+                tmpAdd = Convert.ToInt32(ParseExpression(left));
                 // SubString Right
                 right = eqString.Substring(eqString.IndexOf("+") + 1, eqString.Length - (eqString.IndexOf("+") + 1));
                 if (right.Contains("+")){
@@ -104,7 +104,7 @@ namespace Exercise02{
                     res = ParseExpression(right);
                 }else{
                     // if all "+" are substringed save the result in res
-                    res = res += (tmpAdd + Convert.ToInt32(ParseTerm(right)));
+                    res = res + (tmpAdd + Convert.ToInt32(ParseTerm(right)));
                 }
             }else{
                 // no "+" or ["(" ")" is in] eqString = calls ParseTerm()
@@ -144,19 +144,20 @@ namespace Exercise02{
         }
 
         private String ParseFactor(String eqString){
-            String eqString1 = "", eqString2 = "", eqString3 = "", res = "";
-            int cnt1 = 0, cnt2 = 0, cnt3 = 0;
-            tmpAdd = 0;
-            tmpMulti = 1;
             /*
              * ParseFactor() called by ParseTerm() checks if eqString is an Factor input
              * Calls ParseConstant() when no "(" or ")" is in eqString
              * parms:   String  eqString: Input from program
-             *                  eqString1,2,3: Temporar Strings
-             *                  left,right: SubString left and right from operator "*" 
+             *                  eqString1,2,3: Temporar Strings 
              *                  res: return Result for Output
-             *          int     cnt1,2,3: charSum for Replacing in Substrings
-             */
+             *          int     cnt1,2,3: Amount for Replacing in Substrings
+             * Extra Info       1=left;2=middle;3=right
+             */             
+            String eqString1 = "", eqString2 = "", eqString3 = "", res = "";
+            int cnt1 = 0, cnt2 = 0, cnt3 = 0;
+            tmpAdd = 0;
+            tmpMulti = 1;
+                
             // count number of Chars in eqString
             foreach(char c in eqString){
                 if(c.Equals('(')){
@@ -167,33 +168,52 @@ namespace Exercise02{
             cnt2 = 0;
             // checks if eqString contains "(" and ")"
             if (eqString.Contains("(") && eqString.Contains(")")){
-                eqString1 = eqString.Substring(0, eqString.IndexOf(")"));
-                foreach (char c in eqString1){
-                    cnt1++;
-                }
-                eqString3 = eqString.Substring(eqString.IndexOf(")") + 1, eqString.Length - (eqString.IndexOf(")") + 1));
-                foreach (char c in eqString1){
-                    cnt2++;
-                }
-                eqString2 = eqString.Substring(cnt1, eqString.Length - cnt2);
-                eqString2 = eqString2.Substring(1, eqString2.IndexOf(")"));
-                if (eqString2.Contains("(") && eqString2.Contains(")")){
-                    res = ParseExpression(eqString2);
+                // Substring from Begin until '(' into left
+                eqString1 = eqString.Substring(0, cnt1);
+                // Checking if index of '(' is bigger than of ')' to know from where to Substring and doesnt split the open bracket '(' with the closed Bracket ')'
+                if (cnt1 > eqString.IndexOf(")")){
+                    // Count number of Characters in eqString
+                    foreach (char c in eqString){
+                        if (c.Equals(')')){
+                            // If Character equals '(' then the right counter gets the value of the middle counter
+                            cnt3 = cnt2;
+                        }
+                        cnt2++;
+                    }
+                    cnt2 = 0;
+                    // Substring from right counter until ')' and write it in right
+                    eqString3 = eqString.Substring(cnt3 + 1, eqString.Length - (cnt3 + 1));
                 }else{
-                    if (eqString2.Contains(")")){
-                        eqString2 = eqString2.Replace(")", "");
+                    // Substring from ')' until end and write it in right
+                    eqString3 = eqString.Substring(eqString.IndexOf(")")+1,eqString.Length - (eqString.IndexOf(")")+1));
+                }
+
+                // Middle gets the Substrings from left and right
+                eqString2 = eqString.Substring(cnt1,(eqString.Length)-cnt1);
+                eqString2 = eqString2.Substring(eqString2.IndexOf("("),eqString2.IndexOf(")"));
+                if(eqString2.Contains("(") && eqString2.Contains(")")){
+                    // Removin Brackets
+                    eqString2 = eqString2.Replace("(","");
+                    eqString2 = eqString2.Replace(")","");
+                    res = ParseExpression(eqString2);
+                }else{ 
+                    if(eqString2.Contains(")")){
+                        // Removin Brackets
+                        eqString2 = eqString2.Replace(")","");
                         res = ParseExpression(eqString2);
+                    }else{
+                        if(eqString2.Contains("(")){
+                            // Removin Brackets
+                            eqString2 = eqString2.Replace("(","");
+                            res = ParseExpression(eqString2);
+                        }else{
+                            res = ParseExpression(eqString2);
+                        }
+
                     }
                 }
+                // Substring before '(' and after ')' + left + result + right
                 eqString2 = eqString1 + res + eqString3;
-                if (eqString2.Contains("(") && eqString2.Contains(")")){
-                    res = ParseExpression(eqString2);
-                }else{
-                    if (eqString2.Contains(")")){
-                        eqString2 = eqString2.Replace(")", "");
-                        res = ParseExpression(eqString2);
-                    }
-                }
                 res = ParseExpression(eqString2);
             }else{
                 res = ParseConstant(eqString);

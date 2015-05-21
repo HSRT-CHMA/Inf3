@@ -62,7 +62,7 @@ namespace Exercise02{
                 }
             }
             // Waiting for Userinput
-            Console.WriteLine("Press any Key to Exit...");
+            Console.WriteLine("\nPress any Key to Exit...");
             Console.ReadKey(); 
         }
     }
