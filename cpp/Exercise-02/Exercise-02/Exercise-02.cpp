@@ -10,29 +10,14 @@ using namespace std;
 	Creating Parser for E1
 	Creating Interaction for E2
 */
-int _tmain(int argc, string *argv[])
+int _tmain(int argc, _TCHAR *argv[])
 {
 	/*Creating new Parser Object*/
 	Parser* p = new Parser();
 
 	/*Output for User Interface*/
 	cout << "Exercise 02";
+	cout << "Expression: 5+5" + p->parse("5+5");
 
-	/*Check if Parameters are given from the console*/
-	if (argv[0] != NULL){
-		/*Check if String consists keyword file*/
-		if (argv[0]->find("file")){
-
-		}
-		/*If not parse will be called*/
-		else {
-			p->parse(*argv[1]);
-		}
-	}
-	/*
-		End of programm
-		Return Value for OS - not defined
-	*/
 	return 0;
 }
-

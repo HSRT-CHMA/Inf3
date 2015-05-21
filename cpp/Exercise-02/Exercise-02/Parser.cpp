@@ -179,9 +179,29 @@ bool Parser::checkEmptyBrackets(string input)
 	return leftBracket != rightBracket-1;
 }
 
+/*
+	Methodfor Shape of the EBNF
+	Check string for no numbers and if
+	there are operators
+	Return Type True if no numbers are
+	in the expression but operators
+*/
 bool Parser::checkNumbers(string input)
 {
+	bool value = false;
 
+	if (!regex_match(input, onlyZero) &&
+		!regex_match(input, numbers) &&
+		!regex_match(input, numbersWZ)){
+
+		for (int i = 0; i < input.length; i++){
+			if (input[i] == '+' | input[i] == '*'){
+				value = true;
+			}
+		}
+	}
+
+	return value;
 }
 
 /*
