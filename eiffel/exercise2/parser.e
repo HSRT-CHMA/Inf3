@@ -27,6 +27,7 @@ feature -- public
 			b : BOOLEAN
 			i : INTEGER
 		do
+			input.prune_all (' ')
 			s := input
 			if s.is_empty
 			then io.put_string ("String is empty")
@@ -55,7 +56,7 @@ feature -- public
 												if s.occurrences ('=') > 1
 												then io.put_string ("Only one '=' is allowed")
 												else
-													io.put_string("The result is: " + parse_equation(s))
+													io.put_string("The result is: " + parse_equation)
 												end
 
 										end
@@ -77,7 +78,7 @@ feature -- public
 
 
 feature {NONE}
-	parse_equation(input : STRING) : STRING
+	parse_equation : STRING
 		Local
 			i : STRING
 			left : INTEGER
@@ -85,12 +86,12 @@ feature {NONE}
 		do
 			i := ""
 			if s.occurrences ('=') = 0
-			then i := parse_expression(input)
+			then i := parse_expression
 			else
 				if s.occurrences ('=') = 1
-				then left := parse_expression(input).to_integer
+				then left := parse_expression.to_integer
 					 s.remove(1)
-					 right := parse_expression(input).to_integer
+					 right := parse_expression.to_integer
 					 i := (left = right).out
 
 				end
@@ -101,7 +102,7 @@ feature {NONE}
 
 
 feature {NONE}
-	parse_expression(input : STRING) : STRING
+	parse_expression : STRING
 		Local
 			i : STRING
 			left : INTEGER
@@ -109,17 +110,17 @@ feature {NONE}
 		do
 			i := ""
 			if s.occurrences('+') = 0
-			then i := parse_term(input)
+			then i := parse_term
 			else
 				if s.occurrences ('+') > 0
-				then left := parse_term(input).to_integer
+				then left := parse_term.to_integer
 				i := left.out
 				from
 				until
 					s.occurrences ('+') = 0 or s.item(1) /= '+'
 				loop
 					s.remove(1)
-					right := parse_term(input).to_integer
+					right := parse_term.to_integer
 					i := (i.to_integer + right).out
 				end
 
@@ -131,25 +132,25 @@ feature {NONE}
 
 
 feature {NONE}
-	parse_term(input : STRING) : STRING
+	parse_term : STRING
 		Local
 			i : STRING
 			left : INTEGER
 			right : INTEGER
 		do
 			if s.occurrences ('*') = 0
-			then i := parse_factor(input)
+			then i := parse_factor
 			else
 				i := ""
 				if s.occurrences ('*') > 0
-				then left := parse_factor(input).to_integer
+				then left := parse_factor.to_integer
 					 i := left.out
 					 from
 					 until
 					 	s.occurrences ('*') = 0 or s.item(1) /= '*'
 					 loop
 					 	s.remove(1)
-					 	right := parse_factor(input).to_integer
+					 	right := parse_factor.to_integer
 					 	i := (i.to_integer * right).out
 					 end
 
@@ -162,16 +163,16 @@ feature {NONE}
 
 
 feature {NONE}
-	parse_factor(input : STRING) : STRING
+	parse_factor : STRING
 		Local
 			i : INTEGER
 		do
 			if s.item(1) = '('
-			then i := parse_constant(input).to_integer
+			then i := parse_constant.to_integer
 			else
 				if s.item(1) = '('
 				then s.remove(1)
-					 i := parse_expression(input).to_integer
+					 i := parse_expression.to_integer
 					 if s.item(1) = ')'
 					 then s.remove(1)
 
@@ -185,15 +186,16 @@ feature {NONE}
 
 
 feature {NONE}
-	parse_constant(input : STRING) : STRING
+	parse_constant : STRING
 		Local
 			i : STRING
 		do
 			i := ""
-			if is_digit_wo_zero(input)
-			then from
+			if is_digit_wo_zero
+			then
+			from
 			until
-				is_digi(input) = False
+				is_digi = False
 			loop
 				i := i + s.item(1).out
 				s.remove(1)
@@ -205,11 +207,11 @@ feature {NONE}
 
 
 feature {NONE}
-	is_digi(input : STRING) : BOOLEAN
+	is_digi : BOOLEAN
 		Local
 			i : BOOLEAN
 		do
-			if is_digit_wo_zero(input) or input = "0"
+			if is_digit_wo_zero or s.has ('0')
 			then i := True
 			else
 				i := False
@@ -218,19 +220,28 @@ feature {NONE}
 		end
 
 feature {NONE}
-	is_digit_wo_zero(input : STRING) : BOOLEAN
+	is_digit_wo_zero : BOOLEAN
 		Local
-			i : BOOLEAN
+			b : BOOLEAN
+			i : INTEGER
 		do
-			if input = "1" or input = "2" or input = "3" or input = "4"
-				or input = "5" or input = "6" or input = "7" or input = "8"
-				or input = "9"
-			then i := True
-			else
-				i := False
+			b := False
+			from
+				i := 1
+			until
+				i = s.capacity
+			loop
+				if s.item (i) = '1' or s.item (i) = '2' or s.item (i) = '3' or s.item (i) = '4' or s.item (i) = '5' or s.item (i) = '6'
+					or s.item (i) = '7' or s.item (i) = '8' or s.item (i) = '9'
+				then b := True
+				else
+					b := False
+				end
 			end
-			Result := i
+
 		end
+
+
 
 feature {NONE}
 	empty_brackets : BOOLEAN
