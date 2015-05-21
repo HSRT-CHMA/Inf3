@@ -1,8 +1,8 @@
 #print('Hello World')
 import sys
-import Parser
 import P_Parser
 from os.path import exists
+import My_Parser
 
 if __name__ == '__main__':
     #print("Main-Method")
@@ -18,7 +18,8 @@ if __name__ == '__main__':
     #else :
         #print("ERROR : No command line arguments have been selected")
 
-    my_other_parser = P_Parser.P_Parser()
+    #my_other_parser = P_Parser.P_Parser()
+    my_next_parser = My_Parser.My_Parser()
     
     if len(sys.argv) == 1 :
         print("ERROR : No command line arguments have been selected")
@@ -55,4 +56,6 @@ if __name__ == '__main__':
         else : 
             #Normal parsing 
             for i in range(1, len(sys.argv)):
-                print("%d. Argument: %s" % (i,sys.argv[i]) + " | The Result of parse() is " + str(my_other_parser.parse(sys.argv[i])))
+                #print("%d. Argument: %s" % (i,sys.argv[i]) + " | The Result of parse() is " + str(my_other_parser.parse(sys.argv[i])))
+                #print("%d. Argument: %s" % (i,sys.argv[i]) + " | The Result of parse() is " + str(my_other_parser.parseEquation(sys.argv[i])))
+                print(my_next_parser.parseEquation(sys.argv[i]))

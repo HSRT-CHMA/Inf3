@@ -13,7 +13,8 @@
     <Name>Exersice02</Name>
     <RootNamespace>Exersice02</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>6+5 6+7 8+4 8 6</CommandLineArguments>
+    <CommandLineArguments>
+    </CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -26,7 +27,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Exersice02.py" />
-    <Compile Include="Parser.py">
+    <Compile Include="My_Parser.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="P_Parser.py">
