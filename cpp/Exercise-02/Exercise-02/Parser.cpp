@@ -91,11 +91,12 @@ bool Parser::isZero(string input)
 bool Parser::invalidCharacters(string input)
 {
 	bool value = false;
-	char singleChar;
 
+	if (!regex_match(input, onlyZero) || !regex_match(input, numbers) || !regex_match(input, numbersWZ)){
+		value = true;
+	}
 	for (int i = 0; i < input.length; i++){
-		singleChar = input[i];
-		if (singleChar!='(' && singleChar!=')' && singleChar!='+' && singleChar!='*'){
+		if (input[i] != '(' && input[i] != ')' && input[i] != '+' && input[i] != '*'){
 			value = true;
 		}
 	}
@@ -109,7 +110,6 @@ bool Parser::invalidCharacters(string input)
 	Method for Shape of the EBNF
 	True if there is the valid count 
 	of the Brackets on both sides
-	Whole String is copied to singleChar Variable
 	Check if there is same count of both Brackets
 	Return true if there is the same Count
 */
@@ -117,14 +117,12 @@ bool Parser::checkBracketCount(string input)
 {
 	int leftBracket = 0;
 	int rightBracket = 0;
-	char singleChar;
 
 	for (int i = 0; i < input.length; i++){
-		singleChar = input[i];
-		if (singleChar == '('){
+		if (input[i] == '('){
 			leftBracket++;
 		}
-		if (singleChar == ')'){
+		if (input[i] == ')'){
 			rightBracket++;
 		}
 	}
@@ -135,23 +133,20 @@ bool Parser::checkBracketCount(string input)
 	Method for Shape of the EBNF
 	True if there is the valid order
 	of the Brackets.
-	Whole String is copied to singleChar Variable
 	Copy Index to rightBracket and leftBracket
 	Return true if index from leftBracket is smaller 
 	than the index rightBracket
 */
 bool Parser::checkBracketOrder(string input)
 {
-	char singleChar;
 	int rightBracket = 0;
 	int leftBracket = 0;
 
 	for (int i = 0; i < input.length; i++){
-		singleChar = input[i];
-		if (singleChar == '('){
+		if (input[i] == '('){
 			leftBracket = i;
 		}
-		if (singleChar == ')'){
+		if (input[i] == ')'){
 			rightBracket = i;
 		}
 	}
@@ -169,16 +164,14 @@ bool Parser::checkBracketOrder(string input)
 */
 bool Parser::checkEmptyBrackets(string input)
 {
-	char singleChar;
 	int rightBracket = 0;
 	int leftBracket = 0;
 
 	for (int i = 0; i < input.length; i++){
-		singleChar = input[i];
-		if (singleChar == '('){
+		if (input[i] == '('){
 			leftBracket = i;
 		}
-		if (singleChar == ')'){
+		if (input[i] == ')'){
 			rightBracket = i;
 		}
 	}
@@ -191,20 +184,51 @@ bool Parser::checkNumbers(string input)
 
 }
 
+/*
+	Method for Shape of the EBNF
+	True if there are numbers and 
+	an Operator in the string
+	Return true if there is an Operator and Numbers
+*/
 bool Parser::checkOperator(string input)
 {
+	bool value = false;
 
+	if (regex_match(input, numbers)){
+		for (int i = 0; i < input.length; i++){
+			if (input[i] != '+' || input[i] !='*'){
+				value = true;
+			}
+		}
+	}
+
+	return value;
 }
 
 
 string Parser::parseEquation(string input)
 {
-	return NULL;
+	int valueLeft = 0;
+	int valueRight = 0;
+	string value = "";
+	string left = "";
+	string right = "";
+	bool checkEquation = false;
+
+	for (int i = 0; i < input.length; i++){
+		if (input[i] == '='){
+			checkEquation = true;
+		}
+	}
+	if (checkEquation){
+
+	}
+
+	return value;
 }
 
 string Parser::parseExpression(string input)
 {
-	char singleChar;
 	bool checkPlus = false;
 	bool checkBracketLeft = false;
 	bool checkBracketRight = false;
@@ -213,14 +237,13 @@ string Parser::parseExpression(string input)
 	string right = "";
 
 	for (int i = 0; i < input.length; i++){
-		singleChar = input[i];
-		if (singleChar != '('){
+		if (input[i] != '('){
 			checkBracketLeft = true;
 		}
-		if (singleChar != ')'){
+		if (input[i] != ')'){
 			checkBracketRight = true;
 		}
-		if (singleChar == '+'){
+		if (input[i] == '+'){
 			checkPlus = true;
 		}
 	}
@@ -259,10 +282,12 @@ string Parser::parse(string input)
 
 	/*Start Complete Check if the Input Value is valid*/
 	if (!invalidCharacters(input)){
-		if (checkBracketCount){
-			if (checkEmptyBrackets){
-				if (checkNumbers){
+		if (checkBracketCount(input)){
+			if (checkEmptyBrackets(input)){
+				if (checkNumbers(input)){
+					if (checkOperator(input)){
 
+					}
 				}
 				else{
 					cout << "Sorry the numbers of the term are not valid.";
