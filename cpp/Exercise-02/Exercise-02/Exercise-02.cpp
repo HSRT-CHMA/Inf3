@@ -22,10 +22,6 @@ int _tmain(int argc, char* argv[])
 	cout << "\nExercise 02";
 	cout << "\nExpression: 5+5" + p->parse("5+5");
 
-	/*Exercise 02 with external Parameters*/
-	ifstream file;
-	string lineParsing;
-
 	/*Check if there are Arguments*/
 	if (argc == 1){
 		cout << "\nInfo: There are no additional Parameters given!\n";
@@ -38,18 +34,23 @@ int _tmain(int argc, char* argv[])
 			cout << "\n2. Parameters: The First Parameter is 'File'. The Second Parameter is the path to the file.\n";
 		}
 		else{
+
 			/*Check if there is not the file*/
 			if (argv[1] != "file" | argv[1] != "File" | argv[1] != "FILE"){
 				cout << "\nParsing Parameter: ";
+				//Fight the error you must! -.-
+				cout << argv[1];
 				p->parse(argv[1]);
 			}
 
 			/*Parsing Parameters with a File*/
 			else{
+
+				/*Exercise 02 with external Parameters*/
+				ifstream file(argv[2]);
+				string lineParsing = "";
+
 				cout << "\nReading from File";
-				cout << argv[0];
-				cout << argv[1];
-				file.open(argv[2], ios::in);
 				/*Walk trough file until End of File*/
 				while (!file.eof()){
 					cout << "\nGet Parameter...";
@@ -59,6 +60,7 @@ int _tmain(int argc, char* argv[])
 					/*Parse each Line*/
 					p->parse(lineParsing);
 				}
+
 				/*Close File*/
 				file.close();
 			}

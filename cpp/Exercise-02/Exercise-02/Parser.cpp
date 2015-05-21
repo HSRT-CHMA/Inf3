@@ -322,11 +322,17 @@ string Parser::parseTerm(string input)
 
 	if (input.find("*") && !input.find("(") && !input.find(")")){
 		
-		/*Left Side Action*/
+		/*
+			Left Side Action
+			Split String from the beginning to *
+		*/
 		left = input.substr(0, input.find("*"));
 		g_Multiply *= stoi(parseExpression(left));
 
-		/*Right Side Action*/
+		/*
+			Right Side Action
+			Split String from * to the End of the String
+		*/
 		right = input.substr(input.find("*")+1, input.length()-(input.find("*")+1));
 		
 		if (right.find("*")){
