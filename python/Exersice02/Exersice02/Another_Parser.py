@@ -167,6 +167,7 @@ class Another_Parser(object):
         brackets = 0
         # Used to show the outcome of this method
         for char in self._s:
+            # For each char in String s do check on brackets
             if brackets >= 0:
                 if char == "(":
                     brackets += 1

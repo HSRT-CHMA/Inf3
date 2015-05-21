@@ -11,6 +11,7 @@ to parse arguments from a given text-file if 'file' and a path are entered in th
 if __name__ == '__main__':    
     # ---> file C:\Users\Georgia\Desktop\commands.txt   # Location of file for Testing 
     p_another = Another_Parser.Another_Parser()
+    # Calles the python module and then the actual class
     
     del(sys.argv[0])
     # First Parameter from Command Line is automatically a String about the programm; it gets deleted because its not important for this programm
