@@ -17,15 +17,13 @@ feature {NONE}
 feature {NONE} -- Initialization
 
 	make
+			-- Initialization for `Current'.
 		do
 			create s.make_empty
 		end
 
 feature -- public
 	parser(input : STRING)
-		Local
-			b : BOOLEAN
-			i : INTEGER
 		do
 			s := input
 			if s.is_empty
@@ -40,28 +38,30 @@ feature -- public
 						if not (s.occurrences ('(') = s.occurrences (')'))
 						then io.put_string("Open brackets must have the same numers of closed brackets")
 						else
-						--	if s.occurrences ('(') > 0 and not right_order_of_brackets
-						--	then io.put_string("wrong order of brackets")
-						--		else
+							if s.occurrences ('(') > 0 and not right_order_of_brackets
+							then io.put_string("wrong order of brackets")
+								else
 									if empty_brackets
 									then io.put_string ("No content between brackets")
 									else
-										if no_number_before_after_operator
+										if no_digit_before_or_after_operator
 										then io.put_string ("No number before and after operator")
 										else
-												if not_allowed_sign
-												then io.put_string ("Character is not allowed")
-												else
+											if not (s.has(is_digit(s)) and s.has ('=') and s.has ('+') and s.has ('*') and s.has ('(') and s.has (')'))
+											then io.put_string ("Character is not allowed")
+											else
 												if s.occurrences ('=') > 1
 												then io.put_string ("Only one '=' is allowed")
 												else
 													io.put_string("The result is: " + parse_equation(s))
 												end
 
+											end
+
 										end
 
 									end
-						--	end
+							end
 
 						end
 
@@ -70,7 +70,6 @@ feature -- public
 				end
 
 			end
-		end
 		end
 
 
@@ -193,7 +192,7 @@ feature {NONE}
 			if is_digit_wo_zero(input)
 			then from
 			until
-				is_digi(input) = False
+				is_digit(input) = False
 			loop
 				i := i + s.item(1).out
 				s.remove(1)
@@ -205,12 +204,12 @@ feature {NONE}
 
 
 feature {NONE}
-	is_digi(input : STRING) : BOOLEAN
+	is_digit(input : STRING) : BOOLEAN
 		Local
 			i : BOOLEAN
 		do
-			if is_digit_wo_zero(input) or input = "0"
-			then i := True
+			if s.is_empty = False
+			then i := s.item(1).is_digit
 			else
 				i := False
 			end
@@ -222,77 +221,12 @@ feature {NONE}
 		Local
 			i : BOOLEAN
 		do
-			if input = "1" or input = "2" or input = "3" or input = "4"
-				or input = "5" or input = "6" or input = "7" or input = "8"
-				or input = "9"
-			then i := True
+			if s.is_empty = False
+			then i := s.item(1).is_digit and s.item(1).out.to_integer /= 0
 			else
 				i := False
 			end
 			Result := i
 		end
+	end
 
-feature {NONE}
-	empty_brackets : BOOLEAN
-		Local
-			b : BOOLEAN
-			i : INTEGER
-		do
-			b := False
-			from
-				i := 1
-			until
-				i = s.capacity
-			loop
-				if s.item (i) = '(' and s.item (i+1) = ')'
-				then b := True
-				end
-				i := i+1
-			end
-			Result := b
-		end
-
-
-feature {NONE}
-	no_number_before_after_operator : BOOLEAN
-		Local
-			b : BOOLEAN
-			i : INTEGER
-		do
-			b := False
-			from
-				i := 2
-			until
-				i = s.capacity
-			loop
-				if (s.item (i) = '+' or s.item (i) = '*')
-				and (not (s.item (i+1).is_digit or s.item (i+1) = '(')
-				or not (s.item (i-1).is_digit or s.item (i-1) = ')'))
-				then b := True
-				end
-				i := i+1
-			end
-			Result := b
-		end
-
-feature {NONE}
-	not_allowed_sign : BOOLEAN
-		Local
-			b : BOOLEAN
-			i : INTEGER
-		do
-			b := False
-			from
-				i := 1
-			until
-				i = s.capacity
-			loop
-				if not (s.item(i).is_digit or s.item (i) = '=' or s.item (i) = '+' or s.item (i) = '*' or s.item (i) = '(' or s.item (i) = ')')
-				then b := True
-
-				end
-				i := i+1
-			end
-			Result := b
-		end
-end
