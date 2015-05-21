@@ -5,6 +5,10 @@
 /*Default Namespace of Parser*/
 using namespace std;
 
+regex onlyZero;
+regex numbers;
+regex numbersWZ;
+
 /*
 	Default Constructor of Parser
 	Sets the different regex Defintions
@@ -95,7 +99,7 @@ bool Parser::invalidCharacters(string input)
 	if (!regex_match(input, onlyZero) || !regex_match(input, numbers) || !regex_match(input, numbersWZ)){
 		value = true;
 	}
-	for (int i = 0; i < input.length; i++){
+	for (int i = 0; i < input.length(); i++){
 		if (input[i] != '(' && input[i] != ')' && input[i] != '+' && input[i] != '*'){
 			value = true;
 		}
@@ -118,7 +122,7 @@ bool Parser::checkBracketCount(string input)
 	int leftBracket = 0;
 	int rightBracket = 0;
 
-	for (int i = 0; i < input.length; i++){
+	for (int i = 0; i < input.length(); i++){
 		if (input[i] == '('){
 			leftBracket++;
 		}
@@ -142,7 +146,7 @@ bool Parser::checkBracketOrder(string input)
 	int rightBracket = 0;
 	int leftBracket = 0;
 
-	for (int i = 0; i < input.length; i++){
+	for (int i = 0; i < input.length(); i++){
 		if (input[i] == '('){
 			leftBracket = i;
 		}
@@ -167,7 +171,7 @@ bool Parser::checkEmptyBrackets(string input)
 	int rightBracket = 0;
 	int leftBracket = 0;
 
-	for (int i = 0; i < input.length; i++){
+	for (int i = 0; i < input.length(); i++){
 		if (input[i] == '('){
 			leftBracket = i;
 		}
@@ -194,7 +198,7 @@ bool Parser::checkNumbers(string input)
 		!regex_match(input, numbers) &&
 		!regex_match(input, numbersWZ)){
 
-		for (int i = 0; i < input.length; i++){
+		for (int i = 0; i < input.length(); i++){
 			if (input[i] == '+' | input[i] == '*'){
 				value = true;
 			}
@@ -215,7 +219,7 @@ bool Parser::checkOperator(string input)
 	bool value = false;
 
 	if (regex_match(input, numbers)){
-		for (int i = 0; i < input.length; i++){
+		for (int i = 0; i < input.length(); i++){
 			if (input[i] != '+' || input[i] !='*'){
 				value = true;
 			}
@@ -235,7 +239,7 @@ string Parser::parseEquation(string input)
 	string right = "";
 	bool checkEquation = false;
 
-	for (int i = 0; i < input.length; i++){
+	for (int i = 0; i < input.length(); i++){
 		if (input[i] == '='){
 			checkEquation = true;
 		}
@@ -247,6 +251,7 @@ string Parser::parseEquation(string input)
 	return value;
 }
 
+
 string Parser::parseExpression(string input)
 {
 	bool checkPlus = false;
@@ -256,7 +261,7 @@ string Parser::parseExpression(string input)
 	string left = "";
 	string right = "";
 
-	for (int i = 0; i < input.length; i++){
+	for (int i = 0; i < input.length(); i++){
 		if (input[i] != '('){
 			checkBracketLeft = true;
 		}
@@ -271,6 +276,7 @@ string Parser::parseExpression(string input)
 	if (checkPlus && checkBracketLeft && checkBracketRight){
 
 	}
+	return "";
 }
 
 /*

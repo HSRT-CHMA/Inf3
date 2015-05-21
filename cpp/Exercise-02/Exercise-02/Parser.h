@@ -7,10 +7,6 @@ class Parser
 {
 	/*Private Methods of Parser*/
 private:
-	/*Regular Expression Definition*/
-	regex onlyZero;
-	regex numbers;
-	regex numbersWZ;
 
 	/*Methods for Shape of EBNF*/
 	bool checkBracketCount(string input);
@@ -58,4 +54,3 @@ public:
 	/*Parse Method*/
 	string parse(string input);
 };
-
