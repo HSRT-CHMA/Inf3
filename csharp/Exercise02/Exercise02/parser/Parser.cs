@@ -55,7 +55,7 @@ namespace Exercise02{
 
         private String ParseEquation(String eqString){
             String left = "", right = "", res = "";
-            int resRight = 0, resLeft = 0;
+            int resRight = 0, resLeft = 0, result = 0;
             /*
              * ParseEquation() called by Parse() checks if eqString is an Equality input
              * Calls ParseExpression() when no "=" is in eqString
@@ -78,7 +78,8 @@ namespace Exercise02{
             }else{
                 // no "=" = calls ParseExpression() and is Output for all other ParseMethods
                 res = ParseExpression(eqString);
-                Console.WriteLine(res += " = " + eqString);
+                result += Convert.ToInt32(res);
+                Console.WriteLine(result + " = " + eqString);
             }
             return res;
         }
@@ -96,7 +97,7 @@ namespace Exercise02{
             if (eqString.Contains("+") && !eqString.Contains("(") && !eqString.Contains(")")){
                 // SubString Left
                 left = eqString.Substring(0, eqString.IndexOf("+"));
-                tmpAdd = Convert.ToInt32(ParseExpression(left));
+                tmpAdd += Convert.ToInt32(ParseExpression(left));
                 // SubString Right
                 right = eqString.Substring(eqString.IndexOf("+") + 1, eqString.Length - (eqString.IndexOf("+") + 1));
                 if (right.Contains("+")){
@@ -269,7 +270,8 @@ namespace Exercise02{
         }
 
         private Boolean WrongBracketAmount(String eqString){
-            // Checks if amount of opening and closing are equal 
+            // Checks if amount of opening and closing are equal
+            // cnt1=left,cnt2=right
             int cnt1 = 0;
             int cnt2 = 0;
 
