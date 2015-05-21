@@ -12,6 +12,10 @@ private:
 	bool checkBracketCount(string input);
 	bool checkBracketOrder(string input);
 	bool checkEmptyBrackets(string input);
+	bool checkBracketShapeLeft(string input);
+	bool checkBracketShapeRight(string input);
+	
+	/*Method for special cases*/
 	bool checkNumbers(string input);
 	bool checkOperator(string input);
 
@@ -43,8 +47,11 @@ private:
 	/*Method for not allowed Character*/
 	bool invalidCharacters(string input);
 
+
+
 	/*Public Methods of Parser*/
 public:
+
 	/*Default Constructor Prototype*/
 	Parser();
 	

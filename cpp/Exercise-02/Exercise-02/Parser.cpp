@@ -5,9 +5,14 @@
 /*Default Namespace of Parser*/
 using namespace std;
 
-regex onlyZero;
-regex numbers;
-regex numbersWZ;
+/*Regular Expressions for Parser*/
+regex onlyZero("[0]");
+regex numbers("[0-9]");
+regex numbersWZ("[1-9]");
+
+/*Global Varliables*/
+int g_Multiply = 1;
+int g_Addition = 0;
 
 /*
 	Default Constructor of Parser
@@ -16,12 +21,9 @@ regex numbersWZ;
 Parser::Parser()
 {
 	cout << "\nDefinition of Regular Expression";
-	cout << "\nSet only Zero to 0";
-	onlyZero = "[0]";
-	cout << "\nSet numbers to 0-9";
-	numbers = "[0-9]";
-	cout << "\nSet numbers without Zero to 1-9";
-	numbersWZ = "[1-9]";
+	cout << "\nOnly Zero to 0";
+	cout << "\nNumbers to 0-9";
+	cout << "\nNumbers without Zero to 1-9";
 	cout << "\nNew Parser was created!";
 }
 
@@ -96,13 +98,9 @@ bool Parser::invalidCharacters(string input)
 {
 	bool value = false;
 
-	if (!regex_match(input, onlyZero) || !regex_match(input, numbers) || !regex_match(input, numbersWZ)){
+	if (!(regex_match(input, onlyZero) || regex_match(input, numbers) || regex_match(input, numbersWZ)) 
+			&& (input.find('(') || input.find(')') || input.find('+') || input.find('*'))){
 		value = true;
-	}
-	for (int i = 0; i < input.length(); i++){
-		if (input[i] != '(' && input[i] != ')' && input[i] != '+' && input[i] != '*'){
-			value = true;
-		}
 	}
 
 	return value;
@@ -146,12 +144,14 @@ bool Parser::checkBracketOrder(string input)
 	int rightBracket = 0;
 	int leftBracket = 0;
 
-	for (int i = 0; i < input.length(); i++){
-		if (input[i] == '('){
-			leftBracket = i;
-		}
-		if (input[i] == ')'){
-			rightBracket = i;
+	if (checkBracketCount(input)){
+		for (int i = 0; i < input.length(); i++){
+			if (input[i] == '('){
+				leftBracket = i;
+			}
+			if (input[i] == ')'){
+				rightBracket = i;
+			}
 		}
 	}
 
@@ -218,10 +218,40 @@ bool Parser::checkOperator(string input)
 {
 	bool value = false;
 
-	if (regex_match(input, numbers)){
-		for (int i = 0; i < input.length(); i++){
-			if (input[i] != '+' || input[i] !='*'){
+	for (int i = 0; i < input.length(); i++){
+		if (input[i] != '+' || input[i] !='*'){
+			value = true;
+		}
+	}
+	
+	return value;
+}
+
+/*
+	Method for Shape of the EBNF
+	True if there is the right Shape
+	-> no Operators on the Left Side of
+	the Bracket
+	Return true if there is the right shape on the left side
+*/
+bool Parser::checkBracketShapeLeft(string input)
+{
+	bool value = false;
+	int bracketCtr = 0;
+	string leftBracketSide = "";
+
+	for each(char c in input){
+		bracketCtr++;
+		if (c == '('){
+			leftBracketSide = input.substr(0, bracketCtr-1);
+			if (!leftBracketSide.find_last_of("=") &&
+				!leftBracketSide.find_last_of("*") &&
+				!leftBracketSide.find_last_of("+") &&
+				!leftBracketSide.find_last_of("(") &&
+				!(input.find("(") == 0)){
+				
 				value = true;
+
 			}
 		}
 	}
@@ -230,58 +260,37 @@ bool Parser::checkOperator(string input)
 }
 
 /*
-	Method for parsing Equation
-	
+	Method for Shape of the EBNF
+	True if there is the right Shape
+	-> no Operators on the Right Side of 
+	the Bracket
+	Return true if there is the right shape on the right side
 */
-string Parser::parseEquation(string input)
+bool Parser::checkBracketShapeRight(string input)
 {
-	int valueLeft = 0;
-	int valueRight = 0;
-	string value = "";
-	string left = "";
-	string right = "";
-	bool checkEquation = false;
+	bool value = false;
+	int bracketCtr = 0;
+	string rightBracketSide= "";
 
-	for (int i = 0; i < input.length(); i++){
-		if (input[i] == '='){
-			checkEquation = true;
+	for each(char c in input)
+	{
+		bracketCtr++;
+		if (c == ')'){
+			rightBracketSide = input.substr(0, bracketCtr);
+			if (!(bracketCtr == input.length())){
+				if (!rightBracketSide.find_last_of("=") && 
+					!rightBracketSide.find_last_of("*") && 
+					!rightBracketSide.find_last_of("+") && 
+					!rightBracketSide.find_last_of("(") &&
+					!rightBracketSide.find_last_of("")){
+					
+					value = true;
+				}
+			}
 		}
-	}
-	if (checkEquation){
-
 	}
 
 	return value;
-}
-
-/*
-	Method for parsing Expression
-*/
-string Parser::parseExpression(string input)
-{
-	bool checkPlus = false;
-	bool checkBracketLeft = false;
-	bool checkBracketRight = false;
-	string result = "";
-	string left = "";
-	string right = "";
-
-	for (int i = 0; i < input.length(); i++){
-		if (input[i] != '('){
-			checkBracketLeft = true;
-		}
-		if (input[i] != ')'){
-			checkBracketRight = true;
-		}
-		if (input[i] == '+'){
-			checkPlus = true;
-		}
-	}
-
-	if (checkPlus && checkBracketLeft && checkBracketRight){
-
-	}
-	return "";
 }
 
 /*
@@ -302,6 +311,201 @@ string Parser::parseConstant(string input)
 }
 
 /*
+	Method to parse the Term of the string
+
+*/
+string Parser::parseTerm(string input)
+{
+	string value = "";
+	string left = "";
+	string right = "";
+
+	if (input.find("*") && !input.find("(") && !input.find(")")){
+		
+		/*Left Side Action*/
+		left = input.substr(0, input.find("*"));
+		g_Multiply *= stoi(parseExpression(left));
+
+		/*Right Side Action*/
+		right = input.substr(input.find("*")+1, input.length()-(input.find("*")+1));
+		
+		if (right.find("*")){
+			value = parseTerm(right);
+		}
+		else{
+			value += (g_Multiply*stoi(parseTerm(right)));
+		}
+	}
+	else{
+		value = parseFactor(input);
+	}
+	
+	return value;
+}
+
+/*
+	Method to parse the Factor of the string
+
+*/
+string Parser::parseFactor(string input)
+{
+//	/*Defition of Variables for Output*/
+//	string value = "";
+//	string leftPart = "";
+//	string middle = "";
+//	string rightPart = "";
+//
+//	int bracketCnt = 0;
+//	int indexOfLeftBracket = 0;
+//	int indexOfRightBracket = 0;
+//	
+//	/*Setting from global Variables*/
+//	g_Addition = 0;
+//	g_Multiply = 1;
+//
+//	//Counts the number of Characters in input
+//	for each(char c in input)
+//	{
+//
+//		if (c == '('){
+//			//Character equals ( then indexLeftOfBracket gets the value of bracketCnt
+//			indexOfLeftBracket = bracketCnt;
+//		}
+//		bracketCnt++;
+//	}
+//	bracketCnt = 0;
+//
+//	//Checks if String contains "(" and ")"
+//	if (input.find("(") && input.find(")")){
+//		//Split the string until before ( and writes it in leftpart
+//		leftPart = input.substr(0, indexOfLeftBracket);
+//
+//		//Checks if index of ( is bigger than index of ) so it knows from where to split the string and doesnt split the opened ( bracket with the wrong closed ) Bracket
+//		if (indexOfLeftBracket > input.find(")")){
+//			//Counts the number of Characters in input
+//			for each(char c in input){
+//				if (c == ')'){
+//					//Character equals ( then indexRightOfBracket gets the value of bracketCnt
+//					indexOfRightBracket = bracketCnt;
+//				}
+//				bracketCnt++;
+//			}
+//			bracketCnt = 0;
+//			//Split the string until before ) and writes it in rightPart
+//			rightPart = input.substr(indexOfRightBracket + 1, input.length() - (indexOfRightBracket + 1));
+//		}
+//		else{
+//			//Split the string until before ) and writes it in rightPart
+//			rightPart = input.substr(input.find(")") + 1, input.length() - (input.find(")") + 1));
+//		}
+//
+//		//Writes the part between leftPart and rightPart in middle
+//		middle = input.substr(indexOfLeftBracket, (input.length()) - indexOfLeftBracket);
+//		middle = middle.substr(middle.find("("), middle.find(")"));
+//		if (middle.find("(") && middle.find(")")){
+//			//Removes the Bracket
+//			middle = middle.erase(input.find("("), input.find("("));
+//			middle = middle.erase(input.find(")"), input.find(")"));
+//			value = parseExpression(middle);
+//		}
+//		else{
+//			if (middle.find(")")){
+//				//Removes the Bracket
+//				middle = middle.erase(input.find(")"), input.find(")"));
+//				value = parseExpression(middle);
+//			}
+//			else{
+//				if (middle.find("(")){
+//					//Removes the Bracket
+//					middle = middle.erase(input.find("("), input.find("("));
+//					value = parseExpression(middle);
+//				}
+//				else{
+//					value = parseExpression(middle);
+//				}
+//			}
+//		}
+//
+//		//Splits String before Bracket ( and after ) Bracket and puts the left part with the result of the brackets and the right part together
+//		middle = leftPart + value + rightPart;
+//		value = parseExpression(middle);
+//	}
+//	else{
+//		value = parseConstant(input);
+//	}
+	return "";
+}
+
+/*
+	Method for parsing Equation
+	Check if there is a "=" in the string
+	and splits from the "=" -> input.substr
+	Method stoi to get the value of string to integer
+	
+*/
+string Parser::parseEquation(string input)
+{
+	int valueLeft = 0;
+	int valueRight = 0;
+	string left = "";
+	string right = "";
+	string value = "";
+
+	if (input.find("=")){
+		
+		/*Left Side Action*/
+		left = input.substr(0, input.find("="));
+		value = parseExpression(left);
+	//	valueLeft =+ stoi(value);
+
+		/*Right Side Action*/
+		right = input.substr(input.find("=")+1, input.length()-(input.find("=")+1));
+		value = parseExpression(right);
+	//	valueRight += stoi(value);
+	}
+	else{
+		value = parseExpression(input);
+		valueLeft += stoi(value);
+	}
+
+	return value;
+}
+
+/*
+	Method for parsing Expression
+*/
+string Parser::parseExpression(string input)
+{
+	string left = "";
+	string right = "";
+	string result = "";
+
+	//Checks if String contains "+"
+	if (input.find("+") && !input.find("(") && !input.find(")"))
+	{
+		//Splits string from the beginning until before "+"
+		left = input.substr(0, input.find("+"));
+		g_Addition += stoi(parseExpression(left));
+
+		//Splits string after "+" until string end
+		right = input.substr(input.find("+") + 1, input.length() - (input.find("+") + 1));
+		if (right.find("+"))
+		{
+			result = parseExpression(right);
+		}
+		else
+		{
+			result += (g_Addition + stoi(parseTerm(right)));
+		}
+	}
+	else
+	{
+		result = parseTerm(input);
+	}
+	return result;
+}
+
+/*
 	Method to parse an EBNF
 	Only Method which is public accessable
 	for the User.
@@ -317,7 +521,10 @@ string Parser::parse(string input)
 			if (checkEmptyBrackets(input)){
 				if (checkNumbers(input)){
 					if (checkOperator(input)){
-
+						value = parseEquation(input);
+					}
+					else{
+						cout << "\nSorry the Operator of the term is not valid.";
 					}
 				}
 				else{
@@ -336,6 +543,5 @@ string Parser::parse(string input)
 		cout << "\nSorry there are invalid Characters in your Input String.";
 	}
 
-	//TODO
 	return value;
 }

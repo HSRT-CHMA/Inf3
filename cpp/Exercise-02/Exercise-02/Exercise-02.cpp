@@ -10,17 +10,62 @@ using namespace std;
 	Creating Parser for E1
 	Creating Interaction for E2
 */
-int _tmain(int argc, _TCHAR *argv[])
+int _tmain(int argc, char* argv[])
 {
+	
+	/*Exercise 01 - Parser*/
 	/*Creating new Parser Object*/
 	Parser* p = new Parser();
+
 
 	/*Output for User Interface*/
 	cout << "\nExercise 02";
 	cout << "\nExpression: 5+5" + p->parse("5+5");
-	cout << "\nExpression: 5+5" + p->parse("(5+5");
-	cout << "\nExpression: 5+5" + p->parse("5+5)");
+
+	/*Exercise 02 with external Parameters*/
+	ifstream file;
+	string lineParsing;
+
+	/*Check if there are Arguments*/
+	if (argc == 1){
+		cout << "\nInfo: There are no additional Parameters given!\n";
+	}
+	else{
+		if (argc > 3){
+			cout << "\nThe Program is executed with to much Parameters.";
+			cout << "\nValid Parameters:";
+			cout << "\n1. Parameter: Only a Term which will be calculated, Example: (2+2+2)*4";
+			cout << "\n2. Parameters: The First Parameter is 'File'. The Second Parameter is the path to the file.\n";
+		}
+		else{
+			/*Check if there is not the file*/
+			if (argv[1] != "file" | argv[1] != "File" | argv[1] != "FILE"){
+				cout << "\nParsing Parameter: ";
+				p->parse(argv[1]);
+			}
+
+			/*Parsing Parameters with a File*/
+			else{
+				cout << "\nReading from File";
+				cout << argv[0];
+				cout << argv[1];
+				file.open(argv[2], ios::in);
+				/*Walk trough file until End of File*/
+				while (!file.eof()){
+					cout << "\nGet Parameter...";
+					/*Get each Line*/
+					getline(file, lineParsing);
+					cout << "\nParsing Paramter";
+					/*Parse each Line*/
+					p->parse(lineParsing);
+				}
+				/*Close File*/
+				file.close();
+			}
+		}
+	}
 	
+	/*Halt System to show Terminal Output*/
 	system("pause");
 	return 0;
 }
