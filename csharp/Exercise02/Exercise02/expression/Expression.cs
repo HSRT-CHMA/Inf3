@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
-namespace Exercise02.expression
-{
-    class Expression<R>
+namespace Exercise02{
+    class Expression
     {
-        public void Expression<R>(BinaryOperator<T,R>){
-
-        }
+//        public void Expression(BinaryOperator<T,R>x,y){
+//
+//        }
     }
 }

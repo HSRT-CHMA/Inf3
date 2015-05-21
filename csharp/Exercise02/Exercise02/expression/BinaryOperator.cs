@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
-namespace Exercise02.expression
-{
-    class BinaryOperator<T,R> : Expression<R>
+namespace Exercise02{
+    class BinaryOperator<T,R> : Expression
     {
-        protected Expression<T> a = Expression<T>;
-        protected Expression<R> b = Expression<R>;
+        protected Expression _a;
+        protected Expression _b;
 
-        public void BinaryOperator<T,R>(Expression<T> a,Expression<R> b){
+        public void binaryOperator(Expression a,Expression b){
             
         }
     }

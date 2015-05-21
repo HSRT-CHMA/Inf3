@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
-namespace Exercise02.expression
-{
-    class Product : BinaryOperator<T,R>
+namespace Exercise02{
+    class Product : BinaryOperator<Boolean,int>
     {
     }
 }
