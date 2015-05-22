@@ -17,7 +17,6 @@ namespace Exercise02{
          */
         private Regex rZero = new Regex("[0]");
         private Regex r = new Regex("[0-9]");
-        private Regex rWoZero = new Regex("[1-9]");
         private int tmpMulti = 1;
         private int tmpAdd = 0;
         private Boolean problem=false;
@@ -55,7 +54,7 @@ namespace Exercise02{
 
         private String ParseEquation(String eqString){
             String left = "", right = "", res = "";
-            int resRight = 0, resLeft = 0, result = 0;
+            int resRight = 0, resLeft = 0;
             /*
              * ParseEquation() called by Parse() checks if eqString is an Equality input
              * Calls ParseExpression() when no "=" is in eqString
@@ -78,8 +77,7 @@ namespace Exercise02{
             }else{
                 // no "=" = calls ParseExpression() and is Output for all other ParseMethods
                 res = ParseExpression(eqString);
-                result += Convert.ToInt32(res);
-                Console.WriteLine(result + " = " + eqString);
+                Console.WriteLine(res + " = " + eqString);
             }
             return res;
         }
@@ -230,7 +228,8 @@ namespace Exercise02{
              * parms:   String  eqString: Input from program
              *                  res: return Result for Output        
              */
-            if (IsItDigit(eqString) == true){
+            if (IsItDigit(eqString) == true)
+            {
                 res = eqString;
             }
             return res;
@@ -240,33 +239,13 @@ namespace Exercise02{
             /*
              * IsItDigit() called by ParseConstant() checking if eqString is number between 0-9
              * parms:   Regex   r:Numbers between 0-9
-             */ 
+             *                  rZero: Number 0
+             */
             if (r.IsMatch(eqString)){
                 return true;
+            }else{
+                return false;
             }
-            return false;
-        }
-
-        private Boolean IsDigitWoZero(String eqString){
-            /*
-             * Checking is eqString = 1-9 ?
-             * parms:   Regex  rWoZero:Numbers between 1-9
-             */ 
-            if (rWoZero.IsMatch(eqString)){
-                return true;
-            }
-            return false;
-        }
-
-        private Boolean IsZero(String eqString){
-            /*
-             * Checking is eqString = 0 ?
-             * parms:   Regex   rZero:Number 0
-             */ 
-            if (rZero.IsMatch(eqString)){
-                return true;
-            }
-            return false;
         }
 
         private Boolean WrongBracketAmount(String eqString){
@@ -374,15 +353,6 @@ namespace Exercise02{
             //If eqString doesn´t contain numbers
             if ((eqString.Contains("+") && !r.IsMatch(eqString)) || (eqString.Contains("*") && !r.IsMatch(eqString)) || (eqString.Contains("=") && !r.IsMatch(eqString))){
                 Console.WriteLine("Error: Input only contains Operators and no Numbers");
-                problem = true;
-            }
-            return problem;
-        }
-
-        private Boolean NoOperatorsProblem(String eqString){
-            //If eqString doesn´t contain operators
-            if (r.IsMatch(eqString) && (!eqString.Contains("+") && !eqString.Contains("*") && !eqString.Contains("="))){
-                Console.WriteLine("Error: Input doesn´t contain any Operators");
                 problem = true;
             }
             return problem;
@@ -546,7 +516,7 @@ namespace Exercise02{
 
             if (eqString.Contains("0")){
                 eqString2 = eqString.Substring(0, eqString.IndexOf("0"));
-                if (eqString2.EndsWith("=") || eqString2.EndsWith("*") || eqString2.EndsWith("+")){
+                if (eqString2.EndsWith("=") || eqString2.EndsWith("*") || eqString2.EndsWith("+") || eqString2.EndsWith(""+r.IsMatch(eqString)) || eqString2.EndsWith("")){
                     Console.WriteLine("Error: Input cointains illegal Number Zero");
                     problem = true;
                 }else{
@@ -584,9 +554,9 @@ namespace Exercise02{
              */
             Contract.Requires(!problem);
             if (IllegalCharacters(eqString) == false && DoubleZeroProblem(eqString) == false && OneBracketProblem(eqString) == false
-                 && EmptyBracketsProblem(eqString) == false && NoNumbersProblem(eqString) == false && NoOperatorsProblem(eqString) == false
-                 && NoNumberLeftOrRightPlus(eqString) == false && NoNumberLeftOrRightMultiply(eqString) == false && NoNumberLeftOrRightEqual(eqString) == false
-                 && BracketsWrongOrderProblem(eqString) == false && NoOperatorsLeftFromBracketsProblem(eqString) == false && NoOperatorsRightFromBracketsProblem(eqString) == false
+                 && EmptyBracketsProblem(eqString) == false && NoNumbersProblem(eqString) == false && NoNumberLeftOrRightPlus(eqString) == false 
+                 && NoNumberLeftOrRightMultiply(eqString) == false && NoNumberLeftOrRightEqual(eqString) == false && BracketsWrongOrderProblem(eqString) == false 
+                 && NoOperatorsLeftFromBracketsProblem(eqString) == false && NoOperatorsRightFromBracketsProblem(eqString) == false
                  && ZeroProblem(eqString) == false && WrongBracketAmount(eqString) == false){
                      problem = false;
             }else{
