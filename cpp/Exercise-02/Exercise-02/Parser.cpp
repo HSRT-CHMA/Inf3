@@ -313,7 +313,9 @@ string Parser::parseConstant(string input)
 
 /*
 	Method to parse the Term of the string
-
+	Start Value for return - clear initialized
+	Check if there is a digit in input
+	Return Value - Clear if nothing was changed
 */
 string Parser::parseTerm(string input)
 {
@@ -352,70 +354,72 @@ string Parser::parseTerm(string input)
 
 /*
 	Method to parse the Factor of the string
-
+	Start Value for return - clear initialized
+	Check if there is a digit in input
+	Return Value - Clear if nothing was changed
 */
 string Parser::parseFactor(string input)
 {
 	///*Defition of Variables for Output*/
 	string value = "";
-	//string leftPart = "";
-	//string middle = "";
-	//string rightPart = "";
+	string leftPart = "";
+	string middle = "";
+	string rightPart = "";
 
-	//int bracketCnt = 0;
-	//int indexOfLeftBracket = 0;
-	//int indexOfRightBracket = 0;
-	//
-	///*Setting from global Variables*/
-	//g_Addition = 0;
-	//g_Multiply = 1;
+	int bracketCnt = 0;
+	int indexOfLeftBracket = 0;
+	int indexOfRightBracket = 0;
+	
+	/*Setting from global Variables*/
+	g_Addition = 0;
+	g_Multiply = 1;
 
-	//for each(char c in input){
+	for each(char c in input){
 
-	//	if (c == '('){
-	//		indexOfLeftBracket = bracketCnt;
-	//	}
-	//	bracketCnt++;
-	//}
-	//
-	//bracketCnt = 0;
+		if (c == '('){
+			indexOfLeftBracket = bracketCnt;
+		}
+		bracketCnt++;
+	}
+	
+	bracketCnt = 0;
 
-	//if (input.find('(')){
-	//	leftPart = input.substr(0, indexOfLeftBracket);
+	if (input.find('(')){
+		leftPart = input.substr(0, indexOfLeftBracket);
 
-	//	if (indexOfLeftBracket > input.find(')')){
-	//		for each(char c in input){
-	//			if (c == ')'){
-	//				indexOfRightBracket = bracketCnt;
-	//			}
-	//			bracketCnt++;
-	//		}
-	//		bracketCnt = 0;
-	//		rightPart = input.substr(indexOfRightBracket + 1, input.length() - (indexOfRightBracket + 1));
-	//	}
-	//	else{
-	//		rightPart = input.substr(input.find(')') + 1, input.length() - (input.find(')') + 1));
-	//	}
+		if (indexOfLeftBracket > input.find(')')){
+			for each(char c in input){
+				if (c == ')'){
+					indexOfRightBracket = bracketCnt;
+				}
+				bracketCnt++;
+			}
+			bracketCnt = 0;
+			rightPart = input.substr(indexOfRightBracket + 1, input.length() - (indexOfRightBracket + 1));
+		}
+		else{
+			rightPart = input.substr(input.find(')') + 1, input.length() - (input.find(')') + 1));
+		}
 
-	//	middle = input.substr(indexOfLeftBracket, (input.length()) - indexOfLeftBracket);
-	//	middle = middle.substr(middle.find("("), middle.find(")"));
-	//	cout << middle.find('(');
-	//	if (middle.find('(') || middle.find(')')){
-	//		if (middle.find('(')){
-	//			middle = middle.erase(input.find('('), input.find('('));
-	//		}
-	//		else{
-	//			middle = middle.erase(input.find(')'), input.find(')'));
-	//		}
-	//		value = parseExpression(middle);
-	//	}
+		middle = input.substr(indexOfLeftBracket, (input.length()) - indexOfLeftBracket);
+		middle = middle.substr(middle.find("("), middle.find(")"));
+		cout << middle.find('(');
+		if (middle.find('(') || middle.find(')')){
+			if (middle.find('(')){
+				middle = middle.erase(input.find('('), input.find('('));
+			}
+			else{
+				middle = middle.erase(input.find(')'), input.find(')'));
+			}
+			value = parseExpression(middle);
+		}
 
-	//	middle = leftPart + value + rightPart;
-	//	value = parseExpression(middle);
-	//}
-	//else{
+		middle = leftPart + value + rightPart;
+		value = parseExpression(middle);
+	}
+	else{
 		value = parseConstant(input);
-	//}
+	}
 	return value;
 }
 
