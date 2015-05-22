@@ -10,7 +10,7 @@ using namespace std;
 	Creating Parser for E1
 	Creating Interaction for E2
 */
-int _tmain(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
 	
 	/*Exercise 01 - Parser*/
@@ -36,10 +36,10 @@ int _tmain(int argc, char* argv[])
 		else{
 
 			/*Check if there is not the file*/
-			if (argv[1] != "file" | argv[1] != "File" | argv[1] != "FILE"){
+			if (!strcmp(argv[1], "file")==0){
 				cout << "\nParsing Parameter: ";
-				//Fight the error you must! -.-
 				cout << argv[1];
+				//Fight the error you must! -.-
 				p->parse(argv[1]);
 			}
 
@@ -56,7 +56,8 @@ int _tmain(int argc, char* argv[])
 					cout << "\nGet Parameter...";
 					/*Get each Line*/
 					getline(file, lineParsing);
-					cout << "\nParsing Paramter";
+					cout << "\nParsing Paramter: ";
+					cout << lineParsing;
 					/*Parse each Line*/
 					p->parse(lineParsing);
 				}
