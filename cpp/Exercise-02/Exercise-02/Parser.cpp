@@ -98,9 +98,10 @@ bool Parser::invalidCharacters(string input)
 {
 	bool value = false;
 
-	if (!(regex_match(input, onlyZero) || regex_match(input, numbers) || regex_match(input, numbersWZ)) 
-			&& (input.find('(') || input.find(')') || input.find('+') || input.find('*'))){
+	if (!regex_match(input, onlyZero) && !regex_match(input, numbers) && !regex_match(input, numbersWZ) 
+			&& !input.find('(') && !input.find(')') && !input.find('+') && !input.find('*')){
 		value = true;
+		cout << input.find('(');
 	}
 
 	return value;
@@ -199,7 +200,7 @@ bool Parser::checkNumbers(string input)
 		!regex_match(input, numbersWZ)){
 
 		for (int i = 0; i < input.length(); i++){
-			if (input[i] == '+' | input[i] == '*'){
+			if (input[i] == '+' || input[i] == '*'){
 				value = true;
 			}
 		}
@@ -355,91 +356,67 @@ string Parser::parseTerm(string input)
 */
 string Parser::parseFactor(string input)
 {
-//	/*Defition of Variables for Output*/
-//	string value = "";
-//	string leftPart = "";
-//	string middle = "";
-//	string rightPart = "";
-//
-//	int bracketCnt = 0;
-//	int indexOfLeftBracket = 0;
-//	int indexOfRightBracket = 0;
-//	
-//	/*Setting from global Variables*/
-//	g_Addition = 0;
-//	g_Multiply = 1;
-//
-//	//Counts the number of Characters in input
-//	for each(char c in input)
-//	{
-//
-//		if (c == '('){
-//			//Character equals ( then indexLeftOfBracket gets the value of bracketCnt
-//			indexOfLeftBracket = bracketCnt;
-//		}
-//		bracketCnt++;
-//	}
-//	bracketCnt = 0;
-//
-//	//Checks if String contains "(" and ")"
-//	if (input.find("(") && input.find(")")){
-//		//Split the string until before ( and writes it in leftpart
-//		leftPart = input.substr(0, indexOfLeftBracket);
-//
-//		//Checks if index of ( is bigger than index of ) so it knows from where to split the string and doesnt split the opened ( bracket with the wrong closed ) Bracket
-//		if (indexOfLeftBracket > input.find(")")){
-//			//Counts the number of Characters in input
-//			for each(char c in input){
-//				if (c == ')'){
-//					//Character equals ( then indexRightOfBracket gets the value of bracketCnt
-//					indexOfRightBracket = bracketCnt;
-//				}
-//				bracketCnt++;
-//			}
-//			bracketCnt = 0;
-//			//Split the string until before ) and writes it in rightPart
-//			rightPart = input.substr(indexOfRightBracket + 1, input.length() - (indexOfRightBracket + 1));
-//		}
-//		else{
-//			//Split the string until before ) and writes it in rightPart
-//			rightPart = input.substr(input.find(")") + 1, input.length() - (input.find(")") + 1));
-//		}
-//
-//		//Writes the part between leftPart and rightPart in middle
-//		middle = input.substr(indexOfLeftBracket, (input.length()) - indexOfLeftBracket);
-//		middle = middle.substr(middle.find("("), middle.find(")"));
-//		if (middle.find("(") && middle.find(")")){
-//			//Removes the Bracket
-//			middle = middle.erase(input.find("("), input.find("("));
-//			middle = middle.erase(input.find(")"), input.find(")"));
-//			value = parseExpression(middle);
-//		}
-//		else{
-//			if (middle.find(")")){
-//				//Removes the Bracket
-//				middle = middle.erase(input.find(")"), input.find(")"));
-//				value = parseExpression(middle);
-//			}
-//			else{
-//				if (middle.find("(")){
-//					//Removes the Bracket
-//					middle = middle.erase(input.find("("), input.find("("));
-//					value = parseExpression(middle);
-//				}
-//				else{
-//					value = parseExpression(middle);
-//				}
-//			}
-//		}
-//
-//		//Splits String before Bracket ( and after ) Bracket and puts the left part with the result of the brackets and the right part together
-//		middle = leftPart + value + rightPart;
-//		value = parseExpression(middle);
-//	}
-//	else{
-//		value = parseConstant(input);
-//	}
-	return "";
+	///*Defition of Variables for Output*/
+	string value = "";
+	//string leftPart = "";
+	//string middle = "";
+	//string rightPart = "";
+
+	//int bracketCnt = 0;
+	//int indexOfLeftBracket = 0;
+	//int indexOfRightBracket = 0;
+	//
+	///*Setting from global Variables*/
+	//g_Addition = 0;
+	//g_Multiply = 1;
+
+	//for each(char c in input){
+
+	//	if (c == '('){
+	//		indexOfLeftBracket = bracketCnt;
+	//	}
+	//	bracketCnt++;
+	//}
+	//
+	//bracketCnt = 0;
+
+	//if (input.find('(')){
+	//	leftPart = input.substr(0, indexOfLeftBracket);
+
+	//	if (indexOfLeftBracket > input.find(')')){
+	//		for each(char c in input){
+	//			if (c == ')'){
+	//				indexOfRightBracket = bracketCnt;
+	//			}
+	//			bracketCnt++;
+	//		}
+	//		bracketCnt = 0;
+	//		rightPart = input.substr(indexOfRightBracket + 1, input.length() - (indexOfRightBracket + 1));
+	//	}
+	//	else{
+	//		rightPart = input.substr(input.find(')') + 1, input.length() - (input.find(')') + 1));
+	//	}
+
+	//	middle = input.substr(indexOfLeftBracket, (input.length()) - indexOfLeftBracket);
+	//	middle = middle.substr(middle.find("("), middle.find(")"));
+	//	cout << middle.find('(');
+	//	if (middle.find('(') || middle.find(')')){
+	//		if (middle.find('(')){
+	//			middle = middle.erase(input.find('('), input.find('('));
+	//		}
+	//		else{
+	//			middle = middle.erase(input.find(')'), input.find(')'));
+	//		}
+	//		value = parseExpression(middle);
+	//	}
+
+	//	middle = leftPart + value + rightPart;
+	//	value = parseExpression(middle);
+	//}
+	//else{
+		value = parseConstant(input);
+	//}
+	return value;
 }
 
 /*
@@ -460,7 +437,7 @@ string Parser::parseEquation(string input)
 	if (input.find("=")){
 		
 		/*Left Side Action*/
-		left = input.substr(0, input.find("="));
+		left = input.substr(0, input.find('='));
 		value = parseExpression(left);
 	//	valueLeft =+ stoi(value);
 

@@ -39,8 +39,7 @@ int main(int argc, char* argv[])
 			if (!strcmp(argv[1], "file")==0){
 				cout << "\nParsing Parameter: ";
 				cout << argv[1];
-				//Fight the error you must! -.-
-				p->parse(argv[1]);
+				cout << p->parse(argv[1]);
 			}
 
 			/*Parsing Parameters with a File*/
@@ -59,7 +58,7 @@ int main(int argc, char* argv[])
 					cout << "\nParsing Paramter: ";
 					cout << lineParsing;
 					/*Parse each Line*/
-					p->parse(lineParsing);
+					cout << p->parse(lineParsing);
 				}
 
 				/*Close File*/
