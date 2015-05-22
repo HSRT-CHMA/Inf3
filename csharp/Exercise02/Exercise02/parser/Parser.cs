@@ -40,11 +40,11 @@ namespace Exercise02{
              *                  eqString: Input from program
              */
             AllTests(eqString);
-            Contract.Requires(problem == false);
+            Contract.Requires(!problem);
             tmpAdd = 0;
             tmpMulti = 1;
             if (problem){
-                Console.WriteLine("There is a Problem with yout Input,please check the Error explained above!");
+                Console.WriteLine("There is a Problem with your Input,please check the Error explained above!");
                 return "";
             }else{
                 str = ParseEquation(eqString);
@@ -258,7 +258,7 @@ namespace Exercise02{
             return false;
         }
 
-        private Boolean isZero(String eqString){
+        private Boolean IsZero(String eqString){
             /*
              * Checking is eqString = 0 ?
              * parms:   Regex   rZero:Number 0
@@ -582,7 +582,7 @@ namespace Exercise02{
              * AllTests() called by Parse() to Test all incorrect Inputs
              * parms:   Boolean     probelm: if true EBNF isnt fulfilled
              */
-            Contract.Requires(problem == false);
+            Contract.Requires(!problem);
             if (IllegalCharacters(eqString) == false && DoubleZeroProblem(eqString) == false && OneBracketProblem(eqString) == false
                  && EmptyBracketsProblem(eqString) == false && NoNumbersProblem(eqString) == false && NoOperatorsProblem(eqString) == false
                  && NoNumberLeftOrRightPlus(eqString) == false && NoNumberLeftOrRightMultiply(eqString) == false && NoNumberLeftOrRightEqual(eqString) == false
