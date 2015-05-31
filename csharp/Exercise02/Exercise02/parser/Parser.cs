@@ -516,12 +516,9 @@ namespace Exercise02{
 
             if (eqString.Contains("0")){
                 eqString2 = eqString.Substring(0, eqString.IndexOf("0"));
-                if (eqString2.EndsWith("=") || eqString2.EndsWith("*") || eqString2.EndsWith("+") || eqString2.EndsWith(""+r.IsMatch(eqString)) || eqString2.EndsWith("")){
+                if (eqString.StartsWith("0")){
                     Console.WriteLine("Error: Input cointains illegal Number Zero");
                     problem = true;
-                }else{
-                    eqString = eqString.Substring(eqString2.Length + 1, eqString.Length - (eqString2.Length + 1));
-                    problem = ZeroProblem(eqString);
                 }
             }
             return problem;
@@ -553,11 +550,11 @@ namespace Exercise02{
              * parms:   Boolean     probelm: if true EBNF isnt fulfilled
              */
             Contract.Requires(!problem);
-            if (IllegalCharacters(eqString) == false && DoubleZeroProblem(eqString) == false && OneBracketProblem(eqString) == false
-                 && EmptyBracketsProblem(eqString) == false && NoNumbersProblem(eqString) == false && NoNumberLeftOrRightPlus(eqString) == false 
-                 && NoNumberLeftOrRightMultiply(eqString) == false && NoNumberLeftOrRightEqual(eqString) == false && BracketsWrongOrderProblem(eqString) == false 
-                 && NoOperatorsLeftFromBracketsProblem(eqString) == false && NoOperatorsRightFromBracketsProblem(eqString) == false
-                 && ZeroProblem(eqString) == false && WrongBracketAmount(eqString) == false){
+            if (!IllegalCharacters(eqString) && !DoubleZeroProblem(eqString) && !OneBracketProblem(eqString)
+                 && !EmptyBracketsProblem(eqString) && !NoNumbersProblem(eqString) && !NoNumberLeftOrRightPlus(eqString)
+                 && !NoNumberLeftOrRightMultiply(eqString) && !NoNumberLeftOrRightEqual(eqString) && !BracketsWrongOrderProblem(eqString) 
+                 && !NoOperatorsLeftFromBracketsProblem(eqString) && !NoOperatorsRightFromBracketsProblem(eqString)
+                 && !ZeroProblem(eqString) && !WrongBracketAmount(eqString)){
                      problem = false;
             }else{
                 problem = true;
