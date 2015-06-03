@@ -10,10 +10,10 @@ class
 inherit
 	ARGUMENTS
 
-create
+create --Lists all methods which serves as "Constructors" in this class
 	make
 
-feature {NONE} -- Initialization; containts different testing units
+feature {NONE} -- Initialization; containts different testing units; only class None can use this method
 
 	make
 			-- make-routine of class APPLICATION, serves as "main"

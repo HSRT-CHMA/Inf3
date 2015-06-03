@@ -1,9 +1,8 @@
-class Current_Parser(object):
+class Parser1(object):
     """description of class"""
 
 
-
-    def _parse(self, string):
+    def parse(self, string):
         self._s = string
         return self._parseEquation()
 
@@ -84,3 +83,4 @@ class Current_Parser(object):
     def _isItDigit(self):
         # Returns True or False
         return str(self._s[0]).isdigit()
+

@@ -12,6 +12,10 @@ class Another_Parser(object):
         # input becomes _s, a string-variable on which further methods operate
         if len(self._s) == 0:
             print("Error: The length of given input-string is zero.")
+        elif not self._illegalCharacter() : 
+            print("Error: The given input-string contains an invalid element.")
+        elif self._leadingZero():
+            print("Error: The given input-string contains a number which starts with a zero.")
         elif self._s.endswith("+") or self._s.endswith("*") or self._s.endswith("=") or self._s.startswith("+") or self._s.startswith("*") or self._s.startswith("="):
             print("Error: The given input-string begins or ends with an invalid element.")
         elif not (self._s.count("(") == self._s.count(")")):
@@ -24,10 +28,6 @@ class Another_Parser(object):
             print("Error: The given input-string contains an operator without corresponding digit.")
         elif self._noDigitBeforeBracketOrNoOperatorAfterBracket():
             print("Error: The given input-string contains an operator directly before or after a bracket.")
-        elif not self._illegalCharacter() : 
-            print("Error: The given input-string contains an invalid element.")
-        elif self._leadingZero():
-            print("Error: The given input-string contains a number which starts with a zero.")
         elif self._s.count("=") > 1:
             print("Error: The given input-string contains multiple '='.")
         else:
