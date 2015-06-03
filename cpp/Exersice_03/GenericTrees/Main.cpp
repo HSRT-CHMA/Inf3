@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 
+
+/*Serves as the main-function of this programm*/
 int _tmain(int argc, _TCHAR* argv[])
 {
 	BinaryTree<int> tree = BinaryTree<int>(2);
@@ -25,6 +27,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	
 	std::cout << std::endl;	
+	// Causes a line break
 	std::cout << std::endl;
 
 	AVLTree<int>* root = new AVLTree<int>(30);
@@ -39,11 +42,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	/* The constructed AVL Tree would be
-	30
-	/  \
-	20   40
-	/  \     \
-	10  25    50
+	      30
+	     /  \
+	    20   40
+	   /  \    \
+	  10  25    50
 	*/
 
 	printf("\nPre order traversal of the constructed AVL tree is \n");
@@ -55,7 +58,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cout << "String Element B: " << std::boolalpha << test.hasElement("B") << std::endl;
 
 	getchar();
+	//Holds open the console until a char is given an ENTER is pressed
 
 	return 0;
+	// showcases the sucessful run of this programm
 }
 
