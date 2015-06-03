@@ -5,55 +5,41 @@ note
 	revision: "$Revision$"
 
 class
-	AVLTREE
+	AVLTREE[G->COMPARABLE]
 
 inherit
-	BINARYTREE
+	-- BINARYTREE  Vererbung überprüfen
+	GENERIC_TREE[G]
+	redefine insert, delete, has end
 
 create
 	make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialization / Constructor ; gets the value that serves as root-value
 
-	make
-			-- Initialization for `Current'.
+	make(tree_value : G)
 		do
-
+			print("%N A new AVL Tree has been created")
+			create root.make(tree_value, Void)
 		end
 
-feature -- Access
+feature
+	insert(new_value : G)
+	do
+		Precursor(new_value)
+	end
 
-feature -- Measurement
 
-feature -- Status report
+feature
+	delete(new_value : G)
+	do
+		Precursor(new_value)
+	end
 
-feature -- Status setting
-
-feature -- Cursor movement
-
-feature -- Element change
-
-feature -- Removal
-
-feature -- Resizing
-
-feature -- Transformation
-
-feature -- Conversion
-
-feature -- Duplication
-
-feature -- Miscellaneous
-
-feature -- Basic operations
-
-feature -- Obsolete
-
-feature -- Inapplicable
-
-feature {NONE} -- Implementation
-
-invariant
-	invariant_clause: True -- Your invariant here
+feature
+	has(new_value : G): BOOLEAN
+	do
+		Result := Precursor(new_value)
+	end
 
 end

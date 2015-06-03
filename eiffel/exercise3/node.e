@@ -5,15 +5,15 @@ note
 	revision: "$Revision$"
 
 class
-	NODE
+	NODE [G] --Generic typ
 	-- This class organises the Node-Objects of a binary tree
 
 create
 	make
 
-feature {BINARYTREE} -- Initialization/ Constructor ; sets the given node-value and the given parent-node
+feature {GENERIC_TREE} -- Initialization/ Constructor ; sets the given node-value and the given parent-node
 
-	make(node_value : INTEGER ; node_parent : detachable NODE)
+	make(node_value : G ; node_parent : detachable NODE[G])
 			-- Initialization for `Current'.
 		do
 			set_value(node_value)
@@ -22,41 +22,43 @@ feature {BINARYTREE} -- Initialization/ Constructor ; sets the given node-value 
 
 feature --Access
 
-	value : INTEGER
+	value : G
+	--Generic type G
 	--Value of the given node; is initialised with default value
-	left : detachable NODE
+	left : detachable NODE[G]
 	-- The left child of a node; can be Void when left child does not exist
-	right : detachable NODE
+	right : detachable NODE[G]
 	--The right child of a node; can be Void when right child does not exist
-	parent : detachable NODE
+	parent : detachable NODE[G]
 	--The parent-node of the node; can be Void when only root exist
 
 feature -- public Getter for value of the node
-	get_value : INTEGER
+	get_value : G
 	do
 		Result := value
 		ensure
-			correct_value : Result = value
+			--correct_value : Result = value
 	end
 
-feature{BINARYTREE} -- Setter for value of the node; only visible to its tree
-	set_value(node_value : INTEGER)
+feature{GENERIC_TREE} -- Setter for value of the node; only visible to its tree
+	set_value(node_value : G)
 	do
 		value := node_value
 		ensure
-			correct_value : value = node_value
+			--correct_value : value = node_value
+			-- Bitte überprüfen , Marco
 	end
 
 feature --public Getter for left-node	
-	get_left : detachable NODE
+	get_left : detachable NODE[G]
 	do
 		Result := left
 		ensure
 			correct_result : Result = left
 	end
 
-feature{BINARYTREE} -- Setter for the left-node, only visible to its tree
-	set_left(node_left : detachable NODE)
+feature{GENERIC_TREE} -- Setter for the left-node, only visible to its tree
+	set_left(node_left : detachable NODE[G])
 	do
 		left := node_left
 		ensure
@@ -64,15 +66,15 @@ feature{BINARYTREE} -- Setter for the left-node, only visible to its tree
 	end
 
 feature --public Getter for the right-node	
-	get_right : detachable NODE
+	get_right : detachable NODE[G]
 	do
 		Result := right
 		ensure
 			correct_result : Result = right
 	end
 
-feature{BINARYTREE} --Setter for right-node
-	set_right(node_right : detachable NODE)
+feature{GENERIC_TREE} --Setter for right-node
+	set_right(node_right : detachable NODE[G])
 	do
 		right := node_right
 		ensure
@@ -80,16 +82,16 @@ feature{BINARYTREE} --Setter for right-node
 	end
 
 feature --public Getter for parent-node
-	get_parent : detachable NODE
+	get_parent : detachable NODE[G]
 	do
 		Result := parent
 		ensure
 			correct_result : Result = parent
 	end
 
-feature{BINARYTREE} --Setter for parent-node ; only visible to its tree
+feature{GENERIC_TREE} --Setter for parent-node ; only visible to its tree
 
-	set_parent(node_parent : detachable NODE)
+	set_parent(node_parent : detachable NODE[G])
 	do
 		parent := node_parent
 		ensure
@@ -97,7 +99,7 @@ feature{BINARYTREE} --Setter for parent-node ; only visible to its tree
 	end
 
 invariant
-	valid_value : value.abs >= 0
-	-- if the absolut value is greater or equal than zero; the value is valid
+	valid_value : value /= Void
+	-- NEUE INVARIANTE FINDEN
 
 end
