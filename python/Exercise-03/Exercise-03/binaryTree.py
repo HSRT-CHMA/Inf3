@@ -1,4 +1,4 @@
-class binaryNode(object):
+class binaryTree(object):
     """description of class"""
 
 

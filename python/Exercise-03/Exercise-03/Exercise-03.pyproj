@@ -28,7 +28,7 @@
     <Compile Include="avlTree.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="binaryNode.py">
+    <Compile Include="binaryTree.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Exercise_03.py" />
