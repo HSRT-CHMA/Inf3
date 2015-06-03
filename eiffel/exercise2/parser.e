@@ -1,8 +1,6 @@
---Class for PARSER object.
 class
 	PARSER
 
--- The routine to create the object is make.
 create
 	make
 
@@ -194,7 +192,8 @@ feature {NONE}	--if digit_wo_zero it goes through the loop and res+ the item at 
 		end
 
 
-feature {NONE}	--Checks if first character in the string is a digit and returns a BOOLEAN.
+feature {NONE}	-- Checks if first character in the string is a digit and returns a BOOLEAN.
+				-- there are numbers from 0-9
 	is_it_digit : BOOLEAN
 		local
 			res : BOOLEAN
@@ -208,13 +207,14 @@ feature {NONE}	--Checks if first character in the string is a digit and returns 
 		end
 
 
-feature {NONE}	--this method checks if the first character in the string is a digit without zero (1-9) and returns a BOOLEAN.
-				--But first it checks if the string is empty .
+feature {NONE}	--this method checks if the first character in the string is a digit without zero (1-9)
+				-- returns boolean.
+				--But first it checks if the string is empty
 	is_digit_wo_zero : BOOLEAN
 		local
 			res : BOOLEAN
 		do
-			if s.is_empty = False
+			if not s.is_empty
 			then res := s.item (1).is_digit and s.item (1).out.to_integer /= 0
 			else
 				res := False
