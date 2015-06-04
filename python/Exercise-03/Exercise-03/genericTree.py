@@ -1,15 +1,10 @@
 class genericTree():
     
     def insert(self, value):
-        pass
-        #Todo
+        print("Insert-Method of genericTree")
 
     def has(self, value):
-        pass
-        #Todo
+        print("Has-Method of genericTree")
 
     def delete(self, value):
-        pass
-        #Todo
-
-
+        print("Delete-Method of genericTree")

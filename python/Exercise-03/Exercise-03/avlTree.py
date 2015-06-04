@@ -1,11 +1,24 @@
+'''
+    AVL Tree Class
+    Inf3 - Group 7
+'''
+
+#Defining Imports
+import genericTree
+import avlNode
+
+'''
+AVL-Tree Class from Exercise 1.3
+'''
 class avlTree(genericTree):
     
     '''
-        Constructor for the Class avlTree
-        Initializing the Node with None
-        Setting Height to -1 and Balance to 0
+    Constructor for the Class avlTree
+    Initializing the Node with None
+    Setting Height to -1 and Balance to 0
     '''
     def __init__(self, *args):
+        
         self.node = None
         self.height = -1
         self.balance = 0
@@ -16,53 +29,71 @@ class avlTree(genericTree):
 
 
     '''
-        Height Method. Returns the Height of the AVL Tree
-        Recursive Call with Max Method
+    Height Method. Returns the Height of the AVL Tree
+    Recursive Call with Max Method
     '''
-    def height(self):
+    def getHeight(self):
+        
         if self.node != None:
-            value = max(self.node.left.height), self.node.right.height) + 1
+            value = max(self.node.left.getHeight() , self.node.right.getHeight()) + 1
         else:
             value = 0
         return value
-    #Check Method - Not Working correctly
 
     '''
-        Method for Rotating Node to
-        the Left Side of the AVL-Tree
+    Method for Rotating Node to
+    the Left Side of the AVL-Tree
     '''
     def rotateLeft(self):
-        A = self.node
-        B = self.node.right.node
-        T = B.left.node
+        
+        #Defining Variables to work with
+        a = self.node
+        b = self.node.right.node
+        tmp = b.left.node
 
-        self.node = B
-        B.left.node = A
-        A.right.node = T
+        #Changing the Nodes happens here
+        self.node = b
+        b.left.node = a
+        a.right.node = tmp
 
     '''
-        Method for Rotating Node to 
-        the Right Side of the AVL-Tree
+    Method for Rotating Node to 
+    the Right Side of the AVL-Tree
     '''
     def rotateRight(self):
-        A = self.node
-        B = self.node.left.node
-        T = B.right.node
+        
+        #Defining Variables to work with
+        a = self.node
+        b = self.node.left.node
+        tmp = b.right.node
 
-        self.node = B
-        B.right.node = A
-        A.left.node = T
+        #Changing the Nodes happens here
+        self.node = b
+        b.right.node = a
+        a.left.node = tmp
 
     '''
-        True if Self Node is Root
+    Method for Check if the Node is a Root
+    True if Self Node is Root
     '''
     def isLeaf(self):
         return (self.height == 0)
 
     '''
+    Insert Method of AVL Tree
+    - Check if tree Node is Null
+    - Creating new Node
+    - Setting left Node Object
+    - Setting right Node Object
 
+    Important:
+    The balanceTree Method is called after 
+    every insert of Values. This has to be done
+    that the Tree is always a AVL-Tree
     '''
     def insert(self, key):
+        
+        #Defining Variables to work with
         tree = self.node
         newNode = Node(key)
 
@@ -72,22 +103,73 @@ class avlTree(genericTree):
             self.node.right = avlTree()
         elif key < tree.key:
             self.node.right.insert(key)
-
-        self.rebalance()
+       
+        self.balanceTree()
 
     '''
-        Rebalance the Tree by Rotating the Nodes
-        Balance is called for the whole Time that
-        self.balance is not 0
-    '''
-    def rebalance(self):
+    Method for Deleting Nodes which are identified by the key
+    out of the Binary Tree
+    - Check if there is at least one Node to delete -> BinaryTree not Null
+    - Fixing References of Nodes
+        1. Case -> No Childs -> Yiah Happy not much to do
+        2. Case -> Changing the References from the Nodes of the Left Side if there is no Child on the Right Side
+        3. Case -> Changing the References from the Nodes of the Right Side if there is no Child on the Left Side
+        4. Case -> Changing the References with the Minima Node to change (Pivot - Element)
+    '''  
+    def delete(self, key):
 
+        if self.node != None: 
+            if self.node.key == key: 
+                #1. Case -> No Child Nodes
+                if self.node.left.node == None and self.node.right.node == None:
+                    self.node = None 
+                #2. Case -> 1 Child on the Right Side
+                elif self.node.left.node == None: 
+                    self.node = self.node.right.node
+                #3. Case -> 1 Child on the Left Side
+                elif self.node.right.node == None: 
+                    self.node = self.node.left.node
+
+                #4. Case -> 2 Children - Find Pivot Element (Minima) to change
+                else:   
+                    minimaNode = self.minima(self.node)
+                    if minimaNode != None:
+                        self.node.key = minimaNode.key
+                        self.node.right.delete(minimaNode.key)
+                self.balanceTree()
+           
+            #Finding the Node Key with recursiv call to the left side
+            elif key < self.node.key: 
+                self.node.left.delete(key) 
+            #Finding the Node Key with recursiv call to the left side 
+            elif key > self.node.key: 
+                self.node.right.delete(key)
+            
+            #Fixing the Balance of the AVL-Tree after deleting
+            self.balanceTree()
+
+    '''
+    The Method balanceTree balances the Tree by 
+    Rotating the Nodes Balance is called for the 
+    whole Time that self.balance is not 0
+
+    - Loop run as long as the Balance is not valid
+    - The Two Cases of the Balance are processed in:
+        - First Case - Balance is above 1
+            -> Rotate Left Node
+        - Second Case - Balance is under -1
+            -> Rotate Right Node
+    '''
+    def balanceTree(self):
+
+        #Defining Variables to work with
         self.updateHeights(False)
         self.updateBalance(False)
 
+        #Starting Loop to fix the Balance
         while self.balance < -1 or self.balance > 1:
             
-            #First Check if Balance is above 1
+            #First Case
             if self.balance > 1:
                 self.node.left.rotateLeft()
                 self.updateHeights()
@@ -96,7 +178,7 @@ class avlTree(genericTree):
             self.rotateHeights()
             self.updateBalances()
 
-            #Second Check if Balance is under -1
+            #Second Case
             if self.balance < -1:
                 if self.node.right.balance > 0:
                     self.node.right.rotateRight()
@@ -106,4 +188,154 @@ class avlTree(genericTree):
                 self.updateHeights()
                 self.updateBalances()
 
+    '''
+    Method which checks the Balance of the
+    Tree. At the first call the Variable
+    recBalance is true
+    '''       
+    def updateBalances(self, recBalance = True):
+        if not self.node == None: 
+            if recBalance: 
+                if self.node.left != None: 
+                    self.node.left.updateBalances()
+                if self.node.right != None:
+                    self.node.right.updateBalances()
+
+            self.balance = self.node.left.height - self.node.right.height 
+        else: 
+            self.balance = 0
+         
+    '''
+    Method for checking the Balance
+    of the whole Tree
+    '''
+    def isBalanced(self):
+        
+        if self == None or self.node == None: 
+            value=True
+        else:
+            self.updateHeights()
+            self.updateBalances()
+            value= ((abs(self.balance) < 2) and self.node.left.isBalanced() and self.node.right.isBalanced()) 
+        return value
+
+    '''
+    Method which is called after the Balance
+    of the Tree is done
+    '''    
+    def updateHeights(self, recHeights = True):
+       
+        if not self.node == None: 
+            if recHeights: 
+                if self.node.left != None: 
+                    self.node.left.updateHeights()
+                if self.node.right != None:
+                    self.node.right.updateHeights()
+            
+            self.height = max(self.node.left.height,
+                              self.node.right.height) + 1 
+        else: 
+            self.height = -1 
+
+    '''
+    Method for searching the key Value out of the Tree
+    True if the Tree has the element, False if there
+    is no such Value in the Tree
+
+    - All Nodes are collected from the left Side
+    - All Nodes are collected from the right Side
+    - All Nodes from both Sides are searched for the key
+        -> value changes to true if the key is found
+    - Return of the value and closing Method
+    '''
+    def has(self, key):
+        
+        #Defining Variables to work with
+        value = False
+        inlist = [] 
+        inlist.append(self.node.key)
+            
+        #Pull the Left Side of the Tree in outputTree
+        outputTree = self.node.left.preOrderOutput()
+        for i in outputTree: 
+            inlist.append(i) 
     
+        #Pull the Right Side of the Tree in outputTree
+        outputTree = self.node.right.preOrderOutput()
+        for i in outputTree: 
+            inlist.append(i) 
+
+        #Go through the List and return true if Key is in it
+        for i in inlist:
+            if i == key:
+                value = True
+        return value
+
+    '''
+    Method to Output the AVL-Tree in Order
+    '''    
+    def preOrderOutput(self):   
+        
+        #Check if start node is null
+        if self.node == None:
+            value=[] 
+        else:
+            inlist = [] 
+            inlist.append(self.node.key)
+            
+            l = self.node.left.preOrderOutput()
+            for i in l: 
+                inlist.append(i) 
+    
+            l = self.node.right.preOrderOutput()
+            for i in l: 
+                inlist.append(i) 
+            value=inlist
+        return value
+
+    '''
+    Method which searches the smalles value
+    in the right tree child side
+    Searches for the smallest valued node in RIGHT child
+    '''
+    def minima(self, node):
+
+        #Defining Variables to work with
+        node = node.right.node  
+        value = node
+        
+        if node != None:
+            
+            '''
+            Starting recursive call for so long
+            '''
+            while node.left != None:
+                
+                if node.left.node == None: 
+                    value = node 
+                else: 
+                    node = node.left.node  
+        return value
+
+    '''
+    Method which searches the biggest value 
+    in the left tree child side
+    '''   
+    def maxima(self, node):
+
+        #Defining Variables to work with
+        node = node.left.node 
+        value = node
+        
+        if node != None:
+            
+            '''
+            Starting recursive call for so long 
+            that the right node is not null
+            '''
+            while node.right != None:
+                if node.right.node == None: 
+                    value=node 
+                else: 
+                    node = node.right.node  
+        return value

@@ -38,6 +38,9 @@
     <Compile Include="genericTree.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="randomValue.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="treeTest.py">
       <SubType>Code</SubType>
     </Compile>
