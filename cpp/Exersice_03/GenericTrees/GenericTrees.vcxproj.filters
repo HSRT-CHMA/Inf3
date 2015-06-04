@@ -36,12 +36,24 @@
     <ClInclude Include="BinaryTree.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="InitializerOfArray.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TesterOfINT.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TesterOfString.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Generic_AVL_Trees.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TesterOfString.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

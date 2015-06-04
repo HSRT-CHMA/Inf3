@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 #include "Node.h"
 #include <string>
 
 template<typename T>
 class AbsctractBinaryTree
 {
-	
+
 protected:	
 	Node<T> * node;
 
@@ -13,40 +13,25 @@ private:
 	void insertFunction(T value, Node<T> * node);
 	bool hasElementFunction(T value, Node<T> * node);
 	void delFunction(T value, Node<T> * node);
+	void preOrderFunction(Node<T> * root);
+	virtual void insertDeleteHook(Node<T>  * node) = 0;
+
 public:
-	//BinaryTree(T value);
-	//~BinaryTree();
 	void insert(T value);
 	bool hasElement(T value);
 	void del(T value);
-	void preOrderFunction(Node<T> * root);
-	void preOrderFunction(void);
-	virtual void insertPostHook(Node<T>  * node) = 0;
-	virtual void deletePostHook(Node<T>  * node) = 0;
+	void printTree(void);
 };
 
-
-/*
-template <class T>
-BinaryTree<T>::BinaryTree(T value)
-{
-	this->node = new Node<T>(value);
-}
-
-template <class T>
-BinaryTree<T>::~BinaryTree()
-{
-	//delete(node);
-}
-*/
-
-
+/* Calls the InsertFunction*/
 template <class T>
 void AbsctractBinaryTree<T>::insert(T value)
 {
 	insertFunction(value, node);
 }
 
+/*Inserts the Value recursively in the tree.
+*/
 template <class T>
 void AbsctractBinaryTree<T>::insertFunction(T value, Node<T> * node)
 {
@@ -59,7 +44,7 @@ void AbsctractBinaryTree<T>::insertFunction(T value, Node<T> * node)
 			Node<T> * tmpNode = new Node<T>(value);
 			tmpNode->setParentP(node);
 			node->setLeftP(tmpNode);
-			insertPostHook(tmpNode);
+			insertDeleteHook(node->getLeftP());
 		}
 		else {
 			insertFunction(value, node->getLeftP() );
@@ -70,7 +55,7 @@ void AbsctractBinaryTree<T>::insertFunction(T value, Node<T> * node)
 			Node<T> * tmpNode = new Node<T>(value);
 			tmpNode->setParentP(node);
 			node->setRightP(tmpNode);
-			insertPostHook(tmpNode);
+			insertDeleteHook(node->getRightP());
 		}
 		else {
 			insertFunction(value, node->getRightP() );
@@ -78,13 +63,16 @@ void AbsctractBinaryTree<T>::insertFunction(T value, Node<T> * node)
 	}
 }
 
-
+/*Calls the hasElementFunction*/
 template <class T>
 bool AbsctractBinaryTree<T>::hasElement(T value)
 {
 	return hasElementFunction(value, node);
 }
 
+/*	HasElementFunction
+*	searches for the Value recursively in the Tree
+*/
 template <class T>
 bool AbsctractBinaryTree<T>::hasElementFunction(T value, Node<T>  * node)
 {
@@ -119,12 +107,22 @@ bool AbsctractBinaryTree<T>::hasElementFunction(T value, Node<T>  * node)
 	}
 }
 
+/*Calls the delete Method*/
 template <class T>
 void AbsctractBinaryTree<T>::del(T value)
 {
-	delFunction(value, this->node);
+	if (hasElement(value)) {
+		delFunction(value, this->node);
+	}
+	else {
+		std::cout<< "\nThe value "<<value<< " is already not in this Tree!" << std::endl;
+	}
 }
 
+
+/*	DelFunction
+*	This Function searche and delete the value recursively
+*/
 template <class T>
 void AbsctractBinaryTree<T>::delFunction(T value, Node<T>  * node)
 {
@@ -137,39 +135,40 @@ void AbsctractBinaryTree<T>::delFunction(T value, Node<T>  * node)
 	if (node->getLeftP() != NULL) {
 		if (node->getLeftP()->getValue() == value && node->getLeftP()->getLeftP() == NULL && node->getLeftP()->getRightP() == NULL)
 		{
+			Node<T> * parent = node->getLeftP()->getParentP();
 			node->getLeftP()->setParentP(NULL);
 			node->getLeftP()->setLeftP(NULL);
 			node->getLeftP()->setValue(NULL);
 			node->getLeftP()->setRightP(NULL);
-			deletePostHook(node->getLeftP());
 			node->setLeftP(NULL);
 			delete(node->getLeftP());
+			insertDeleteHook(parent);
 			return;
 		}
 	}
-	
+
 	//IF the Value to Delete is the first Leave on the right side
 	//and this leave has no other leaves
 	//delete it
 	if (node->getRightP() != NULL) {
 		if (node->getRightP()->getValue() == value && node->getRightP()->getLeftP() == NULL && node->getRightP()->getRightP() == NULL)
 		{
+			Node<T> * parent = node->getRightP()->getParentP();
 			node->getRightP()->setParentP(NULL);
 			node->getRightP()->setLeftP(NULL);
 			node->getRightP()->setValue(NULL);
 			node->getRightP()->setRightP(NULL);
-			deletePostHook(node->getRightP());
 			node->setRightP(NULL);
 			delete(node->getRightP());
+			insertDeleteHook(parent);
 			return;
 		}
 	}
 	//IF the root Value is I and there is no other leave delete / or set the main tree = void
-	
 	if (value == node->getValue() && node->getRightP() == NULL && node->getLeftP() == NULL)
 	{
-		node->setValue(0);
-		delete(node);
+		this->node->setValue(NULL);
+		//delete(this->node);
 	}
 	//IF i < root.getValue is the value(i) on the left side of the tree then go in this node
 	else if (value < node->getValue()) {
@@ -181,21 +180,30 @@ void AbsctractBinaryTree<T>::delFunction(T value, Node<T>  * node)
 			delFunction(value, node->getRightP());
 		}
 		else //The node to be deleted have been found
-			//the Node to be deleted has only a left Leave
+			//the Node to be deleted has only a right Leave
 			if (node->getLeftP() == NULL) {
+				Node<T> * parent = node->getParentP();
 				node->setValue(node->getRightP()->getValue());
-				node->setParentP(node->getRightP()->getParentP());
 				node->setLeftP(node->getRightP()->getLeftP());
 				node->setRightP(node->getRightP()->getRightP());
-				node->getRightP()->setValue(0);
+				insertDeleteHook(parent);
 			}
-			else //Node to be deletet has no right Leave
+			else //Node to be deleted has no right Leave
 			{
 				if (node->getRightP() == NULL)
 				{
-					node->setValue(node->getLeftP()->getValue());
-					node->setRightP(node->getLeftP()->getRightP());
-					node->setLeftP(node->getLeftP()->getLeftP());
+					if (node == this->node) {
+						this->node = node->getLeftP();
+						this->node->setParentP(NULL);
+					}
+					else {
+						Node<T> * parent = node->getParentP();
+						node->setValue(node->getLeftP()->getValue());
+						node->setRightP(node->getLeftP()->getRightP());
+						node->setLeftP(node->getLeftP()->getLeftP());
+						insertDeleteHook(parent);
+					}
+
 				}
 				else
 				{
@@ -223,58 +231,75 @@ void AbsctractBinaryTree<T>::delFunction(T value, Node<T>  * node)
 						smallNode = node->getRightP();
 						node->setRightP(node->getRightP()->getRightP());
 						smallNode->setRightP(NULL);
+						
 						//delete the storage place
 						delete(smallNode);
+						insertDeleteHook(node->getParentP());
 					}
 					else
 					{
 						//smallest child found
-						node->setValue(smallNode->getLeftP()->getValue());
-						smallNode->setLeftP(NULL);
-
+						node->setValue(smallNode->getValue());
+						//node->setValue(smallNode->getLeftP()->getValue());
+						//smallNode->setLeftP(NULL);
+						if (this->node == node) {
+							insertDeleteHook(this->node);
+						}
+						else {														
+							insertDeleteHook(node->getParentP());
+						}
 					}
 				}
 			}
 	}
 }
 
+/*	
+	This Function is only for printing 
+	the Tree recursively on the CMD Line.
+*/
 template<typename T>
 void AbsctractBinaryTree<T>::preOrderFunction(Node<T> * root)
 {
 	if (root != NULL)
 	{
-		std::cout<< "Value " << root->getValue() << "";
-		if (root->getValue() == NULL) {
-			std::cout << "NULL \n";
+		std::cout<< root->getValue() << " ";
+		if(node->getLeftP()) {
+			//printf(" Left: ");
 		}
-		printf("Left: ");
 		preOrderFunction(root->getLeftP());
-		if (root->getLeftP() == NULL) {
-			std::cout << "NULL \n";
+
+		if(node->getRightP()) {		
+			//printf(" Right: ");
 		}
-		printf("Right: ");
 		preOrderFunction(root->getRightP());
-		if (root->getRightP() == NULL) {
-			std::cout << "NULL \n";
-		}
+
 	}
 }
 
+/*This function prints the header and Tree Recursivle
+*/
 template<typename T>
-void AbsctractBinaryTree<T>::preOrderFunction()
+void AbsctractBinaryTree<T>::printTree()
 {
 	if (node != NULL)
 	{
-		std::cout<< "" << node->getValue() << "";
-		printf("Left: ");
+		std::cout << "printTree Function called: " << std::endl;
+		std::cout << "Main Value: " << node->getValue() << std::endl << std::endl;
+		if(node->getLeftP()) {
+			std::cout << "\nLeft Subtree: ";
+		}
 		preOrderFunction(node->getLeftP());
 		if (node->getLeftP() == NULL) {
-			std::cout << "NULL \n";
+			std::cout << std::endl;
 		}
-		printf("Right: ");
+		if(node->getRightP()) {		
+			std::cout << "\nRight Subtree: ";
+		}
 		preOrderFunction(node->getRightP());
 		if (node->getRightP() == NULL) {
-			std::cout << "NULL \n";
+			std::cout << std::endl;
 		}
 	}
+	std::cout << std::endl;
 }

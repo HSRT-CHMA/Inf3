@@ -4,30 +4,29 @@
 
 
 template<typename T>
-class AVLTree : public AbsctractBinaryTree<T>
+class AVLTree : public AbsctractBinaryTree < T >
 {
 private:
-
+	int max(int a, int b);
+	void rightRotate(Node<T> * &node, Node<T> * &parent);
+	void leftRotate(Node<T> * &node, Node<T> * &parent);
+	void leftRotateParent(Node<T> * &node, Node<T> * &parent);
+	void rightRotateParent(Node<T> * &node, Node<T> * &parent);
+	void insertDeleteHook(Node<T>  * node);
 public:
-	AVLTree();
 	AVLTree(T value);
+	int getBalanceFromTree();
 	int getBalance(Node<T> * node);
 	int getHeight(Node<T> * node);
-	int max(int a, int b); //Noch löschen!!!
-	void rightRotate(Node<T> * y);
-	void leftRotate(Node<T> * x);
-	void insertPostHook(Node<T>  * node);
-	void deletePostHook(Node<T>  * node);
 	~AVLTree();
 };
 
-template<typename T>
-AVLTree<T>::AVLTree()
-{
-}
 
+/*	Constructor of AVLTree 
+	Creates the Tree
+*/
 template<typename T>
-AVLTree<T>::AVLTree(T value) //:BinaryTree(value)
+AVLTree<T>::AVLTree(T value)
 {
 	this->node = new Node<T>(value);
 }
@@ -37,22 +36,24 @@ template<typename T>
 int AVLTree<T>::getHeight(Node<T> * node)
 {
 	int result = 0;
-	if (node == NULL)
-	{
-		result = 0;
-	}
-	else {
-		result = getHeight(node->getLeftP());
-		int tmp = getHeight(node->getRightP());
-		if (result < tmp) {
-			result = tmp;
-		}
+	if (node != NULL){
+		result++;
+		result += max(getHeight(node->getLeftP()), getHeight(node->getRightP()));
 	}
 	return result;
 }
 
+/*	getBalanceFromTree
+	Calls the Balance Function with the complete Tree
+*/
+template<typename T>
+int AVLTree<T>::getBalanceFromTree() {
+	return getBalance(this->node);
+}
 
-// Get Balance factor of node 
+/*	getBalance
+	Goes Recursively through the given Node and returns the Maximum Height of the SubTree
+*/
 template<typename T>
 int AVLTree<T>::getBalance(Node<T> * node)
 {
@@ -63,116 +64,155 @@ int AVLTree<T>::getBalance(Node<T> * node)
 	}
 	else
 	{
-		result = ( getHeight(node->getLeftP() ) - getHeight(node->getRightP() ) );
+		result = (getHeight(node->getLeftP()) - getHeight(node->getRightP()));
 	}
 	return result;
 }
 
-// A utility function to get maximum of two integers
+/*	max
+	Comapares 2 Int and returns the highest
+*/
 template<typename T>
 int AVLTree<T>::max(int a, int b)
 {
 	return (a > b) ? a : b;
 }
 
-// A utility function to right rotate subtree rooted with y
-// See the diagram given above.
+
+/*	rightRotate
+*	Rotates from the Current Node the Left Child to the Parent Right child.
+	And sets of the Current Node on now empty Left child the node->getLeftP()getRightP().
+	The actuall Node get's the node->getLeft as Parent.....
+*/
 template<typename T>
-void AVLTree<T>::rightRotate(Node<T> *y)
+void AVLTree<T>::rightRotate(Node<T> * &node, Node<T> * &parent)
 {
-	Node<T> * newRoot = y->getParentP();
-	Node<T> * tmp = newRoot->getRightP();
-	// Perform rotation
-	newRoot->setRightP(y);
-	y->setLeftP(tmp);
-	// Update heights
-	//y->setHeight(max(getHeight(y->getLeftP()), getHeight(y->getRightP())) + 1);
-	//newRoot->setHeight(max ( getHeight( newRoot->getLeftP()), getHeight(newRoot->getRightP()) ) + 1);
-	// Return new root
+	Node<T> * tmp = node->getLeftP();
+	parent->setRightP(tmp);
+	node->setLeftP(tmp->getRightP());
+	tmp->setRightP(node);
+	node->setParentP(tmp);
+	tmp->setParentP(parent);
+	Node<T> * temp = node;
+	node = tmp;
+	tmp = temp;
 }
 
+
+/*	leftRotate
+	Does the reverse from rightRotate
+*/
 template<typename T>
-void AVLTree<T>::leftRotate(Node<T> *x)
+void AVLTree<T>::leftRotate(Node<T> * &node, Node<T> * &parent)
 {
-	Node<T> *y = x->getRightP();
-	Node<T> * tmp = y->getParentP();
-	// Perform rotation
-	y->setRightP(x);
-	x->setLeftP(tmp);
-	//  Update heights
-	//x->setHeight(max(getHeight(x->getLeftP()), getHeight(x->getRightP())) + 1);
-	//y->setHeight(max(getHeight(y->getLeftP()), getHeight(y->getRightP())) + 1);
-	// Return new root
+	Node<T> * tmp = node->getRightP();
+	parent->setLeftP(tmp);
+	node->setRightP(tmp->getLeftP());
+	tmp->setLeftP(node);
+	node->setParentP(tmp);
+	tmp->setParentP(parent);
+	Node<T> * temp = node;
+	node = tmp;
+	tmp = temp;
 }
 
-
+/*	rightRotateParent
+Does the reverse from rightRotate
+*/
 template<typename T>
-void AVLTree<T>::insertPostHook(Node<T>  * node) {
-	node = node->getParentP();
-	if (node) {
-		Node<T> * p = node->getParentP();
-		while (p != NULL){
-			if (node == p->getLeftP()) {
-				if (getBalance(p) == 2) {					
-					std::cout << "Balance: " << getBalance(node);
-					if (getBalance(node) == -1) {
-						leftRotate(node);
-					}
-					rightRotate(p);
-				}
-			}
-			else {
-				if (getBalance(p) == -2) {					
-					std::cout << "Balance: " << getBalance(node);
-					if (getBalance(node) == 1) {
-						rightRotate(node);
-					}
-					leftRotate(p);
-				}
-			}
-			node = p;
-			p = node->getParentP();
+void AVLTree<T>::rightRotateParent(Node<T> * &node, Node<T> * &parent)
+{
+	//is the Parent the Root Node ??
+	if (parent == this->node) {
+		this->node = node;
+	}
+	else {
+		if (parent == parent->getParentP()->getRightP()) {
+			parent->getParentP()->setRightP(node);
 		}
-	}	
+		else {
+			parent->getParentP()->setLeftP(node);
+		}
+	}
+
+	node->setParentP(parent->getParentP());
+	parent->setParentP(node);
+	parent->setLeftP(node->getRightP());
+
+	if (node->getRightP() != NULL) {
+		node->getRightP()->setParentP(parent);
+	}
+	node->setRightP(parent);
 }
 
+/*	leftRotateParent
+Does the reverse from rightRotate
+*/
 template<typename T>
-void AVLTree<T>::deletePostHook(Node<T>  * node) {
-	node = node->getParentP();
-	if (node) {
-		Node<T> * p = node->getParentP();
-		while (p != NULL){
-			if (node == p->getRightP()) {
-				if ( getBalance(p) == 1 ) {
-					if (getBalance(node) == -1) {
-						leftRotate(node);
-					}
-					rightRotate(p);
-					if (getBalance(node) == 0) { // (in the picture the small blue (0) at node 4)
-						break;	// Height does not change: Leave the loop
-					}
-				}
-				if ( getBalance(p) == 0 ) {
-					break;
-				}
-			}
-			else {
-				if (getBalance(p) == -1) {
-					if (getBalance(node) == 1) {
-						rightRotate(node);
-					}
-					leftRotate(p);
-					if (getBalance(node) == 0) {
-						break;
-					}
-				}
-			}
-			node = p;
-			p = node->getParentP();
+void AVLTree<T>::leftRotateParent(Node<T> * &node, Node<T> * &parent)
+{
+	//is the Parent the Root Node ??
+	if (parent == this->node) {
+		this->node = node;
+	}
+	else {
+		if (parent == parent->getParentP()->getRightP()) {
+			parent->getParentP()->setRightP(node);
 		}
+		else {
+			parent->getParentP()->setLeftP(node);
+		}
+	}
+
+	node->setParentP(parent->getParentP());
+	parent->setParentP(node);
+	parent->setRightP(node->getLeftP());
+
+	if (node->getLeftP() != NULL) {
+		node->getLeftP()->setParentP(parent);
+	}
+	node->setLeftP(parent);
+}
+
+/* 
+	This function get called if the AVLTree gets a new Node or a Node have been deleted.
+	This Function goes to the Parent and look if the Balance of the Tree is ok.
+	If not rotates' the Node's
+*/
+template<typename T>
+void AVLTree<T>::insertDeleteHook(Node<T>  * node) {
+	Node<T> * parent = node->getParentP();
+	while (parent != NULL){
+		if (node == parent->getLeftP()) {
+			if (getBalance(parent) == 2) {
+				if (getBalance(node) == -1) {
+					//Rotate left
+					leftRotate(node, parent);
+				}
+				//Rotate Right
+				//is the Parent the Root Node ??
+				rightRotateParent(node, parent);
+			}
+		}
+		else {
+			if (getBalance(parent) == -2) {
+				if (getBalance(node) == 1) {
+					//RotateRight
+					rightRotate(node, parent);
+				}
+				//leftRotate(parent);
+				//Rotate left
+				leftRotateParent(node, parent);
+			}
+		}
+		node = parent;
+		parent = node->getParentP();
 	}
 }
 
+/*
+Destruktor of AVLTree (deletes the AVLTree)
+*/
 template<typename T>
 AVLTree<T>::~AVLTree()
 {
