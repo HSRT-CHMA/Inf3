@@ -4,8 +4,8 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 
-deferred class GENERIC_TREE[G->COMPARABLE]
-
+deferred class GENERICTREE[G->COMPARABLE]
+-- Generic Tree Class giving methods to other generic trees
 inherit
 	MAINTREE[G]
 	redefine insert, delete, has end
@@ -40,7 +40,7 @@ feature --public Getter for root
 	--end
 
 
-feature{GENERIC_TREE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
+feature{GENERICTREE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
 					-- Nodes are added as following : left child is smaller than its root, root ist smaller or equal than its right child
 
 	insertRec(new_value : G ; used_node : NODE[G])
@@ -79,21 +79,20 @@ feature -- public Insert-Methode; redirects to insert_rec, and prints a message 
 			if attached Current.get_root as checked_root then
 				insertRec(new_value , checked_root)
 			end
-			print("%N Line 97 : The value has been added to tree.")
 			ensure then
 				tree_has_value : current.has (new_value)
 		end
 
 
-feature{GENERIC_TREE} -- Delete-Method to delete one Node with given value in tree;
+feature{GENERICTREE} -- Delete-Method to delete one Node with given value in tree;
 					-- Method uses local variables
 					--smallNode is used to save the node with smallest value in tree
 					--tmpNode is used to save a Node's information while deleting
 
 	deleteRec(new_value : G; used_node : NODE[G])
-		require
+		require else
 			correct_node : new_value = used_node.get_value
-			valid_node : used_node /= Void -- WICHTIG Label zur Kennzeichung einer Beschreibung eines Asserts
+			valid_node : used_node /= Void
 		Local
 			smallNode : detachable NODE[G]
 			tmpNode : detachable NODE[G]
@@ -213,12 +212,12 @@ feature -- public Method to check if a value is in a tree; returns true if value
 			valid_result : Result = true or Result = false
 	end
 
-feature{GENERIC_TREE} -- "private" has(), indicated by Exportation to class NONE, searches for the given Node in a tree
+feature{GENERICTREE} -- "private" has(), indicated by Exportation to class NONE, searches for the given Node in a tree
 					-- if Node has been found, result is the found Node with the given value
 					-- if a Node with given value can not be found , result is Void
 
 	has_rec(new_value : G ; used_node : NODE[G]) : detachable NODE[G]
-	require
+	require else
 		valid_value : new_value /= Void
 		valid_node : used_node /= Void
 	do
@@ -245,5 +244,32 @@ feature{GENERIC_TREE} -- "private" has(), indicated by Exportation to class NONE
 		end
 	end
 
+feature -- Gets the height of Tree
+
+	get_height: INTEGER
+	Local
+		tmpReturn : INTEGER
+		tmpReturn1 : INTEGER
+		tmpReturn2 : INTEGER
+	do
+		if root /= Void then
+			if attached root_value as check_rv then
+				if attached root.get_right as check_rr then
+					tmpReturn1:= check_rv.max(check_rr.get_height)+1
+					if attached root.get_left as check_rl then
+						tmpReturn2:= check_rv.max(check_rl.get_height)+1
+					end
+				end
+			else
+				Result:=0
+			end
+			if tmpReturn1 > tmpReturn2 then
+				tmpReturn := tmpReturn1
+			elseif tmpReturn2 >= tmpReturn1  then
+				tmpReturn := tmpReturn2
+			end
+			Result:= tmpReturn
+		end
+	end
 
 end

@@ -11,7 +11,7 @@ class
 create
 	make
 
-feature {GENERIC_TREE} -- Initialization/ Constructor ; sets the given node-value and the given parent-node
+feature {GENERICTREE} -- Initialization/ Constructor ; sets the given node-value and the given parent-node
 
 	make(node_value : G ; node_parent : detachable NODE[G])
 			-- Initialization for `Current'.
@@ -40,7 +40,7 @@ feature -- public Getter for value of the node
 			--correct_value : Result = value
 	end
 
-feature{GENERIC_TREE} -- Setter for value of the node; only visible to its tree
+feature{GENERICTREE} -- Setter for value of the node; only visible to its tree
 	set_value(node_value : G)
 	do
 		value := node_value
@@ -57,7 +57,7 @@ feature --public Getter for left-node
 			correct_result : Result = left
 	end
 
-feature{GENERIC_TREE} -- Setter for the left-node, only visible to its tree
+feature{GENERICTREE} -- Setter for the left-node, only visible to its tree
 	set_left(node_left : detachable NODE[G])
 	do
 		left := node_left
@@ -73,7 +73,7 @@ feature --public Getter for the right-node
 			correct_result : Result = right
 	end
 
-feature{GENERIC_TREE} --Setter for right-node
+feature{GENERICTREE} --Setter for right-node
 	set_right(node_right : detachable NODE[G])
 	do
 		right := node_right
@@ -89,7 +89,7 @@ feature --public Getter for parent-node
 			correct_result : Result = parent
 	end
 
-feature{GENERIC_TREE} --Setter for parent-node ; only visible to its tree
+feature{GENERICTREE} --Setter for parent-node ; only visible to its tree
 
 	set_parent(node_parent : detachable NODE[G])
 	do
@@ -100,6 +100,4 @@ feature{GENERIC_TREE} --Setter for parent-node ; only visible to its tree
 
 invariant
 	valid_value : value /= Void
-	-- NEUE INVARIANTE FINDEN
-
 end

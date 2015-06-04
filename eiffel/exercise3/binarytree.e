@@ -13,7 +13,7 @@ class
 	-- is_less , is_greater
 
 inherit
-	GENERIC_TREE[G]
+	GENERICTREE[G]
 	redefine insert, delete, has end
 
 create

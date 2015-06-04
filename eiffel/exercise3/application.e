@@ -39,10 +39,11 @@ feature --Access
 	-- avl tree for testing
 	tree6 : BINARYTREE[STRING]
 	-- binary tree for testing
-	tree7 : AVLTREE[DOUBLE]
+	tree7 : AVLTREE[FLOAT]
 	-- avl tree for testing
-	tree8 : BINARYTREE[DOUBLE]
+	tree8 : BINARYTREE[FLOAT]
 	-- binary tree for testing
+
 feature -- Method creates 8 trees for testing and fills them with values
 
 	test_insert
