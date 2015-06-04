@@ -6,15 +6,17 @@
 #include "AVLTree.h"
 #include <iostream>
 #include <string>
-
-
 #include <cassert>
 #include "TesterOfINT.h"
 #include  "TesterOfString.h"
 
 
+
+/*Serves as the main-function of this programm*/
 int _tmain(int argc, _TCHAR* argv[])
 {
+
+	/* Testing on a Binary Tree with int  */
 	BinaryTree<int> tree = BinaryTree<int>(2);
 	std::cout << "Ausgabe 2: " << std::boolalpha << tree.hasElement(2) <<"\n";
 	tree.insert(20);
@@ -32,22 +34,27 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	std::cout << std::endl;	
 	std::cout << std::endl;
+	// Causes a line break
 
-	
-	AVLTree<int> * bla = new AVLTree<int>(2);	
-	bla->insert(20);
-	bla->insert(1);
-	bla->insert(0);
-	bla->insert(26);
-	bla->insert(300);
-	bla->insert(1000);
-	bla->insert(500);
-	bla->insert(400);
-	bla->insert(5000);
+	/* Testing on an AVL tree with int */
+	AVLTree<int> * avl = new AVLTree<int>(2);	
+	avl->insert(20);
+	avl->insert(1);
+	avl->insert(0);
+	avl->insert(26);
+	avl->insert(300);
+	avl->insert(1000);
+	avl->insert(500);
+	avl->insert(400);
+	avl->insert(5000);
 
-	printf("\n\n");
-	bla->printTree();
-	std::cout << std::endl << "Balance from Tree: " << bla->getBalanceFromTree() << std::endl << std::endl;
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+	// Causes a line break
+
+	avl->printTree();
+	std::cout << std::endl << "Balance from Tree: " << avl->getBalanceFromTree() << std::endl << std::endl;
 
 
 
@@ -78,12 +85,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	root->del(tmp[0]);
 	assert(!root->hasElement(tmp[0]));
 	std::cout << "Deleted: " << tmp[0] << std::endl;
-
-
-	//String
-	//TesterOfString testString = TesterOfString(10, 10, 10);
-
-
 
 	getchar();
 

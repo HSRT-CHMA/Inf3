@@ -30,9 +30,6 @@
     <ClInclude Include="AVLTree.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="AbstractBinaryTree.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="BinaryTree.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -42,7 +39,7 @@
     <ClInclude Include="TesterOfINT.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="TesterOfString.h">
+    <ClInclude Include="MainBinaryTree.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,10 +47,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Generic_AVL_Trees.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="TesterOfString.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

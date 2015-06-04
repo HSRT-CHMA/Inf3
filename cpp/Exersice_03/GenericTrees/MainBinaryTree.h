@@ -3,18 +3,23 @@
 #include <string>
 
 template<typename T>
-class AbsctractBinaryTree
+class MainBinaryTree
+	// This class contains methods suitable for AVL-Trees and 'normal' Binary Trees alike and serves therefor as a superclass 
 {
 
 protected:	
 	Node<T> * node;
+	// This Node-Object serves as the root of a tree
 
 private:
 	void insertFunction(T value, Node<T> * node);
 	bool hasElementFunction(T value, Node<T> * node);
 	void delFunction(T value, Node<T> * node);
 	void preOrderFunction(Node<T> * root);
+	// This Method must be overwritten by sub-classes
 	virtual void insertDeleteHook(Node<T>  * node) = 0;
+	// Those methods are beeing used by the public functions below and are 
+	// therefore private and only accessable by this class 
 
 public:
 	void insert(T value);
@@ -23,17 +28,23 @@ public:
 	void printTree(void);
 };
 
-/* Calls the InsertFunction*/
+/* This public calls the private submethod to insert a given value in the existing tree*/
 template <class T>
-void AbsctractBinaryTree<T>::insert(T value)
+void MainBinaryTree<T>::insert(T value)
 {
 	insertFunction(value, node);
 }
 
-/*Inserts the Value recursively in the tree.
+/*
+This Method finds the logical place for a new value and inserts a new node with given value in the tree
+A value smaller than the root of a subtree is added left , A value greater than or equal gets added right
+After every insertion, the pointer for parent of the new node are set to the parent
+and the pointer for the now parent is set upon its new left or right child.
+Also, the method vor the rebalancing of the tree is called, which in case of a binary tree is empty
+and in case of an AVL-tree organises a rebalanciation of the AVL-tree
 */
 template <class T>
-void AbsctractBinaryTree<T>::insertFunction(T value, Node<T> * node)
+void MainBinaryTree<T>::insertFunction(T value, Node<T> * node)
 {
 	if (node == NULL) {
 
@@ -63,18 +74,18 @@ void AbsctractBinaryTree<T>::insertFunction(T value, Node<T> * node)
 	}
 }
 
-/*Calls the hasElementFunction*/
+/*This method calls the hasElementFunction*/
 template <class T>
-bool AbsctractBinaryTree<T>::hasElement(T value)
+bool MainBinaryTree<T>::hasElement(T value)
 {
 	return hasElementFunction(value, node);
 }
 
-/*	HasElementFunction
-*	searches for the Value recursively in the Tree
+/*
+HasElementFunction searches for the Value recursively in the Tree and returns a bool to showcase the outcome
 */
 template <class T>
-bool AbsctractBinaryTree<T>::hasElementFunction(T value, Node<T>  * node)
+bool MainBinaryTree<T>::hasElementFunction(T value, Node<T>  * node)
 {
 	if (node == NULL) {
 		return false;
@@ -91,6 +102,8 @@ bool AbsctractBinaryTree<T>::hasElementFunction(T value, Node<T>  * node)
 		tmpnode->setRightP(node->getLeftP()->getRightP());
 		tmpnode->setParentP(node->getLeftP()->getParentP());
 		return hasElementFunction(value, tmpnode);
+		// Method does not change the structur of the given tree
+		// so no rebalancing is needed
 	}
 	else if (value > node->getValue()) {
 		if (node->getRightP() == NULL) {
@@ -101,37 +114,45 @@ bool AbsctractBinaryTree<T>::hasElementFunction(T value, Node<T>  * node)
 		tmpnode->setRightP(node->getRightP()->getRightP());
 		tmpnode->setParentP(node->getRightP()->getParentP());
 		return hasElementFunction(value, tmpnode);
+		// Method does not change the structur of the given tree
+		// so no rebalancing is needed
 	}
 	else{
 		return false;
 	}
 }
 
-/*Calls the delete Method*/
+/*This method calls the delete Method*/
 template <class T>
-void AbsctractBinaryTree<T>::del(T value)
+void MainBinaryTree<T>::del(T value)
 {
 	if (hasElement(value)) {
 		delFunction(value, this->node);
 	}
 	else {
-		std::cout<< "\nThe value "<<value<< " is already not in this Tree!" << std::endl;
+		std::cout<< "\nThe value "<<value<< " does not exist in this Tree!" << std::endl;
 	}
 }
 
 
-/*	DelFunction
-*	This Function searche and delete the value recursively
+/*
+This Function searches the node with given value and removes the node containing the value recursively
+The method works on the possible cases in which the node in question can be
+- No children  -- Node is a leaf
+- Only left or only right child
+- Left and right child
 */
 template <class T>
-void AbsctractBinaryTree<T>::delFunction(T value, Node<T>  * node)
+void MainBinaryTree<T>::delFunction(T value, Node<T>  * node)
 {
 	Node<T> * smallNode;
+	//Node-Object to be used as tmp-Variable
 	Node<T> * tmpNode;
+	//Node-Object to be used as tmp-Variable
 
-	//IF the Value to Delete is the first Leave on the left side
-	//and this leave has no other leaves
-	//delete it
+	//IF the Value to Delete is the first Leaf on the left side
+	//and this leaf has no other leafs
+	//The method now deletes it
 	if (node->getLeftP() != NULL) {
 		if (node->getLeftP()->getValue() == value && node->getLeftP()->getLeftP() == NULL && node->getLeftP()->getRightP() == NULL)
 		{
@@ -255,11 +276,12 @@ void AbsctractBinaryTree<T>::delFunction(T value, Node<T>  * node)
 }
 
 /*	
-	This Function is only for printing 
-	the Tree recursively on the CMD Line.
+This Method is only for printing the Tree recursively on the CMD Line.
+This method allows to return the nodes of a tree in pre-Order.
+It works recursiv and only performs while the next node is not null
 */
 template<typename T>
-void AbsctractBinaryTree<T>::preOrderFunction(Node<T> * root)
+void MainBinaryTree<T>::preOrderFunction(Node<T> * root)
 {
 	if (root != NULL)
 	{
@@ -277,10 +299,10 @@ void AbsctractBinaryTree<T>::preOrderFunction(Node<T> * root)
 	}
 }
 
-/*This function prints the header and Tree Recursivle
+/*This methods is for testing and prints the header and Tree Recursively
 */
 template<typename T>
-void AbsctractBinaryTree<T>::printTree()
+void MainBinaryTree<T>::printTree()
 {
 	if (node != NULL)
 	{
@@ -302,4 +324,5 @@ void AbsctractBinaryTree<T>::printTree()
 		}
 	}
 	std::cout << std::endl;
+	// Causes Line Break after printing done by method
 }

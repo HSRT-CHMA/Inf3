@@ -4,7 +4,8 @@
 
 
 template<typename T>
-class AVLTree : public AbsctractBinaryTree < T >
+class AVLTree : public MainBinaryTree < T >
+	// This class extends the AbstractBinaryTree
 {
 private:
 	int max(int a, int b);
@@ -22,8 +23,9 @@ public:
 };
 
 
-/*	Constructor of AVLTree 
-	Creates the Tree
+/*	
+Constructor of AVLTree which receives a generic value 
+
 */
 template<typename T>
 AVLTree<T>::AVLTree(T value)
