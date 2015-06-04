@@ -4,10 +4,10 @@
 '''
 
 #Defining Imports of the complete Project
-import avlTree
-import binaryTree
-import genericTree
-import randomValue
+from avlTree import avlTree
+from binaryTree import binaryTree
+from genericTree import genericTree
+from randomValue import randomValue
 
 
 '''
@@ -38,16 +38,16 @@ class treeTest(object):
     - Deleting a Value 
     - Output from Tree Height
     '''
-    def testBinaryTree():
+    def testBinaryTree(self):
         
         #Defining Variables to work with
-        randomValue = randomValue()
+        randomV = randomValue()
         tree = binaryTree()
         newItems = range(10)
 
         #Pull random strings into the Tree
         for i in newItems:
-            newString = randomValue.rString()
+            newString = randomV.rString()
             print("Binary Tree add: ", newString)
             tree.insert(newString)
 
@@ -75,29 +75,29 @@ class treeTest(object):
     - Deleting a Value 
     - Output from Tree Height
     '''
-    def testAVLTree():
+    def testAVLTree(self):
         
         #Defining Variables to work with
-        randomValue = randomValue()
+        randomV = randomValue()
         tree = avlTree()
         newItems = range(10)
 
         #Pull random strings into the Tree
         for i in newItems:
-            randomValue = randomValue.rInteger()
-            print("AVL-Tree add:", randomValue)
-            tree.insert(randomValue)
+            randomV = randomV.rInteger()
+            print("AVL-Tree add:", randomV)
+            tree.insert(randomV)
             print("Value was added")
 
         #Output from the Tree
         print("AVL-Tree Output: ", tree.preOrderOutput())
         #Check if Value is in the AVL Tree
-        print("Is the Value: ", randomValue, " in the AVL-Tree? ", tree.has(randomValue))
+        print("Is the Value: ", randomV, " in the AVL-Tree? ", tree.has(randomV))
         #Delete the Value out of the Tree
-        tree.delete(randomValue)
-        print(randomValue, " was deleted out of the Tree")
+        tree.delete(randomV)
+        print(randomV, " was deleted out of the Tree")
         #Check if the Value is in the Tree
-        print(randomValue, " is in the Tree: ", tree.has(randomValue))
+        print(randomV, " is in the Tree: ", tree.has(randomV))
         #Print Height of the Tree
         print("Tree Height: ", tree.getHeight())
         #Output of the Tree
@@ -112,18 +112,18 @@ class treeTest(object):
     - Deleting a Value 
     - Output from Tree Height
     '''
-    def testGenericTree():
+    def testGenericTree(self):
 
         #Defining Variables to work with
-        randomValue = randomValue()
+        randomV = randomValue()
         tree = binaryTree()
         newItems = range(10)
 
         #Pull random integer Values into the Tree
         for i in newItems:
-            randomValue = randomValue.rInteger()
-            print("Generic-Tree add: ", randomValue)
-            tree.insert(randomValue)
+            randomV = randomV.rInteger()
+            print("Generic-Tree add: ", randomV)
+            tree.insert(randomV)
             print("Value was added!")
 
         #Output from the Tree
@@ -134,34 +134,34 @@ class treeTest(object):
         
         #Now adding some other Values to our Tree - Floats
         for i in newItems:
-            randomValue = randomValue.rFloat()
+            randomV = randomV.rFloat()
             print("Generic-Tree add: ", randomValue)
-            tree.insert(randomValue)
+            tree.insert(randomV)
             print("Value was added!")
 
         #Another Output from the Tree - now with additional Floats
         print("Generic-Tree Output: ", tree.preOrderOutput)
 
         #Delete last Float and check if its gone
-        print("Deleteing: ", randomValue)
-        tree.delete(randomValue)
-        print("Last added Float is gone: ", tree.has(randomValue))
+        print("Deleteing: ", randomV)
+        tree.delete(randomV)
+        print("Last added Float is gone: ", tree.has(randomV))
         #Output of Tree Height
         print("Generic-Tree Height: ", tree.Height(tree.getRotNode()))
         
         #Now adding some other Values to our Tree - String
         for i in newItems:
-            randomValue = randomValue.rString()
-            print("Generic-Tree add: ", randomValue)
-            tree.insert(randomValue)
+            randomV = randomV.rString()
+            print("Generic-Tree add: ", randomV)
+            tree.insert(randomV)
             print("Value was added!")
 
         #Another Output from the Tree - now with additional Strings
         print("Generic-Tree Output: ", tree.preOrderOutput)
         
         #Delete last Float and check if its gone
-        print("Deleting: ", randomValue)
-        tree.delete(randomValue)
-        print("Last added String is gone: ", tree.has(randomValue))
+        print("Deleting: ", randomV)
+        tree.delete(randomV)
+        print("Last added String is gone: ", tree.has(randomV))
         #Output of Tree Height
         print("Generic-Tree Height: ", tree.Height(tree.getRotNode()))

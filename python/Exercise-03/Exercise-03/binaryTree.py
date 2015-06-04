@@ -3,8 +3,8 @@
     Inf3 - Group 7
 '''
 #Defining Imports
-import genericTree
-import genericNode
+from genericTree import genericTree
+from genericNode import genericNode
 
 '''
 Binary Tree Class with Generics 
@@ -22,19 +22,9 @@ class binaryTree(genericTree):
             self.__root = None
         self.__outputString = ""
 
-    '''
-    Setter for the Class binaryTree
-    '''
-    @__root.setter
-    def __root(self, root):
-        if type(root) == Node or root == None:
-            self.__root = root
-        else:
-            raise TypeError("Root Node musst be a Node.")
 
-    '''
-    Getter for the Class binaryTree
-    '''
+    
+    #Getter for the Class binaryTree
     @property 
     def __root(self):
         return self.__root
@@ -42,6 +32,35 @@ class binaryTree(genericTree):
     def getRootNode(self):
         return self._root
 
+    #Setter for the Class binaryTree
+    @__root.setter
+    def __root(self, root):
+        if type(root) == Node or root == None:
+            self.__root = root
+        else:
+            raise TypeError("Root Node musst be a Node.")
+
+    #Getter for Root Node
+    def getRootNode(self):
+        return self._root
+
+    '''
+    Returns a string.
+    Used for the output of __inorderOutput.
+    '''
+    @property
+    def __outputString(self):
+        return self._outputString
+    
+    '''
+    Parameters: outputString: a String, used for the output of __inorderOutput
+    '''
+    @__outputString.setter
+    def __outputString(self, outputString):
+        if type(outputString) == str:
+            self._outputString = outputString
+        else:
+            raise TypeError("outputString must be a String")
 
     '''
     Insert Method which can be called by the Main Program
@@ -66,6 +85,24 @@ class binaryTree(genericTree):
                 node.right = Node(value, None, None, node)
             else:
                 self.__insertRecursion(node.right, value)
+
+    '''
+    Returns true if a Node with the given value exists.
+    In other cases false will be returned.
+    Parameters: value: the value to search the Nodes for.
+    '''
+    def has(self, value):
+        value = False
+        currentNode = self.__root
+        while currentNode != None and not found:
+            if currentNode.value == value:
+                value = True
+            else:
+                if value < currentNode.value:
+                    currentNode = currentNode.left
+                else:
+                    currentNode = currentNode.right
+        return value
 
     '''
     Method to delete all Nodes with the given value.

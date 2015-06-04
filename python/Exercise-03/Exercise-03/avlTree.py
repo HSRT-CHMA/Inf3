@@ -4,8 +4,8 @@
 '''
 
 #Defining Imports
-import genericTree
-import avlNode
+from genericTree import genericTree
+from avlNode import avlNode
 
 '''
 AVL-Tree Class from Exercise 1.3
@@ -17,16 +17,55 @@ class avlTree(genericTree):
     Initializing the Node with None
     Setting Height to -1 and Balance to 0
     '''
-    def __init__(self, *args):
+    def __init__(self, *values):
         
         self.node = None
         self.height = -1
         self.balance = 0
 
-        if len(args) == 1:
-            for i in args[0]:
+        if len(values) == 1:
+            for i in values[0]:
                 self.insert(i)
 
+    '''
+    The Method balanceTree balances the Tree by 
+    Rotating the Nodes Balance is called for the 
+    whole Time that self.balance is not 0
+
+    - Loop run as long as the Balance is not valid
+    - The Two Cases of the Balance are processed in:
+        - First Case - Balance is above 1
+            -> Rotate Left Node
+        - Second Case - Balance is under -1
+            -> Rotate Right Node
+    '''
+    def balanceTree(self):
+
+        #Setting Variables
+        self.updateHeights(False)
+        self.updateBalance(False)
+
+        #Starting Loop to fix the Balance
+        while self.balance < -1 or self.balance > 1:
+            
+            #First Case
+            if self.balance > 1:
+                self.node.left.rotateLeft()
+                self.updateHeights()
+                self.updateBalances()
+            self.rotateRight()
+            self.rotateHeights()
+            self.updateBalances()
+
+            #Second Case
+            if self.balance < -1:
+                if self.node.right.balance > 0:
+                    self.node.right.rotateRight()
+                    self.updateHeights()
+                    self.updateBalances()
+                self.rotateLeft()
+                self.updateHeights()
+                self.updateBalances()
 
     '''
     Height Method. Returns the Height of the AVL Tree
@@ -95,7 +134,7 @@ class avlTree(genericTree):
         
         #Defining Variables to work with
         tree = self.node
-        newNode = Node(key)
+        newNode = avlNode(key)
 
         if tree == None:
             self.node = newNode
@@ -147,46 +186,6 @@ class avlTree(genericTree):
             
             #Fixing the Balance of the AVL-Tree after deleting
             self.balanceTree()
-
-    '''
-    The Method balanceTree balances the Tree by 
-    Rotating the Nodes Balance is called for the 
-    whole Time that self.balance is not 0
-
-    - Loop run as long as the Balance is not valid
-    - The Two Cases of the Balance are processed in:
-        - First Case - Balance is above 1
-            -> Rotate Left Node
-        - Second Case - Balance is under -1
-            -> Rotate Right Node
-    '''
-    def balanceTree(self):
-
-        #Defining Variables to work with
-        self.updateHeights(False)
-        self.updateBalance(False)
-
-        #Starting Loop to fix the Balance
-        while self.balance < -1 or self.balance > 1:
-            
-            #First Case
-            if self.balance > 1:
-                self.node.left.rotateLeft()
-                self.updateHeights()
-                self.updateBalances()
-            self.rotateRight()
-            self.rotateHeights()
-            self.updateBalances()
-
-            #Second Case
-            if self.balance < -1:
-                if self.node.right.balance > 0:
-                    self.node.right.rotateRight()
-                    self.updateHeights()
-                    self.updateBalances()
-                self.rotateLeft()
-                self.updateHeights()
-                self.updateBalances()
 
     '''
     Method which checks the Balance of the

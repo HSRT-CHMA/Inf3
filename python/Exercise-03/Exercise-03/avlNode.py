@@ -20,4 +20,4 @@ class avlNode():
     def __init__(self,key):
         self.key = key
         self.left = None
-        selft.right = None
+        self.right = None
