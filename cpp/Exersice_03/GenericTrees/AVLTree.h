@@ -36,6 +36,7 @@ AVLTree<T>::AVLTree(T value)
 /* 
 This method returns an int-value that represents the height of the tree.
 This method receives a node, in this case the root of a tree to get the heigth for 
+Method works with the max() down below and recursion 
 */
 template<typename T>
 int AVLTree<T>::getHeight(Node<T> * node)
@@ -49,7 +50,7 @@ int AVLTree<T>::getHeight(Node<T> * node)
 }
 
 /*	
-	Calls the Balance Function with the complete Tree
+	Method calls the Balance Function with the complete Tree
 */
 template<typename T>
 int AVLTree<T>::getBalanceFromTree() {
@@ -57,7 +58,8 @@ int AVLTree<T>::getBalanceFromTree() {
 }
 
 /*	
-	Goes Recursively through the given Node and returns the Maximum Height of the SubTree
+	Method goes Recursively through the given Node and returns the Maximum Height of the SubTree (parent with left and right child)
+	Method returns an int that contains the height-difference of the tree , only -1, 0, 1 is valid in AVL-tree
 */
 template<typename T>
 int AVLTree<T>::getBalance(Node<T> * node)
@@ -88,7 +90,8 @@ int AVLTree<T>::max(int a, int b)
 /*
 	This method rotates from the Current Node the Left Child to the Parent Right child.
 	And sets of the Current Node on now empty Left child the node->getLeftP()getRightP().
-	The actuall Node get's the node->getLeft as Parent
+	The actual Node get's the node->getLeft as Parent
+	Is used when node-balance is smaller than -1 and left child has balance -1 or 0 
 */
 template<typename T>
 void AVLTree<T>::rightRotate(Node<T> * &node, Node<T> * &parent)
@@ -107,6 +110,7 @@ void AVLTree<T>::rightRotate(Node<T> * &node, Node<T> * &parent)
 
 /*	
 	This method does the reverse action from rightRotate() 
+	Is used when node balance is greater than +1 and Balance of right subtree is greater than  -1  (0 or +1) 
 */
 template<typename T>
 void AVLTree<T>::leftRotate(Node<T> * &node, Node<T> * &parent)
@@ -122,8 +126,11 @@ void AVLTree<T>::leftRotate(Node<T> * &node, Node<T> * &parent)
 	tmp = temp;
 }
 
-/*	rightRotateParent
-Does the reverse from rightRotate with a given parent 
+/*	
+Method rightRotateParent
+Does the reverse from leftRotateParent with a given parent in case that
+node-balance is less than -1 and balance of left child is +1
+
 */
 template<typename T>
 void AVLTree<T>::rightRotateParent(Node<T> * &node, Node<T> * &parent)
@@ -152,7 +159,8 @@ void AVLTree<T>::rightRotateParent(Node<T> * &node, Node<T> * &parent)
 }
 
 /*	leftRotateParent
-Does the reverse from rightRotate
+Does the reverse from rightRotateParent
+Is used when node-balance is greater than +1 , but the balance of right child is -1
 */
 template<typename T>
 void AVLTree<T>::leftRotateParent(Node<T> * &node, Node<T> * &parent)
@@ -183,7 +191,7 @@ void AVLTree<T>::leftRotateParent(Node<T> * &node, Node<T> * &parent)
 /* 
 	This function get called if the AVLTree gets a new Node or a Node have been deleted.
 	This Function goes to the Parent and look if the Balance of the Tree is -1; 0, 1
-	If not rotates' the Node's
+	If not it uses diferent rotate-functions on the Node's
 */
 template<typename T>
 void AVLTree<T>::insertDeleteHook(Node<T>  * node) {
