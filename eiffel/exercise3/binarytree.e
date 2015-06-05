@@ -29,21 +29,21 @@ feature {NONE} -- Initialization / Constructor ; gets the value that serves as r
 
 feature
 	insert(new_value : G)
-	do
-		Precursor(new_value)
-	end
+		do
+			Precursor(new_value)
+		end
 
 
 feature
 	delete(new_value : G)
-	do
-		Precursor(new_value)
-	end
+		do
+			Precursor(new_value)
+		end
 
 feature
 	has(new_value : G): BOOLEAN
-	do
-		Result := Precursor(new_value)
-	end
+		do
+			Result := Precursor(new_value)
+		end
 
 end --End of class

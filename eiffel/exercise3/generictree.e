@@ -46,7 +46,7 @@ feature{GENERICTREE} -- private Insert-Method (duplicates possible) which add th
 	insertRec(new_value : G ; used_node : NODE[G])
 
 		do
-			if new_value.is_greater_equal(used_node.get_value) then  -- Auf alle G's anpassen
+			if new_value <= used_node.get_value then  -- Caution
 				--Add node on the Right Side
 				if attached used_node.get_right as checked_right then
 					-- Line does the follwing : if used_node.get_right is "attached" (equals to "/= Void")
@@ -125,7 +125,7 @@ feature{GENERICTREE} -- Delete-Method to delete one Node with given value in tre
 				--Right and left child
 				elseif attached used_node.get_left as check_left and attached used_node.get_right as check_right then
 					print("%NNode has two children%N")
-					-- Search for smallest sucessor
+					-- Search for smallest node
                 	if(check_right.get_value.is_less(check_left.get_value)) then
                 		smallNode := used_node.get_left
                 	elseif(check_right.get_value.is_greater(check_left.get_value))then
@@ -246,30 +246,56 @@ feature{GENERICTREE} -- "private" has(), indicated by Exportation to class NONE,
 
 feature -- Gets the height of Tree
 
-	get_height: INTEGER
-	Local
-		tmpReturn : INTEGER
-		tmpReturn1 : INTEGER
-		tmpReturn2 : INTEGER
-	do
-		if root /= Void then
-			if attached root_value as check_rv then
-				if attached root.get_right as check_rr then
-					tmpReturn1:= check_rv.max(check_rr.get_height)+1
-					if attached root.get_left as check_rl then
-						tmpReturn2:= check_rv.max(check_rl.get_height)+1
-					end
-				end
-			else
-				Result:=0
-			end
-			if tmpReturn1 > tmpReturn2 then
-				tmpReturn := tmpReturn1
-			elseif tmpReturn2 >= tmpReturn1  then
-				tmpReturn := tmpReturn2
-			end
-			Result:= tmpReturn
-		end
-	end
+	--get_height: INTEGER
+	--Local
+		--tmpReturn : INTEGER
+	--	tmpReturn1 : INTEGER
+	--	tmpReturn2 : INTEGER
+--	do
+	--	if attached root as ok_root then
+		--	if attached root_value as check_rv then
+			--	if attached ok_root.get_right as check_rr then
+
+			--		tmpReturn1:= check_rv.max(check_)+1
+					-- tmpReturn1:= tmpreturn1 +1
+			--		if attached ok_root.get_left as check_rl then
+				--		tmpReturn2:= check_rv.max(check_rl.get_height)+1
+				--	end
+		--		end
+		--	else
+		--		Result:=0
+		--	end
+		--	if tmpReturn1 > tmpReturn2 then
+		--		tmpReturn := tmpReturn1
+		--	elseif tmpReturn2 >= tmpReturn1  then
+		--		tmpReturn := tmpReturn2
+		--	end
+		--	Result:= tmpReturn
+	--	end
+--	end
+
+	--get_height(act_node : NODE[G]) : INTEGER
+	--do
+		--if act_node = Void then
+			--Result := 0
+		--else
+			--if attached act_node.get_left as ok_left and attached act_node.get_right as ok_right then
+				--Result := max(get_height (ok_left.get_value), get_height (act_node.get_right.get_value))
+			--end
+		--end
+	--end
+
+
+	--max(ok_a : G ; ok_b : G) : G
+	--Local
+		--res : NODE[G]
+	--do
+		--if ok_a < ok_b then
+			--res := ok_b
+		--else
+			--res := ok_a
+		--end
+		--Result := res
+	--end
 
 end
