@@ -16,27 +16,48 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 
-	/* Testing on a Binary Tree with int  */
+	/* Testing on a Binary Tree with -----------------int-------------------  */
 	BinaryTree<int> tree = BinaryTree<int>(2);
-	std::cout << "Ausgabe 2: " << std::boolalpha << tree.hasElement(2) <<"\n";
-	tree.insert(20);
-	std::cout << "Ausgabe 20: " << std::boolalpha << tree.hasElement(20) << "\n";
+	std::cout << "Test on BinaryTree-Tree with int ";
+	std::cout << std::endl;
+	std::cout << std::endl;
+	// Causes a line break
+	std::cout << "Is 2 in tree : " << std::boolalpha << tree.hasElement(2) <<"\n";
+	tree.insert(2.0);
+	std::cout << "Is 20 in tree : " << std::boolalpha << tree.hasElement(20) << "\n";
 	tree.insert(1);
-	std::cout << "Ausgabe 1: " << std::boolalpha << tree.hasElement(1) << "\n";
-	tree.insert(0);
-	std::cout << "Ausgabe 0: " << std::boolalpha << tree.hasElement(0) << "\n";
-	tree.insert(26);
-	std::cout << "Ausgabe 26: " << std::boolalpha << tree.hasElement(26) << "\n";
-
+	std::cout << "Is 1 in tree : " << std::boolalpha << tree.hasElement(1) << "\n";
 	tree.del(2);
-	std::cout << "Ausgabe 2: " << std::boolalpha << tree.hasElement(2) << "\n";
+	std::cout << "Is 2 in tree : " << std::boolalpha << tree.hasElement(2) << "\n";
 	
 	std::cout << std::endl;	
 	std::cout << std::endl;
 	// Causes a line break
 
-	/* Testing on an AVL tree with int */
+	/*Testing on a Binary Tree with  --------------------String----------------  */
+	std::cout << "Test on BinaryTree-Tree with STRING ";
+	std::cout << std::endl;
+	std::cout << std::endl;
+	// Causes a line break
+	
+	BinaryTree<std::string> tree_st = BinaryTree<std::string>("Test");
+	std::cout << "Is 'Test' in tree : " << std::boolalpha << tree_st.hasElement("Test") << "\n";
+	tree_st.insert("T");
+	std::cout << "Is 'T' in tree : " << std::boolalpha << tree_st.hasElement("T") << "\n";
+	tree_st.insert("Hello");
+	std::cout << "Is 'Hello' in tree : " << std::boolalpha << tree_st.hasElement("Hello") << "\n";
+	tree.del('T');
+	std::cout << "'T' got deleted, thereby false : " << std::boolalpha << tree.hasElement('T') << "\n";
+	std::cout << std::endl;
+	std::cout << std::endl;
+	// Causes a line break
+	
+	/* Testing on an AVL tree with ------------------------int--------------------- */
 	AVLTree<int> * avl = new AVLTree<int>(2);	
+	std::cout << "Test on AVL-Tree with int ";
+	std::cout << std::endl;
+	std::cout << std::endl;
+	// Causes a line break
 	std::cout << "Ausgabe 2: " << std::boolalpha << avl->hasElement(2) << "\n";
 	avl->insert(20);
 	std::cout << "Ausgabe 20: " << std::boolalpha << avl->hasElement(20) << "\n";
@@ -62,7 +83,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	/*-------------------------------- Task 4 Test ------------------------------------------------------------------------------*/
 
-	//Integer
+	std::cout << std::endl << "------- Task 4 Test  : " << std::endl << std::endl;
 
 	TesterOfINT<int> tester = TesterOfINT<int>(3, 1000, 1000);
 	std::vector<int> tmp = tester.getArray();

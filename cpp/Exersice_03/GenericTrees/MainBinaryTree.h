@@ -131,7 +131,7 @@ void MainBinaryTree<T>::del(T value)
 		delFunction(value, this->node);
 	}
 	else {
-		std::cout<< "\nThe value "<<value<< " does not exist in this Tree!" << std::endl;
+		std::cout<< "\nThe value does not exist in this Tree!" << std::endl;
 	}
 }
 
