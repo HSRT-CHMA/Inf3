@@ -47,33 +47,65 @@ and in case of an AVL-tree organises a rebalanciation of the AVL-tree
 template <class T>
 void MainBinaryTree<T>::insertFunction(T value, Node<T> * node)
 {
-	if (node == NULL) {
 
+	/*
+	if !(node == NULL)
+	{
+	if (value < node->getValue())
+	{
+	if (node->getLeftP() == NULL)
+	{
+	Node<T> * tmpNode = new Node<T>(value);
+	tmpNode->setParentP(node);
+	node->setLeftP(tmpNode);
+	insertDeleteHook(node->getLeftP());
+	}
+	else
+	{
+	insertFunction(value, node->getLeftP());
+	}
+	}
+	else if (value > node->getValue())
+	{
+	Node<T> * tmpNode = new Node<T>(value);
+	tmpNode->setParentP(node);
+	node->setRightP(tmpNode);
+	insertDeleteHook(node->getRightP());
+	}
+	else
+	{
+	insertFunction(value, node->getRightP());
+	}
+	} */
+
+	if (node == NULL) {
+	// This is stupid code , please change
 	}
 	else if (value < node->getValue())
 	{
-		if ( node->getLeftP() == NULL ) {
-			Node<T> * tmpNode = new Node<T>(value);
-			tmpNode->setParentP(node);
-			node->setLeftP(tmpNode);
-			insertDeleteHook(node->getLeftP());
-		}
-		else {
-			insertFunction(value, node->getLeftP() );
-		}
+	if ( node->getLeftP() == NULL ) {
+	Node<T> * tmpNode = new Node<T>(value);
+	tmpNode->setParentP(node);
+	node->setLeftP(tmpNode);
+	insertDeleteHook(node->getLeftP());
+	}
+	else {
+	insertFunction(value, node->getLeftP() );
+	}
 	}
 	else if (value > node->getValue()) {
-		if (node->getRightP() == NULL) {
-			Node<T> * tmpNode = new Node<T>(value);
-			tmpNode->setParentP(node);
-			node->setRightP(tmpNode);
-			insertDeleteHook(node->getRightP());
-		}
-		else {
-			insertFunction(value, node->getRightP() );
-		}
+	if (node->getRightP() == NULL) {
+	Node<T> * tmpNode = new Node<T>(value);
+	tmpNode->setParentP(node);
+	node->setRightP(tmpNode);
+	insertDeleteHook(node->getRightP());
 	}
-}
+	else {
+	insertFunction(value, node->getRightP() );
+	}
+	}
+
+} // End of Method
 
 /*This method calls the hasElementFunction*/
 template <class T>
