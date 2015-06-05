@@ -4,15 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exersice03
+namespace TestBaum
 {
     class Program
     {
+        static Random rnd = new Random();
+        /// creates random values from the whole Integerspace
+        private static int IntegerRandomizer()
+        {
+            int value = rnd.Next(int.MinValue, int.MaxValue);
+            return value;
+        }
+
         static void Main(string[] args)
         {
 
-            Tree<string> tree = new BinaryTree<string>();
-            AVLTree<int> avl = new AVLTree<int>();
+            BinaryTree<string> tree = new BinaryTree<string>();
 
             tree.Add("martin");
             tree.Add("özgün");
@@ -20,45 +27,45 @@ namespace Exersice03
             tree.Add("ende");
             tree.Add("anfang");
 
-            tree.inOrderOutput();
+            tree.inOrder();
             Console.WriteLine();
-            Console.WriteLine(tree.Contains("los"));
-
-            tree.Remove("los");
-            tree.inOrderOutput();
+            Console.WriteLine("The height of the Binary Tree is: " + tree.GetHeight());
             Console.WriteLine();
-            Console.WriteLine(tree.Contains("los"));
+            Console.WriteLine(tree.Contains("özgün"));
+            tree.Remove("özgün");
+            tree.inOrder();
+            Console.WriteLine();
+            Console.WriteLine(tree.Contains("özgün"));
+
 
             Console.WriteLine();
+            Console.WriteLine();
 
-            avl.Add(23);
+            
+          
+
+            AVLTree<int> avl = new AVLTree<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                avl.Add(IntegerRandomizer());
+            }
+            /*avl.Add(14);
             avl.Add(4);
-            avl.Add(51);
+            avl.Add(62);
             avl.Add(2);
-            avl.Add(78);
+            avl.Add(89);
             avl.Add(100);
-            avl.Add(111);
-
-            avl.inOrderOutput();
-            Console.WriteLine();
-            Console.WriteLine(avl.IsBanlance(avl.Root));
-            Console.WriteLine();
-            Console.WriteLine(avl.ReBanlance(avl.Root));
-
-            avl.inOrderOutput();
+            avl.Add(111);*/
 
             Console.WriteLine();
-            Console.WriteLine(tree.GetHeight());
+            avl.inOrder();
             Console.WriteLine();
-            Console.WriteLine(avl.GetHeight());
+            Console.WriteLine("The not rotatet Tree has the height: " + avl.GetHeight());
             Console.WriteLine();
-            Console.WriteLine(tree.GetDepth("anfang"));
+            avl.BalanceTree(avl.Root);
+            Console.WriteLine("The rotatet Tree has the height: " + avl.GetHeight());
             Console.WriteLine();
-            Console.WriteLine(avl.GetDepth(78));
-
-
-
-
             Console.ReadLine();
 
 
