@@ -31,22 +31,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	tree.del(2);
 	std::cout << "Ausgabe 2: " << std::boolalpha << tree.hasElement(2) << "\n";
 	
-	
 	std::cout << std::endl;	
 	std::cout << std::endl;
 	// Causes a line break
 
 	/* Testing on an AVL tree with int */
 	AVLTree<int> * avl = new AVLTree<int>(2);	
+	std::cout << "Ausgabe 2: " << std::boolalpha << avl->hasElement(2) << "\n";
 	avl->insert(20);
+	std::cout << "Ausgabe 20: " << std::boolalpha << avl->hasElement(20) << "\n";
 	avl->insert(1);
+	std::cout << "Ausgabe 1: " << std::boolalpha << avl->hasElement(1) << "\n";
 	avl->insert(0);
+	std::cout << "Ausgabe 0: " << std::boolalpha << avl->hasElement(0) << "\n";
 	avl->insert(26);
-	avl->insert(300);
-	avl->insert(1000);
-	avl->insert(500);
-	avl->insert(400);
-	avl->insert(5000);
+	std::cout << "Ausgabe 26: " << std::boolalpha << avl->hasElement(26) << "\n";
+
+	avl->del(2);
+	std::cout << "Ausgabe 2: " << std::boolalpha << avl->hasElement(2) << "\n";
 
 
 	std::cout << std::endl;
@@ -87,7 +89,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cout << "Deleted: " << tmp[0] << std::endl;
 
 	getchar();
+	// Holds open the command line 
 
 	return 0;
+	//Showcases the sucessful outcome of the main-function
 }
 

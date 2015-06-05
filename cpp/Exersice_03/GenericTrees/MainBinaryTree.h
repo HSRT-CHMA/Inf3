@@ -1,9 +1,10 @@
 ﻿#pragma once
 #include "Node.h"
+#include "AbstractTree.h"
 #include <string>
 
 template<typename T>
-class MainBinaryTree
+class MainBinaryTree : public AbstractTree< T >
 	// This class contains methods suitable for AVL-Trees and 'normal' Binary Trees alike and serves therefor as a superclass 
 {
 

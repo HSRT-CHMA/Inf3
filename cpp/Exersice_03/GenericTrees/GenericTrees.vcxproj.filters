@@ -42,6 +42,9 @@
     <ClInclude Include="MainBinaryTree.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="AbstractTree.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

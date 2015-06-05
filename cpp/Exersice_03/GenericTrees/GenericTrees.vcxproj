@@ -80,6 +80,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractTree.h" />
     <ClInclude Include="AVLTree.h" />
     <ClInclude Include="MainBinaryTree.h" />
     <ClInclude Include="BinaryTree.h" />
