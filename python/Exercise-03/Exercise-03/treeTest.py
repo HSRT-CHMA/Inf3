@@ -15,19 +15,9 @@ Class for Testing our Data Trees
 '''
 class treeTest(object):
     
-    def __init___ (self):
-        print('Starting with the Tests!')
+    def __init__(self):
         
-        print('Creating Binary Tree Test')
-        testBinaryTree()
-
-        print('Creating AVL Tree Test')
-        testAVLTree()
-
-        print('Creating Generic Tree Test')
-        testGenericTree()
-    
-        print('Test complete!')
+        print("Starting with the Tests!")
     
         
     '''
@@ -47,21 +37,21 @@ class treeTest(object):
 
         #Pull random strings into the Tree
         for i in newItems:
-            newString = randomV.rString()
-            print("Binary Tree add: ", newString)
-            tree.insert(newString)
+            newInteger = randomV.rInteger()
+            print("Binary Tree add: ", newInteger)
+            tree.insert(newInteger)
 
         #Output the added Strings
         print("Output of the Values:")
         tree.preOrderOutput()
-        print(newString, tree.has(newString))
+        print(newInteger, tree.has(newInteger))
 
         #Print Height of the Tree
         print("Height of the Tree: ", tree.height(tree.getRootNode()))
 
         #Delete the temporary Value out of the Tree
-        print("Deleting temporary String: ", newString)
-        tree.delete(newString)
+        print("Deleting temporary Integer: ", newInteger)
+        tree.delete(newInteger)
         print("Deleting complete")
 
         #Print Height of the Tree
@@ -84,7 +74,7 @@ class treeTest(object):
 
         #Pull random strings into the Tree
         for i in newItems:
-            randomV = randomV.rInteger()
+            randomV = randomV.rString()
             print("AVL-Tree add:", randomV)
             tree.insert(randomV)
             print("Value was added")

@@ -6,14 +6,21 @@
 #Defining Imports
 from treeTest import treeTest
 
-#Console Output for starting the Exercise
-print("Inf3 - Exercise 3")
-#Creating Tests with Trees
-exercise3 = treeTest()
+if __name__== "__main__":
+    
+    #Console Output for starting the Exercise
+    print("Inf3 - Exercise 3")
+    
+    #Creating Tests with Trees
+    exercise3 = treeTest()
+    
+    print("Creating Binary Tree Test")
+    exercise3.testBinaryTree()
 
-#Call of AVL-Tree Test
-exercise3.testAVLTree()
-#Call of Binary-Tree Test
-exercise3.testBinaryTree()
-#Call of Generic-Tree Test
-exercise3.testGenericTree()
+    print("Creating AVL Tree Test")
+    #exercise3.testAVLTree()
+
+    print("Creating Generic Tree Test")
+    exercise3.testGenericTree()
+    
+    print('Test complete!')

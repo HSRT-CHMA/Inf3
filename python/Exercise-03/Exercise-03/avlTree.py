@@ -43,7 +43,7 @@ class avlTree(genericTree):
 
         #Setting Variables
         self.updateHeights(False)
-        self.updateBalance(False)
+        self.updateBalances(False)
 
         #Starting Loop to fix the Balance
         while self.balance < -1 or self.balance > 1:

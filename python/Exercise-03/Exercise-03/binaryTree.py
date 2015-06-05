@@ -15,28 +15,23 @@ class binaryTree(genericTree):
     '''
     Constructor for BinaryTree Class
     '''
-    def __init___ (self, value = None):
+    def __init__ (self, value = None):
         if value != None:
-            self.__root = Node(value)
+            self.__root = genericNode(value,None,None,None)
         else:
             self.__root = None
         self.__outputString = ""
-
-
     
     #Getter for the Class binaryTree
     @property 
     def __root(self):
-        return self.__root
-
-    def getRootNode(self):
         return self._root
 
     #Setter for the Class binaryTree
     @__root.setter
     def __root(self, root):
-        if type(root) == Node or root == None:
-            self.__root = root
+        if type(root) == genericNode or root == None:
+            self._root = root
         else:
             raise TypeError("Root Node musst be a Node.")
 
@@ -67,7 +62,7 @@ class binaryTree(genericTree):
     '''
     def insert(self, value):
         if self.__root == None:
-            self.__root = Node(value)
+            self.__root = genericNode(value,None,None,None)
         else:
             self.__insertRecursion(self.__root, value)
 
@@ -75,14 +70,15 @@ class binaryTree(genericTree):
     Method which inserts a Object to the BinaryTree with Recursion
     '''
     def __insertRecursion(self, node, value):
+   
         if value < node.value:
             if node.left == None:
-                node.left = Node(value, None, None, node)
+                node.left = genericNode(value, None, None, node)
             else:
                 self.__insertRecursion(node.left, value)
         if value >= node.value:
             if node.right == None:
-                node.right = Node(value, None, None, node)
+                node.right = genericNode(value, None, None, node)
             else:
                 self.__insertRecursion(node.right, value)
 
@@ -94,7 +90,7 @@ class binaryTree(genericTree):
     def has(self, value):
         value = False
         currentNode = self.__root
-        while currentNode != None and not found:
+        while currentNode != None and not value:
             if currentNode.value == value:
                 value = True
             else:
@@ -196,3 +192,34 @@ class binaryTree(genericTree):
                 self.__deleteRecursion(currentNode.left, value, currentNode)
             if currentNode.right != None:
                 self.__deleteRecursion(currentNode.right, value, currentNode)
+
+    '''
+    Prints the in-order tree traversal.
+    Calls the recursive Method __inorderRecursion and prints __outputString.
+    '''
+    def preOrderOutput(self):
+        self.__preOrderRecursion(self.__root)
+        print("Pre-order: " + self.__outputString)
+        self.__outputString = ""
+    
+    '''
+    Stores the inorder output in __outputString.
+    Parameters: node: the Node to start the recursion
+    '''
+    def __preOrderRecursion(self, node):
+        if node == None:
+            assert node == None # postcondition
+            return
+        self.__outputString += str(node.value) + " "
+        self.__preOrderRecursion(node.left)
+        self.__preOrderRecursion(node.right)
+
+    '''
+    Returns the height of the Tree.
+    '''            
+    def height(self,node):
+        if node is None:
+            tmpReturn=0
+        else:
+            tmpReturn=max(self.height(node.left), self.height(node.right)) + 1
+        return tmpReturn

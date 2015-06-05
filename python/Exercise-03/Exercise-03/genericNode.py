@@ -39,7 +39,7 @@ class genericNode():
     #Setter for Parent Node
     @parent.setter
     def parent(self, parent):
-        if type(parent) == Node or parent == None:
+        if type(parent) == genericNode or parent == None:
             self._parent = parent
 
 
@@ -51,7 +51,7 @@ class genericNode():
     #Setter for Left Node
     @left.setter
     def left(self, left):
-        if type(left) == Node or left == None:
+        if type(left) == genericNode or left == None:
             self._left = left
         else: 
             raise TypeError("Incorrect Value for Left Node. Must be a Node or None.")
@@ -65,8 +65,7 @@ class genericNode():
     #Setter for Right Node
     @right.setter
     def right(self, right):
-        if type(right) == Node or right == None:
+        if type(right) == genericNode or right == None:
             self._right = right
         else:
             raise TypeError("Incorrect Value for Right Node. Must be a Node or None.")
-
