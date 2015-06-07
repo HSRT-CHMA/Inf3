@@ -20,9 +20,9 @@ feature {NONE} -- Initialization; containts different testing units
 		do
 			print ("Hello, this is a programm to create & test generic trees !%N")
 			test_insert
-			test_has
+--			test_has
 			test_delete
-			test_hight
+--			test_hight
 		end
 
 feature --Access
@@ -37,7 +37,7 @@ feature --Access
 	-- binary tree for testing
 
 
-feature -- Method creates 8 trees for testing and fills them with values
+feature -- Method creates 2 trees for testing and fills them with values
 
 	test_insert
 	do
@@ -48,9 +48,9 @@ feature -- Method creates 8 trees for testing and fills them with values
 		create tree4.make(101)
 
         -- Insert tree1
-		tree1.insert("fjsfsd")
-		tree1.insert("sdfsdf")
 		tree1.insert("wnef")
+		tree1.insert("sdfsdf")
+		tree1.insert("fjsfsd")
 		tree1.insert("sdjfirwog")
 		tree1.insert("sfiowjf")
 		-- Insert tree2
@@ -68,7 +68,7 @@ feature -- Method creates 8 trees for testing and fills them with values
 		-- Insert tree4
 		tree4.insert(90)
 		tree4.insert(104)
-		tree4.insert(140)
+		tree4.insert(90)
 		tree4.insert(5)
 		tree4.insert(95)
 		ensure
@@ -159,11 +159,11 @@ feature -- Methode for testing the delete-Method, prints results on the console
 
 feature -- Method for testing the hight-Method, prints result on the console	
 
-	test_hight
-	do
-		print("%N%N--test_hight--%N%N")
-
-	end
+--	test_hight
+--	do
+--		print("%N%N--test_hight--%N%N")
+--
+--	end
 
 invariant
 	valid_tree : tree1 /= Void

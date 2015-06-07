@@ -8,10 +8,6 @@ class
 	BINARYTREE[G->COMPARABLE]	-- -> CONSTRAINT create make end]
 	-- This class organises the binary tree and provides important methods
 
-	-- G erbt von ANY, Methoden von ANY nachschlagen und benutzen
-	-- z.B: is_equal anstatt =
-	-- is_less , is_greater
-
 inherit
 	GENERICTREE[G]
 	redefine insert, delete, has end
@@ -23,7 +19,7 @@ feature {NONE} -- Initialization / Constructor ; gets the value that serves as r
 
 	make(tree_value : G)
 		do
-			print("%N A new Binary Tree with the Value: "+tree_value.out +"has been created")
+			print("%N A new Binary Tree with the Value: "+tree_value.out +" has been created")
 			create root.make(tree_value, Void)
 		end
 

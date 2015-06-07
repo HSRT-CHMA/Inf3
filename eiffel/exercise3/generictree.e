@@ -32,43 +32,35 @@ feature --public Getter for root
 			correct_result : Result = root
 	end
 
-	--get_not_void_root : NODE
-	--do
-		--if attached root as checked_root then
-			--Result := checked_root
-		--end
-	--end
-
-
 feature{GENERICTREE} -- private Insert-Method (duplicates possible) which add the used_node with the given value to its tree
-					-- Nodes are added as following : left child is smaller than its root, root ist smaller or equal than its right child
+					 -- Nodes are added as following : left child is smaller than its root, root ist smaller or equal than its right child
 
 	insertRec(new_value : G ; used_node : NODE[G])
 
 		do
-			if new_value <= used_node.get_value then  -- Caution
-				--Add node on the Right Side
-				if attached used_node.get_right as checked_right then
-					-- Line does the follwing : if used_node.get_right is "attached" (equals to "/= Void")
-					-- then a new object with name after "as", here "checked_rigth", is created and can be used because it is proven
-					-- that it isn't Void
-					insertRec(new_value, checked_right)
+			if attached used_node as checked_un then
+				if new_value <= checked_un.get_value then  -- Caution
+					--Add node on the Right Side
+					if attached checked_un.get_right as checked_right then
+						-- Line does the follwing : if used_node.get_right is "attached" (equals to "/= Void")
+						-- then a new object with name after "as", here "checked_rigth", is created and can be used because it is proven
+						-- that it isn't Void
+						insertRec(new_value, checked_right)
+					else
+						-- else if (used_node.get_right = Void)
+						create first_node.make(new_value, checked_un)
+						checked_un.set_right(first_node)
+					end
 				else
-					-- else if (used_node.get_right = Void)
-					create first_node.make(new_value, used_node)
-					used_node.set_right(first_node)
-				end
-			else
-				--Add node on the Left side
-				if attached used_node.get_left as checked_left then -- to be used like (x /= Void)
-					insertRec(new_value, checked_left)
-				else
-					create first_node.make(new_value, used_node) -- to be used like (x = Void)
-					used_node.set_left(first_node)
+					--Add node on the Left side
+					if attached checked_un.get_left as checked_left then -- to be used like (x /= Void)
+						insertRec(new_value, checked_left)
+					else
+						create first_node.make(new_value, checked_un) -- to be used like (x = Void)
+						checked_un.set_left(first_node)
+					end
 				end
 			end
-			ensure
-				value_is_in_tree : current.has (new_value)
 		end
 
 
@@ -79,8 +71,8 @@ feature -- public Insert-Methode; redirects to insert_rec, and prints a message 
 			if attached Current.get_root as checked_root then
 				insertRec(new_value , checked_root)
 			end
-			ensure then
-				tree_has_value : current.has (new_value)
+--			ensure then
+--				tree_has_value : has (new_value)
 		end
 
 
@@ -97,7 +89,7 @@ feature{GENERICTREE} -- Delete-Method to delete one Node with given value in tre
 			smallNode : detachable NODE[G]
 			tmpNode : detachable NODE[G]
 		do
-			if attached Current.get_root as valid_root then
+			if attached Current.get_root as checked_root then
 				-- Leaf
 				if used_node.get_left = Void and used_node.get_right = Void then
 					print("%NNode is a Leaf%N")
@@ -169,10 +161,10 @@ feature --"Public" Delete-Method, redirects to deleteRec and prints result of it
 
 			if attached root_value as checked_root then
 				if not checked_root.is_equal(new_value) then
-					if attached delete_node as check_delete_node then
+					if attached delete_node as checked_delnode then
 						-- has_rec returnt a Node
 						--print("Value can be deleted")
-						deleteRec(new_value, check_delete_node)
+						deleteRec(new_value, checked_delnode)
 						print("Value has been deleted")
 					else
 						-- has_rec returnt Void
@@ -191,60 +183,60 @@ feature --"Public" Delete-Method, redirects to deleteRec and prints result of it
 feature -- public Method to check if a value is in a tree; returns true if value is found
 
 	has(new_value : G): BOOLEAN
-	require else
-		valid_value : new_value /= Void
-	Local
-		found : BOOLEAN
-	do
-		if attached Current.get_root as check_root then
-			res_node := has_rec(new_value, check_root)
-		end
+		require else
+			valid_value : new_value /= Void
+		Local
+			found : BOOLEAN
+		do
+			if attached Current.get_root as check_root then
+				first_node := has_rec(new_value, check_root)
+			end
 
-		if res_node = Void then
-			-- if has_rec returns a Void-Object, the value has not been found
-			found := false
-		else
-			-- if has_rec returns a not-Void Object, the value has been found
-			found := true
-		end
+			if first_node = Void then
+				-- if has_rec returns a Void-Object, the value has not been found
+				found := false
+			else
+				-- if has_rec returns a not-Void Object, the value has been found
+				found := true
+			end
 		Result := found
 		ensure then
 			valid_result : Result = true or Result = false
-	end
+		end
 
 feature{GENERICTREE} -- "private" has(), indicated by Exportation to class NONE, searches for the given Node in a tree
 					-- if Node has been found, result is the found Node with the given value
 					-- if a Node with given value can not be found , result is Void
 
 	has_rec(new_value : G ; used_node : NODE[G]) : detachable NODE[G]
-	require else
-		valid_value : new_value /= Void
-		valid_node : used_node /= Void
-	do
-		if new_value = used_node.get_value then --Value has been found, return Node
-			Result := used_node
-		end
+		require else
+			valid_value : new_value /= Void
+			valid_node : used_node /= Void
+		do
+			if new_value.is_equal(used_node.get_value) then --Value has been found, return Node
+				Result := used_node
+			end
 
-		--Search on the left side
-		if new_value.is_less(used_node.get_value) then
-			if attached used_node.get_left as check_left then -- x /= Void, continue with check_
-				Result := has_rec(new_value, check_left)
-			else -- x = Void -> No more Nodes -> Value does not exist
-				Result := Void
+			--Search on the left side
+			if new_value.is_less(used_node.get_value) then
+				if attached used_node.get_left as check_left then -- x /= Void, continue with check_
+					Result := has_rec(new_value, check_left)
+				else -- x = Void -> No more Nodes -> Value does not exist
+					Result := Void
+				end
+			end
+
+			--Search on the right side
+			if new_value.is_greater(used_node.get_value) then --Be careful here
+				if attached used_node.get_right as check_right then
+					Result := has_rec(new_value, check_right)
+				else
+					Result := Void
+				end
 			end
 		end
 
-		--Search on the right side
-		if new_value.is_greater(used_node.get_value) then --Be careful here
-			if attached used_node.get_right as check_right then
-				Result := has_rec(new_value, check_right)
-			else
-				Result := Void
-			end
-		end
-	end
-
-feature -- Gets the height of Tree
+--feature -- Gets the height of Tree
 
 	--get_height: INTEGER
 	--Local
@@ -298,4 +290,4 @@ feature -- Gets the height of Tree
 		--Result := res
 	--end
 
-end
+end -- end of generic tree

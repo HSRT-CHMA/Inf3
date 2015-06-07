@@ -23,10 +23,4 @@ feature -- Defered Methods to be overriden in subclasses
 	end
 
 
-
-feature --Access
-
-	--item : G
-	-- not detachable / needed ?
-
 end
