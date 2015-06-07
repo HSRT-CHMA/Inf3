@@ -20,6 +20,7 @@ feature {NONE} -- Initialization / Constructor ; gets the value that serves as r
 	make(tree_value : G)
 		do
 			print("%N A new Binary Tree with the Value: "+tree_value.out +" has been created")
+			empty:= TRUE
 			create root.make(tree_value, Void)
 		end
 
@@ -31,15 +32,15 @@ feature
 
 
 feature
-	delete(new_value : G)
+	delete(value : G)
 		do
-			Precursor(new_value)
+			Precursor(value)
 		end
 
 feature
-	has(new_value : G): BOOLEAN
+	has(to_delete : G): BOOLEAN
 		do
-			Result := Precursor(new_value)
+			Result := Precursor(to_delete)
 		end
 
 end --End of class

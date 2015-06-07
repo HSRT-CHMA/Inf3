@@ -20,9 +20,8 @@ feature {NONE} -- Initialization; containts different testing units
 		do
 			print ("Hello, this is a programm to create & test generic trees !%N")
 			test_insert
---			test_has
+			test_has
 			test_delete
---			test_hight
 		end
 
 feature --Access
@@ -156,14 +155,6 @@ feature -- Methode for testing the delete-Method, prints results on the console
  		print("%N")
  		tree4.delete (101) -- Not possible because root node
 	end
-
-feature -- Method for testing the hight-Method, prints result on the console	
-
---	test_hight
---	do
---		print("%N%N--test_hight--%N%N")
---
---	end
 
 invariant
 	valid_tree : tree1 /= Void

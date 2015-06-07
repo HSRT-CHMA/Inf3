@@ -31,6 +31,9 @@ feature --Access
 	--The right child of a node; can be Void when right child does not exist
 	parent : detachable NODE[G]
 	--The parent-node of the node; can be Void when only root exist
+	balance: INTEGER
+	-- Int value for balancing
+
 
 feature -- public Getter for value of the node
 	get_value : G
@@ -98,6 +101,21 @@ feature{GENERICTREE} --Setter for parent-node ; only visible to its tree
 			correct_value : parent = node_parent
 	end
 
+feature{AVLTREE} -- for AVL Tree
+
+	get_balance :detachable INTEGER
+		do
+			Result := balance
+			ensure
+			Result_is_set: Result = balance
+		end
+
+	set_balance(new_balance:detachable INTEGER)
+		do
+			balance := new_balance
+		end
+
 invariant
 	valid_value : value /= Void
-end
+
+end -- class end of Node

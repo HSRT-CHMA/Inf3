@@ -6,5 +6,5 @@ note
 
 class
 	TESTING[G->COMPARABLE]
-
+	-- To do ...
 end
