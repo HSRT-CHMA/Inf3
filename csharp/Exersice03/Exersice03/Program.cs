@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System;
+using System.Security.Cryptography;
 
 namespace TestBaum
 {
@@ -12,14 +14,35 @@ namespace TestBaum
         /// creates random values from the whole Integerspace
         private static int IntegerRandomizer()
         {
-            int value = rnd.Next(int.MinValue, int.MaxValue);
+            int value = rnd.Next(0, 1000);
             return value;
+        }
+
+        public static string RandomString(int maxSize)
+        {
+            char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+            byte[] data = new byte[1];
+            RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
+            crypto.GetNonZeroBytes(data);
+            data = new byte[maxSize];
+            crypto.GetNonZeroBytes(data);
+            StringBuilder result = new StringBuilder(maxSize);
+            foreach (byte b in data)
+            {
+                result.Append(chars[b % (chars.Length - 1)]);
+            }
+            return result.ToString();
         }
 
         static void Main(string[] args)
         {
 
             BinaryTree<string> tree = new BinaryTree<string>();
+
+            /*for (int i = 0; i < 5; i++)
+            {
+                tree.Add(RandomString(IntegerRandomizer()));
+            }*/
 
             tree.Add("martin");
             tree.Add("özgün");
@@ -41,8 +64,8 @@ namespace TestBaum
             Console.WriteLine();
             Console.WriteLine();
 
-            
-          
+
+            Console.WriteLine("__________________________________________________________________________");
 
             AVLTree<int> avl = new AVLTree<int>();
 

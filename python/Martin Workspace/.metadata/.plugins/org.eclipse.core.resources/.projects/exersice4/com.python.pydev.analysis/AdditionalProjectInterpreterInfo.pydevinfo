@@ -1,0 +1,100 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\exersice4\com.python.pydev.analysis\v2_indexcache
+Test|1434559212684|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Test.py
+Main|1434558609463|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Main.py
+AVLTree|1434559179124|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\AVLTree.py
+BinaryTree|1434552621255|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\BinaryTree.py
+AVLNode|1434552256454|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\AVLNode.py
+GenericNode|1434549980248|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\GenericNode.py
+RandomValue|1434559021473|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\RandomValue.py
+GenericTree|1434550334900|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\GenericTree.py
+-- END DISKCACHE
+-- START DICTIONARY
+29
+19=BinaryTree.__root
+24=AVLNode.__init__
+9=treeTest
+8=Test
+7=Main
+1=AVLTree
+29=AVLTree.rotateLeft
+10=BinaryTree.preOrderOutput
+17=BinaryTree.__delOneChild
+23=AVLTree.updateHeights
+22=AVLTree.__init__
+11=BinaryTree.__init__
+14=BinaryTree.__outputString
+26=AVLTree.delete
+3=BinaryTree
+21=AVLTree.updateBalances
+28=AVLTree.rotateRight
+13=GenericNode.left
+20=GenericNode.value
+2=AVLNode
+25=GenericNode.__init__
+4=GenericTree
+27=AVLTree.insert
+18=BinaryTree.__delNoChild
+15=GenericNode.parent
+12=BinaryTree.insert
+16=GenericNode.right
+5=GenericNode
+6=RandomValue
+-- END DICTIONARY
+-- START TREE 1
+10
+avl|2|AVLTree!9@AVLNode!17@
+bin|1|BinaryTree!25@
+gen|2|GenericTree!33@GenericNode!41@
+gin|0|
+m|0|
+mai|0|
+nod|0|
+ran|1|RandomValue!49@
+tes|1|test!59@
+tre|1|treeTest!65@
+-- END TREE
+-- START TREE 2
+40
+__d|5|__deleteNode!3&26@__delTwoChildren!3&26@__delNoChild!3&26@__delOneChild!3&26@__deleteRecursion!3&26@
+__i|6|__init__!1&10@__init__!9&66@__insertRecursion!3&26@__init__!2&18@__init__!3&26@__init__!5&42@
+__o|3|__outputString!10&27@__outputString!11&27@__outputString!3&26@
+__p|1|__preOrderRecursion!3&26@
+__r|3|__root!12&27@__root!11&27@__root!3&26@
+_le|1|_left!13&43@
+_ou|1|_outputString!14&27@
+_pa|1|_parent!15&43@
+_ri|1|_right!16&43@
+_ro|3|_root!17&27@_root!18&27@_root!19&27@
+_va|1|_value!20&43@
+al|0|
+alp|0|
+bal|3|balance!21&11@balance!22&11@balanceTree!1&10@
+del|3|delete!1&10@delete!4&34@delete!3&26@
+get|2|getRootNode!3&26@getHeight!1&10@
+has|3|has!3&26@has!4&34@has!1&10@
+hei|3|height!23&11@height!22&11@height!3&26@
+id|0|
+ins|3|insert!3&26@insert!4&34@insert!1&10@
+isb|1|isBalanced!1&10@
+isl|1|isLeaf!1&10@
+key|1|key!24&19@
+lef|3|left!25&43@left!24&19@left!5&42@
+mai|0|
+max|1|maxima!1&10@
+min|1|minima!1&10@
+nod|5|node!26&11@node!27&11@node!28&11@node!29&11@node!22&11@
+num|0|
+par|2|parent!25&43@parent!5&42@
+pre|2|preOrderOutput!3&26@preOrderOutput!1&10@
+ran|0|
+rfl|1|rFloat!6&50@
+rig|3|right!24&19@right!5&42@right!25&43@
+rin|1|rInteger!6&50@
+rot|2|rotateRight!1&10@rotateLeft!1&10@
+rst|1|rString!6&50@
+tes|3|testGenericTree!9&66@testBinaryTree!9&66@testAVLTree!9&66@
+upd|2|updateBalances!1&10@updateHeights!1&10@
+val|2|value!5&42@value!25&43@
+-- END TREE

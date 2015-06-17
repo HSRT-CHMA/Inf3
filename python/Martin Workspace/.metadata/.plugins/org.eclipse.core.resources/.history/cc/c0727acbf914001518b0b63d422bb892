@@ -1,0 +1,77 @@
+'''
+Created on 17.06.2015
+
+@author: Martin Watolla
+'''
+
+'''
+    Class for Node Objects
+'''
+
+class Node():
+
+    '''
+        Constructor of Node
+        Setting Value, Parent, Left and Right Node 
+        to the given Values
+    '''
+    def __init__(self, value, left = None, right = None, parent = None):
+        self.value = value
+        self.parent = parent
+        self.left = left
+        self.right = right
+
+
+    '''
+        Definition of all Setters and Getters
+    '''
+
+    #Getter for Value of Node
+    @property
+    def value(self):
+        return self._value
+
+    #Setter for Value of Node
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+
+    #Getter for Parent Node
+    @property
+    def parent(self):
+        return self._parent
+
+    #Setter for Parent Node
+    @parent.setter
+    def parent(self, parent):
+        if type(parent) == Node or parent == None:
+            self._parent = parent
+
+
+    #Getter for Left Node
+    @property
+    def left(self):
+        return self._left
+
+    #Setter for Left Node
+    @left.setter
+    def left(self, left):
+        if type(left) == Node or left == None:
+            self._left = left
+        else: 
+            raise TypeError("Incorrect Value for Left Node. Must be a Node or None.")
+
+
+    #Getter for Right Node
+    @property
+    def right(self):
+        return self._right
+
+    #Setter for Right Node
+    @right.setter
+    def right(self, right):
+        if type(right) == Node or right == None:
+            self._right = right
+        else:
+            raise TypeError("Incorrect Value for Right Node. Must be a Node or None.")

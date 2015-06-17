@@ -1,0 +1,16 @@
+'''
+Created on 17.06.2015
+
+@author: Martin Watolla
+'''
+
+from Test import treeTest
+
+class Main():
+    
+    def main(self):
+        
+        print("ich starte:")
+        test = treeTest()
+        test.testBinaryTree()
+        
