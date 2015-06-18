@@ -1,0 +1,19 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+
+class Tree():
+    
+    def insert(self, value):
+        pass
+
+    def has(self, value):
+        pass
+
+    def delete(self, value):
+        pass
+    
+    def filter(self, value):
+        pass

@@ -1,342 +1,293 @@
 '''
-Created on 17.06.2015
+Created on 18.06.2015
 
 @author: Martin Watolla
 '''
-'''
-    AVL Tree Class
-    Inf3 - Group 7
-'''
 
-#Defining Imports
-from GenericTree import GenericTree
-from AVLNode import AVLNode
 
-'''
-AVL-Tree Class from Exercise 1.3
-'''
-class AVLTree(GenericTree):
-    
+from Node import Node
+from BinaryTree import BinaryTree
+
+class AVLTree(BinaryTree):
     '''
-    Constructor for the Class avlTree
-    Initializing the Node with None
-    Setting Height to -1 and Balance to 0
+    Initalize the binary tree
     '''
-    def __init__(self, values):
-        
-        self.node = None
-        self.height = -1
-        self.balance = 0
-
-        if len(values) == 1:
-            for i in values[0]:
-                self.insert(i)
-
+    def __init__(self, value):
+        self.__root = Node(value)
+        self.elements_count = 0
+        self.rebalance_count = 0
     '''
-    The Method balanceTree balances the Tree by 
-    Rotating the Nodes Balance is called for the 
-    whole Time that self.balance is not 0
-    - Loop run as long as the Balance is not valid
-    - The Two Cases of the Balance are processed in:
-        - First Case - Balance is above 1
-            -> Rotate Left Node
-        - Second Case - Balance is under -1
-            -> Rotate Right Node
+    Return height of the tree
     '''
-    def balanceTree(self):
-
-        #Setting Variables
-        self.updateHeights(False)
-        self.updateBalances(False)
-
-        #Starting Loop to fix the Balance
-        while self.balance < -1 or self.balance > 1:
-            
-            #First Case
-            if self.balance > 1:
-                self.node.left.rotateLeft()
-                self.updateHeights()
-                self.updateBalances()
-            self.rotateRight()
-            self.rotateHeights()
-            self.updateBalances()
-
-            #Second Case
-            if self.balance < -1:
-                if self.node.right.balance > 0:
-                    self.node.right.rotateRight()
-                    self.updateHeights()
-                    self.updateBalances()
-                self.rotateLeft()
-                self.updateHeights()
-                self.updateBalances()
-
-    '''
-    Height Method. Returns the Height of the AVL Tree
-    Recursive Call with Max Method
-    '''
-    def getHeight(self):
-        
-        if self.node != None:
-            value = max(self.node.left.getHeight() , self.node.right.getHeight()) + 1
+    def height(self):
+        if self.__root:
+            erg = self.__root.height
         else:
-            value = 0
-        return value
-
+            erg =  0   
+        return erg
     '''
-    Method for Rotating Node to
-    the Left Side of the AVL-Tree
-    '''
-    def rotateLeft(self):
-        
-        #Defining Variables to work with
-        a = self.node
-        b = self.node.right.node
-        tmp = b.left.node
-
-        #Changing the Nodes happens here
-        self.node = b
-        b.left.node = a
-        a.right.node = tmp
-
-    '''
-    Method for Rotating Node to 
-    the Right Side of the AVL-Tree
-    '''
-    def rotateRight(self):
-        
-        #Defining Variables to work with
-        a = self.node
-        b = self.node.left.node
-        tmp = b.right.node
-
-        #Changing the Nodes happens here
-        self.node = b
-        b.right.node = a
-        a.left.node = tmp
-
-    '''
-    Method for Check if the Node is a Root
-    True if Self Node is Root
-    '''
-    def isLeaf(self):
-        return (self.height == 0)
-
-    '''
-    Insert Method of AVL Tree
-    - Check if tree Node is Null
-    - Creating new Node
-    - Setting left Node Object
-    - Setting right Node Object
-    Important:
-    The balanceTree Method is called after 
-    every insert of Values. This has to be done
-    that the Tree is always a AVL-Tree
-    '''
-    def insert(self, key):
-        
-        #Defining Variables to work with
-        tree = self.node
-        newNode = AVLNode(key)
-
-        if tree == None:
-            self.node = newNode
-            self.node.left = AVLTree()
-            self.node.right = AVLTree()
-        elif key < tree.key:
-            self.node.right.insert(key)
-       
-        self.balanceTree()
-
-    '''
-    Method for Deleting Nodes which are identified by the key
-    out of the Binary Tree
-    - Check if there is at least one Node to delete -> BinaryTree not Null
-    - Fixing References of Nodes
-        1. Case -> No Childs -> Yiah Happy not much to do
-        2. Case -> Changing the References from the Nodes of the Left Side if there is no Child on the Right Side
-        3. Case -> Changing the References from the Nodes of the Right Side if there is no Child on the Left Side
-        4. Case -> Changing the References with the Minima Node to change (Pivot - Element)
-    '''  
-    def delete(self, key):
-
-        if self.node != None: 
-            if self.node.key == key: 
-                #1. Case -> No Child Nodes
-                if self.node.left.node == None and self.node.right.node == None:
-                    self.node = None 
-                #2. Case -> 1 Child on the Right Side
-                elif self.node.left.node == None: 
-                    self.node = self.node.right.node
-                #3. Case -> 1 Child on the Left Side
-                elif self.node.right.node == None: 
-                    self.node = self.node.left.node
-
-                #4. Case -> 2 Children - Find Pivot Element (Minima) to change
-                else:   
-                    minimaNode = self.minima(self.node)
-                    if minimaNode != None:
-                        self.node.key = minimaNode.key
-                        self.node.right.delete(minimaNode.key)
-                self.balanceTree()
-           
-            #Finding the Node Key with recursiv call to the left side
-            elif key < self.node.key: 
-                self.node.left.delete(key) 
-            #Finding the Node Key with recursiv call to the left side 
-            elif key > self.node.key: 
-                self.node.right.delete(key)
-            
-            #Fixing the Balance of the AVL-Tree after deleting
-            self.balanceTree()
-
-    '''
-    Method which checks the Balance of the
-    Tree. At the first call the Variable
-    recBalance is true
-    '''       
-    def updateBalances(self, recBalance = True):
-        if not self.node == None: 
-            if recBalance: 
-                if self.node.left != None: 
-                    self.node.left.updateBalances()
-                if self.node.right != None:
-                    self.node.right.updateBalances()
-
-            self.balance = self.node.left.height - self.node.right.height 
-        else: 
-            self.balance = 0
-         
-    '''
-    Method for checking the Balance
-    of the whole Tree
-    '''
-    def isBalanced(self):
-        
-        if self == None or self.node == None: 
-            value=True
-        else:
-            self.updateHeights()
-            self.updateBalances()
-            value= ((abs(self.balance) < 2) and self.node.left.isBalanced() and self.node.right.isBalanced()) 
-        return value
-
-    '''
-    Method which is called after the Balance
-    of the Tree is done
-    '''    
-    def updateHeights(self, recHeights = True):
-       
-        if not self.node == None: 
-            if recHeights: 
-                if self.node.left != None: 
-                    self.node.left.updateHeights()
-                if self.node.right != None:
-                    self.node.right.updateHeights()
-            
-            self.height = max(self.node.left.height,
-                              self.node.right.height) + 1 
-        else: 
-            self.height = -1 
-
-    '''
-    Method for searching the key Value out of the Tree
-    True if the Tree has the element, False if there
-    is no such Value in the Tree
-    - All Nodes are collected from the left Side
-    - All Nodes are collected from the right Side
-    - All Nodes from both Sides are searched for the key
-        -> value changes to true if the key is found
-    - Return of the value and closing Method
-    '''
-    def has(self, key):
-        
-        #Defining Variables to work with
-        value = False
-        inlist = [] 
-        inlist.append(self.node.key)
-            
-        #Pull the Left Side of the Tree in outputTree
-        outputTree = self.node.left.preOrderOutput()
-        for i in outputTree: 
-            inlist.append(i) 
-    
-        #Pull the Right Side of the Tree in outputTree
-        outputTree = self.node.right.preOrderOutput()
-        for i in outputTree: 
-            inlist.append(i) 
-
-        #Go through the List and return true if Key is in it
-        for i in inlist:
-            if i == key:
-                value = True
-        return value
-
-    '''
-    Method to Output the AVL-Tree in Order
-    '''    
-    def preOrderOutput(self):   
-        
-        #Check if start node is null
-        if self.node == None:
-            value=[] 
-        else:
-            inlist = [] 
-            inlist.append(self.node.key)
-            
-            l = self.node.left.preOrderOutput()
-            for i in l: 
-                inlist.append(i) 
-    
-            l = self.node.right.preOrderOutput()
-            for i in l: 
-                inlist.append(i) 
-            value=inlist
-        return value
-
-    '''
-    Method which searches the smalles value
-    in the right tree child side
-    Searches for the smallest valued node in RIGHT child
-    '''
-    def minima(self, node):
-
-        #Defining Variables to work with
-        node = node.right.node  
-        value = node
-        
-        if node != None:
-            
-            '''
-            Starting recursive call for so long
-            '''
-            while node.left != None:
-                
-                if node.left.node == None: 
-                    value = node 
-                else: 
-                    node = node.left.node  
-        return value
-
-    '''
-    Method which searches the biggest value 
-    in the left tree child side
+    recompute the height of the binary tree
     '''   
-    def maxima(self, node):
-
-        #Defining Variables to work with
-        node = node.left.node 
-        value = node
-        
-        if node != None:
+    def recompute_heights (self, start_from_node):
+        changed = True
+        node = start_from_node
+        while node and changed:
+            old_height = node.height
+            node.height = (node.max_children_height() + 1 if (node.rightChild or node.leftChild) else 0)
+            changed = node.height != old_height
+            node = node.parent  
+    '''
+    Rebalance the tree
+    Checks cases for balancing the tree 
+    '''      
+    def rebalance (self, node_to_rebalance):
+        self.rebalance_count += 1
+        A = node_to_rebalance 
+        F = A.parent
+        #easy rotation
+        if node_to_rebalance.balance() == -2:
+            if node_to_rebalance.rightChild.balance() <= 0:
+                B = A.rightChild
+                C = B.rightChild
+                A.rightChild = B.leftChild
+                if A.rightChild:
+                    A.rightChild.parent = A
+                B.leftChild = A
+                A.parent = B                                                               
+                if F is None:                                                              
+                    self.rootNode = B 
+                    self.rootNode.parent = None                                                   
+                else:                                                                        
+                    if F.rightChild == A:                                                          
+                        F.rightChild = B                                                                  
+                    else:                                                                      
+                        F.leftChild = B                                                                   
+                    B.parent = F 
+                self.recompute_heights (A) 
+                self.recompute_heights (B.parent)                                                                                         
+            else:
+                B = A.rightChild
+                C = B.leftChild
+                B.leftChild = C.rightChild
+                if B.leftChild:
+                    B.leftChild.parent = B
+                A.rightChild = C.leftChild
+                if A.rightChild:
+                    A.rightChild.parent = A
+                C.rightChild = B
+                B.parent = C                                                               
+                C.leftChild = A
+                A.parent = C                                                             
+                if F is None:                                                             
+                    self.rootNode = C
+                    self.rootNode.parent = None                                                    
+                else:                                                                        
+                    if F.rightChild == A:                                                         
+                        F.rightChild = C                                                                                     
+                    else:                                                                      
+                        F.leftChild = C
+                    C.parent = F
+                self.recompute_heights (A)
+                self.recompute_heights (B)
+        else:
+            # double rotation
+            if node_to_rebalance.leftChild.balance() >= 0:
+                B = A.leftChild
+                C = B.leftChild
+                A.leftChild = B.rightChild
+                if (A.leftChild): 
+                    A.leftChild.parent = A
+                B.rightChild = A
+                A.parent = B
+                if F is None:
+                    self.rootNode = B
+                    self.rootNode.parent = None                    
+                else:
+                    if F.rightChild == A:
+                        F.rightChild = B
+                    else:
+                        F.leftChild = B
+                    B.parent = F
+                self.recompute_heights (A)
+                self.recompute_heights (B.parent) 
+            else:
+                B = A.leftChild
+                C = B.rightChild 
+                A.leftChild = C.rightChild
+                if A.leftChild:
+                    A.leftChild.parent = A
+                B.rightChild = C.leftChild
+                if B.rightChild:
+                    B.rightChild.parent = B
+                C.leftChild = B
+                B.parent = C
+                C.rightChild = A
+                A.parent = C
+                if F is None:
+                    self.rootNode = C
+                    self.rootNode.parent = None
+                else:
+                    if (F.rightChild == A):
+                        F.rightChild = C
+                    else:
+                        F.leftChild = C
+                    C.parent = F
+                self.recompute_heights (A)
+                self.recompute_heights (B)   
+    '''
+    The method inserts the parameter value in the binary tree.
+    The data type of the parameter is int.
+    If there's no root, it inserts a root. Otherwise it starts a recursion to insert.
+    '''
+    def insert(self,value):
+       
+        if self.__root is None and type(value) is int:
+            self.__root = Node(value)
+        elif type(value) is int:
+            self.__insertRecursion(self.__root, value)
+       
             
-            '''
-            Starting recursive call for so long 
-            that the right node is not null
-            '''
-            while node.right != None:
-                if node.right.node == None: 
-                    value=node 
-                else: 
-                    node = node.right.node  
-        return value
+    '''
+    This is the recursion to insert a node.
+    Duplicates will be inserted to the right.
+    The data type of the parameter currentNode is Node and of value it's int.
+    '''
+    def __insertRecursion(self,currentNode,value):
+        if currentNode is None:
+            currentNode = Node(value)
+        if self.__root is None:
+            self.__root = currentNode
+        else:
+            
+            if value < currentNode.getData(): # left
+                if currentNode.getLeft() is not None:
+                    self.__insertRecursion(currentNode.getLeft(), value)
+                else:
+                    self.elements_count += 1
+                    currentNode.setLeft(Node(value))
+                    currentNode.getLeft().setParent(currentNode)
+            if value >= currentNode.getData():
+                if currentNode.getRight() is not None:
+                    self.__insertRecursion(currentNode.getRight(), value)
+                else:
+                    self.elements_count += 1
+                    currentNode.setRight(Node(value))
+                    currentNode.getRight().setParent(currentNode)
+                    
+                
+    '''
+    The method returns a boolean. It returns true if the parameter value is in the tree.
+    '''
+    def has(self,value):
+        return self.__hasRecursion(self.__root,value)
+    
+    '''
+    This method searches for the parameter value.
+    The data type of currentNode is Node.
+    The data type of value is int.
+    It returns a boolean variable. It returns true when the value is in the tree.
+    '''
+    def __hasRecursion(self,currentNode,value):
+        
+        has = False
+      
+        if currentNode is None:
+            has = False
+        elif currentNode.getData() is value:
+            has = True #found
+        elif value < currentNode.getData(): #search left
+            has = self.__hasRecursion(currentNode.getLeft(), value)
+        elif value > currentNode.getData(): #search right
+            has = self.__hasRecursion(currentNode.getRight(), value)
+            
+        return has
+        
+            
+    '''
+    This method invokes the method __deleteRecursion if there's a node with the value of the parameter value in the tree.
+    Otherwise there's nothing to delete.
+    It returns a boolean. If the node with the value is deleted it returns a True. If there's nothing to delete it returns a False.
+    '''
+    def delete(self,value):
+        
+        has = False
+        while self.has(value):
+            has = self.__deleteRecursion(self.__root, value, None, False)
+        
+        return has
+    
+    
+    '''
+    This method searches for the node with the value and deletes it.
+    The data type of the parameter value is int.
+    The data type of the parameter currentNode is Node. 
+    The data type of the parameter parent is Node. It's the node above the currentNode.
+    The data type of the parameter isLeft is boolean. It's True when it's the left child of the parent.
+    The method returns a boolean. It's true 
+    '''
+    def __deleteRecursion(self, currentNode, value, parent, isLeft):
+        
+        isDeleted = False
+        if currentNode is None:
+            isDeleted = False
+        if value is currentNode.getData():
+            if currentNode.getLeft() is None and currentNode.getRight() is None:
+                if parent is None:
+                    self.__root = None
+                    isDeleted = True
+                    self.elements_count -= 1
+                    self.checkRebalance(currentNode)
+                else:
+                    self.__insertUnderParent(parent,isLeft,None)
+                    isDeleted = True
+                    self.elements_count -= 1
+                    self.checkRebalance(currentNode)
+            elif currentNode.getLeft() is None and currentNode.getRight() is not None:
+                if parent is None:
+                    self.__root = currentNode.getRight()
+                    isDeleted = True
+                    self.elements_count -= 1
+                    self.checkRebalance(currentNode)
+                else:
+                    self.__insertUnderParent(parent, isLeft, currentNode.getRight())
+                    isDeleted = True
+                    self.elements_count -= 1
+                    self.checkRebalance(currentNode)
+            elif currentNode.getLeft() is not None and currentNode.getRight() is None:
+                if parent is None:
+                    self.__root = currentNode.getLeft()
+                    isDeleted = True
+                    self.elements_count -= 1
+                    self.checkRebalance(currentNode)
+                else:
+                    self.__insertUnderParent(parent, isLeft, currentNode.getLeft())
+                    isDeleted = True
+                    self.elements_count -= 1
+                    self.checkRebalance(currentNode)
+            elif currentNode.getLeft() is not None and currentNode.getRight() is not None:
+                x = self.__getMax(currentNode.getLeft())
+                self.delete(x.getData())
+                if parent is None:
+                    x.setLeft(self.__root.getLeft())
+                    x.setRight(self.__root.getRight())
+                    self.__root = x
+                else:
+                    x.setLeft(currentNode.getLeft())
+                    x.setRight(currentNode.getRight())
+                    self.__insertUnderParent(parent,isLeft,x)
+        if value < currentNode.getData():
+            if currentNode.getLeft() is not None:
+                isDeleted = self.__deleteRecursion(currentNode.getLeft(), value, currentNode, True)
+        if value > currentNode.getData():
+            if currentNode.getRight() is not None:
+                isDeleted = self.__deleteRecursion(currentNode.getRight(), value, currentNode, False)
+        
+        return isDeleted
+    
+    
+    def checkRebalance(self, currentNode):  
+        node = currentNode
+        while (node):
+            if not node.balance() in [-1, 0, 1]:
+                self.rebalance(node)
+            node = node.parent  

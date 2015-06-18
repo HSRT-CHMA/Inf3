@@ -1,0 +1,8 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+from TestTree import TestTree
+
+bTree = TestTree()

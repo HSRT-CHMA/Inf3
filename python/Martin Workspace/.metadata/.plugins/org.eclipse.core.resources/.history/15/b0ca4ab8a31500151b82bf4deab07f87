@@ -1,0 +1,53 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+
+from AVLTree import AVLTree
+from BinaryTree import BinaryTree
+from RandomValue import RandomValue
+
+class TestTree():
+    
+    def __init__(self):
+        print("Starting with the Test!")
+    
+   '''
+    Method for Testing the Binary Tree with 
+    - Creating a new Binary Tree
+    - Adding Random Values to the Binary Tree
+    - Output from Tree Height
+    - Deleting a Value 
+    - Output from Tree Height
+    '''
+    def testBinaryTree(self):
+        
+        #Defining Variables to work with
+        randomV = randomValue()
+        tree = binaryTree()
+        newItems = range(10)
+
+        #Pull random strings into the Tree
+        for i in newItems:
+            newInteger = randomV.rInteger()
+            print("Binary Tree add: ", newInteger)
+            tree.insert(newInteger)
+
+        #Output the added Strings
+        print("Output of the Values:")
+        tree.preOrderOutput()
+        print(newInteger, tree.has(newInteger))
+
+        #Print Height of the Tree
+        print("Height of the Tree: ", tree.height(tree.getRootNode()))
+
+        #Delete the temporary Value out of the Tree
+        print("Deleting temporary Integer: ", newInteger)
+        tree.delete(newInteger)
+        print("Deleting complete")
+
+        #Print Height of the Tree
+        print("Height of the Tree: ", tree.height(tree.getRootNode()))
+        
+    

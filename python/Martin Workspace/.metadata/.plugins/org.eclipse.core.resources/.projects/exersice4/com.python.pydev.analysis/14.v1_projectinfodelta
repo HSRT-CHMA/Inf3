@@ -1,1 +1,24 @@
-DELSTRAVLTree
+INSTUPAVLTree
+C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\AVLTree.py
+INFOS:&&1|1|1|0&&2|2|1|1&&3|3|1|4&&3|5|1|4&&3|6|1|4&&2|7|1|1&&2|8|1|1&&2|9|1|1&&3|10|1|11&&3|10|1|11&&3|10|1|11&&3|10|1|11&&2|12|1|1&&3|3|1|13&&2|14|1|1&&3|3|1|15&&2|16|1|1&&2|17|1|1&&2|18|1|1&&2|19|1|1&&3|3|1|20&&3|3|1|20&&3|3|1|20&&3|3|1|20&&2|21|1|1
+__hasRecursion=17
+__deleteRecursion=19
+__insertRecursion=14
+elements_count=5
+rebalance_count=6
+__root=3
+has=16
+AVLTree.rebalance=11
+checkRebalance=21
+AVLTree.insert=13
+__init__=2
+height=7
+AVLTree=1
+recompute_heights=8
+rootNode=10
+AVLTree.__insertRecursion=15
+delete=18
+AVLTree.__init__=4
+AVLTree.__deleteRecursion=20
+insert=12
+rebalance=9

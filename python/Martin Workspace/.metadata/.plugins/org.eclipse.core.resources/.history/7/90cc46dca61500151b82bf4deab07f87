@@ -1,0 +1,43 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+
+from AVLTree import AVLTree
+from BinaryTree import BinaryTree
+from RandomValue import RandomValue
+
+class TestBinary():
+    
+    def __init__(self, binaryTree):
+        self.tree = binaryTree
+    
+    '''
+    the method for the integer test for the AVL tree fill the tree with random values 
+    ''' 
+    def int_test(self, tree):
+        i = 0
+        it = []
+        randomV = RandomValue()
+        while i < 10:    
+            data = randomV.rFloat()
+            tree.insert(data)
+            it.insert(i, data)
+            i = i+1
+        for x in it:
+            print(tree.has(x))
+            
+    def string_test(self, tree):
+        i = 0
+        st = []
+        randomV = RandomValue()
+        while i < 10:    
+            data = randomV.rString()
+            tree.insert(data)
+            st.insert(i, data)
+            i = i+1
+             
+        for x in st:
+          
+            print(tree.has(x))

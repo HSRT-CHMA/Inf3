@@ -1,0 +1,11 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+from TestTree import TestTree
+
+tree = TestTree()
+tree.testBinaryTree()
+print("______________________________________")
+tree.testAVLTree()

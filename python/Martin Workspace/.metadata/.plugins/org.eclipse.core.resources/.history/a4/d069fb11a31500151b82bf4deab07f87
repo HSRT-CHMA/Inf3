@@ -1,0 +1,12 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+
+from AVLTree import AVLTree
+from BinaryTree import BinaryTree
+from RandomValue import RandomValue
+
+class TestTree():
+    

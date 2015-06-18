@@ -1,0 +1,18 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+
+from AVLTree import AVLTree
+from BinaryTree import BinaryTree
+
+
+aTree = AVLTree()
+bTree = BinaryTree()
+testB = TestBinary()
+testA = TestAVL()
+
+testTree.int_test(aTree)
+print("______________________________________")
+testTree.string_test(bTree)

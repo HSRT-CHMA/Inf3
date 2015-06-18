@@ -1,0 +1,24 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+from RandomValue import RandomValue
+
+class TestBinary():
+    
+    def __init__(self, binaryTree = None):
+        self.tree = binaryTree
+    
+            
+    def string_test(self, tree):
+        i = 0
+        st = []
+        randomV = RandomValue()
+        while i < 10:    
+            data = randomV.rString()
+            tree.insert(data)
+            st.insert(i, data)
+            i = i+1
+        #for x in st:
+         #   print(tree.has(x))

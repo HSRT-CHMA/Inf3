@@ -1,1 +1,23 @@
-DELSTRTest
+INSTUPBinaryTree
+C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\BinaryTree.py
+INFOS:&&1|1|1|0&&2|2|1|1&&3|3|1|4&&3|3|1|4&&2|5|1|1&&3|3|1|6&&2|7|1|1&&3|3|1|8&&2|9|1|1&&2|10|1|1&&2|11|1|1&&2|12|1|1&&3|3|1|13&&3|3|1|13&&3|3|1|13&&3|3|1|13&&2|14|1|1&&2|15|1|1&&2|16|1|1&&2|17|1|1&&2|18|1|1&&3|19|1|20
+__hasRecursion=10
+__deleteRecursion=12
+__insertRecursion=7
+__insertUnderParent=14
+BinaryTree=1
+__root=3
+has=9
+__init__=2
+BinaryTree.__insertRecursion=8
+__getMax=15
+BinaryTree.insert=6
+delete=11
+BinaryTree.__outputRec=20
+getRoot=16
+BinaryTree.__deleteRecursion=13
+output=17
+insert=5
+_outputString=19
+__outputRec=18
+BinaryTree.__init__=4
