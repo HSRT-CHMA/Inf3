@@ -1,30 +1,33 @@
-#pragma once
-#include "MainBinaryTree.h"
-
+#ifndef BINARY_TREE_HPP_
+#define BINARY_TREE_HPP_
+#include "AbstractTree.h"
+//Class to create generic binarytrees
 template<typename T>
-class BinaryTree : public MainBinaryTree<T>
-{
+class BinaryTree : public AbstractTree <T> {
+
+protected:
+
+	/*
+	* Method that is called after insert or delete a node
+	* This Method is not implemented for binarytree
+	*/
+	void insertAndDelPostHook(Node<T> * n) {
+
+	}
 
 public:
-	/*
-	Constructor for BinaryTree which receives a value of the given generic type
-	A new node with given value gets created and serves as the new root for the tree
-	*/
-	BinaryTree(T value) {
-		MainBinaryTree::node = new Node<T>(value);
-	};
 
-	/*Deconstructor for BinaryTree*/
-	~BinaryTree(void){
-	};
+	//The standard constructor for binarytree
+	BinaryTree() {
+		this->root = NULL;
+	}
 
 	/*
-	This method must be overwritten because this class extends the class AbstractBinaryTree.
-	Method gets called after every removal or insertion of nodes ,
-	but in case of an Binary tree, no special action on the tree must be performed
+	* Constructor with root parameter for binarytree
+	* parms: data: The data for the root node of the binarytree
 	*/
-	void insertDeleteHook(Node<T>  * node) {
-	};
-
+	BinaryTree(T data) {
+		this->root = new Node<T>(data, NULL, NULL, NULL);
+	}
 };
-
+#endif

@@ -1,118 +1,98 @@
-// GenericTrees.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
-//
-
 #include "stdafx.h"
-#include "BinaryTree.h"
-#include "AVLTree.h"
-#include <iostream>
+#include "iostream"
 #include <string>
-#include <cassert>
-#include "TesterOfINT.h"
-#include  "TesterOfString.h"
+#include "TestForString.h"
+#include "TestForFloat.h"
+// Main for Executing Program
+int _tmain(int argc, _TCHAR* argv[]) {
 
+	std::cout << "----------------- Test 1 - BinaryTree with strings ------------------" << std::endl;
+	//Testing Binarytree with strings - Test 1
+	BinaryTree<std::string> * STree = new BinaryTree<std::string>();
+	TestForString * testStr = new TestForString(STree);
+	//fill the tree with random strings
+	testStr->initRandom(1, 6, 20);
+	STree->inOrderOut();
+	// filter the tree for strings size >=3 
+	std::cout << "strings with length >=3:" << std::endl;
+	STree->filter([](std::string data){return (data.length() >= 3); });
+	STree->printStringFilter();
+	// filter the tree for strings with the letter s
+	std::cout << "strings with s or S:" << std::endl;
+	STree->filter([](std::string data){std::size_t found = ((data.find_first_of("s")) & (data.find_first_of("S"))); return (found != std::string::npos); });
+	STree->printStringFilter();
 
-
-/*Serves as the main-function of this programm*/
-int _tmain(int argc, _TCHAR* argv[])
-{
-
-	/* Testing on a Binary Tree with -----------------int-------------------  */
-	BinaryTree<int> tree = BinaryTree<int>(2);
-	std::cout << "Test on BinaryTree-Tree with int ";
-	std::cout << std::endl;
-	std::cout << std::endl;
-	// Causes a line break
-	std::cout << "Is 2 in tree : " << std::boolalpha << tree.hasElement(2) << "\n";
-	tree.insert(2.0);
-	std::cout << "Is 20 in tree : " << std::boolalpha << tree.hasElement(20) << "\n";
-	tree.insert(1);
-	std::cout << "Is 1 in tree : " << std::boolalpha << tree.hasElement(1) << "\n";
-	tree.del(2);
-	std::cout << "Is 2 in tree : " << std::boolalpha << tree.hasElement(2) << "\n";
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-	// Causes a line break
-
-	/*Testing on a Binary Tree with  --------------------String----------------  */
-	std::cout << "Test on BinaryTree-Tree with STRING ";
-	std::cout << std::endl;
-	std::cout << std::endl;
-	// Causes a line break
-
-	BinaryTree<std::string> tree_st = BinaryTree<std::string>("Test");
-	std::cout << "Is 'Test' in tree : " << std::boolalpha << tree_st.hasElement("Test") << "\n";
-	tree_st.insert("T");
-	std::cout << "Is 'T' in tree : " << std::boolalpha << tree_st.hasElement("T") << "\n";
-	tree_st.insert("Hello");
-	std::cout << "Is 'Hello' in tree : " << std::boolalpha << tree_st.hasElement("Hello") << "\n";
-	tree.del('T');
-	std::cout << "'T' got deleted, thereby false : " << std::boolalpha << tree.hasElement('T') << "\n";
-	std::cout << std::endl;
-	std::cout << std::endl;
-	// Causes a line break
-
-	/* Testing on an AVL tree with ------------------------int--------------------- */
-	AVLTree<int> * avl = new AVLTree<int>(2);
-	std::cout << "Test on AVL-Tree with int ";
-	std::cout << std::endl;
-	std::cout << std::endl;
-	// Causes a line break
-	std::cout << "Ausgabe 2: " << std::boolalpha << avl->hasElement(2) << "\n";
-	avl->insert(20);
-	std::cout << "Ausgabe 20: " << std::boolalpha << avl->hasElement(20) << "\n";
-	avl->insert(1);
-	std::cout << "Ausgabe 1: " << std::boolalpha << avl->hasElement(1) << "\n";
-	avl->insert(0);
-	std::cout << "Ausgabe 0: " << std::boolalpha << avl->hasElement(0) << "\n";
-	avl->insert(26);
-	std::cout << "Ausgabe 26: " << std::boolalpha << avl->hasElement(26) << "\n";
-
-	avl->del(2);
-	std::cout << "Ausgabe 2: " << std::boolalpha << avl->hasElement(2) << "\n";
-
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-	// Causes a line break
-
-	avl->printTree();
-	std::cout << std::endl << "Balance from Tree: " << avl->getBalanceFromTree() << std::endl << std::endl;
-
-
-
-	/*-------------------------------- Task 4 Test ------------------------------------------------------------------------------*/
-
-	std::cout << std::endl << "------- Task 4 Test  : " << std::endl << std::endl;
-
-	TesterOfINT<int> tester = TesterOfINT<int>(3, 1000, 1000);
-	std::vector<int> tmp = tester.getArray();
-
-	std::cout << "Create Tree with : " << tmp[0] << std::endl;
-	AVLTree<int> * root = new AVLTree<int>(tmp[0]);
-
-	for (int a = 1; a < tmp.size(); a++)
+	std::cout << "----------------- Test 2 - BinaryTree with floats ------------------" << std::endl;
+	//Testing Binarytree with floats - Test 2
+	BinaryTree<float> * FTree = new BinaryTree<float>();
+	TestForFloat * testFlt = new TestForFloat(FTree);
+	//fill the tree with random floats
+	testFlt->initRandom(-50, 50, 10);
+	FTree->insert(2.00);
+	FTree->inOrderOut();
+	// filter the tree for even elements
+	std::cout << "floats even:" << std::endl;
+	FTree->filter([](float data){return (((int)data % 2) == 0) && ((data - (int)data) == 0); });
+	FTree->printFloatFilter();
+	// filter the tree for elements <=5
+	std::cout << "floats <= 5:" << std::endl;
+	FTree->filter([](float data){return (data <= 5); });
+	FTree->printFloatFilter();
+	// filter the tree for negativ elements
+	std::cout << "floats negativ:" << std::endl;
+	FTree->filter([](float data){return (data < 0); });
+	FTree->printFloatFilter();
+/*
+	std::cout << "----------------- Test 3 - BinaryTree with floats manual ------------------" << std::endl;
+	//Testing manual floats - Test 3
+	std::cout << "BinaryTree<float> -> filter(even)" << std::endl;
+	BinaryTree<float> * bin = new BinaryTree<float>(1.53);
+	bin->insert(1.33);
+	bin->insert(1.72);
+	bin->insert(1.75);
+	bin->insert(6.37);
+	bin->insert(9.39);
+	bin->insert(6.51);
+	bin->insert(2.00);
+	bin->preOrderOut();
+	bin->filter([](float data){return (((int)data % 2) == 0);});
+	std::cout << "Floats even: " << std::endl;
+	std::vector<float> v1 = bin->getV();
+	for (float f : v1)
 	{
-		std::cout << "Insert: " << tmp[a] << std::endl;
-		root->insert(tmp[a]);
-		assert(root->hasElement(tmp[a]));
-		std::cout << "Balance from Tree after insert: " << root->getBalanceFromTree() << std::endl;
+		float y = roundf(f * 100.00f) / 100.00f;
+		std::cout << y << " ";
 	}
-	for (int a = 1; a < tmp.size(); a++)
+	std::cout << " " << std::endl;
+
+	std::cout << "----------------- Test 4 - BinaryTree with strings manual ------------------" << std::endl;
+	// Testing manual strings - Test 4
+	std::cout << "BinaryTree<std::string> -> filter(stringsWithS)" << std::endl;
+	BinaryTree<std::string> * bin2 = new BinaryTree<std::string>("vrhagwbhi");
+	bin2->insert("sxioehfigr");
+	bin2->insert("PhiinIOoubUI");
+	bin2->insert("JkvucDZDrjeh");
+	bin2->insert("HuhIHzdset");
+	bin2->insert("NIONUISD");
+	bin2->insert("juUTxedSRWs");
+	bin2->insert("jipgjoigny");
+	bin2->preOrderOut();
+	bin2->filter([](std::string data){std::size_t found = ((data.find_first_of("s")) & (data.find_first_of("S"))); return (found != std::string::npos); });
+	std::cout << "Strings with s: " << std::endl;
+	std::vector<std::string> v2 = bin2->getV();
+	for (std::string s : v2)
 	{
-		root->del(tmp[a]);
-		assert(!root->hasElement(tmp[a]));
-		std::cout << "Deleted: " << tmp[a] << std::endl;
-		std::cout << "Balance from Tree after delete: " << root->getBalanceFromTree() << std::endl;
+		std::cout << s << " ";
 	}
-	root->del(tmp[0]);
-	assert(!root->hasElement(tmp[0]));
-	std::cout << "Deleted: " << tmp[0] << std::endl;
-
-	getchar();
-	// Holds open the command line 
-
+	std::cout << " " << std::endl;
+*/
+	std::cout << "Program finished. Press any Key to exit... " << std::endl;
+	std::getchar();
 	return 0;
-	//Showcases the sucessful outcome of the main-function
 }
+
+
+
+
+
 

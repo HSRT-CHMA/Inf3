@@ -77,18 +77,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AbstractTree.h" />
-    <ClInclude Include="AVLTree.h" />
     <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="InitializerOfArray.h" />
-    <ClInclude Include="MainBinaryTree.h" />
+    <ClInclude Include="GeneratorRandoms.h" />
+    <ClInclude Include="iTree.h" />
+    <ClInclude Include="Lambda.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TesterOfINT.h" />
+    <ClInclude Include="TestForFloat.h" />
+    <ClInclude Include="TestForString.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GeneratorRandoms.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="TestForFloat.cpp" />
+    <ClCompile Include="TestForString.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

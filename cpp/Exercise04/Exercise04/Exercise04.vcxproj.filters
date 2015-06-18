@@ -15,32 +15,35 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractTree.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="AVLTree.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="BinaryTree.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="MainBinaryTree.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="TesterOfINT.h">
+    <ClInclude Include="TestForFloat.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="InitializerOfArray.h">
+    <ClInclude Include="TestForString.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractTree.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="iTree.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratorRandoms.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Lambda.h">
+      <Filter>Ressourcendateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +51,15 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TestForFloat.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TestForString.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratorRandoms.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
