@@ -1,0 +1,21 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+from Test import Test
+from BinaryTree import BinaryTree
+
+
+float = BinaryTree()
+
+testFloat = Test(float)
+testFloat.testFloat()
+    
+'''
+string Tree
+'''    
+string = BinaryTree()
+    
+testString = Test(string)
+testString.testString()

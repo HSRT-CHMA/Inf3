@@ -1,0 +1,114 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+
+
+from BinaryTree import BinaryTree
+from RandomValue import RandomValue
+
+class Test(object):
+    
+    tr = BinaryTree()
+    
+    def __init__(self, tree = None):
+        
+        self.tr = tree
+    
+        
+    '''
+    Method for Testing the Binary Tree with 
+    - Creating a new Binary Tree
+    - Adding Random Values to the Binary Tree
+    - Output from Tree Height
+    - Deleting a Value 
+    - Output from Tree Height
+    '''
+    def testFloat(self):
+        
+        #Defining Variables to work with
+        randomV = RandomValue()
+        tr = BinaryTree()
+        newItems = range(10)
+
+        #Pull random strings into the Tree
+        for i in newItems:
+            newFloat = randomV.rFloat()
+            print("Binary Tree add: ", newFloat)
+            tr.insert(newFloat)
+        
+        tr.preOrderOutput()
+        print("Tree Values\n")
+        #self.bt.TreePrinter(self.bt.getRoot())
+        print(self.tr.treeArray(self.tr.getRoot()))
+        
+      
+        print("\nFloat Tree\n")
+        print("negative values")
+        negVal = list(self.tr.filter(lambda val : val < 0, self.tr.getRoot()))
+        print(negVal)
+        
+        
+        print("\nvalues <= 5")
+        lesVal = list(self.tr.filter(lambda val : val <= 5, self.tr.getRoot()))
+        print(lesVal)
+        
+        print("\nvalues % 2")
+        evenVal = list(self.tr.Filter(lambda val : val % 2 == 0, self.tr.getRoot()))
+        print(evenVal)
+        print("\n\n")
+        #Output the added Strings
+        #print("Output of the Values:")
+        #tree.preOrderOutput()
+        #print(newFloat, tree.has(newFloat))
+
+        #Print Height of the Tree
+        #print("Height of the Tree: ", tree.height(tree.getRootNode()))
+
+        #Delete the temporary Value out of the Tree
+        #print("Deleting temporary Integer: ", newFloat)
+        #tree.delete(newFloat)
+        #print("Deleting complete")
+
+        #Print Height of the Tree
+        #print("Height of the Tree: ", tree.height(tree.getRootNode()))
+
+    '''
+    Method for Testing the AVL Tree with 
+    - Creating a new AVL Tree
+    - Adding Random Values to the AVL Tree
+    - Output from Tree Height
+    - Deleting a Value 
+    - Output from Tree Height
+    '''
+    def testString(self):
+        
+        #Defining Variables to work with
+        randomV = RandomValue()
+        newItems = range(10)
+
+        #Pull random strings into the Tree
+        for i in newItems:
+            newString = randomV.rString()
+            print("Tree add:", newString)
+            tr.insert(newString)
+            print("Value was added")
+        
+        tr.preOrderOutput()
+
+        #Output from the Tree
+        #print("Tree Output: ", tree.preOrderOutput())
+        #Check if Value is in the AVL Tree
+        #print("Is the Value: ", newString, " in Tree is? ", tree.has(newString))
+        #Delete the Value out of the Tree
+        #tree.delete(newString)
+        #print(newString, " was deleted out of the Tree")
+        #Check if the Value is in the Tree
+        #print(newString, " is in the Tree: ", tree.has(newString))
+        #Print Height of the Tree
+        #print("Tree Height: ", tree.getHeight())
+        #Output of the Tree
+        #print("Output of the Tree: ", tree.preOrderOutput())
+    
+    

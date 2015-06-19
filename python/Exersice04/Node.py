@@ -3,97 +3,60 @@ Created on 18.06.2015
 
 @author: Martin Watolla
 '''
+'''
+    Class for Node Objects
+'''
 
-class Node():
+class Node:
 
+    '''
+        Constructor of Node
+        Setting Value
+        to the given Values
+    '''
     def __init__(self, value):
         self.value = None
+        self.parent = None
         self.left = None
         self.right = None
-        self.parent = None
-        self.setData(value)
-        self.height = 0
-            
+        self.setValue(value)
+
+
     '''
-    The data type of the parameter value is int.
+        Definition of all Setters and Getters
     '''
-    def setData(self,value):
-        self.value = value
-        
-    '''
-    This method returns the value of the node.
-    '''
-    def getData(self):
+
+    #Getter for Value of Node
+    def getValue(self):
         return self.value
-    
-    '''
-    This method sets the left node.
-    The data type of currentNode is Node. It will be set as the left node.
-    '''
-    def setLeft(self, currentNode):
-        self.left = currentNode
-        
-        
-    '''
-    This method returns the left node.
-    '''
+
+    #Setter for Value of Node
+    def setValue(self, value):
+        self.value = value
+
+
+    #Getter for Parent Node
+    def getParent(self):
+        return self.parent
+
+    #Setter for Parent Node
+    def setParent(self, parent):
+        self.parent = parent
+
+
+    #Getter for Left Node
     def getLeft(self):
         return self.left
-    
-    '''
-    This method sets the right node.
-    The data type of currentNode is Node. It will be set as the right node.
-    '''
-    def setRight(self, currentNode):
-        self.right = currentNode
-            
-    '''
-    This method returns the right node.
-    '''
+
+    #Setter for Left Node
+    def setLeft(self, left):
+        self.left = left
+
+
+    #Getter for Right Node
     def getRight(self):
         return self.right
-    
-    
-    '''
-    This method sets the parent node.
-    The data type of currentNode is Node. It will be set as the parent node.
-    '''
-    def setParent(self, currentNode):
-        self.parent = currentNode
-        
-        
-    '''
-    This method returns the parent node.
-    '''
-    def getParent(self):
-        if type(self.parent) is Node or self.parent is None:
-            return self.parent
-     
-    '''
-    getter for the height
-    '''
-    def getHeight(self):
-        return self.height
-    '''
-    setter for the height
-    '''
-    def setHeight(self, value):
-        self.height = value
-    '''
-    Return the Height of the children 
-    '''
-    def max_children_height(self):
-        if self.left and self.right:
-            erg = max(self.left.height, self.right.height)
-        elif self.left and not self.right:
-            erg = self.left.height
-        elif not self.left and  self.right:
-            erg = self.right.height
-        else:
-            erg = -1
-        return erg
-    '''
-    return the value which balance 
-    '''
-    def balance (self):
-        return (self.left.height if self.left else -1) - (self.right.height if self.right else -1)
+
+    #Setter for Right Node
+    def setRight(self, right):
+        self.right = right

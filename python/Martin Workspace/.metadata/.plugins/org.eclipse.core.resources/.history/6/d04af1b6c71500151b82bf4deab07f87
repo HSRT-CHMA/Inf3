@@ -1,0 +1,70 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+'''
+    Class for Node Objects
+'''
+
+class Node():
+
+    '''
+        Constructor of Node
+        Setting Value, Parent, Left and Right Node 
+        to the given Values
+    '''
+    def __init__(self, value):
+        self.value = None
+        self.parent = None
+        self.left = None
+        self.right = None
+        self.setValue(value)
+
+
+    '''
+        Definition of all Setters and Getters
+    '''
+
+    #Getter for Value of Node
+    @property
+    def getValue(self):
+        return self._value
+
+    #Setter for Value of Node
+    @getValue.setter
+    def setValue(self, value):
+        self._value = value
+
+
+    #Getter for Parent Node
+    @property
+    def getParent(self):
+        return self._parent
+
+    #Setter for Parent Node
+    @setParent.setter
+    def setParent(self, parent):
+        self._parent = parent
+
+
+    #Getter for Left Node
+    @property
+    def getLeft(self):
+        return self._left
+
+    #Setter for Left Node
+    @setLeft.setter
+    def setLeft(self, left):
+        self._left = left
+
+
+    #Getter for Right Node
+    @property
+    def getRight(self):
+        return self._right
+
+    #Setter for Right Node
+    @setRight.setter
+    def setRight(self, right):
+        self._right = right

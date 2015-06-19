@@ -1,0 +1,11 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+from Test import Test
+
+tree = Test()
+tree.testFloat()
+print("_____________________________________")
+tree.testString()

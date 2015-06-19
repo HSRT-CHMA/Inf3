@@ -1,0 +1,25 @@
+'''
+Created on 18.06.2015
+
+@author: Martin Watolla
+'''
+from Test import Test
+
+bt_float = BinaryTree()
+
+test_float = FloatTest(bt_float)
+test_float.initTree(-1000, 1000, 13)
+test_float.printTree()
+    
+'''
+string Tree
+'''    
+bt_string = BinaryTree()
+    
+test_string = StringTest(bt_string)
+test_string.initTree(1, 20, 13)
+test_string.printTree()
+    
+    
+if __name__ == '__main__':
+    res = main()
