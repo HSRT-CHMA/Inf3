@@ -23,7 +23,7 @@ namespace BinaryTree
         {
 
             String content = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-            int raCounter = ra.Next(max);
+            int raCounter = ra.Next(1, max + 1);
 
             String raString = "";
 
@@ -31,6 +31,7 @@ namespace BinaryTree
             {
                 int raIndex = randomInteger(0, content.Length);
                 raString += content[raIndex];
+
             }
             return raString;
         }

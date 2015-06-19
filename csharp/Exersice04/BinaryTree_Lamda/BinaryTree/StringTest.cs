@@ -43,7 +43,7 @@ namespace BinaryTree
             }
             for (int i = 0; i < size; i++)
             {
-                stringTree.insert(randomString(min, min));
+                stringTree.insert(randomString(min, max));
             }
         }
 

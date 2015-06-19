@@ -7,11 +7,33 @@ using System.Threading.Tasks;
 using System.Diagnostics.Contracts;
 
 namespace BinaryTree
+    // Shared namespace
 {
     class BinaryTree<T> : AbstractTree<T>, IEnumerable<T> where T : IComparable<T>
     {
         private Comparison<IComparable> comp = CompareElements;
         private Node<T> node = null;
+
+
+         /// <summary>
+        /// The overwritten Method from AbstarctTree
+        /// </summary>
+        /// <param name="p">The received lambda expression</param>
+        /// <returns></returns>
+        public override T[] Filter(Predikat<T> p)
+        {
+            List<T> result = new List<T>();
+            foreach (Node<T> nod in Traversal(node))
+            {
+                if (p(nod.getData()))
+                {
+                    result.Add(nod.getData());
+                }
+            }
+            return result.ToArray();
+        }
+
+
         
         /// <summary>
         /// This Method performes a foreach()-loop on the output of Traversal statrting at the root-node
@@ -76,24 +98,6 @@ namespace BinaryTree
                  }
              }
          }
-            
-        /// <summary>
-        /// The overwritten Method from AbstarctTree
-        /// </summary>
-        /// <param name="p">The received lambda expression</param>
-        /// <returns></returns>
-        public override T[] Filter(Predikat<T> p)
-        {
-            List<T> result = new List<T>();
-            foreach (Node<T> nod in Traversal(node))
-            {
-                if (p(nod.getData()))
-                {
-                    result.Add(nod.getData());
-                }
-            }
-            return result.ToArray();
-        }
 
         /// <summary>
         /// Standard Constructor

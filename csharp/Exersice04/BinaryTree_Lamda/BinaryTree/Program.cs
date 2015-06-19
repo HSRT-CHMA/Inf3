@@ -13,15 +13,16 @@ namespace BinaryTree
     {
         static void Main(string[] args)
         {            
+            //--------------------Float--------------------------------
             BinaryTree<float> floatTree = new BinaryTree<float>();
             FloatTest testFloatTree = new FloatTest(floatTree);
-            testFloatTree.initTree(-10, 10, 20);
+            testFloatTree.initTree(-10, 10, 50);
             testFloatTree.printTree();
 
-
+            //---------------------String--------------------------------
             BinaryTree<string> stringTree = new BinaryTree<string>();
             StringTest testStringTree = new StringTest(stringTree);
-            testStringTree.initTree(5, 10, 10);
+            testStringTree.initTree(-10, 10, 50);
             testStringTree.printTree();        
 
             Console.ReadKey();
