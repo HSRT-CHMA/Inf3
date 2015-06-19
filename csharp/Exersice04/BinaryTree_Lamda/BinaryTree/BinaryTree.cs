@@ -10,9 +10,14 @@ namespace BinaryTree
 {
     class BinaryTree<T> : AbstractTree<T>, IEnumerable<T> where T : IComparable<T>
     {
-        private Comparison<IComparable> comparer = CompareElements;
+        private Comparison<IComparable> comp = CompareElements;
         private Node<T> node = null;
         
+        /// <summary>
+        /// This Method performes a foreach()-loop on the output of Traversal statrting at the root-node
+        /// needs two help-Methods to cover the whole tree
+        /// </summary>
+        /// <returns>The data of the actual node in a yield statement</returns>
         public IEnumerator<T> GetEnumerator()
          {
              foreach (Node<T> tmp in Traversal(node)) 
@@ -21,6 +26,11 @@ namespace BinaryTree
                }
          }
 
+        /// <summary>
+        /// This Method is built-in and iterates over the main tree; splits it up in 
+        /// left and right sub-tree
+        /// </summary>
+        /// <returns>Returns the nodes in the tree one after one</returns>
          System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
          {
              if (node.getLeft() != null)
@@ -43,7 +53,7 @@ namespace BinaryTree
         /// This Method traversals the tree and returns the elements in it
         /// </summary>
         /// <param name="node">The node with which the traversal starts</param>
-        /// <returns></returns>
+        /// <returns>Returns the nodes in the tree one after one </returns>
          private IEnumerable<Node<T>> Traversal(Node<T> node)
          {
              if (node != null)
@@ -224,9 +234,9 @@ namespace BinaryTree
             Node<T> back = null;
             if (n != null)
             {
-                bool leftside = comparer((IComparable)n.getData(), (IComparable)node.getParent().getData()) <= 0;
+                bool leftside = comp((IComparable)n.getData(), (IComparable)node.getParent().getData()) <= 0;
 
-                if (comparer((IComparable)n.getData(), (IComparable)i) == 0) //n.getData()== i
+                if (comp((IComparable)n.getData(), (IComparable)i) == 0) //n.getData()== i
                 {
                     back = n;
                 }
@@ -302,7 +312,7 @@ namespace BinaryTree
         /// <param name="i">value of the new node</param>
         public override void insert(T i)
         {
-            Contract.Requires(comparer((IComparable)i, (IComparable)0) > 0, "wert ungültig");
+            Contract.Requires(comp((IComparable)i, (IComparable)0) > 0, "wert ungültig");
             if (node == null)
             {
                 node = new Node<T>(i);
@@ -317,7 +327,7 @@ namespace BinaryTree
         /// <param name="i">value of the new node</param>
         private void insertFunction(Node<T> n, T i)
         {
-            Contract.Requires(comparer((IComparable)i, (IComparable)0) > 0); //i > 0
+            Contract.Requires(comp((IComparable)i, (IComparable)0) > 0); //i > 0
             if (n == null)
             {
                 n = new Node<T>(i);
@@ -328,7 +338,7 @@ namespace BinaryTree
             }
             else
             {
-                if (comparer((IComparable)i, (IComparable)n.getData()) < 0) //i < n.getData()
+                if (comp((IComparable)i, (IComparable)n.getData()) < 0) //i < n.getData()
                 {
                     if (n.getLeft() != null)
                     {
@@ -339,7 +349,7 @@ namespace BinaryTree
                         n.setLeft(new Node<T>(i, n));
                     }
                 }
-                if (comparer((IComparable)i, (IComparable)n.getData()) > 0) //i > n.getData())
+                if (comp((IComparable)i, (IComparable)n.getData()) > 0) //i > n.getData())
                 {
                     if (n.getRight() != null)
                     {
@@ -374,7 +384,7 @@ namespace BinaryTree
             Boolean back = false;
             if (n != null)
             {
-                if (comparer((IComparable)n.getData(), (IComparable)i) == 0) //n.getData() == i
+                if (comp((IComparable)n.getData(), (IComparable)i) == 0) //n.getData() == i
                 {
                     if ((n.getLeft() == null) && (n.getRight() == null))
                     {
@@ -437,7 +447,7 @@ namespace BinaryTree
                     }
 
                 }
-                if (comparer((IComparable)i, (IComparable)n.getData()) < 0) //(i < n.getData())
+                if (comp((IComparable)i, (IComparable)n.getData()) < 0) //(i < n.getData())
                 {
 
                     if (n.getLeft() == null)
@@ -446,7 +456,7 @@ namespace BinaryTree
                     }
                     else { back = deleteFunction(n.getLeft(), i, n, true); }
                 }
-                else if (comparer((IComparable)i, (IComparable)n.getData()) >= 0) //(i >= n.getData())
+                else if (comp((IComparable)i, (IComparable)n.getData()) >= 0) //(i >= n.getData())
                 {
                     if (n.getRight() == null)
                     {
