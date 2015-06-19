@@ -1,70 +1,102 @@
 -- VERSION_4
 -- START DISKCACHE
 C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Martin Workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\exersice4\com.python.pydev.analysis\v2_indexcache
-Test|1434641288954|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Test.py
-Main|1434640902594|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Main.py
-Tree|1434639772054|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Tree.py
-Node|1434638535721|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Node.py
-BinaryTree|1434640242303|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\BinaryTree.py
-RandomValue|1434639247613|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\RandomValue.py
+AVLTree|1434624983017|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\AVLTree.py
+Node|1434625288837|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Node.py
+Tree|1434622467171|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Tree.py
+BinaryTree|1434625574927|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\BinaryTree.py
+Tester|1434624902967|C:\Users\Martin Watolla\Documents\GitHub\Inf3\python\Exersice04\Tester.py
 -- END DISKCACHE
 -- START DICTIONARY
-19
-16=Node.setParent
-13=BinaryTree.__root
-1=BinaryTree
-15=Node.__init__
-14=Node.setLeft
-12=BinaryTree.__delNoChild
-19=Node.setValue
-18=Test.__init__
-4=Test
-5=Main
-2=Node
-6=Tree
-7=BinaryTree.preOrderOutput
-11=BinaryTree.__delOneChild
+22
+22=Node.setData
+18=Node.setParent
+21=Tester.__init__
+2=BinaryTree
+15=Node.setHeight
+20=AVLTree.rebalance
+16=Node.__init__
+17=Node.setLeft
+12=AVLTree.insert
+1=AVLTree
+7=BinaryTree.__insertRecursion
+3=Node
+5=Tree
+11=AVLTree.__insertRecursion
 8=BinaryTree.insert
-10=BinaryTree.__output
-3=RandomValue
-17=Node.setRight
+14=BinaryTree.__outputRec
+6=BinaryTree.__deleteRecursion
+13=AVLTree.__init__
+4=Tester
+10=AVLTree.__deleteRecursion
+19=Node.setRight
 9=BinaryTree.__init__
 -- END DICTIONARY
 -- START TREE 1
-7
-bin|1|BinaryTree!9@
-nod|1|Node!17@
-ran|1|RandomValue!25@
-tes|3|Test!33@testString!43@testFloat!43@
-tre|1|Tree!49@
-trf|1|trFloat!43@
-trs|1|trString!43@
+13
+atr|0|
+avl|1|AVLTree!9@
+bin|1|BinaryTree!17@
+bt|0|
+btr|0|
+gen|0|
+mai|0|
+nod|1|Node!25@
+ran|0|
+res|0|
+str|0|
+tes|1|Tester!33@
+tre|1|Tree!41@
 -- END TREE
 -- START TREE 2
-25
-__d|5|__deleteNode!1&10@__delTwoChildren!1&10@__delNoChild!1&10@__delOneChild!1&10@__deleteRecursion!1&10@
-__i|4|__init__!4&34@__init__!2&18@__insertRecursion!1&10@__init__!1&10@
-__o|2|__outputString!7&11@__output!1&10@
-__p|1|__preOrderRecursion!1&10@
-__r|3|__root!8&11@__root!9&11@__root!1&10@
-_ou|1|_output!10&11@
-_ro|3|_root!11&11@_root!12&11@_root!13&11@
-del|2|delete!6&50@delete!1&10@
-fil|2|filter!6&50@filter!1&10@
-get|5|getParent!2&18@getValue!2&18@getRoot!1&10@getRight!2&18@getLeft!2&18@
-has|2|has!6&50@has!1&10@
-hei|1|height!1&10@
-ins|2|insert!1&10@insert!6&50@
-lef|2|left!14&19@left!15&19@
-par|2|parent!16&19@parent!15&19@
-pre|1|preOrderOutput!1&10@
-rfl|1|rFloat!3&26@
-rig|2|right!17&19@right!15&19@
-rin|1|rInteger!3&26@
-rst|1|rString!3&26@
-set|4|setRight!2&18@setParent!2&18@setValue!2&18@setLeft!2&18@
-tes|2|testFloat!4&34@testString!4&34@
-tr|2|tr!18&35@tr!4&35@
-tre|1|treeArray!1&10@
-val|2|value!19&19@value!15&19@
+49
+!<m|0|
+__d|2|__deleteRecursion!1&10@__deleteRecursion!2&18@
+__g|1|__getMax!2&18@
+__h|2|__hasRecursion!2&18@__hasRecursion!1&10@
+__i|7|__insertRecursion!1&10@__init__!1&10@__init__!3&26@__insertUnderParent!2&18@__insertRecursion!2&18@__init__!2&18@__init__!4&34@
+__o|1|__outputRec!2&18@
+__p|0|
+__r|8|__root!6&19@__root!7&19@__root!8&19@__root!9&19@__root!10&11@__root!11&11@__root!12&11@__root!13&11@
+_le|0|
+_ou|1|_outputString!14&19@
+_pa|0|
+_ri|0|
+_ro|0|
+_va|0|
+bal|1|balance!3&26@
+che|1|checkRebalance!1&10@
+del|3|delete!5&42@delete!1&10@delete!2&18@
+ele|1|elements_count!13&11@
+fil|0|
+get|6|getHeight!3&26@getParent!3&26@getRoot!2&18@getRight!3&26@getData!3&26@getLeft!3&26@
+has|3|has!5&42@has!2&18@has!1&10@
+hei|3|height!15&27@height!16&27@height!1&10@
+ins|3|insert!2&18@insert!1&10@insert!5&42@
+int|1|int_test!4&34@
+isb|0|
+isl|0|
+key|0|
+lef|2|left!17&27@left!16&27@
+max|1|max_children_height!3&26@
+min|0|
+nod|0|
+out|1|output!2&18@
+par|2|parent!18&27@parent!16&27@
+pre|0|
+ran|2|random_data_generator!4&34@random_string_generator!4&34@
+reb|2|rebalance!1&10@rebalance_count!13&11@
+rec|1|recompute_heights!1&10@
+rfl|0|
+rig|2|right!19&27@right!16&27@
+rin|0|
+roo|1|rootNode!20&11@
+rot|0|
+rst|0|
+set|5|setRight!3&26@setParent!3&26@setHeight!3&26@setLeft!3&26@setData!3&26@
+str|1|string_test!4&34@
+tes|0|
+tre|1|tree!21&35@
+upd|0|
+val|2|value!22&27@value!16&27@
 -- END TREE

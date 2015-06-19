@@ -4,241 +4,200 @@ Created on 18.06.2015
 @author: Martin Watolla
 '''
 '''
-    Binary Tree Class
-    Inf3 - Group 7
+This class is an implementation of a binary tree.
 '''
-#Defining Imports
-from Tree import Tree
 from Node import Node
+from Tree import Tree
 
-'''
-Binary Tree Class with Generics 
-form Exercise 1.2
-'''
+
 class BinaryTree(Tree):
     
     '''
-    Constructor for BinaryTree Class
+    The __init__-method generates a binary tree.
+    The data type of the parameter value is either int or None. It's the value of the root.
     '''
-    def __init__ (self, value = None):
+    def __init__(self, value):
+        
         if value is not None:
             self.__root = Node(value)
         else:
             self.__root = None
-
+        
     
-    #Getter for the Class binaryTree
-    @property 
-    def __root(self):
-        return self._root
-
-    #Setter for the Class binaryTree
-    @__root.setter
-    def __root(self, root):
-        if type(root) == Node or root == None:
-            self._root = root
+    
+    '''
+    The method inserts the parameter value in the binary tree.
+    The data type of the parameter is int.
+    If there's no root, it inserts a root. Otherwise it starts a recursion to insert.
+    '''
+    def insert(self,value):
+       
+        if self.__root is None and type(value) is int:
+            self.__root = Node(value)
         else:
-            raise TypeError("Root Node musst be a Node.")
+            self.__insertRecursion(self.__root, value)
+       
+            
+    '''
+    This is the recursion to insert a node.
+    Duplicates will be inserted to the right.
+    The data type of the parameter currentNode is Node and of value it's int.
+    '''
+    def __insertRecursion(self,currentNode,value):
+        
+        if currentNode is None:
+            currentNode = Node(value)
+        if self.__root is None:
+            self.__root = currentNode
+        else:
+            
+            if value < currentNode.getData(): # left
+                if currentNode.getLeft() is not None:
+                    self.__insertRecursion(currentNode.getLeft(), value)
+                else:
+                    currentNode.setLeft(Node(value))
+                    currentNode.getLeft().setParent(currentNode)
+            if value >= currentNode.getData():
+                if currentNode.getRight() is not None:
+                    self.__insertRecursion(currentNode.getRight(), value)
+                else:
+                    currentNode.setRight(Node(value))
+                    currentNode.getRight().setParent(currentNode)
+       
 
-    #Getter for Root Node
+                
+    '''
+    The method returns a boolean. It returns true if the parameter value is in the tree.
+    '''
+    def has(self,value):
+        return self.__hasRecursion(self.__root,value)
+    
+    '''
+    This method searches for the parameter value.
+    The data type of currentNode is Node.
+    The data type of value is int.
+    It returns a boolean variable. It returns true when the value is in the tree.
+    '''
+    def __hasRecursion(self,currentNode,value):
+        has = False
+        if currentNode is None:
+            has = False
+        elif currentNode.getData() is value:
+            has = True #found
+        elif value < currentNode.getData(): #search left
+            has = self.__hasRecursion(currentNode.getLeft(), value)
+        elif value > currentNode.getData(): #search right
+            has = self.__hasRecursion(currentNode.getRight(), value)
+            
+        return has
+        
+            
+    '''
+    This method invokes the method __deleteRecursion if there's a node with the value of the parameter value in the tree.
+    Otherwise there's nothing to delete.
+    It returns a boolean. If the node with the value is deleted it returns a True. If there's nothing to delete it returns a False.
+    '''
+    def delete(self,value):
+        has = False
+        while self.has(value):
+            has = self.__deleteRecursion(self.__root, value, None, False)
+        
+        return has
+    
+    
+    '''
+    This method searches for the node with the value and deletes it.
+    The data type of the parameter value is int.
+    The data type of the parameter currentNode is Node. 
+    The data type of the parameter parent is Node. It's the node above the currentNode.
+    The data type of the parameter isLeft is boolean. It's True when it's the left child of the parent.
+    The method returns a boolean. It's true 
+    '''
+    def __deleteRecursion(self, currentNode, value, parent, isLeft):
+        isDeleted = False
+        if currentNode is None:
+            isDeleted = False
+        if value is currentNode.getData():
+            if currentNode.getLeft() is None and currentNode.getRight() is None:
+                if parent is None:
+                    self.__root = None
+                    isDeleted = True
+                else:
+                    self.__insertUnderParent(parent,isLeft,None)
+                    isDeleted = True
+            elif currentNode.getLeft() is None and currentNode.getRight() is not None:
+                if parent is None:
+                    self.__root = currentNode.getRight()
+                    isDeleted = True
+                else:
+                    self.__insertUnderParent(parent, isLeft, currentNode.getRight())
+                    isDeleted = True
+            elif currentNode.getLeft() is not None and currentNode.getRight() is None:
+                if parent is None:
+                    self.__root = currentNode.getLeft()
+                    isDeleted = True
+                else:
+                    self.__insertUnderParent(parent, isLeft, currentNode.getLeft())
+                    isDeleted = True
+            elif currentNode.getLeft() is not None and currentNode.getRight() is not None:
+                x = self.__getMax(currentNode.getLeft())
+                self.delete(x.getData())
+                if parent is None:
+                    x.setLeft(self.__root.getLeft())
+                    x.setRight(self.__root.getRight())
+                    self.__root = x
+                else:
+                    x.setLeft(currentNode.getLeft())
+                    x.setRight(currentNode.getRight())
+                    self.__insertUnderParent(parent,isLeft,x)
+        if value < currentNode.getData():
+            if currentNode.getLeft() is not None:
+                isDeleted = self.__deleteRecursion(currentNode.getLeft(), value, currentNode, True)
+        if value > currentNode.getData():
+            if currentNode.getRight() is not None:
+                isDeleted = self.__deleteRecursion(currentNode.getRight(), value, currentNode, False)
+        
+        return isDeleted
+        
+    '''
+    This method looks whether the node if right or left of the parent. If it's left, it sets the node left of the new parent.
+    '''  
+    def __insertUnderParent(self, parent, isLeft, currentNode):
+        if isLeft:
+            parent.setLeft(currentNode)
+        else:
+            parent.setRight(currentNode)
+            
+    '''
+    This method returns the node with the highest value.
+    The parameter start is the node where you want to start searching.
+    '''
+    def __getMax(self, start):
+        if start is not None:
+            while start.getRight() is not None:
+                start = start.getRight()
+            return start
+    
+    '''
+    This method returns the root of the tree.
+    '''
     def getRoot(self):
-        return self._root
-
+        return self.__root
+    
     '''
     Returns a string.
     Used for the output of __inorderOutput.
     '''
     @property
-    def __output(self):
+    def output(self):
         return self._outputString
     
     '''
     Parameters: outputString: a String, used for the output of __inorderOutput
     '''
-    @__output.setter
-    def __output(self, output):
-        if type(output) == str:
-            self._output = output
+    @__outputRec.setter
+    def __outputRec(self, outputString):
+        if type(outputString) == str:
+            self._outputString = outputString
         else:
             raise TypeError("outputString must be a String")
-
-    '''
-    Insert Method which can be called by the Main Program
-    '''
-    def insert(self, value):
-        if self.__root == None:
-            self.__root = Node(value)
-        else:
-            self.__insertRecursion(self.__root, value)
-
-    '''
-    Method which inserts a Object to the BinaryTree with Recursion
-    '''
-    def __insertRecursion(self, node, value):
-   
-        if value < node.value:
-            if node.left == None:
-                node.left = Node(value)
-            else:
-                self.__insertRecursion(node.left, value)
-        if value >= node.value:
-            if node.right == None:
-                node.right = Node(value)
-            else:
-                self.__insertRecursion(node.right, value)
-
-    '''
-    Returns true if a Node with the given value exists.
-    In other cases false will be returned.
-    Parameters: value: the value to search the Nodes for.
-    '''
-    def has(self, value):
-        value = False
-        currentNode = self.__root
-        while currentNode != None and not value:
-            if currentNode.value == value:
-                value = True
-            else:
-                if value < currentNode.value:
-                    currentNode = currentNode.left
-                else:
-                    currentNode = currentNode.right
-        return value
-
-    '''
-    Method to delete all Nodes with the given value.
-    Parameters: value: Nodes with this value will be deleted.
-    Duplicates in the Tree will be also deleted
-    '''
-    def delete(self, value):
-        while self.has(value):
-            self.__deleteRecursion(self.__root, value, None)
-    
-            
-    '''
-    Checks if the Node that should be deleted has no child, one child or two children and calls
-    the corresponding method to delete the Node.
-    nodeToDel: the Node that should be deleted
-    parent: the parent of the node that should be deleted
-    isLeftChild: boolean, indicates if the nodeToDel is the left child of parent
-    '''
-    def __deleteNode(self, nodeToDel, parent, isLeftChild):
-        if nodeToDel.left == None and nodeToDel.right == None:
-            self.__delNoChild(nodeToDel, parent, isLeftChild)
-        elif (nodeToDel.left != None and nodeToDel.right == None) or (nodeToDel.left == None and nodeToDel.right != None):
-            self.__delOneChild(nodeToDel, parent, isLeftChild, nodeToDel.left != None)
-        elif nodeToDel.left != None and nodeToDel.right != None:
-            self.__delTwoChildren(nodeToDel, parent, isLeftChild)
-    
-    '''
-    Deletes a Node with no child.
-    nodeToDel: the Node that should be deleted
-    parent: the parent of the node that should be deleted
-    isLeftChild: boolean, indicates if the nodeToDel is the left child of parent
-    '''                
-    def __delNoChild(self, nodeToDel, parent, isLeftChild):
-        if nodeToDel == self._root:
-            self._root = None
-        elif isLeftChild:
-            parent.left = None
-        else:
-            parent.right = None
-    
-    '''
-    Deletes a Node with one child.
-    nodeToDel: the Node that should be deleted
-    parent: the parent of the node that should be deleted
-    isLeftChild: boolean, indicates if the nodeToDel is the left child of parent
-    hasLeftChild: boolean, indicates if the nodeToDel has a left child
-    ''' 
-    def __delOneChild(self, nodeToDel, parent, isLeftChild, hasLeftChild):
-        if nodeToDel == self._root:
-            if hasLeftChild:
-                self._root = nodeToDel.left
-            else:
-                self._root = nodeToDel.right
-        elif isLeftChild:
-            if hasLeftChild:
-                nodeToDel.left.parent = parent
-                parent.left = nodeToDel.left
-            else:
-                nodeToDel.right.parent = parent
-                parent.left = nodeToDel.right
-        else:
-            if hasLeftChild:
-                nodeToDel.left.parent = parent
-                parent.right = nodeToDel.left
-            else:
-                nodeToDel.right.parent = parent
-                parent.right = nodeToDel.right    
-      
-    '''
-    Deletes a Node with two children.
-    nodeToDel: the Node that should be deleted
-    parent: the parent of the node that should be deleted
-    isLeftChild: boolean, indicates if the nodeToDel is the left child of parent
-    '''         
-    def __delTwoChildren(self, nodeToDel, parent, isLeftChild):
-        smallest = self.__getSmallest(nodeToDel.right)
-        nodeToDel.value = smallest.value
-        self.__deleteNode(smallest, smallest.parent, smallest.parent.left == smallest)
-         
-    '''
-    Method which delete a Object to the BinaryTree with Recursion
-    '''        
-    def __deleteRecursion(self, currentNode, value, parent):
-        if currentNode != None and currentNode.value == value:
-            if currentNode == self.__root:
-                self.__deleteNode(currentNode, currentNode.parent, False)
-            else:
-                self.__deleteNode(currentNode, currentNode.parent, currentNode.parent.left == currentNode)
-        else:
-            if currentNode.left != None:
-                self.__deleteRecursion(currentNode.left, value, currentNode)
-            if currentNode.right != None:
-                self.__deleteRecursion(currentNode.right, value, currentNode)
-
-    '''
-    Prints the in-order tree traversal.
-    Calls the recursive Method __inorderRecursion and prints __outputString.
-    '''
-    def preOrderOutput(self):
-        self.__preOrderRecursion(self.__root)
-        print("Pre-order: " + self.__outputString)
-        self.__outputString = ""
-    
-    '''
-    Stores the inorder output in __outputString.
-    Parameters: node: the Node to start the recursion
-    '''
-    def __preOrderRecursion(self, node):
-        if node == None:
-            assert node == None # postcondition
-            return
-        self.__outputString += str(node.value) + " "
-        self.__preOrderRecursion(node.left)
-        self.__preOrderRecursion(node.right)
-
-    '''
-    Returns the height of the Tree.
-    '''            
-    def height(self,node):
-        if node is None:
-            tmpReturn=0
-        else:
-            tmpReturn=max(self.height(node.left), self.height(node.right)) + 1
-        return tmpReturn
-    
-    def filter(self, L, node):
-        return filter(L, self.treeArray(node))
-    
-    '''
-    This method converts the tree to an array
-    '''
-    def treeArray(self, node):
-        result = []
-        if node :
-            result.insert(len(result), node.getValue())
-            result.extend(self.treeArray(node.getLeft()))
-            result.extend(self.treeArray(node.getRight()))
-        return result
